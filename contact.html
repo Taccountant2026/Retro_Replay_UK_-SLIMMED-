@@ -1,85 +1,85 @@
-<!-- =========================
-File: /contact.html
-========================= -->
+<!-- /contact.html -->
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Retro Replay UK — Contact</title>
-  <meta name="description" content="Contact Retro Replay UK for PS2 orders, upgrades, setup help and aftersales support." />
+  <title>Contact | Retro Replay UK</title>
+  <meta name="description" content="Contact Retro Replay UK for PS2 orders, custom requests, setup help and aftersales support." />
+  <link rel="canonical" href="https://retroreplay.uk/contact.html" />
   <link rel="stylesheet" href="/style.css" />
 </head>
+
 <body>
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/index.html">
-      <img src="/assets/logo.png" alt="Retro Replay" width="44" height="44" />
-      <span>Retro Replay UK</span>
+    <a class="brand" href="/" aria-label="Retro Replay UK Home">
+      <img class="brand-logo" src="/assets/logo.png" alt="Retro Replay" width="160" height="70" loading="eager" decoding="async" />
+      <div class="brand-text">
+        <div class="brand-name">Retro Replay UK</div>
+        <div class="brand-tag">Orders • Support • Custom Requests</div>
+      </div>
     </a>
 
-    <nav class="nav">
-      <a href="/ps2.html">PS2</a>
-      <a href="/support.html">Setup & Support</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/ps2.html">PS2 Consoles</a>
+      <a href="/support.html">Support</a>
       <a href="/contact.html" aria-current="page">Contact</a>
     </nav>
+
+    <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">☰</button>
+  </div>
+
+  <div class="container nav-mobile" id="primaryNav">
+    <a href="/">Home</a>
+    <a href="/ps2.html">PS2 Consoles</a>
+    <a href="/support.html">Support</a>
+    <a href="/contact.html" aria-current="page">Contact</a>
   </div>
 </header>
 
 <main>
-  <section class="hero hero-small">
+
+  <section class="page-hero">
     <div class="container">
-      <h1>Contact</h1>
-      <p class="lead">Orders, upgrades, setup help and aftersales support.</p>
+      <div class="kicker">Contact</div>
+      <h1>Get in touch</h1>
+      <p>Fastest support: include your order details and a clear description.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-
-      <div class="card">
-        <h2>Email</h2>
-        <p>
-          <a class="link" href="mailto:retroreplay2026@gmail.com">retroreplay2026@gmail.com</a>
-        </p>
-
-        <div class="notice">
-          <strong>To help me reply fast, please include:</strong>
-          <ul class="list">
-            <li>Which option: Modded / Standard / Refurbished</li>
-            <li>Your TV model (important for picture quality advice)</li>
-            <li>HDD size (if modded) and controller preference</li>
-            <li>Postcode (for delivery estimate)</li>
-          </ul>
+      <div class="grid-2">
+        <div class="card card-glow">
+          <h3>Email</h3>
+          <p>Orders, support and custom requests:</p>
+          <div class="codebox">retroreplay2026@gmail.com</div>
+          <p class="small mt-24">
+            Picture issue? Include your TV model and the cable/adapter you’re using.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-ghost" href="/support.html">Support page</a>
+            <a class="btn btn-ghost" href="/ps2.html">PS2 page</a>
+          </div>
         </div>
 
-        <div class="cta-row">
-          <a class="btn btn-primary"
-             href="mailto:retroreplay2026@gmail.com?subject=PS2%20Order%20Enquiry&body=Hi%20Leighton%2C%0A%0AI%27d%20like%20to%20order%20a%20PS2.%0A%0AOption%20(Modded%2FStandard%2FRefurbished)%3A%20%0ATV%20Model%3A%20%0AHDD%20Size%20(if%20modded)%3A%20%0AController%20(preference)%3A%20%0APostcode%3A%20%0AAny%20notes%3A%20%0A%0AThanks">
-            Email to Order
-          </a>
-          <a class="btn btn-secondary" href="/support.html">Setup & Support</a>
+        <div class="card">
+          <h3>Copy/paste template</h3>
+          <div class="codebox">
+            Name:<br/>
+            Order details (if any):<br/>
+            What you purchased / want:<br/>
+            TV model (if relevant):<br/>
+            Connection type (HDMI adapter / component / AV):<br/>
+            Issue / question (what happens):<br/>
+            Photos/videos (if possible):
+          </div>
+          <p class="small">This avoids back-and-forth and gets you sorted quicker.</p>
         </div>
-
-        <p class="small">
-          I provide support via message/email so everything is clear and documented.
-        </p>
       </div>
-
-      <div class="card">
-        <h2>Aftersales Support</h2>
-        <p>
-          If you already have a Retro Replay PS2 and need help, please email with:
-        </p>
-        <ul class="list">
-          <li>Your order name/postcode</li>
-          <li>What you see on screen (photo if possible)</li>
-          <li>TV model and cable type (HDMI adapter/component/SCART)</li>
-        </ul>
-        <a class="link" href="/support.html#troubleshooting">Go to troubleshooting</a>
-      </div>
-
     </div>
   </section>
 
@@ -87,17 +87,39 @@ File: /contact.html
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <div>
-      <strong>Retro Replay UK</strong><br />
-      <span class="small">retroreplay2026@gmail.com</span>
+    <div class="footer-brand">
+      <img class="footer-logo" src="/assets/logo.png" alt="Retro Replay" width="120" height="50" loading="lazy" decoding="async" />
+      <div>
+        <div class="footer-title">Retro Replay UK</div>
+        <div class="footer-sub">UK-based support for PS2 builds and consoles.</div>
+      </div>
     </div>
+
     <div class="footer-links">
+      <a href="/">Home</a>
       <a href="/ps2.html">PS2</a>
-      <a href="/support.html">Setup & Support</a>
-      <a href="/contact.html">Contact</a>
+      <a href="/support.html">Support</a>
     </div>
   </div>
+
+  <div class="container footer-bottom">© <span id="year"></span> Retro Replay UK.</div>
 </footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const toggle = document.querySelector('.nav-toggle');
+  const mobile = document.getElementById('primaryNav');
+  if (toggle && mobile) {
+    toggle.addEventListener('click', () => {
+      const open = mobile.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobile.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }));
+  }
+</script>
 
 </body>
 </html>
