@@ -1,81 +1,181 @@
+<!-- /index.html -->
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Retro Replay UK — PlayStation 2 Specialists</title>
   <meta name="description" content="Buy professionally tested PlayStation 2 consoles. Modded Plug & Play HDD builds or standard PS2 systems. UK support included." />
+  <link rel="canonical" href="https://retroreplay.uk/" />
 
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="/style.css" />
 </head>
 
 <body>
 
 <header class="site-header">
   <div class="container header-inner">
-    <div class="brand">
-      <div class="brand-mark">RR</div>
-      <div class="brand-name">Retro Replay UK</div>
-    </div>
+    <a class="brand" href="/" aria-label="Retro Replay UK Home">
+      <img class="brand-logo" src="/assets/logo.png" alt="Retro Replay" width="160" height="70" loading="eager" decoding="async" />
+      <div class="brand-text">
+        <div class="brand-name">Retro Replay UK</div>
+        <div class="brand-tag">PlayStation 2 Specialists • Tested • Cleaned • Supported</div>
+      </div>
+    </a>
 
-    <nav class="nav">
+    <nav class="nav" aria-label="Primary navigation">
       <a href="/" aria-current="page">Home</a>
       <a href="/ps2.html">PS2 Consoles</a>
       <a href="/support.html">Support</a>
       <a href="/contact.html">Contact</a>
     </nav>
+
+    <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">☰</button>
+  </div>
+
+  <div class="container nav-mobile" id="primaryNav">
+    <a href="/" aria-current="page">Home</a>
+    <a href="/ps2.html">PS2 Consoles</a>
+    <a href="/support.html">Support</a>
+    <a href="/contact.html">Contact</a>
   </div>
 </header>
 
 <main>
+
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <h1>PlayStation 2 Specialists</h1>
+        <div class="kicker">PS2 store • UK-based</div>
+
+        <h1>Clean, tested PS2 consoles — with real aftersales support.</h1>
+
         <p>
-          Professionally tested PS2 consoles. Choose a Plug & Play HDD build or a standard original system.
-          Clear setup guidance and aftersales support included.
+          Choose one of two routes:
+          <strong>Modded Plug &amp; Play HDD Builds</strong> (no discs required) or
+          <strong>Standard Tested PS2 Consoles</strong> (original experience).
         </p>
 
         <div class="cta-row">
-          <a class="btn btn-primary" href="/ps2.html">View PS2 Consoles</a>
-          <a class="btn btn-secondary" href="/support.html">Setup & Support</a>
+          <a class="btn btn-primary" href="/ps2.html">Shop PS2 Consoles</a>
+          <a class="btn btn-ghost" href="/support.html">Setup &amp; Support</a>
         </div>
 
-        <p class="note">
-          Designed for simplicity. Honest listings. UK-based support.
-        </p>
+        <div class="info-band">
+          <strong>Modern TV note:</strong> PS2 outputs low-resolution video. On large 4K TVs, a good HDMI solution or upscaler may be recommended.
+        </div>
       </div>
 
-      <div class="card card-strong">
-        <h3>Why Retro Replay?</h3>
+      <aside class="card card-glow">
+        <h3>What you get</h3>
         <ul class="ticks">
-          <li>Professionally tested PS2 consoles</li>
-          <li>Optional Plug & Play HDD mods</li>
-          <li>No discs required (modded builds)</li>
-          <li>Clear setup guides included</li>
+          <li>Professionally tested consoles</li>
+          <li>Cleaned + presentable</li>
+          <li>Honest condition notes</li>
+          <li>Clear setup guidance</li>
           <li>Aftersales help if you get stuck</li>
         </ul>
+        <div class="btn-row">
+          <a class="btn btn-ghost" href="/contact.html">Ask a question</a>
+          <a class="btn btn-ghost" href="/ps2.html#modded">Plug &amp; Play</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Shop by PS2 type</h2>
+        <p>Pick your route: modded plug &amp; play or standard console.</p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3>Modded Plug &amp; Play (HDD)</h3>
+          <p>No discs required. Pre-configured for simple game loading.</p>
+          <div class="pill-row">
+            <span class="pill">HDD Build</span>
+            <span class="pill">Pre-configured</span>
+            <span class="pill">Support included</span>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="/ps2.html#modded">View Modded Builds</a>
+            <a class="btn btn-ghost" href="/support.html#picture">Modern TV advice</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Standard PS2 (Tested)</h3>
+          <p>Original disc-based experience. Ideal if you already own games or want stock PS2.</p>
+          <div class="pill-row">
+            <span class="pill">Stock PS2</span>
+            <span class="pill">Tested</span>
+            <span class="pill">Cleaned</span>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="/ps2.html#standard">View Standard PS2</a>
+            <a class="btn btn-ghost" href="/contact.html">Request a model</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="grid-3 mt-24">
+        <div class="card soft">
+          <h3>Clarity first</h3>
+          <p>Clear “what’s included” and realistic expectations — no confusion.</p>
+        </div>
+        <div class="card soft">
+          <h3>Built for reliability</h3>
+          <p>Prepared carefully, with sensible setup and checks before dispatch.</p>
+        </div>
+        <div class="card soft">
+          <h3>Help when you need it</h3>
+          <p>Step-by-step help available for setup, picture issues, and game loading.</p>
+        </div>
       </div>
     </div>
   </section>
+
 </main>
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <div>© 2026 Retro Replay UK</div>
-    <div class="footer-links">
+    <div class="footer-brand">
+      <img class="footer-logo" src="/assets/logo.png" alt="Retro Replay" width="120" height="50" loading="lazy" decoding="async" />
+      <div>
+        <div class="footer-title">Retro Replay UK</div>
+        <div class="footer-sub">PS2 consoles — tested, prepared and supported.</div>
+      </div>
+    </div>
+
+    <div class="footer-links" aria-label="Footer links">
       <a href="/ps2.html">PS2</a>
       <a href="/support.html">Support</a>
       <a href="/contact.html">Contact</a>
     </div>
   </div>
 
-  <div class="footer-bottom center">
-    PlayStation 2 consoles — tested, prepared and supported.
+  <div class="container footer-bottom">
+    © <span id="year"></span> Retro Replay UK. All rights reserved.
   </div>
 </footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const toggle = document.querySelector('.nav-toggle');
+  const mobile = document.getElementById('primaryNav');
+  if (toggle && mobile) {
+    toggle.addEventListener('click', () => {
+      const open = mobile.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobile.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }));
+  }
+</script>
 
 </body>
 </html>
