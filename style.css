@@ -9,9 +9,8 @@
   --muted:rgba(234,242,255,.78);
   --line:rgba(255,255,255,.10);
 
-  /* brand from logo */
-  --aqua:#87eaff;     /* light cyan */
-  --aqua2:#19cfff;    /* brighter cyan */
+  --aqua:#87eaff;
+  --aqua2:#19cfff;
   --glow:rgba(135,234,255,.32);
   --glow2:rgba(25,207,255,.22);
 
@@ -51,6 +50,7 @@ a{color:inherit; text-decoration:none}
 .brand{
   display:flex; align-items:center; gap:12px;
   min-width: 260px;
+  min-width: 0;
 }
 .brand-logo{
   width:auto;
@@ -62,7 +62,7 @@ a{color:inherit; text-decoration:none}
   box-shadow: 0 0 0 1px rgba(25,207,255,.10), 0 18px 45px rgba(0,0,0,.40);
   object-fit: contain;
 }
-.brand-text{display:flex; flex-direction:column; gap:2px}
+.brand-text{display:flex; flex-direction:column; gap:2px; min-width:0}
 .brand-name{
   font-weight:900;
   letter-spacing:.2px;
@@ -71,6 +71,10 @@ a{color:inherit; text-decoration:none}
 .brand-tag{
   font-size:.86rem;
   color: rgba(234,242,255,.70);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 52ch;
 }
 
 .nav{display:flex; gap:14px; flex-wrap:wrap; align-items:center}
@@ -94,25 +98,33 @@ a{color:inherit; text-decoration:none}
 
 .nav-toggle{
   display:none;
+  width:44px; height:44px;
+  align-items:center; justify-content:center;
   border:1px solid rgba(135,234,255,.18);
   background: rgba(135,234,255,.06);
   color: var(--text);
   border-radius: 12px;
   padding:10px 12px;
   font-weight: 900;
+  line-height: 1;
 }
+
 .nav-mobile{
   display:none;
   padding: 0 0 14px;
 }
 .nav-mobile a{
   display:block;
-  padding:10px 12px;
+  padding:12px 12px;
   border-radius: 12px;
   border: 1px solid rgba(135,234,255,.14);
   background: rgba(255,255,255,.03);
-  margin: 8px 0;
+  margin: 10px 0;
   color: rgba(234,242,255,.86);
+}
+.nav-mobile a:hover{
+  border-color: rgba(135,234,255,.28);
+  background: rgba(135,234,255,.08);
 }
 .nav-mobile a[aria-current="page"]{
   border-color: rgba(135,234,255,.28);
@@ -140,8 +152,13 @@ a{color:inherit; text-decoration:none}
   box-shadow: 0 0 18px rgba(135,234,255,.45);
 }
 
+.small{font-size:.95rem; color: rgba(234,242,255,.72)}
+.muted{color:var(--muted); margin:0}
+.mt-24{margin-top:24px}
+
 /* Sections */
 .hero{padding:56px 0}
+.hero-tight{padding:34px 0 18px}
 .hero-grid{
   display:grid;
   grid-template-columns: 1.2fr .8fr;
@@ -156,14 +173,10 @@ a{color:inherit; text-decoration:none}
 .hero-copy p{color:var(--muted); margin:0 0 18px; font-size: 1.05rem}
 .hero strong{color: rgba(234,242,255,.96)}
 
-.page-hero{padding:34px 0 10px}
-.page-hero h1{margin:0 0 8px; font-size: clamp(26px, 3.2vw, 38px)}
-.page-hero p{margin:0; color:var(--muted)}
-
 .section{padding:28px 0 56px}
-.section-head{margin-bottom:14px}
+.section-head{margin:0 0 14px}
 .section-head h2{margin:0 0 8px; font-size: clamp(20px, 2.4vw, 30px)}
-.section-head p{margin:0; color: var(--muted)}
+.section-head p{margin:6px 0 0; color:var(--muted)}
 
 /* Grid */
 .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;}
@@ -186,8 +199,8 @@ a{color:inherit; text-decoration:none}
 .card.soft{
   background: linear-gradient(180deg, rgba(13,20,38,.70), rgba(10,16,32,.78));
   border-color: rgba(255,255,255,.10);
+  box-shadow: none;
 }
-
 .card-glow{
   border-color: rgba(135,234,255,.28);
   box-shadow:
@@ -240,7 +253,9 @@ a{color:inherit; text-decoration:none}
   background: linear-gradient(135deg, rgba(135,234,255,.22), rgba(25,207,255,.16));
   box-shadow: 0 0 0 1px rgba(25,207,255,.10) inset, 0 0 24px rgba(135,234,255,.10);
 }
-.btn-primary:hover{box-shadow: 0 0 0 1px rgba(25,207,255,.14) inset, 0 0 34px rgba(135,234,255,.16);}
+.btn-primary:hover{
+  box-shadow: 0 0 0 1px rgba(25,207,255,.14) inset, 0 0 34px rgba(135,234,255,.16);
+}
 .btn-ghost{
   border-color: rgba(135,234,255,.18);
   background: rgba(135,234,255,.05);
@@ -256,8 +271,6 @@ a{color:inherit; text-decoration:none}
   background: rgba(135,234,255,.05);
   color: rgba(234,242,255,.86);
 }
-.pill-link{cursor:pointer}
-.pill-link:hover{border-color: rgba(135,234,255,.28); background: rgba(135,234,255,.08)}
 
 /* Info / code */
 .info-band{
@@ -269,6 +282,7 @@ a{color:inherit; text-decoration:none}
   color: rgba(234,242,255,.86);
   box-shadow: 0 0 0 1px rgba(25,207,255,.06) inset;
 }
+.info-band p{margin:8px 0 0}
 .codebox{
   margin-top:10px;
   padding:12px;
@@ -286,9 +300,6 @@ a{color:inherit; text-decoration:none}
   border-bottom: 1px solid rgba(135,234,255,.35);
 }
 .link:hover{border-bottom-color: rgba(135,234,255,.75)}
-
-.small{font-size:.95rem; color: rgba(234,242,255,.72)}
-.mt-24{margin-top:24px}
 
 /* PayPal container */
 .paypal-box{
@@ -333,27 +344,7 @@ a{color:inherit; text-decoration:none}
   font-size:.9rem;
 }
 
-/* Responsive */
-@media (max-width: 920px){
-  .hero-grid{grid-template-columns: 1fr}
-}
-@media (max-width: 860px){
-  .grid-3{grid-template-columns: 1fr}
-  .grid-2{grid-template-columns: 1fr}
-  .nav{display:none}
-  .nav-toggle{display:inline-flex}
-}
-/* Add these to /style.css (append near the end) */
-
-/* tighter hero */
-.hero-tight{padding:34px 0 18px}
-
-.muted{color:var(--muted); margin:0}
-
-.section-head{margin:0 0 14px}
-.section-head p{margin:6px 0 0; color:var(--muted)}
-
-/* ebay-ish header area */
+/* EBAY-ISH / MARKETPLACE GRID (used on ps2 page later) */
 .eb-head h1{margin:6px 0 10px; font-size: clamp(26px, 3.6vw, 40px)}
 .eb-chips{display:flex; gap:8px; flex-wrap:wrap; margin:12px 0}
 .chip{
@@ -362,21 +353,18 @@ a{color:inherit; text-decoration:none}
   border-radius:999px;
   border:1px solid rgba(255,255,255,.12);
   background: rgba(255,255,255,.04);
-  color: rgba(232,238,252,.88);
+  color: rgba(234,242,255,.88);
 }
 .eb-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
 
-/* product grid like marketplace */
-.eb-grid{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:16px;
-}
+.eb-grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;}
 .product{
   overflow:hidden;
   border-radius: var(--radius);
-  border:1px solid var(--line);
-  background: linear-gradient(180deg, rgba(17,27,43,.85), rgba(15,22,36,.85));
+  border:1px solid rgba(255,255,255,.10);
+  background:
+    radial-gradient(1200px 500px at 20% 0%, rgba(135,234,255,.06), transparent 55%),
+    linear-gradient(180deg, rgba(13,20,38,.92), rgba(10,16,32,.92));
   box-shadow: var(--shadow);
   display:flex;
   flex-direction:column;
@@ -389,38 +377,42 @@ a{color:inherit; text-decoration:none}
   align-items:center;
   justify-content:center;
 }
-.product-img img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
+.product-img img{width:100%; height:100%; object-fit:cover; display:block;}
 .product-body{padding:16px}
 .product-body h3{margin:0 0 8px}
-.price{margin:0 0 10px; font-weight:800; font-size:1.25rem}
-.price .from{font-weight:600; font-size:.85rem; color:rgba(232,238,252,.75); margin-right:6px}
-
+.price{margin:0 0 10px; font-weight:900; font-size:1.25rem}
+.price .from{font-weight:700; font-size:.85rem; color:rgba(234,242,255,.72); margin-right:6px}
 .meta{margin:0; padding-left:18px; color:var(--muted)}
 .meta li{margin:6px 0}
-
 .badges{display:flex; gap:8px; flex-wrap:wrap; margin:12px 0 6px}
 .badge{
   font-size:.78rem;
   padding:5px 9px;
   border-radius:999px;
-  border:1px solid rgba(47,107,255,.35);
-  background: rgba(47,107,255,.10);
-  color: rgba(232,238,252,.92);
+  border:1px solid rgba(135,234,255,.22);
+  background: rgba(135,234,255,.06);
+  color: rgba(234,242,255,.92);
 }
 
-/* soft card variation */
-.card.soft{
-  background: rgba(255,255,255,.03);
-  border-color: rgba(255,255,255,.10);
-  box-shadow: none;
-}
-
-/* mobile */
+/* Responsive */
 @media (max-width: 980px){
+  .hero-grid{grid-template-columns: 1fr}
+  .grid-3{grid-template-columns: 1fr}
+  .grid-2{grid-template-columns: 1fr}
   .eb-grid{grid-template-columns: 1fr}
+
+  .nav{display:none}
+  .nav-toggle{display:inline-flex}
+
+  .cta-row .btn{width:100%}
+  .btn-row .btn{width:100%}
+
+  .brand-logo{height:40px}
+  .brand-tag{max-width: 32ch}
+}
+@media (max-width: 420px){
+  .brand-logo{height:36px}
+  .brand-tag{max-width: 26ch}
+  .card{padding:16px}
+  .hero-copy p{font-size: 1rem}
 }
