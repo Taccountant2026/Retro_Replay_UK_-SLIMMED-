@@ -1,113 +1,139 @@
-<!-- =========================
-File: /ps2.html
-========================= -->
+<!-- /ps2.html -->
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Retro Replay UK — PlayStation 2 Store</title>
-  <meta name="description" content="Shop PS2 Modded Plug & Play HDD builds, Standard tested PS2 consoles, and Refurbished options. Secure PayPal checkout." />
+  <title>PS2 Consoles — Modded Plug &amp; Play &amp; Standard | Retro Replay UK</title>
+  <meta name="description" content="Shop PS2 consoles: Modded Plug & Play HDD builds (no discs required) or standard tested PS2 consoles. UK support included." />
+  <link rel="canonical" href="https://retroreplay.uk/ps2.html" />
   <link rel="stylesheet" href="/style.css" />
 </head>
+
 <body>
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/index.html">
-      <img src="/assets/logo.png" alt="Retro Replay" width="44" height="44" />
-      <span>Retro Replay UK</span>
+    <a class="brand" href="/" aria-label="Retro Replay UK Home">
+      <img class="brand-logo" src="/assets/logo.png" alt="Retro Replay" width="160" height="70" loading="eager" decoding="async" />
+      <div class="brand-text">
+        <div class="brand-name">Retro Replay UK</div>
+        <div class="brand-tag">PS2 Consoles • Plug &amp; Play HDD Builds</div>
+      </div>
     </a>
 
-    <nav class="nav">
-      <a href="/ps2.html" aria-current="page">PS2</a>
-      <a href="/support.html">Setup & Support</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/ps2.html" aria-current="page">PS2 Consoles</a>
+      <a href="/support.html">Support</a>
       <a href="/contact.html">Contact</a>
     </nav>
+
+    <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">☰</button>
+  </div>
+
+  <div class="container nav-mobile" id="primaryNav">
+    <a href="/">Home</a>
+    <a href="/ps2.html" aria-current="page">PS2 Consoles</a>
+    <a href="/support.html">Support</a>
+    <a href="/contact.html">Contact</a>
   </div>
 </header>
 
 <main>
-  <section class="hero">
+
+  <section class="page-hero">
     <div class="container">
-      <h1>PlayStation 2 Store</h1>
-      <p class="lead">
-        Choose a PS2 Modded Plug &amp; Play HDD build, a Standard tested console, or a Refurbished option.
-        Clear setup guidance and aftersales support included.
-      </p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#order">Order / Pay</a>
-        <a class="btn btn-secondary" href="/support.html">Setup & Support</a>
+      <div class="kicker">Shop PS2</div>
+      <h1>PlayStation 2 Consoles</h1>
+      <p>Choose a Modded Plug &amp; Play HDD build or a Standard Tested PS2 console.</p>
+
+      <div class="info-band">
+        <strong>Modern TV note:</strong> PS2 output is low-resolution. For large 4K TVs, see
+        <a class="link" href="/support.html#picture">picture quality advice</a>.
       </div>
-      <p class="small">
-        Modern TV note: PS2 is a classic low-resolution console. For best results on large 4K TVs, an upscaler may be recommended.
-      </p>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container grid-3">
+  <section class="section" id="modded">
+    <div class="container">
+      <div class="section-head">
+        <h2>Modded Plug &amp; Play (HDD Build)</h2>
+        <p>No discs required. Pre-configured for simple game loading.</p>
+      </div>
 
-      <article class="card">
-        <h2>Modded Plug &amp; Play</h2>
-        <p>HDD build prepared and tested. Power on, open the game list, and play.</p>
-        <ul class="list">
-          <li>Prepared HDD setup</li>
-          <li>FMCB memory card</li>
-          <li>Network adapter / SATA support</li>
-          <li>Quick-start guide included</li>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Included (typical)</h3>
+          <ul class="ticks">
+            <li>Tested PS2 console (model varies by stock)</li>
+            <li>Pre-configured HDD setup</li>
+            <li>FMCB memory card (boot setup)</li>
+            <li>Quick-start guide + aftersales support</li>
+          </ul>
+          <p class="small">Exact contents can vary by bundle; your purchase confirmation covers what’s included.</p>
+        </article>
+
+        <article class="card card-glow">
+          <h3>Buy now</h3>
+          <p>Secure checkout via PayPal. If you need a custom request, message first.</p>
+
+          <!-- PayPal Hosted Button (your code) -->
+          <script
+            src="https://www.paypal.com/sdk/js?client-id=BAApYaG5zDntUHsd2tRXv1ylGkYhREqRR-t7PWcH3-Sh7ElgWliEyCEnhAeQjoawIGidc1LY7PQRK9A0Sg&components=hosted-buttons&disable-funding=venmo&currency=GBP">
+          </script>
+          <div id="paypal-container-KZTTHJVUHAFZC" class="paypal-box"></div>
+          <script>
+            paypal.HostedButtons({ hostedButtonId: "KZTTHJVUHAFZC" })
+              .render("#paypal-container-KZTTHJVUHAFZC");
+          </script>
+
+          <div class="btn-row mt-24">
+            <a class="btn btn-ghost" href="/support.html">Setup &amp; Support</a>
+            <a class="btn btn-ghost" href="/contact.html">Custom request</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="card mt-24 soft">
+        <h3>Expectations (important)</h3>
+        <ul class="ticks">
+          <li>Game libraries can vary between builds (stock, compatibility, customer requests)</li>
+          <li>Some titles may need settings/modes for best compatibility</li>
+          <li>Picture quality depends on your TV/cables — see <a class="link" href="/support.html#picture">support advice</a></li>
         </ul>
-        <a class="link" href="/support.html#modded">See setup guide</a>
-      </article>
-
-      <article class="card">
-        <h2>Standard PS2</h2>
-        <p>Original console, tested and cleaned. Ideal for discs and collectors.</p>
-        <ul class="list">
-          <li>Basic function test</li>
-          <li>Ports and controller test</li>
-          <li>Cleaned and presentable</li>
-          <li>Support available</li>
-        </ul>
-        <a class="link" href="/contact.html">Ask about stock</a>
-      </article>
-
-      <article class="card">
-        <h2>Refurbished PS2</h2>
-        <p>Enhanced prep with deeper cleaning and optional cosmetic improvements.</p>
-        <ul class="list">
-          <li>Deep clean (inside &amp; out)</li>
-          <li>Thermal refresh (where applicable)</li>
-          <li>Optional shell refresh</li>
-          <li>Grading explained clearly</li>
-        </ul>
-        <a class="link" href="/contact.html">Get a quote</a>
-      </article>
-
+        <p class="small">If you want specific titles, message first and we’ll confirm what’s possible.</p>
+      </div>
     </div>
   </section>
 
-  <section class="section section-soft" id="order">
+  <section class="section" id="standard">
     <div class="container">
-      <h2>Order &amp; Pay Securely</h2>
-      <p>
-        If you already have a confirmed build or invoice reference from me, you can pay securely using PayPal below.
-        If you haven’t confirmed details yet, use the contact page first and I will advise the correct option.
-      </p>
-
-      <div class="notice">
-        <strong>Before paying:</strong> Please ensure you’ve confirmed HDD size, controller type, and any extras with me.
+      <div class="section-head">
+        <h2>Standard PS2 (Tested &amp; Cleaned)</h2>
+        <p>Original disc-based experience. Ideal for collectors or existing game owners.</p>
       </div>
 
-      <div class="pay-box">
-        <h3>Pay with PayPal</h3>
-        <div id="paypal-container-KZTTHJVUHAFZC"></div>
-        <p class="small">
-          Payments are handled securely by PayPal. Orders are confirmed personally before dispatch.
-        </p>
-        <p class="small">
-          Need help? <a href="/contact.html">Contact support</a>.
-        </p>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Typical checks</h3>
+          <ul class="ticks">
+            <li>Power + boot tested</li>
+            <li>Controller ports checked</li>
+            <li>Disc read tested (where applicable)</li>
+            <li>Basic clean + presentation</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Request stock</h3>
+          <p>Standard PS2 stock varies. Message the model/condition you want for the fastest route.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="/contact.html">Request a Standard PS2</a>
+            <a class="btn btn-ghost" href="/support.html#setup">Setup guide</a>
+          </div>
+          <p class="small">If you already placed an order, include your name + order details.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -116,24 +142,38 @@ File: /ps2.html
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <div>
-      <strong>Retro Replay UK</strong><br />
-      <span class="small">PS2 builds • testing • support</span>
+    <div class="footer-brand">
+      <img class="footer-logo" src="/assets/logo.png" alt="Retro Replay" width="120" height="50" loading="lazy" decoding="async" />
+      <div>
+        <div class="footer-title">Retro Replay UK</div>
+        <div class="footer-sub">PS2 consoles — tested, prepared and supported.</div>
+      </div>
     </div>
+
     <div class="footer-links">
-      <a href="/ps2.html">PS2</a>
-      <a href="/support.html">Setup & Support</a>
+      <a href="/">Home</a>
+      <a href="/support.html">Support</a>
       <a href="/contact.html">Contact</a>
     </div>
   </div>
+
+  <div class="container footer-bottom">© <span id="year"></span> Retro Replay UK.</div>
 </footer>
 
-<!-- PayPal Hosted Button (load once per page) -->
-<script src="https://www.paypal.com/sdk/js?client-id=BAApYaG5zDntUHsd2tRXv1ylGkYhREqRR-t7PWcH3-Sh7ElgWliEyCEnhAeQjoawIGidc1LY7PQRK9A0Sg&components=hosted-buttons&disable-funding=venmo&currency=GBP"></script>
 <script>
-  paypal.HostedButtons({
-    hostedButtonId: "KZTTHJVUHAFZC"
-  }).render("#paypal-container-KZTTHJVUHAFZC");
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const toggle = document.querySelector('.nav-toggle');
+  const mobile = document.getElementById('primaryNav');
+  if (toggle && mobile) {
+    toggle.addEventListener('click', () => {
+      const open = mobile.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobile.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }));
+  }
 </script>
 
 </body>
