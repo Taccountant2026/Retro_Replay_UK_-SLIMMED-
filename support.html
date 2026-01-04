@@ -1,135 +1,181 @@
-<!-- =========================
-File: /support.html
-========================= -->
+<!-- /support.html -->
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Retro Replay UK — PS2 Setup & Aftersales Support</title>
-  <meta name="description" content="PS2 setup guide for Modded Plug & Play HDD builds and Standard PS2 consoles, plus aftersales troubleshooting and TV picture advice." />
+  <title>Setup & Aftersales Support | Retro Replay UK</title>
+  <meta name="description" content="PS2 setup and aftersales support: quick start, troubleshooting, picture quality on modern TVs, and how to get help." />
+  <link rel="canonical" href="https://retroreplay.uk/support.html" />
   <link rel="stylesheet" href="/style.css" />
 </head>
+
 <body>
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/index.html">
-      <img src="/assets/logo.png" alt="Retro Replay" width="44" height="44" />
-      <span>Retro Replay UK</span>
+    <a class="brand" href="/" aria-label="Retro Replay UK Home">
+      <img class="brand-logo" src="/assets/logo.png" alt="Retro Replay" width="160" height="70" loading="eager" decoding="async" />
+      <div class="brand-text">
+        <div class="brand-name">Retro Replay UK</div>
+        <div class="brand-tag">Setup &amp; Aftersales Support</div>
+      </div>
     </a>
 
-    <nav class="nav">
-      <a href="/ps2.html">PS2</a>
-      <a href="/support.html" aria-current="page">Setup & Support</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/ps2.html">PS2 Consoles</a>
+      <a href="/support.html" aria-current="page">Support</a>
       <a href="/contact.html">Contact</a>
     </nav>
+
+    <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">☰</button>
+  </div>
+
+  <div class="container nav-mobile" id="primaryNav">
+    <a href="/">Home</a>
+    <a href="/ps2.html">PS2 Consoles</a>
+    <a href="/support.html" aria-current="page">Support</a>
+    <a href="/contact.html">Contact</a>
   </div>
 </header>
 
 <main>
-  <section class="hero hero-small">
+
+  <section class="page-hero">
     <div class="container">
-      <h1>PS2 Setup & Aftersales Support</h1>
-      <p class="lead">Simple guides for getting started, plus fixes for the most common issues.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#modded">Modded Setup</a>
-        <a class="btn btn-secondary" href="#picture">Picture Quality</a>
+      <div class="kicker">Support</div>
+      <h1>Setup &amp; Aftersales Support</h1>
+      <p>Quick start, troubleshooting, and modern TV picture quality advice.</p>
+
+      <div class="pill-row">
+        <a class="pill pill-link" href="#setup">Quick start</a>
+        <a class="pill pill-link" href="#troubleshoot">Troubleshooting</a>
+        <a class="pill pill-link" href="#picture">Picture quality</a>
+        <a class="pill pill-link" href="#aftercare">Aftersales</a>
       </div>
     </div>
   </section>
 
-  <section class="section" id="modded">
+  <section class="section" id="setup">
     <div class="container">
-      <h2>Modded Plug &amp; Play HDD Builds (OPL)</h2>
-      <div class="card">
-        <h3>First-time setup (one-time setting)</h3>
-        <ol class="steps">
-          <li>Boot the PS2 and open <strong>Open PS2 Loader</strong>.</li>
-          <li>Go to <strong>Settings</strong>.</li>
-          <li>Find <strong>HDD Device Start Mode</strong> and set it to <strong>Auto</strong>.</li>
-          <li>Set <strong>Applications Start Mode</strong> to <strong>Auto</strong>.</li>
-          <li>Go back and choose <strong>Save Changes</strong>.</li>
-          <li>Restart the PS2. You should now see the HDD game list.</li>
-        </ol>
-        <p class="small">
-          If you land on the OPL menu, select <strong>Games</strong> and confirm you are browsing through all pages.
-        </p>
+      <div class="section-head">
+        <h2>Quick start (Modded HDD builds)</h2>
+        <p>Basic steps to get playing with the least effort.</p>
       </div>
 
-      <div class="card">
-        <h3>Exiting a game (without power cycling)</h3>
-        <p>
-          Many PS2 HDD setups use an <strong>in-game reset</strong> combo. If enabled on your build, try:
-        </p>
-        <ul class="list">
-          <li><strong>L1 + L2 + R1 + R2 + Start + Select</strong> (hold for ~2 seconds)</li>
-        </ul>
-        <p class="small">
-          If that does not work on a specific title, it may be disabled per-game. Email me and I can advise.
-        </p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Power on</h3>
+          <ul class="ticks">
+            <li>Connect power + video cable</li>
+            <li>Insert FMCB memory card (if provided)</li>
+            <li>Turn on the console</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Load games</h3>
+          <ul class="ticks">
+            <li>Open your loader (e.g., OPL)</li>
+            <li>Browse the game list</li>
+            <li>Select title and launch</li>
+          </ul>
+          <p class="small">If you only see a few games, check the “Troubleshooting” section.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="troubleshoot">
+    <div class="container">
+      <div class="section-head">
+        <h2>Troubleshooting (common)</h2>
+        <p>Most issues are settings, input selection, or TV/cable related.</p>
       </div>
 
+      <div class="grid-3">
+        <div class="card soft">
+          <h3>Games missing</h3>
+          <ul class="ticks">
+            <li>Confirm you’re in the correct device/menu</li>
+            <li>Use page navigation in the loader</li>
+            <li>Confirm the HDD is detected</li>
+          </ul>
+        </div>
+        <div class="card soft">
+          <h3>No signal / black screen</h3>
+          <ul class="ticks">
+            <li>Switch TV input source</li>
+            <li>Try another HDMI port / adapter</li>
+            <li>Reseat cables</li>
+          </ul>
+        </div>
+        <div class="card soft">
+          <h3>Freezing / loading issues</h3>
+          <ul class="ticks">
+            <li>Some games need specific modes/settings</li>
+            <li>Try another title to compare</li>
+            <li>Message support with the exact game name</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="info-band mt-24">
+        When contacting support, include: your TV model (if relevant), what cable/adapter you’re using, and a photo/video of the screen if possible.
+      </div>
     </div>
   </section>
 
   <section class="section" id="picture">
     <div class="container">
-      <h2>Picture Quality on Modern TVs (Important)</h2>
-
-      <div class="card">
-        <h3>Why PS2 can look “bad” on a 4K TV</h3>
-        <p>
-          PS2 outputs a low-resolution analogue signal. Large 4K TVs stretch that image, which can look blurry or jagged.
-          This is normal behaviour on modern panels.
-        </p>
+      <div class="section-head">
+        <h2>Picture quality on modern TVs</h2>
+        <p>Why PS2 can look rough on 4K TVs, and what actually improves it.</p>
       </div>
 
-      <div class="card">
-        <h3>Best solutions (in order)</h3>
-        <ol class="steps">
-          <li><strong>External upscaler</strong> (best): produces the cleanest image on 4K TVs.</li>
-          <li><strong>Quality component/HDMI conversion</strong>: improves stability, still varies by TV.</li>
-          <li><strong>Basic HDMI adapters</strong>: may help slightly but can still look poor on OLED/4K.</li>
-        </ol>
-        <p class="small">
-          If you email your TV model and the cable/adapter you’re using, I will recommend the best path.
-        </p>
-      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Why it looks worse on 4K OLED</h3>
+          <ul class="ticks">
+            <li>PS2 outputs low-resolution analogue video</li>
+            <li>Modern TVs stretch it across a large panel</li>
+            <li>TV scalers often aren’t tuned for retro sources</li>
+          </ul>
+        </div>
 
+        <div class="card card-glow">
+          <h3>What improves it most</h3>
+          <ul class="ticks">
+            <li>Quality upscaler (best)</li>
+            <li>Good HDMI solution (varies by TV)</li>
+            <li>Correct TV settings (sharpness/processing)</li>
+          </ul>
+          <p class="small">Message your TV model and connection type for a realistic recommendation.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section" id="troubleshooting">
+  <section class="section" id="aftercare">
     <div class="container">
-      <h2>Troubleshooting</h2>
+      <div class="section-head">
+        <h2>Aftersales support</h2>
+        <p>Help is included. If you’re stuck, contact us and we’ll guide you step-by-step.</p>
+      </div>
 
       <div class="card">
-        <h3>Games list empty / nothing happens</h3>
-        <ul class="list">
-          <li>Confirm OPL settings are set to <strong>HDD Auto</strong> and saved (see Modded Setup above).</li>
-          <li>Confirm you are on the <strong>Games</strong> tab inside OPL.</li>
-          <li>Browse pages (some lists are multiple pages).</li>
+        <h3>Best way to get help</h3>
+        <ul class="ticks">
+          <li>Include your order details (or what you purchased)</li>
+          <li>Describe what you see on screen and what you expected</li>
+          <li>Attach photos/videos where possible</li>
         </ul>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="/contact.html">Contact Support</a>
+          <a class="btn btn-ghost" href="/ps2.html">Back to PS2</a>
+        </div>
       </div>
-
-      <div class="card">
-        <h3>Some games missing</h3>
-        <ul class="list">
-          <li>Confirm you have browsed through all pages.</li>
-          <li>Some titles may appear under slightly different naming (region codes).</li>
-          <li>Email me a short list of what is missing and I will verify the build.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Need help quickly</h3>
-        <p>
-          Email <a class="link" href="mailto:retroreplay2026@gmail.com">retroreplay2026@gmail.com</a> with a photo of the screen,
-          your TV model, and what you’ve tried. I will reply with step-by-step instructions.
-        </p>
-      </div>
-
     </div>
   </section>
 
@@ -137,17 +183,38 @@ File: /support.html
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <div>
-      <strong>Retro Replay UK</strong><br />
-      <span class="small">Setup help and aftersales support</span>
+    <div class="footer-brand">
+      <img class="footer-logo" src="/assets/logo.png" alt="Retro Replay" width="120" height="50" loading="lazy" decoding="async" />
+      <div>
+        <div class="footer-title">Retro Replay UK</div>
+        <div class="footer-sub">Setup guidance + aftersales support included.</div>
+      </div>
     </div>
+
     <div class="footer-links">
       <a href="/ps2.html">PS2</a>
-      <a href="/support.html">Setup & Support</a>
       <a href="/contact.html">Contact</a>
     </div>
   </div>
+
+  <div class="container footer-bottom">© <span id="year"></span> Retro Replay UK.</div>
 </footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const toggle = document.querySelector('.nav-toggle');
+  const mobile = document.getElementById('primaryNav');
+  if (toggle && mobile) {
+    toggle.addEventListener('click', () => {
+      const open = mobile.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobile.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }));
+  }
+</script>
 
 </body>
 </html>
