@@ -343,3 +343,84 @@ a{color:inherit; text-decoration:none}
   .nav{display:none}
   .nav-toggle{display:inline-flex}
 }
+/* Add these to /style.css (append near the end) */
+
+/* tighter hero */
+.hero-tight{padding:34px 0 18px}
+
+.muted{color:var(--muted); margin:0}
+
+.section-head{margin:0 0 14px}
+.section-head p{margin:6px 0 0; color:var(--muted)}
+
+/* ebay-ish header area */
+.eb-head h1{margin:6px 0 10px; font-size: clamp(26px, 3.6vw, 40px)}
+.eb-chips{display:flex; gap:8px; flex-wrap:wrap; margin:12px 0}
+.chip{
+  font-size:.85rem;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  color: rgba(232,238,252,.88);
+}
+.eb-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+
+/* product grid like marketplace */
+.eb-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:16px;
+}
+.product{
+  overflow:hidden;
+  border-radius: var(--radius);
+  border:1px solid var(--line);
+  background: linear-gradient(180deg, rgba(17,27,43,.85), rgba(15,22,36,.85));
+  box-shadow: var(--shadow);
+  display:flex;
+  flex-direction:column;
+}
+.product-img{
+  aspect-ratio: 16/11;
+  background: rgba(255,255,255,.03);
+  border-bottom:1px solid rgba(255,255,255,.10);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.product-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.product-body{padding:16px}
+.product-body h3{margin:0 0 8px}
+.price{margin:0 0 10px; font-weight:800; font-size:1.25rem}
+.price .from{font-weight:600; font-size:.85rem; color:rgba(232,238,252,.75); margin-right:6px}
+
+.meta{margin:0; padding-left:18px; color:var(--muted)}
+.meta li{margin:6px 0}
+
+.badges{display:flex; gap:8px; flex-wrap:wrap; margin:12px 0 6px}
+.badge{
+  font-size:.78rem;
+  padding:5px 9px;
+  border-radius:999px;
+  border:1px solid rgba(47,107,255,.35);
+  background: rgba(47,107,255,.10);
+  color: rgba(232,238,252,.92);
+}
+
+/* soft card variation */
+.card.soft{
+  background: rgba(255,255,255,.03);
+  border-color: rgba(255,255,255,.10);
+  box-shadow: none;
+}
+
+/* mobile */
+@media (max-width: 980px){
+  .eb-grid{grid-template-columns: 1fr}
+}
