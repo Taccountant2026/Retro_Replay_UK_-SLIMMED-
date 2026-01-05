@@ -1,0 +1,13 @@
+/assets/PS2-CONSOLE-PLUS-LOGO.png (from your “PS2 CONSOLE PLUS LOGO - Copy.png”)
+
+/assets/HDD-GENERIC-SIZE.png
+
+/assets/Composite.png
+
+/assets/PS2-AV-CABLE.png
+
+/assets/Controller-Third-Party-PS2.png
+
+/assets/Refurbishment-Banner.png (from “Refurbishment-Banner - Copy.png”)
+
+/assets/Source-Accessories.png (from “Source-Accessories - Copy.png”)
