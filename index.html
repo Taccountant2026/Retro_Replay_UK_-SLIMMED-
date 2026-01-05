@@ -478,5 +478,25 @@
   }
 </script>
 
+  <!-- Cookie notice -->
+<div id="cookie-notice" class="cookie-notice" role="dialog" aria-live="polite">
+  <p>
+    This website uses cookies (including Google Analytics) to help improve the site.
+    <a href="/cookies.html">Learn more</a>
+  </p>
+  <button id="cookie-accept" class="btn btn-primary">Accept</button>
+</div>
+
+<script>
+  if (!localStorage.getItem('cookiesAccepted')) {
+    document.getElementById('cookie-notice').style.display = 'flex';
+  }
+
+  document.getElementById('cookie-accept')?.addEventListener('click', () => {
+    localStorage.setItem('cookiesAccepted', 'true');
+    document.getElementById('cookie-notice').style.display = 'none';
+  });
+</script>
+  
 </body>
 </html>
