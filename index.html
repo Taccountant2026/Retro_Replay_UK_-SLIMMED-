@@ -1,526 +1,273 @@
-<!-- /index.html (FINAL: consent-based Google Analytics + PayPal buttons + cookie notice) -->
-<!DOCTYPE html>
-<html lang="en-GB">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RetroReplay UK | Refurbished PS2 Consoles & Plug-and-Play HDD Builds</title>
+  <meta name="description" content="RetroReplay UK: Refurbished PlayStation 2 consoles, plug-and-play HDD builds, FMCB cards, upgrades and support." />
 
-  <title>Retro Replay UK — PlayStation 2 Specialists</title>
-  <meta name="description" content="Shop PS2 Plug & Play HDD builds, standard PS2 bundles, services, game HDDs and accessories. UK support included." />
-  <link rel="canonical" href="https://retroreplay.uk/" />
+  <!-- Basic styling (keep or move to /assets/css/style.css) -->
+  <style>
+    :root{
+      --bg:#050915; --card:#0b1430; --text:#e9f0ff; --muted:#b8c7ff;
+      --accent:#3aa0ff; --accent2:#00ffd5; --border:rgba(255,255,255,.12);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:radial-gradient(1200px 700px at 20% 0%, #0b2a66 0%, var(--bg) 55%);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:22px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 25px rgba(58,160,255,.25)}
+    nav{display:flex;gap:14px;flex-wrap:wrap}
+    nav a{padding:10px 12px;border:1px solid transparent;border-radius:12px}
+    nav a:hover{border-color:var(--border);background:rgba(255,255,255,.04)}
+    .hero{margin-top:10px;border:1px solid var(--border);border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));padding:26px}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}
+    h1{margin:0 0 10px;font-size:30px;line-height:1.15}
+    .muted{color:var(--muted)}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 14px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.05)}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#04101f;font-weight:700}
+    .btn:hover{filter:brightness(1.05)}
+    .card{border:1px solid var(--border);border-radius:18px;background:rgba(10,18,45,.55);padding:18px}
+    .grid{display:grid;gap:16px}
+    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--border);background:rgba(255,255,255,.04);border-radius:999px;padding:8px 10px;font-size:13px}
+    .section{margin-top:18px}
+    .section h2{margin:0 0 10px;font-size:18px}
+    footer{margin-top:26px;padding:18px 0;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+    .small{font-size:12px;color:var(--muted)}
+    .list{margin:10px 0 0;padding-left:18px}
+    .divider{height:1px;background:var(--border);margin:14px 0}
+    @media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+    /* Cookie banner */
+    #cookieBanner{
+      position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;
+      border:1px solid var(--border);border-radius:16px;background:rgba(5,9,21,.92);
+      backdrop-filter:blur(8px);padding:14px;display:none;
+    }
+    #cookieBanner .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    #cookieBanner .actions{display:flex;gap:10px;flex-wrap:wrap}
+    #cookieBanner button{
+      cursor:pointer;border-radius:12px;padding:10px 12px;border:1px solid var(--border);
+      background:rgba(255,255,255,.06);color:var(--text)
+    }
+    #cookieBanner button.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#04101f;font-weight:800}
+  </style>
 
-  <link rel="stylesheet" href="/style.css" />
+  <!-- Consent Mode (default = denied until user accepts) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    // Default: deny analytics until consent
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
+  </script>
+
+  <!-- GA4 (loads but won’t store analytics until consent is granted) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
+  </script>
 </head>
 
 <body>
-
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Retro Replay UK Home">
-      <img class="brand-logo" src="/assets/logo.png" alt="Retro Replay" width="160" height="70" loading="eager" decoding="async" />
-      <div class="brand-text">
-        <div class="brand-name">Retro Replay UK</div>
-        <div class="brand-tag">PlayStation 2 Specialists • Tested • Cleaned • Supported</div>
-      </div>
-    </a>
-
-    <nav class="nav" aria-label="Primary navigation">
-      <a href="/" aria-current="page">Home</a>
-      <a href="/ps2.html">PS2 Consoles</a>
-      <a href="/support.html">Support</a>
-      <a href="/contact.html">Contact</a>
-      <a href="/cookies.html">Cookies</a>
-    </nav>
-
-    <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">☰</button>
-  </div>
-
-  <div class="container nav-mobile" id="primaryNav">
-    <a href="/" aria-current="page">Home</a>
-    <a href="/ps2.html">PS2 Consoles</a>
-    <a href="/support.html">Support</a>
-    <a href="/contact.html">Contact</a>
-    <a href="/cookies.html">Cookies</a>
-  </div>
-</header>
-
-<main>
-
-  <!-- TOP: ebay-style listing header -->
-  <section class="hero hero-tight">
-    <div class="container">
-      <div class="eb-head">
-        <div class="kicker">Official site • UK stock</div>
-
-        <h1>PlayStation 2 Consoles, Plug &amp; Play HDD Builds, Accessories &amp; Services</h1>
-
-        <p class="muted">
-          Clear “what’s included”, honest condition, and real aftersales support.
-          Use code <strong>WEBSITEORDER</strong> for <strong>10% off</strong> site orders.
-        </p>
-
-        <div class="eb-chips" role="list" aria-label="Highlights">
-          <span class="chip" role="listitem">Tested</span>
-          <span class="chip" role="listitem">Cleaned</span>
-          <span class="chip" role="listitem">Support included</span>
-          <span class="chip" role="listitem">Fast dispatch</span>
-        </div>
-
-        <div class="eb-actions">
-          <a class="btn btn-primary" href="#modded">Shop Modded</a>
-          <a class="btn btn-secondary" href="#standard">Shop Standard</a>
-          <a class="btn btn-ghost" href="#extras">Games &amp; Accessories</a>
-        </div>
-
-        <div class="info-band">
-          <strong>Modern TV note:</strong> PS2 is a classic low-resolution console. For best picture on large 4K TVs, a quality HDMI solution or upscaler may be recommended.
-          <a class="link" href="/support.html#picture">Picture setup help</a>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-weight:800;letter-spacing:.2px">RetroReplay UK</div>
+          <div class="small">Refurbished PS2 • Plug-and-Play HDD Builds • Support</div>
         </div>
       </div>
-    </div>
-  </section>
+      <nav>
+        <a href="/index.html">Home</a>
+        <a href="/products.html">Products</a>
+        <a href="/warranties.html">Warranty</a>
+        <a href="/setup.html">Setup Guide</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </header>
 
-  <!-- MODDED: 3 product cards -->
-  <section class="section" id="modded">
-    <div class="container">
-      <div class="section-head">
-        <h2>PS2 Modded Plug &amp; Play Packages</h2>
-        <p>Pre-configured PS2 FAT builds. No discs required — load and play from HDD.</p>
+    <main>
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <h1>Play PS2 the easy way — refurbished consoles and plug-and-play HDD builds.</h1>
+            <div class="muted">
+              Tested, cleaned, and supported. Ideal for modern TVs (with the right cable/upscaler).
+              Help with setup included.
+            </div>
+
+            <div class="cta-row">
+              <a class="btn primary" href="/products.html">Browse Products</a>
+              <a class="btn" href="/setup.html">View Setup Guide</a>
+              <a class="btn" href="/warranties.html">Warranty & Support</a>
+            </div>
+
+            <div class="section">
+              <span class="pill">✔ Tested & verified</span>
+              <span class="pill">✔ Clear instructions</span>
+              <span class="pill">✔ After-sales support</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Quick checkout</h2>
+            <div class="muted" style="margin-bottom:10px">
+              Use PayPal for fast payment. (Buttons appear once PayPal Client ID is set.)
+            </div>
+
+            <!-- PayPal Buttons container -->
+            <div id="paypal-button-container"></div>
+
+            <div class="divider"></div>
+            <div class="small">
+              Note: For custom orders, I’ll send a payment link once the build is confirmed.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section grid cols-3">
+        <div class="card">
+          <h2>Refurbished PS2 Consoles</h2>
+          <div class="muted">Cleaned, tested, and graded. Options for FAT & Slim models.</div>
+          <div class="cta-row"><a class="btn" href="/products.html#consoles">View consoles</a></div>
+        </div>
+        <div class="card">
+          <h2>Plug-and-Play HDD Builds</h2>
+          <div class="muted">Pre-configured HDD solutions with OPL and optimised settings.</div>
+          <div class="cta-row"><a class="btn" href="/products.html#hdd">View HDD builds</a></div>
+        </div>
+        <div class="card">
+          <h2>Upgrades & Extras</h2>
+          <div class="muted">Memory cards, controllers, cables, HDMI options and more.</div>
+          <div class="cta-row"><a class="btn" href="/products.html#extras">View extras</a></div>
+        </div>
+      </section>
+
+      <section class="section grid cols-2">
+        <div class="card">
+          <h2>How it works</h2>
+          <ol class="list">
+            <li>Choose your console/build from the Products page.</li>
+            <li>Place your order (or message for a custom build).</li>
+            <li>Your unit is cleaned, tested, and configured.</li>
+            <li>Delivered with instructions + ongoing support.</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h2>Support</h2>
+          <div class="muted">
+            If you need help with setup, picture quality, or game settings, message anytime.
+            Warranty details are on the Warranty page.
+          </div>
+          <div class="cta-row">
+            <a class="btn" href="/warranties.html">Warranty</a>
+            <a class="btn" href="/contact.html">Contact</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section card">
+        <h2>Important note on video quality</h2>
+        <div class="muted">
+          For best results on modern TVs, use PS2 Component or a quality upscaler.
+          If you tell me your TV model, I can recommend the best value option.
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> RetroReplay UK. All rights reserved.</div>
+      <div class="small">Website uses cookies for essential functions and (optional) analytics.</div>
+    </footer>
+  </div>
+
+  <!-- Cookie banner -->
+  <div id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+    <div class="row">
+      <div class="muted" style="max-width:760px">
+        This site uses cookies for essential functions and optional analytics to improve the experience.
+        You can accept or decline analytics cookies.
       </div>
-
-      <div class="eb-grid">
-        <!-- MODDED 1 -->
-        <article class="product">
-          <div class="product-img">
-            <img src="/assets/PS2-CONSOLE-PLUS-LOGO.png" alt="PS2 Plug & Play Starter Bundle" loading="lazy" decoding="async" />
-          </div>
-          <div class="product-body">
-            <h3>Plug &amp; Play Starter (HDD)</h3>
-            <p class="price"><span class="from">From</span> £149.99</p>
-            <ul class="meta">
-              <li>FMCB memory card included</li>
-              <li>HDD setup prepared + tested</li>
-              <li>Quick-start guide + aftersales help</li>
-            </ul>
-            <div class="badges">
-              <span class="badge">Best value</span>
-              <span class="badge">No discs</span>
-            </div>
-
-            <div class="btn-row">
-              <a class="btn btn-primary" href="/ps2.html#modded-starter">View details</a>
-              <a class="btn btn-ghost" href="/contact.html">Ask a question</a>
-            </div>
-
-            <div class="paypal-box" aria-label="Buy with PayPal">
-              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick" />
-                <input type="hidden" name="hosted_button_id" value="REPLACE_WITH_YOUR_PAYPAL_BUTTON_ID_STARTER" />
-                <input class="btn btn-primary" type="submit" value="Buy with PayPal" />
-              </form>
-              <p class="small">Secure checkout via PayPal.</p>
-            </div>
-
-            <p class="small">Ideal for first-time buyers who want it simple.</p>
-          </div>
-        </article>
-
-        <!-- MODDED 2 -->
-        <article class="product">
-          <div class="product-img">
-            <img src="/assets/HDD-GENERIC-SIZE.png" alt="HDD option for PS2 Plug & Play builds" loading="lazy" decoding="async" />
-          </div>
-          <div class="product-body">
-            <h3>Plug &amp; Play Plus (HDD)</h3>
-            <p class="price"><span class="from">From</span> £179.99</p>
-            <ul class="meta">
-              <li>Choice of HDD size</li>
-              <li>Optimised setup + compatibility</li>
-              <li>Aftersales setup support</li>
-            </ul>
-            <div class="badges">
-              <span class="badge">Popular</span>
-              <span class="badge">Upgraded</span>
-            </div>
-
-            <div class="btn-row">
-              <a class="btn btn-primary" href="/ps2.html#modded-plus">View details</a>
-              <a class="btn btn-ghost" href="/support.html#games">Game list help</a>
-            </div>
-
-            <div class="paypal-box" aria-label="Buy with PayPal">
-              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick" />
-                <input type="hidden" name="hosted_button_id" value="REPLACE_WITH_YOUR_PAYPAL_BUTTON_ID_PLUS" />
-                <input class="btn btn-primary" type="submit" value="Buy with PayPal" />
-              </form>
-              <p class="small">Secure checkout via PayPal.</p>
-            </div>
-
-            <p class="small">Balanced build for families and regular play.</p>
-          </div>
-        </article>
-
-        <!-- MODDED 3 -->
-        <article class="product">
-          <div class="product-img">
-            <img src="/assets/Composite.png" alt="PS2 Plug & Play bundle parts: adapters, HDD and accessories" loading="lazy" decoding="async" />
-          </div>
-          <div class="product-body">
-            <h3>Plug &amp; Play Pro (Premium)</h3>
-            <p class="price"><span class="from">From</span> £219.99</p>
-            <ul class="meta">
-              <li>Premium condition options</li>
-              <li>Enhanced setup + tidy menu</li>
-              <li>Priority guidance + support</li>
-            </ul>
-            <div class="badges">
-              <span class="badge">Premium</span>
-              <span class="badge">Collector-friendly</span>
-            </div>
-
-            <div class="btn-row">
-              <a class="btn btn-primary" href="/ps2.html#modded-pro">View details</a>
-              <a class="btn btn-ghost" href="/contact.html">Custom request</a>
-            </div>
-
-            <div class="paypal-box" aria-label="Buy with PayPal">
-              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick" />
-                <input type="hidden" name="hosted_button_id" value="REPLACE_WITH_YOUR_PAYPAL_BUTTON_ID_PRO" />
-                <input class="btn btn-primary" type="submit" value="Buy with PayPal" />
-              </form>
-              <p class="small">Secure checkout via PayPal.</p>
-            </div>
-
-            <p class="small">Best for collectors and high-spec bundles.</p>
-          </div>
-        </article>
+      <div class="actions">
+        <button id="cookieDecline">Decline</button>
+        <button class="primary" id="cookieAccept">Accept</button>
       </div>
-    </div>
-  </section>
-
-  <!-- STANDARD: 3 product cards -->
-  <section class="section" id="standard">
-    <div class="container">
-      <div class="section-head">
-        <h2>Standard PS2 Packages (Original Experience)</h2>
-        <p>Tested, cleaned PS2 consoles. Perfect if you already own discs or want stock PS2.</p>
-      </div>
-
-      <div class="eb-grid">
-        <!-- STD 1 -->
-        <article class="product">
-          <div class="product-img">
-            <img src="/assets/PS2-AV-CABLE.png" alt="PS2 AV cable included in standard packages (bundle varies)" loading="lazy" decoding="async" />
-          </div>
-          <div class="product-body">
-            <h3>Standard PS2 Package</h3>
-            <p class="price"><span class="from">From</span> £89.99</p>
-            <ul class="meta">
-              <li>Console tested + cleaned</li>
-              <li>Includes essentials (bundle varies)</li>
-              <li>Support if you get stuck</li>
-            </ul>
-            <div class="badges">
-              <span class="badge">Classic</span>
-              <span class="badge">Tested</span>
-            </div>
-
-            <div class="btn-row">
-              <a class="btn btn-primary" href="/ps2.html#standard-basic">View details</a>
-              <a class="btn btn-ghost" href="/contact.html">Request a model</a>
-            </div>
-
-            <div class="paypal-box" aria-label="Buy with PayPal">
-              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick" />
-                <input type="hidden" name="hosted_button_id" value="REPLACE_WITH_YOUR_PAYPAL_BUTTON_ID_STANDARD" />
-                <input class="btn btn-primary" type="submit" value="Buy with PayPal" />
-              </form>
-              <p class="small">Secure checkout via PayPal.</p>
-            </div>
-
-            <p class="small">Straightforward stock PS2 experience.</p>
-          </div>
-        </article>
-
-        <!-- STD 2 -->
-        <article class="product">
-          <div class="product-img">
-            <img src="/assets/Controller-Third-Party-PS2.png" alt="PS2 controller option (bundle varies)" loading="lazy" decoding="async" />
-          </div>
-          <div class="product-body">
-            <h3>Standard Bundle Plus</h3>
-            <p class="price"><span class="from">From</span> £109.99</p>
-            <ul class="meta">
-              <li>Better cosmetic options</li>
-              <li>Full accessory bundle options</li>
-              <li>Checks + setup guidance</li>
-            </ul>
-            <div class="badges">
-              <span class="badge">Popular</span>
-              <span class="badge">Complete</span>
-            </div>
-
-            <div class="btn-row">
-              <a class="btn btn-primary" href="/ps2.html#standard-plus">View details</a>
-              <a class="btn btn-ghost" href="/support.html#picture">TV setup help</a>
-            </div>
-
-            <div class="paypal-box" aria-label="Buy with PayPal">
-              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick" />
-                <input type="hidden" name="hosted_button_id" value="REPLACE_WITH_YOUR_PAYPAL_BUTTON_ID_STANDARD_PLUS" />
-                <input class="btn btn-primary" type="submit" value="Buy with PayPal" />
-              </form>
-              <p class="small">Secure checkout via PayPal.</p>
-            </div>
-
-            <p class="small">Best if you want a “ready-to-gift” bundle.</p>
-          </div>
-        </article>
-
-        <!-- STD 3 -->
-        <article class="product">
-          <div class="product-img">
-            <img src="/assets/Refurbishment-Banner.png" alt="Refurbishment service (premium preparation option)" loading="lazy" decoding="async" />
-          </div>
-          <div class="product-body">
-            <h3>Refurbished Premium PS2</h3>
-            <p class="price"><span class="from">From</span> £139.99</p>
-            <ul class="meta">
-              <li>Premium cosmetic grade options</li>
-              <li>Extra checks + careful prep</li>
-              <li>Collector-friendly packing</li>
-            </ul>
-            <div class="badges">
-              <span class="badge">Refurb</span>
-              <span class="badge">Premium</span>
-            </div>
-
-            <div class="btn-row">
-              <a class="btn btn-primary" href="/ps2.html#standard-premium">View details</a>
-              <a class="btn btn-ghost" href="#services">Refurb options</a>
-            </div>
-
-            <div class="paypal-box" aria-label="Buy with PayPal">
-              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick" />
-                <input type="hidden" name="hosted_button_id" value="REPLACE_WITH_YOUR_PAYPAL_BUTTON_ID_PREMIUM" />
-                <input class="btn btn-primary" type="submit" value="Buy with PayPal" />
-              </form>
-              <p class="small">Secure checkout via PayPal.</p>
-            </div>
-
-            <p class="small">For buyers who care about condition and presentation.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXTRAS -->
-  <section class="section" id="extras">
-    <div class="container">
-      <div class="section-head">
-        <h2>Games, Accessories &amp; Services</h2>
-        <p>Add-ons and support products to complete your PS2 setup.</p>
-      </div>
-
-      <div class="eb-grid">
-        <!-- GAMES -->
-        <article class="product">
-          <div class="product-img">
-            <img src="/assets/HDD-GENERIC-SIZE.png" alt="PS2 game HDD options" loading="lazy" decoding="async" />
-          </div>
-          <div class="product-body">
-            <h3>Game HDDs / Game Collections</h3>
-            <p class="muted">Prepared drives and curated collections (where applicable). Clear guidance included.</p>
-
-            <div class="btn-row">
-              <a class="btn btn-primary" href="/ps2.html#games">View game options</a>
-              <a class="btn btn-ghost" href="/support.html#games">How games are accessed</a>
-            </div>
-
-            <div class="paypal-box" aria-label="Buy with PayPal">
-              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick" />
-                <input type="hidden" name="hosted_button_id" value="REPLACE_WITH_YOUR_PAYPAL_BUTTON_ID_GAMES" />
-                <input class="btn btn-primary" type="submit" value="Buy with PayPal" />
-              </form>
-              <p class="small">Secure checkout via PayPal.</p>
-            </div>
-
-            <p class="small">Optional kids collections available.</p>
-          </div>
-        </article>
-
-        <!-- ACCESSORIES -->
-        <article class="product">
-          <div class="product-img">
-            <img src="/assets/Source-Accessories.png" alt="PS2 accessories: cables, adapters and add-ons" loading="lazy" decoding="async" />
-          </div>
-          <div class="product-body">
-            <h3>Accessories</h3>
-            <p class="muted">Controllers, memory cards, HDMI solutions, adapters and cables.</p>
-
-            <div class="btn-row">
-              <a class="btn btn-primary" href="/ps2.html#accessories">Shop accessories</a>
-              <a class="btn btn-ghost" href="/contact.html">Ask compatibility</a>
-            </div>
-
-            <div class="paypal-box" aria-label="Buy with PayPal">
-              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick" />
-                <input type="hidden" name="hosted_button_id" value="REPLACE_WITH_YOUR_PAYPAL_BUTTON_ID_ACCESSORIES" />
-                <input class="btn btn-primary" type="submit" value="Buy with PayPal" />
-              </form>
-              <p class="small">Secure checkout via PayPal.</p>
-            </div>
-
-            <p class="small">If you have a modern TV, ask for the best picture option.</p>
-          </div>
-        </article>
-
-        <!-- SERVICES -->
-        <article class="product" id="services">
-          <div class="product-img">
-            <img src="/assets/Refurbishment-Banner.png" alt="PS2 refurbishment and repair service" loading="lazy" decoding="async" />
-          </div>
-          <div class="product-body">
-            <h3>Services</h3>
-            <p class="muted">Refurbishment, upgrades, troubleshooting and sourcing requests.</p>
-
-            <div class="btn-row">
-              <a class="btn btn-primary" href="/ps2.html#services">View services</a>
-              <a class="btn btn-ghost" href="/contact.html">Get a quote</a>
-            </div>
-
-            <div class="paypal-box" aria-label="Pay with PayPal">
-              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick" />
-                <input type="hidden" name="hosted_button_id" value="REPLACE_WITH_YOUR_PAYPAL_BUTTON_ID_SERVICES" />
-                <input class="btn btn-primary" type="submit" value="Pay with PayPal" />
-              </form>
-              <p class="small">Use for quotes/invoices (service options vary).</p>
-            </div>
-
-            <p class="small">Collector-friendly options available.</p>
-          </div>
-        </article>
-      </div>
-
-      <div class="info-band mt-24">
-        <strong>Need a specific PS2 model?</strong>
-        Message what you want (model/revision, colour, cosmetic grade, bundle) and we’ll confirm availability.
-        <a class="link" href="/contact.html">Request sourcing</a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="/assets/logo.png" alt="Retro Replay" width="120" height="50" loading="lazy" decoding="async" />
-      <div>
-        <div class="footer-title">Retro Replay UK</div>
-        <div class="footer-sub">PS2 consoles — tested, prepared and supported.</div>
-      </div>
-    </div>
-
-    <div class="footer-links" aria-label="Footer links">
-      <a href="/ps2.html">PS2</a>
-      <a href="/support.html">Support</a>
-      <a href="/contact.html">Contact</a>
-      <a href="/cookies.html">Cookies</a>
     </div>
   </div>
 
-  <div class="container footer-bottom">
-    © <span id="year"></span> Retro Replay UK. All rights reserved.
-  </div>
-</footer>
+  <!-- PayPal Smart Buttons (set your client-id) -->
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=GBP"></script>
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-<!-- Cookie notice -->
-<div id="cookie-notice" class="cookie-notice" role="dialog" aria-live="polite" aria-label="Cookie notice">
-  <div class="cookie-inner">
-    <p class="cookie-text">
-      We use cookies to help improve the site (including Google Analytics). You can accept or decline analytics cookies.
-      <a class="link" href="/cookies.html">Learn more</a>
-    </p>
-    <div class="cookie-actions">
-      <button id="cookie-accept" class="btn btn-primary" type="button">Accept</button>
-      <button id="cookie-decline" class="btn btn-ghost" type="button">Decline</button>
-    </div>
-  </div>
-</div>
+    // Cookie consent storage
+    const CONSENT_KEY = "rr_cookie_consent_v1"; // values: "accepted" | "declined"
+    const banner = document.getElementById('cookieBanner');
 
-<script>
-  // Footer year
-  document.getElementById('year').textContent = new Date().getFullYear();
+    function setConsent(value){
+      localStorage.setItem(CONSENT_KEY, value);
 
-  // Mobile nav toggle
-  const toggle = document.querySelector('.nav-toggle');
-  const mobile = document.getElementById('primaryNav');
-  if (toggle && mobile) {
-    toggle.addEventListener('click', () => {
-      const open = mobile.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      mobile.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
-    }));
-  }
-
-  // ---- Cookie consent (GitHub Pages compatible) ----
-  // Stores choice in localStorage:
-  //  - "accepted" => loads Google Analytics
-  //  - "declined" => does not load Google Analytics
-  const CONSENT_KEY = 'rr_cookie_consent';
-  const noticeEl = document.getElementById('cookie-notice');
-
-  function loadGoogleAnalytics() {
-    // Prevent double-load
-    if (window.__rr_ga_loaded) return;
-    window.__rr_ga_loaded = true;
-
-    // Google tag (gtag.js)
-    const s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-PF6Q3TSMVL';
-    document.head.appendChild(s);
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    window.gtag = gtag;
-
-    gtag('js', new Date());
-    gtag('config', 'G-PF6Q3TSMVL');
-  }
-
-  function setConsent(value) {
-    localStorage.setItem(CONSENT_KEY, value);
-    if (noticeEl) noticeEl.style.display = 'none';
-    if (value === 'accepted') loadGoogleAnalytics();
-  }
-
-  (function initConsent() {
-    const consent = localStorage.getItem(CONSENT_KEY);
-    if (!consent) {
-      if (noticeEl) noticeEl.style.display = 'block';
-      return;
+      if(value === "accepted"){
+        // Grant analytics storage
+        gtag('consent', 'update', { 'analytics_storage': 'granted' });
+      } else {
+        gtag('consent', 'update', { 'analytics_storage': 'denied' });
+      }
+      banner.style.display = "none";
     }
-    if (consent === 'accepted') loadGoogleAnalytics();
-    if (noticeEl) noticeEl.style.display = 'none';
-  })();
 
-  document.getElementById('cookie-accept')?.addEventListener('click', () => setConsent('accepted'));
-  document.getElementById('cookie-decline')?.addEventListener('click', () => setConsent('declined'));
-</script>
+    function getConsent(){
+      return localStorage.getItem(CONSENT_KEY);
+    }
 
+    // Show banner if no choice yet
+    if(!getConsent()){
+      banner.style.display = "block";
+    } else {
+      // apply existing consent on load
+      const v = getConsent();
+      if(v === "accepted"){
+        gtag('consent','update',{ 'analytics_storage':'granted' });
+      }
+    }
+
+    document.getElementById('cookieAccept').addEventListener('click', ()=>setConsent("accepted"));
+    document.getElementById('cookieDecline').addEventListener('click', ()=>setConsent("declined"));
+
+    // PayPal Buttons (simple example purchase)
+    // Replace amount/description to match your product flow or disable on homepage if you only use product-level buttons.
+    if(window.paypal){
+      paypal.Buttons({
+        style: { layout: 'vertical' },
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              description: "RetroReplay UK order",
+              amount: { value: "1.00", currency_code: "GBP" }
+            }]
+          });
+        },
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+            alert("Payment completed. Thank you!");
+          });
+        }
+      }).render('#paypal-button-container');
+    }
+  </script>
 </body>
 </html>
