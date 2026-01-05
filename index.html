@@ -1,4 +1,4 @@
-<!-- /index.html -->
+<!-- /index.html (FINAL: consent-based Google Analytics + PayPal buttons + cookie notice) -->
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
@@ -8,15 +8,6 @@
   <title>Retro Replay UK — PlayStation 2 Specialists</title>
   <meta name="description" content="Shop PS2 Plug & Play HDD builds, standard PS2 bundles, services, game HDDs and accessories. UK support included." />
   <link rel="canonical" href="https://retroreplay.uk/" />
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PF6Q3TSMVL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-PF6Q3TSMVL');
-  </script>
 
   <link rel="stylesheet" href="/style.css" />
 </head>
@@ -38,6 +29,7 @@
       <a href="/ps2.html">PS2 Consoles</a>
       <a href="/support.html">Support</a>
       <a href="/contact.html">Contact</a>
+      <a href="/cookies.html">Cookies</a>
     </nav>
 
     <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">☰</button>
@@ -48,6 +40,7 @@
     <a href="/ps2.html">PS2 Consoles</a>
     <a href="/support.html">Support</a>
     <a href="/contact.html">Contact</a>
+    <a href="/cookies.html">Cookies</a>
   </div>
 </header>
 
@@ -119,7 +112,6 @@
               <a class="btn btn-ghost" href="/contact.html">Ask a question</a>
             </div>
 
-            <!-- PayPal button (replace hosted_button_id with yours) -->
             <div class="paypal-box" aria-label="Buy with PayPal">
               <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                 <input type="hidden" name="cmd" value="_s-xclick" />
@@ -156,7 +148,6 @@
               <a class="btn btn-ghost" href="/support.html#games">Game list help</a>
             </div>
 
-            <!-- PayPal button (replace hosted_button_id with yours) -->
             <div class="paypal-box" aria-label="Buy with PayPal">
               <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                 <input type="hidden" name="cmd" value="_s-xclick" />
@@ -193,7 +184,6 @@
               <a class="btn btn-ghost" href="/contact.html">Custom request</a>
             </div>
 
-            <!-- PayPal button (replace hosted_button_id with yours) -->
             <div class="paypal-box" aria-label="Buy with PayPal">
               <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                 <input type="hidden" name="cmd" value="_s-xclick" />
@@ -242,7 +232,6 @@
               <a class="btn btn-ghost" href="/contact.html">Request a model</a>
             </div>
 
-            <!-- PayPal button (replace hosted_button_id with yours) -->
             <div class="paypal-box" aria-label="Buy with PayPal">
               <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                 <input type="hidden" name="cmd" value="_s-xclick" />
@@ -279,7 +268,6 @@
               <a class="btn btn-ghost" href="/support.html#picture">TV setup help</a>
             </div>
 
-            <!-- PayPal button (replace hosted_button_id with yours) -->
             <div class="paypal-box" aria-label="Buy with PayPal">
               <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                 <input type="hidden" name="cmd" value="_s-xclick" />
@@ -316,7 +304,6 @@
               <a class="btn btn-ghost" href="#services">Refurb options</a>
             </div>
 
-            <!-- PayPal button (replace hosted_button_id with yours) -->
             <div class="paypal-box" aria-label="Buy with PayPal">
               <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                 <input type="hidden" name="cmd" value="_s-xclick" />
@@ -356,7 +343,6 @@
               <a class="btn btn-ghost" href="/support.html#games">How games are accessed</a>
             </div>
 
-            <!-- PayPal button (replace hosted_button_id with yours) -->
             <div class="paypal-box" aria-label="Buy with PayPal">
               <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                 <input type="hidden" name="cmd" value="_s-xclick" />
@@ -384,7 +370,6 @@
               <a class="btn btn-ghost" href="/contact.html">Ask compatibility</a>
             </div>
 
-            <!-- PayPal button (replace hosted_button_id with yours) -->
             <div class="paypal-box" aria-label="Buy with PayPal">
               <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                 <input type="hidden" name="cmd" value="_s-xclick" />
@@ -412,8 +397,7 @@
               <a class="btn btn-ghost" href="/contact.html">Get a quote</a>
             </div>
 
-            <!-- PayPal button (replace hosted_button_id with yours) -->
-            <div class="paypal-box" aria-label="Pay deposit or service invoice with PayPal">
+            <div class="paypal-box" aria-label="Pay with PayPal">
               <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                 <input type="hidden" name="cmd" value="_s-xclick" />
                 <input type="hidden" name="hosted_button_id" value="REPLACE_WITH_YOUR_PAYPAL_BUTTON_ID_SERVICES" />
@@ -451,6 +435,7 @@
       <a href="/ps2.html">PS2</a>
       <a href="/support.html">Support</a>
       <a href="/contact.html">Contact</a>
+      <a href="/cookies.html">Cookies</a>
     </div>
   </div>
 
@@ -459,44 +444,83 @@
   </div>
 </footer>
 
+<!-- Cookie notice -->
+<div id="cookie-notice" class="cookie-notice" role="dialog" aria-live="polite" aria-label="Cookie notice">
+  <div class="cookie-inner">
+    <p class="cookie-text">
+      We use cookies to help improve the site (including Google Analytics). You can accept or decline analytics cookies.
+      <a class="link" href="/cookies.html">Learn more</a>
+    </p>
+    <div class="cookie-actions">
+      <button id="cookie-accept" class="btn btn-primary" type="button">Accept</button>
+      <button id="cookie-decline" class="btn btn-ghost" type="button">Decline</button>
+    </div>
+  </div>
+</div>
+
 <script>
+  // Footer year
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // Mobile nav toggle
   const toggle = document.querySelector('.nav-toggle');
   const mobile = document.getElementById('primaryNav');
-
   if (toggle && mobile) {
     toggle.addEventListener('click', () => {
       const open = mobile.classList.toggle('is-open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-
     mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
       mobile.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
     }));
   }
-</script>
 
-  <!-- Cookie notice -->
-<div id="cookie-notice" class="cookie-notice" role="dialog" aria-live="polite">
-  <p>
-    This website uses cookies (including Google Analytics) to help improve the site.
-    <a href="/cookies.html">Learn more</a>
-  </p>
-  <button id="cookie-accept" class="btn btn-primary">Accept</button>
-</div>
+  // ---- Cookie consent (GitHub Pages compatible) ----
+  // Stores choice in localStorage:
+  //  - "accepted" => loads Google Analytics
+  //  - "declined" => does not load Google Analytics
+  const CONSENT_KEY = 'rr_cookie_consent';
+  const noticeEl = document.getElementById('cookie-notice');
 
-<script>
-  if (!localStorage.getItem('cookiesAccepted')) {
-    document.getElementById('cookie-notice').style.display = 'flex';
+  function loadGoogleAnalytics() {
+    // Prevent double-load
+    if (window.__rr_ga_loaded) return;
+    window.__rr_ga_loaded = true;
+
+    // Google tag (gtag.js)
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-PF6Q3TSMVL';
+    document.head.appendChild(s);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    gtag('js', new Date());
+    gtag('config', 'G-PF6Q3TSMVL');
   }
 
-  document.getElementById('cookie-accept')?.addEventListener('click', () => {
-    localStorage.setItem('cookiesAccepted', 'true');
-    document.getElementById('cookie-notice').style.display = 'none';
-  });
+  function setConsent(value) {
+    localStorage.setItem(CONSENT_KEY, value);
+    if (noticeEl) noticeEl.style.display = 'none';
+    if (value === 'accepted') loadGoogleAnalytics();
+  }
+
+  (function initConsent() {
+    const consent = localStorage.getItem(CONSENT_KEY);
+    if (!consent) {
+      if (noticeEl) noticeEl.style.display = 'block';
+      return;
+    }
+    if (consent === 'accepted') loadGoogleAnalytics();
+    if (noticeEl) noticeEl.style.display = 'none';
+  })();
+
+  document.getElementById('cookie-accept')?.addEventListener('click', () => setConsent('accepted'));
+  document.getElementById('cookie-decline')?.addEventListener('click', () => setConsent('declined'));
 </script>
-  
+
 </body>
 </html>
