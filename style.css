@@ -359,3 +359,27 @@ img{max-width:100%; height:auto}
   color: rgba(135,234,255,.95);
   font-weight:700;
 }
+/* Maintenance banner */
+.maintenance-banner {
+  background: linear-gradient(90deg, #b30000, #e60000);
+  color: #ffffff;
+  font-size: 0.95rem;
+  padding: 10px 16px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.maintenance-banner a {
+  color: #ffffff;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.maintenance-banner strong {
+  margin-right: 6px;
+}
