@@ -1,4 +1,3 @@
-<!-- index.html (FIXED: Formspree wired, analytics consent-gated scripts kept, small SEO/UX improvements) -->
 <!doctype html>
 <html lang="en-GB">
 <head>
@@ -72,27 +71,26 @@
               method="POST"
               data-lead-form
             >
-              <!-- Helps you identify the source inside Formspree -->
               <input type="hidden" name="form_type" value="lead_capture" />
               <input type="hidden" name="page" value="index.html" />
 
+              <!-- Honeypot (spam trap) -->
+              <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+                <label for="company">Company</label>
+                <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
+              </div>
+
               <label class="label" for="email">Email</label>
               <div class="form__row">
-                <input
-                  class="input"
-                  id="email"
-                  name="email"
-                  type="email"
-                  autocomplete="email"
-                  required
-                  placeholder="you@example.com"
-                />
+                <input class="input" id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
                 <button class="button" type="submit">Get it</button>
               </div>
-              <p class="fineprint">No spam. Unsubscribe anytime.</p>
 
-              <!-- Optional: tiny status area if you later add AJAX handling -->
-              <p class="fineprint" id="lead-status" aria-live="polite"></p>
+              <!-- Hidden message so Formspree always receives a message body -->
+              <textarea name="message" style="display:none">Lead capture signup</textarea>
+
+              <p class="fineprint">No spam. Unsubscribe anytime.</p>
+              <p class="fineprint" aria-live="polite"></p>
             </form>
 
             <div class="divider"></div>
