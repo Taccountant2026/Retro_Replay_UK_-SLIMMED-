@@ -1,14 +1,17 @@
+<!-- support.html (FIXED: small SEO/UX improvements + adds visible support email, keeps consent-gated analytics scripts only) -->
 <!doctype html>
 <html lang="en-GB">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Retro Replay support, warranty and FAQs." />
+  <meta name="theme-color" content="#060a12" />
   <title>Support — Retro Replay</title>
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/styles.css" />
 
+  <!-- Google tracking loads after consent (js/analytics.js) -->
   <script defer src="js/analytics.js"></script>
   <script defer src="js/main.js"></script>
 </head>
@@ -38,16 +41,27 @@
 
       <div class="grid2">
         <section class="card">
-          <h2 class="h2">Warranty</h2>
+          <h2 class="h2">Warranty &amp; support</h2>
           <p class="muted">
             All kits are tested before dispatch. If you experience an issue, send a message with:
             console model, what you see on screen, and what you’ve tried.
           </p>
+
           <ul class="bullets">
             <li>Support for setup and troubleshooting</li>
             <li>Clear steps for returns if needed</li>
             <li>Help available via Contact page</li>
           </ul>
+
+          <div class="divider"></div>
+
+          <h3 class="h3">Email support</h3>
+          <p class="muted">
+            You can also email: <a href="mailto:retroreply2026@gmail.com">retroreply2026@gmail.com</a>
+          </p>
+          <p class="fineprint">
+            Include your PS2 model (SCPH-xxxx), what you see on screen, and what you’ve already tried.
+          </p>
         </section>
 
         <section class="card card--glow">
@@ -68,6 +82,11 @@
             <p>Try a different compatibility mode and confirm the drive/cables are seated firmly.</p>
           </details>
 
+          <details class="faq">
+            <summary>My memory card slot is used—how do I save?</summary>
+            <p>If slot 1 is in use, you can save using memory card slot 2. (If you need help, message support.)</p>
+          </details>
+
           <div class="divider"></div>
           <a class="button" href="contact.html">Contact support</a>
         </section>
@@ -79,7 +98,7 @@
     <div class="container footer__inner">
       <p class="fineprint">© <span data-year></span> Retro Replay</p>
       <div class="footer__links">
-        <a href="support.html">Warranty & Support</a>
+        <a href="support.html">Warranty &amp; Support</a>
         <a href="contact.html">Contact</a>
       </div>
     </div>
