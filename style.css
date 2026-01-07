@@ -1,4 +1,11 @@
-/* /style.css — Retro Replay rebrand (cyan outline / neon) */
+/* /style.css (ROOT) — Retro Replay (dark base + light-page support)
+   Works with your HTML class names: header, header__inner, brand__logo, nav__link, button, hero, hero__inner,
+   card, card--glow, grid2, grid3, form, input, form__row, cookie, etc.
+*/
+
+/* -----------------------------
+   Base tokens
+----------------------------- */
 :root{
   --bg0:#070a12;
   --bg1:#0b1020;
@@ -14,8 +21,18 @@
 
   --shadow: 0 18px 50px rgba(0,0,0,.40);
   --radius: 18px;
+
+  /* Light tokens (used by page-light overrides) */
+  --l-text:#0b1020;
+  --l-muted:rgba(11,16,32,.72);
+  --l-line:rgba(11,16,32,.10);
+  --l-card:rgba(255,255,255,.94);
+  --l-shadow:0 18px 45px rgba(0,0,0,.08);
 }
 
+/* -----------------------------
+   Reset / base
+----------------------------- */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
@@ -28,91 +45,89 @@ body{
     radial-gradient(900px 650px at 95% 5%, rgba(25,207,255,.10), transparent 55%),
     linear-gradient(180deg, var(--bg0), var(--bg1));
 }
-
 a{color:inherit; text-decoration:none}
+a:hover{opacity:.98}
 img{max-width:100%; height:auto}
 .container{width:min(1120px, 92%); margin:0 auto}
 
-/* Header */
-.site-header{
+/* Accessibility */
+.skip{
+  position:absolute;
+  left:-9999px;
+  top:auto;
+  width:1px;height:1px;
+  overflow:hidden;
+}
+.skip:focus{
+  left:12px; top:12px;
+  width:auto;height:auto;
+  padding:10px 12px;
+  border-radius:12px;
+  background: rgba(135,234,255,.12);
+  border:1px solid rgba(135,234,255,.25);
+  z-index:9999;
+}
+
+/* -----------------------------
+   Header / nav (your class names)
+----------------------------- */
+.header{
   position:sticky; top:0; z-index:50;
   background: rgba(7,10,18,.72);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
 }
-.header-inner{
-  display:flex; align-items:center; justify-content:space-between;
+.header__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   padding:14px 0;
   gap:14px;
 }
 
-.brand{
-  display:flex; align-items:center; gap:12px;
-  min-width: 240px;
-}
-.brand-logo{
+.brand{display:flex; align-items:center; gap:12px}
+.brand__logo{
   width:auto;
-  height:44px;
+  height:64px;
   border-radius: 14px;
-  padding:6px 8px;
+  padding:8px 10px;
   background: rgba(255,255,255,.03);
   border: 1px solid rgba(135,234,255,.18);
   box-shadow: 0 0 0 1px rgba(25,207,255,.10), 0 18px 45px rgba(0,0,0,.40);
   object-fit: contain;
 }
-.brand-text{display:flex; flex-direction:column; gap:2px}
-.brand-name{font-weight:900; letter-spacing:.2px; line-height:1.1}
-.brand-tag{font-size:.86rem; color: rgba(234,242,255,.70)}
+.brand__logo--small{height:44px}
 
-.nav{display:flex; gap:14px; flex-wrap:wrap; align-items:center}
-.nav a{
+.nav{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.nav__link{
   padding:8px 10px;
   border-radius: 10px;
   color: rgba(234,242,255,.76);
   border:1px solid transparent;
 }
-.nav a:hover{
+.nav__link:hover{
   color:var(--text);
   border-color: rgba(135,234,255,.18);
   background: rgba(135,234,255,.05);
 }
-.nav a[aria-current="page"]{
+.nav__link.is-active,
+.nav__link[aria-current="page"]{
   color:var(--text);
   border-color: rgba(135,234,255,.30);
   background: rgba(135,234,255,.08);
   box-shadow: 0 0 0 1px rgba(25,207,255,.08) inset;
 }
 
-.nav-toggle{
-  display:none;
-  border:1px solid rgba(135,234,255,.18);
-  background: rgba(135,234,255,.06);
-  color: var(--text);
-  border-radius: 12px;
-  padding:10px 12px;
-  font-weight: 900;
-}
+.header__cta{white-space:nowrap}
 
-.nav-mobile{
-  display:none;
-  padding: 0 0 14px;
-}
-.nav-mobile a{
-  display:block;
-  padding:10px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(135,234,255,.14);
-  background: rgba(255,255,255,.03);
-  margin: 8px 0;
-  color: rgba(234,242,255,.86);
-}
-.nav-mobile a[aria-current="page"]{
-  border-color: rgba(135,234,255,.28);
-  background: rgba(135,234,255,.08);
-}
-.nav-mobile.is-open{display:block}
-
-/* Typography helpers */
+/* -----------------------------
+   Typography helpers
+----------------------------- */
 .kicker{
   display:inline-flex;
   align-items:center;
@@ -122,7 +137,7 @@ img{max-width:100%; height:auto}
   text-transform:uppercase;
   font-size:.80rem;
   color: rgba(135,234,255,.92);
-  margin-bottom: 10px;
+  margin:0 0 10px;
 }
 .kicker::before{
   content:"";
@@ -132,37 +147,68 @@ img{max-width:100%; height:auto}
   box-shadow: 0 0 18px rgba(135,234,255,.45);
 }
 
-.muted{color:var(--muted); margin:0}
-.small{font-size:.95rem; color: rgba(234,242,255,.72)}
-.mt-24{margin-top:24px}
-
-/* Sections */
-.hero{padding:56px 0}
-.hero-tight{padding:34px 0 18px}
-
-.section{padding:28px 0 56px}
-.section-head{margin:0 0 14px}
-.section-head h2{margin:0 0 8px; font-size: clamp(20px, 2.4vw, 30px)}
-.section-head p{margin:0; color: var(--muted)}
-
-/* ebay-ish header area */
-.eb-head h1{
+.h1{
   margin:6px 0 10px;
   font-size: clamp(26px, 3.6vw, 44px);
   letter-spacing: -0.02em;
 }
-.eb-chips{display:flex; gap:8px; flex-wrap:wrap; margin:12px 0}
-.chip{
-  font-size:.85rem;
-  padding:6px 10px;
-  border-radius:999px;
-  border:1px solid rgba(135,234,255,.14);
-  background: rgba(135,234,255,.05);
-  color: rgba(234,242,255,.88);
+.h2{
+  margin:0 0 10px;
+  font-size: clamp(18px, 2.3vw, 28px);
+  letter-spacing: -0.01em;
 }
-.eb-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+.h3{
+  margin:0 0 10px;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+}
+.lead{
+  margin:0;
+  font-size: 1.05rem;
+  color: rgba(234,242,255,.86);
+}
+.muted{color:var(--muted); margin:0}
+.fineprint{
+  margin:10px 0 0;
+  font-size:.92rem;
+  color: rgba(234,242,255,.70);
+}
 
-/* Cards */
+/* -----------------------------
+   Sections / layout
+----------------------------- */
+.hero{padding:56px 0}
+.section{padding:28px 0 56px}
+.section--alt{
+  background: rgba(255,255,255,.02);
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.hero__inner{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:18px;
+  align-items:start;
+}
+
+.pagehead{margin:0 0 14px}
+
+/* Grids used by index/support/contact */
+.grid2{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:16px;
+}
+.grid3{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:16px;
+}
+
+/* -----------------------------
+   Cards / dividers
+----------------------------- */
 .card{
   background:
     radial-gradient(1200px 500px at 20% 0%, rgba(135,234,255,.06), transparent 55%),
@@ -172,34 +218,28 @@ img{max-width:100%; height:auto}
   padding:18px;
   box-shadow: var(--shadow);
 }
-.card h2, .card h3{margin:0 0 10px}
+.card--glow{
+  border-color: rgba(135,234,255,.20);
+  box-shadow:
+    0 0 0 1px rgba(25,207,255,.08) inset,
+    var(--shadow);
+}
 .card p{margin:0 0 12px; color: var(--muted)}
 
-/* Info band + links */
-.info-band{
-  margin-top:18px;
-  padding:16px;
-  border-radius: var(--radius);
-  border:1px solid rgba(135,234,255,.16);
-  background: rgba(135,234,255,.04);
-  color: rgba(234,242,255,.86);
-  box-shadow: 0 0 0 1px rgba(25,207,255,.06) inset;
+.divider{
+  height:1px;
+  background: rgba(255,255,255,.10);
+  margin:14px 0;
+  border:0;
 }
-.link{
-  color: rgba(135,234,255,.95);
-  font-weight:900;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(135,234,255,.35);
-  margin-left: 6px;
-  white-space: nowrap;
-}
-.link:hover{border-bottom-color: rgba(135,234,255,.75)}
 
-/* Buttons */
-.cta-row{display:flex; gap:12px; flex-wrap:wrap; margin: 8px 0 8px}
-.btn-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
-.btn{
-  display:inline-flex; align-items:center; justify-content:center;
+/* -----------------------------
+   Buttons (your HTML uses .button)
+----------------------------- */
+.button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
   padding:10px 14px;
   border-radius: 12px;
   border:1px solid rgba(255,255,255,.12);
@@ -209,194 +249,68 @@ img{max-width:100%; height:auto}
   letter-spacing:.2px;
   transition: transform .12s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
 }
-.btn:hover{
+.button:hover{
   transform: translateY(-1px);
   background: rgba(255,255,255,.06);
   border-color: rgba(135,234,255,.18);
 }
-.btn-primary{
-  border-color: rgba(135,234,255,.42);
-  background: linear-gradient(135deg, rgba(135,234,255,.22), rgba(25,207,255,.16));
-  box-shadow: 0 0 0 1px rgba(25,207,255,.10) inset, 0 0 24px rgba(135,234,255,.10);
-}
-.btn-primary:hover{box-shadow: 0 0 0 1px rgba(25,207,255,.14) inset, 0 0 34px rgba(135,234,255,.16);}
-.btn-secondary{
-  border-color: rgba(255,255,255,.14);
-  background: rgba(255,255,255,.03);
-}
-.btn-ghost{
+.button--ghost{
   border-color: rgba(135,234,255,.18);
   background: rgba(135,234,255,.05);
 }
 
-/* Product grid like marketplace */
-.eb-grid{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:16px;
-}
-.product{
-  overflow:hidden;
-  border-radius: var(--radius);
-  border:1px solid rgba(255,255,255,.10);
-  background:
-    radial-gradient(1200px 500px at 20% 0%, rgba(135,234,255,.06), transparent 55%),
-    linear-gradient(180deg, rgba(13,20,38,.92), rgba(10,16,32,.92));
-  box-shadow: var(--shadow);
-  display:flex;
-  flex-direction:column;
-  min-height: 100%;
-}
-.product-img{
-  aspect-ratio: 16/11;
-  background: rgba(255,255,255,.03);
-  border-bottom:1px solid rgba(255,255,255,.10);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.product-img img{
-  width:100%;
-  height:100%;
-  object-fit: cover;
+/* -----------------------------
+   Lists / badges
+----------------------------- */
+.trust{margin:14px 0 0; padding-left:18px; color: rgba(234,242,255,.80)}
+.trust__item{margin:6px 0}
+
+.bullets{margin:10px 0 0; padding-left:18px; color: rgba(234,242,255,.80)}
+.bullets li{margin:6px 0}
+
+/* -----------------------------
+   Forms (Formspree)
+----------------------------- */
+.form{display:block}
+.label{
   display:block;
+  margin: 12px 0 6px;
+  font-weight: 800;
+  color: rgba(234,242,255,.90);
 }
-.product-body{padding:16px}
-.product-body h3{margin:0 0 8px}
-.price{margin:0 0 10px; font-weight:900; font-size:1.25rem}
-.price .from{font-weight:700; font-size:.85rem; color:rgba(234,242,255,.70); margin-right:6px}
-
-.meta{margin:0; padding-left:18px; color:var(--muted)}
-.meta li{margin:6px 0}
-
-.badges{display:flex; gap:8px; flex-wrap:wrap; margin:12px 0 6px}
-.badge{
-  font-size:.78rem;
-  padding:5px 9px;
-  border-radius:999px;
-  border:1px solid rgba(135,234,255,.24);
-  background: rgba(135,234,255,.08);
-  color: rgba(234,242,255,.92);
-}
-
-/* Footer */
-.site-footer{
-  border-top: 1px solid rgba(255,255,255,.10);
-  background: rgba(0,0,0,.16);
-  padding:24px 0 10px;
-}
-.footer-inner{
-  display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
-  color: rgba(234,242,255,.82);
-  align-items: center;
-}
-.footer-brand{display:flex; gap:10px; align-items:center}
-.footer-logo{
-  height:34px;
-  width:auto;
+.input{
+  width:100%;
+  padding: 10px 12px;
   border-radius: 12px;
-  border: 1px solid rgba(135,234,255,.14);
+  border:1px solid rgba(255,255,255,.12);
   background: rgba(255,255,255,.03);
-  padding:6px 8px;
-  object-fit: contain;
+  color: var(--text);
+  outline:none;
 }
-.footer-title{font-weight:900}
-.footer-sub{color: rgba(234,242,255,.70); font-size:.92rem}
-.footer-links{display:flex; gap:14px; flex-wrap:wrap}
-.footer-links a{color: rgba(234,242,255,.75)}
-.footer-links a:hover{color: var(--text)}
-.footer-bottom{
-  margin-top:14px;
-  padding-top:10px;
-  border-top: 1px solid rgba(255,255,255,.08);
-  color: rgba(234,242,255,.62);
-  font-size:.9rem;
+.input:focus{
+  border-color: rgba(135,234,255,.30);
+  box-shadow: 0 0 0 4px rgba(25,207,255,.10);
 }
+textarea.input{resize: vertical}
 
-/* Responsive */
-@media (max-width: 980px){
-  .eb-grid{grid-template-columns: 1fr}
-  .brand{min-width: 0}
-}
-@media (max-width: 860px){
-  .nav{display:none}
-  .nav-toggle{display:inline-flex}
-}
-@media (max-width: 520px){
-  .brand-tag{display:none}
-  .brand-logo{height:40px}
-  .header-inner{gap:10px}
-  .btn{width:100%}
-  .eb-actions .btn{width:auto}
-  .eb-actions{gap:8px}
-  .link{white-space: normal}
-}
-
-.cookie-notice{
-  position:fixed;
-  bottom:16px;
-  left:16px;
-  right:16px;
-  display:none;
-  gap:12px;
+.form__row{
+  display:flex;
+  gap:10px;
   align-items:center;
-  justify-content:space-between;
-  padding:14px 16px;
-  border-radius:16px;
-  background: rgba(13,20,38,.95);
-  border:1px solid rgba(135,234,255,.18);
-  box-shadow: 0 18px 45px rgba(0,0,0,.45);
-  z-index:999;
+}
+.form__row .input{flex: 1 1 auto}
+.form__row .button{flex: 0 0 auto}
+
+.honeypot{
+  position:absolute !important;
+  left:-9999px !important;
+  top:auto !important;
+  width:1px !important;
+  height:1px !important;
+  overflow:hidden !important;
 }
 
-.cookie-notice p{
-  margin:0;
-  font-size:.95rem;
-  color: rgba(234,242,255,.85);
-}
-
-.cookie-notice a{
-  color: rgba(135,234,255,.95);
-  font-weight:700;
-}
-/* Maintenance banner */
-.maintenance-banner {
-  background: linear-gradient(90deg, #b30000, #e60000);
-  color: #ffffff;
-  font-size: 0.95rem;
-  padding: 10px 16px;
-  text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.maintenance-banner a {
-  color: #ffffff;
-  text-decoration: underline;
-  font-weight: 600;
-}
-
-.maintenance-banner strong {
-  margin-right: 6px;
-}
-/* =========================
-   Formspree inline status + honeypot
-========================= */
-
-.honeypot {
-  position: absolute !important;
-  left: -9999px !important;
-  top: auto !important;
-  width: 1px !important;
-  height: 1px !important;
-  overflow: hidden !important;
-}
-
-.form-status {
+.form-status{
   margin-top: 10px;
   padding: 10px 12px;
   border-radius: 12px;
@@ -405,21 +319,140 @@ img{max-width:100%; height:auto}
   color: rgba(234,242,255,.88);
   box-shadow: 0 0 0 1px rgba(25,207,255,.06) inset;
 }
-
-.form-status.is-success {
+.form-status.is-success{
   border-color: rgba(135,234,255,.28);
   background: rgba(135,234,255,.08);
 }
-
-.form-status.is-error {
+.form-status.is-error{
   border-color: rgba(255,120,120,.28);
   background: rgba(255,120,120,.08);
 }
-/* Mobile safety net for hero + forms (index light page) */
+
+/* -----------------------------
+   FAQ details (support page)
+----------------------------- */
+details.faq{
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  border-radius: 14px;
+  padding: 10px 12px;
+  margin: 10px 0;
+}
+details.faq summary{
+  cursor:pointer;
+  font-weight: 900;
+  list-style:none;
+  outline:none;
+  padding: 6px 0;
+}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq p{ margin: 8px 0 0; color: rgba(234,242,255,.80); }
+
+/* -----------------------------
+   Footer
+----------------------------- */
+.footer{
+  border-top: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.16);
+  padding:24px 0 10px;
+}
+.footer__inner{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  color: rgba(234,242,255,.82);
+  align-items:center;
+}
+.footer__links{display:flex; gap:14px; flex-wrap:wrap}
+.footer__links a{color: rgba(234,242,255,.75)}
+.footer__links a:hover{color: var(--text)}
+
+/* -----------------------------
+   Cookie banner (your HTML uses .cookie)
+----------------------------- */
+.cookie{
+  position:fixed;
+  bottom:16px;
+  left:16px;
+  right:16px;
+  z-index:999;
+}
+.cookie__inner{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 16px;
+  border-radius:16px;
+  background: rgba(13,20,38,.95);
+  border:1px solid rgba(135,234,255,.18);
+  box-shadow: 0 18px 45px rgba(0,0,0,.45);
+}
+.cookie__text{
+  margin:0;
+  font-size:.95rem;
+  color: rgba(234,242,255,.88);
+}
+.cookie__actions{display:flex; gap:10px; flex-wrap:wrap}
+
+/* -----------------------------
+   Maintenance banner (optional)
+----------------------------- */
+.maintenance-banner{
+  background: linear-gradient(90deg, #b30000, #e60000);
+  color:#fff;
+  font-size: .95rem;
+  padding: 10px 16px;
+  text-align:center;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+.maintenance-banner a{
+  color:#fff;
+  text-decoration: underline;
+  font-weight: 600;
+}
+.maintenance-banner strong{margin-right:6px}
+
+/* -----------------------------
+   Mobile & responsive
+----------------------------- */
+@media (max-width: 980px){
+  .hero__inner{grid-template-columns: 1fr}
+  .grid3{grid-template-columns: 1fr}
+}
+@media (max-width: 860px){
+  .nav{gap:8px}
+}
 @media (max-width: 600px){
-  .container{width: min(1120px, 92%)}
-  .header__inner{flex-wrap: wrap}
-  .nav{flex-wrap: wrap}
+  .header__inner{flex-wrap:wrap}
+  .nav{flex-wrap:wrap}
   .form__row{flex-direction: column !important}
   .form__row .button{width:100% !important}
+  .button{width:100%}
+  .cookie__inner{flex-direction:column; align-items:flex-start}
 }
+
+/* -----------------------------
+   Light page helpers (optional)
+   Your pages already include inline <style> overrides.
+   This just prevents any dark-only styles from breaking.
+----------------------------- */
+body.page-light .label{color: rgba(11,16,32,.88)}
+body.page-light .input{
+  color: var(--l-text);
+  border-color: rgba(11,16,32,.12);
+  background: rgba(255,255,255,.92);
+}
+body.page-light .fineprint{color: rgba(11,16,32,.65)}
+body.page-light .cookie__inner{
+  background: rgba(255,255,255,.92);
+  border-color: rgba(11,16,32,.12);
+  box-shadow: var(--l-shadow);
+}
+body.page-light .cookie__text{color: rgba(11,16,32,.78)}
