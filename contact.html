@@ -1,125 +1,112 @@
-<!-- /contact.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Retro Replay UK</title>
-  <meta name="description" content="Contact Retro Replay UK for PS2 orders, custom requests, setup help and aftersales support." />
-  <link rel="canonical" href="https://retroreplay.uk/contact.html" />
-  <link rel="stylesheet" href="/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Contact Retro Replay for questions, orders and support." />
+  <title>Contact — Retro Replay</title>
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <script defer src="js/analytics.js"></script>
+  <script defer src="js/main.js"></script>
 </head>
 
 <body>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="Retro Replay Home">
+        <img class="brand__logo brand__logo--small" src="assets/logo.png" alt="Retro Replay" width="120" height="120" />
+      </a>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Retro Replay UK Home">
-      <img class="brand-logo" src="/assets/logo.png" alt="Retro Replay" width="160" height="70" loading="eager" decoding="async" />
-      <div class="brand-text">
-        <div class="brand-name">Retro Replay UK</div>
-        <div class="brand-tag">Orders • Support • Custom Requests</div>
-      </div>
-    </a>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="shop.html">Shop</a>
+        <a class="nav__link" href="support.html">Support</a>
+        <a class="nav__link is-active" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <nav class="nav" aria-label="Primary navigation">
-      <a href="/">Home</a>
-      <a href="/ps2.html">PS2 Consoles</a>
-      <a href="/support.html">Support</a>
-      <a href="/contact.html" aria-current="page">Contact</a>
-    </nav>
-
-    <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">☰</button>
-  </div>
-
-  <div class="container nav-mobile" id="primaryNav">
-    <a href="/">Home</a>
-    <a href="/ps2.html">PS2 Consoles</a>
-    <a href="/support.html">Support</a>
-    <a href="/contact.html" aria-current="page">Contact</a>
-  </div>
-</header>
-
-<main>
-
-  <section class="page-hero">
+  <main class="section">
     <div class="container">
-      <div class="kicker">Contact</div>
-      <h1>Get in touch</h1>
-      <p>Fastest support: include your order details and a clear description.</p>
-    </div>
-  </section>
+      <div class="pagehead">
+        <h1 class="h1">Contact</h1>
+        <p class="muted">Sales, custom requests, or troubleshooting.</p>
+      </div>
 
-  <section class="section">
-    <div class="container">
-      <div class="grid-2">
-        <div class="card card-glow">
-          <h3>Email</h3>
-          <p>Orders, support and custom requests:</p>
-          <div class="codebox">retroreplay2026@gmail.com</div>
-          <p class="small mt-24">
-            Picture issue? Include your TV model and the cable/adapter you’re using.
-          </p>
-          <div class="btn-row">
-            <a class="btn btn-ghost" href="/support.html">Support page</a>
-            <a class="btn btn-ghost" href="/ps2.html">PS2 page</a>
-          </div>
-        </div>
+      <div class="grid2">
+        <section class="card card--glow">
+          <h2 class="h2">Send a message</h2>
 
-        <div class="card">
-          <h3>Copy/paste template</h3>
-          <div class="codebox">
-            Name:<br/>
-            Order details (if any):<br/>
-            What you purchased / want:<br/>
-            TV model (if relevant):<br/>
-            Connection type (HDMI adapter / component / AV):<br/>
-            Issue / question (what happens):<br/>
-            Photos/videos (if possible):
-          </div>
-          <p class="small">This avoids back-and-forth and gets you sorted quicker.</p>
-        </div>
+          <!-- Replace action with Formspree / Netlify Forms / your backend endpoint -->
+          <form class="form" method="post" action="#" data-contact-form>
+            <label class="label" for="name">Name</label>
+            <input class="input" id="name" name="name" autocomplete="name" required />
+
+            <label class="label" for="email">Email</label>
+            <input class="input" id="email" name="email" type="email" autocomplete="email" required />
+
+            <label class="label" for="topic">Topic</label>
+            <select class="input" id="topic" name="topic" required>
+              <option value="order">Order question</option>
+              <option value="custom">Custom game requests</option>
+              <option value="support">Support / troubleshooting</option>
+              <option value="other">Other</option>
+            </select>
+
+            <label class="label" for="message">Message</label>
+            <textarea class="input" id="message" name="message" rows="6" required placeholder="Include console model + what you’ve tried (if support)."></textarea>
+
+            <button class="button" type="submit">Send</button>
+            <p class="fineprint">You’ll receive a reply via email.</p>
+          </form>
+        </section>
+
+        <aside class="card">
+          <h2 class="h2">Before you send</h2>
+          <ul class="bullets">
+            <li>Include your PS2 model (e.g., SCPH-xxxx)</li>
+            <li>What’s happening on screen</li>
+            <li>What you’ve already tried</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <h3 class="h3">Join updates</h3>
+          <p class="muted">Restocks, guides, and offers.</p>
+
+          <form class="form" method="post" action="#" data-lead-form>
+            <label class="label" for="email2">Email</label>
+            <div class="form__row">
+              <input class="input" id="email2" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
+              <button class="button" type="submit">Join</button>
+            </div>
+          </form>
+        </aside>
       </div>
     </div>
-  </section>
+  </main>
 
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="/assets/logo.png" alt="Retro Replay" width="120" height="50" loading="lazy" decoding="async" />
-      <div>
-        <div class="footer-title">Retro Replay UK</div>
-        <div class="footer-sub">UK-based support for PS2 builds and consoles.</div>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="fineprint">© <span data-year></span> Retro Replay</p>
+      <div class="footer__links">
+        <a href="support.html">Warranty & Support</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
+  </footer>
 
-    <div class="footer-links">
-      <a href="/">Home</a>
-      <a href="/ps2.html">PS2</a>
-      <a href="/support.html">Support</a>
+  <div class="cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+    <div class="cookie__inner">
+      <p class="cookie__text">We use cookies for analytics to improve the site.</p>
+      <div class="cookie__actions">
+        <button class="button button--ghost" type="button" data-cookie-reject>Reject</button>
+        <button class="button" type="button" data-cookie-accept>Accept</button>
+      </div>
     </div>
   </div>
-
-  <div class="container footer-bottom">© <span id="year"></span> Retro Replay UK.</div>
-</footer>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  const toggle = document.querySelector('.nav-toggle');
-  const mobile = document.getElementById('primaryNav');
-  if (toggle && mobile) {
-    toggle.addEventListener('click', () => {
-      const open = mobile.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      mobile.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
-    }));
-  }
-</script>
-
 </body>
 </html>
