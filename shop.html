@@ -8,17 +8,13 @@
   <title>Shop — Retro Replay</title>
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="style.css" />
 
-  <!-- Google tracking loads after consent (js/analytics.js) -->
   <script defer src="js/analytics.js"></script>
   <script defer src="js/main.js"></script>
 
   <!-- PayPal Hosted Buttons SDK -->
-  <script
-    defer
-    src="https://www.paypal.com/sdk/js?client-id=BAApYaG5zDntUHsd2tRXv1ylGkYhREqRR-t7PWcH3-Sh7ElgWliEyCEnhAeQjoawIGidc1LY7PQRK9A0Sg&components=hosted-buttons&disable-funding=venmo&currency=GBP">
-  </script>
+  <script defer src="https://www.paypal.com/sdk/js?client-id=BAApYaG5zDntUHsd2tRXv1ylGkYhREqRR-t7PWcH3-Sh7ElgWliEyCEnhAeQjoawIGidc1LY7PQRK9A0Sg&components=hosted-buttons&disable-funding=venmo&currency=GBP"></script>
 </head>
 
 <body>
@@ -43,8 +39,7 @@
         <h1 class="h1">Shop</h1>
         <p class="muted">Simple checkout via PayPal for now.</p>
         <p class="fineprint">
-          After successful payment, you’ll return here. If it doesn’t redirect, just email
-          <a href="mailto:retroreply2026@gmail.com">retroreply2026@gmail.com</a>.
+          Support email: <a href="mailto:retroreply2026@gmail.com">retroreply2026@gmail.com</a>
         </p>
       </div>
 
@@ -73,49 +68,49 @@
           <div class="checkout" aria-label="PayPal checkout">
             <p class="muted">PayPal Checkout</p>
 
-            <!-- PayPal container -->
-            <div id="paypal-container-KZTTHJVUHAFZC" class="paypal"></div>
+            <div id="paypal-container-KZTTHJVUHAFZC"></div>
 
-            <!-- Render Hosted Button -->
             <script>
               (function () {
-                function renderPayPalHostedButton() {
+                function renderBtn() {
                   if (!window.paypal || !paypal.HostedButtons) return false;
-                  paypal.HostedButtons({
-                    hostedButtonId: "KZTTHJVUHAFZC",
-                  }).render("#paypal-container-KZTTHJVUHAFZC");
+                  paypal.HostedButtons({ hostedButtonId: "KZTTHJVUHAFZC" })
+                    .render("#paypal-container-KZTTHJVUHAFZC");
                   return true;
                 }
-
-                if (!renderPayPalHostedButton()) {
+                if (!renderBtn()) {
                   let tries = 0;
                   const t = setInterval(() => {
                     tries++;
-                    if (renderPayPalHostedButton() || tries > 20) clearInterval(t);
+                    if (renderBtn() || tries > 20) clearInterval(t);
                   }, 150);
                 }
               })();
             </script>
 
             <p class="fineprint">
-              Ensure your PayPal button return URL is set to:
+              PayPal return URL should be:
               <strong>https://retroreplay.uk/shop.html?success=1</strong>
-              (Cancel URL: <strong>https://retroreplay.uk/shop.html?cancel=1</strong>)
+              (Cancel URL:
+              <strong>https://retroreplay.uk/shop.html?cancel=1</strong>)
             </p>
 
             <div class="divider"></div>
 
-            <!-- Optional: show basic messages if redirected back -->
-            <p class="fineprint" aria-live="polite" id="checkout-status"></p>
+            <p class="form-status" aria-live="polite" id="checkout-status"></p>
             <script>
               (function () {
                 const el = document.getElementById("checkout-status");
                 if (!el) return;
                 const u = new URL(window.location.href);
                 if (u.searchParams.get("success") === "1") {
+                  el.classList.add("is-success");
                   el.textContent = "Payment received — thanks. We’ll email you shortly to confirm details.";
                 } else if (u.searchParams.get("cancel") === "1") {
+                  el.classList.add("is-error");
                   el.textContent = "Checkout cancelled. If you had an issue, contact us and we’ll help.";
+                } else {
+                  el.textContent = "";
                 }
               })();
             </script>
@@ -126,23 +121,17 @@
 
         <aside class="card">
           <h3 class="h3">What you get</h3>
-          <p class="muted">
-            A clean, tested kit with clear setup steps and ongoing support if you need it.
-          </p>
+          <p class="muted">A clean, tested kit with clear setup steps and ongoing support if you need it.</p>
 
           <div class="divider"></div>
 
           <h3 class="h3">Warranty</h3>
-          <p class="muted">
-            See <a href="support.html">Support</a> for warranty and troubleshooting.
-          </p>
+          <p class="muted">See <a href="support.html">Support</a> for warranty and troubleshooting.</p>
 
           <div class="divider"></div>
 
           <h3 class="h3">Custom requests</h3>
-          <p class="muted">
-            Want a few specific games swapped in? <a href="contact.html">Send a message</a> and we’ll confirm what’s possible.
-          </p>
+          <p class="muted">Want a few specific games swapped in? <a href="contact.html">Send a message</a> and we’ll confirm what’s possible.</p>
         </aside>
       </div>
     </div>
