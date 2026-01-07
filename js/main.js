@@ -27,19 +27,32 @@
     window.dispatchEvent(new CustomEvent("rr:consent", { detail: value }));
   };
 
-  if (banner) {
-    consent ? hideBanner() : showBanner();
-  }
-
+  if (banner) consent ? hideBanner() : showBanner();
   acceptBtn?.addEventListener("click", () => setConsent("accepted"));
   rejectBtn?.addEventListener("click", () => setConsent("rejected"));
 
   /* =========================
-     Formspree handler (AJAX)
+     Tracking helper (only works after consent)
+  ========================= */
+  function track(eventName, params = {}) {
+    if (typeof window.rrTrack === "function") return window.rrTrack(eventName, params);
+    if (typeof window.gtag === "function") return window.gtag("event", eventName, params);
+  }
+
+  /* =========================
+     Formspree handler + honeypot
   ========================= */
   function wireFormspree(form) {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+
+      // Honeypot: if filled, treat as spam and silently ignore
+      const honeypot = form.querySelector('input[name="company"]');
+      if (honeypot && String(honeypot.value || "").trim() !== "") {
+        track("spam_blocked", { form_type: form.querySelector('input[name="form_type"]')?.value || "unknown" });
+        form.reset();
+        return;
+      }
 
       const status =
         form.querySelector("[aria-live]") ||
@@ -53,6 +66,9 @@
 
       status.textContent = "Sending…";
 
+      const formType = form.querySelector('input[name="form_type"]')?.value || "unknown";
+      const page = form.querySelector('input[name="page"]')?.value || location.pathname;
+
       try {
         const res = await fetch(form.action, {
           method: "POST",
@@ -61,25 +77,67 @@
         });
 
         if (res.ok) {
-          status.textContent = "Thanks — your message has been sent.";
+          status.textContent = "Thanks — sent.";
+
+          track("form_submit", { form_type: formType, page });
+
+          if (formType === "lead_capture") {
+            track("generate_lead", { page, method: "formspree" });
+          }
+
           form.reset();
         } else {
-          const data = await res.json();
-          status.textContent =
-            data?.errors?.[0]?.message ||
-            "Something went wrong. Please try again.";
+          const data = await res.json().catch(() => ({}));
+          status.textContent = data?.errors?.[0]?.message || "Something went wrong. Please try again.";
+          track("form_submit_error", { form_type: formType, page });
         }
-      } catch (err) {
-        status.textContent =
-          "Network error. Please try again or email us directly.";
+      } catch {
+        status.textContent = "Network error. Please try again or email us directly.";
+        track("form_submit_error", { form_type: formType, page });
       }
     });
   }
 
-  /* =========================
-     Activate forms
-  ========================= */
   document
     .querySelectorAll("form[action^='https://formspree.io']")
     .forEach(wireFormspree);
+
+  /* =========================
+     PayPal tracking (begin_checkout)
+  ========================= */
+  const paypalContainer = document.querySelector("#paypal-container-KZTTHJVUHAFZC");
+  if (paypalContainer) {
+    let fired = false;
+    paypalContainer.addEventListener("click", () => {
+      if (fired) return;
+      fired = true;
+      track("begin_checkout", {
+        currency: "GBP",
+        value: 193.0,
+        items: [{ item_name: "PS2 Plug & Play HDD Mod Kit (500GB)", price: 193.0, quantity: 1 }],
+      });
+    }, { capture: true });
+  }
+
+  /* =========================
+     Conversion tracking on return URL
+     PayPal return URL:
+     https://retroreplay.uk/shop.html?success=1
+     Cancel URL:
+     https://retroreplay.uk/shop.html?cancel=1
+  ========================= */
+  const url = new URL(window.location.href);
+
+  if (url.searchParams.get("success") === "1") {
+    track("purchase", {
+      currency: "GBP",
+      value: 193.0,
+      transaction_id: "paypal_unknown",
+      items: [{ item_name: "PS2 Plug & Play HDD Mod Kit (500GB)", price: 193.0, quantity: 1 }],
+    });
+  }
+
+  if (url.searchParams.get("cancel") === "1") {
+    track("checkout_cancelled", { page: "shop.html" });
+  }
 })();
