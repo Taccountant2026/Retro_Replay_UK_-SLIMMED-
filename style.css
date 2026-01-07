@@ -415,3 +415,11 @@ img{max-width:100%; height:auto}
   border-color: rgba(255,120,120,.28);
   background: rgba(255,120,120,.08);
 }
+/* Mobile safety net for hero + forms (index light page) */
+@media (max-width: 600px){
+  .container{width: min(1120px, 92%)}
+  .header__inner{flex-wrap: wrap}
+  .nav{flex-wrap: wrap}
+  .form__row{flex-direction: column !important}
+  .form__row .button{width:100% !important}
+}
