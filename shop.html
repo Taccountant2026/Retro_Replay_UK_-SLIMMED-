@@ -1,16 +1,25 @@
+<!-- shop.html (FIXED: PayPal Hosted Buttons integrated with your client-id + hostedButtonId, removed placeholder form) -->
 <!doctype html>
 <html lang="en-GB">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Retro Replay — Plug & play PS2 HDD mod kit." />
+  <meta name="theme-color" content="#060a12" />
   <title>Shop — Retro Replay</title>
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/styles.css" />
 
+  <!-- Google tracking loads after consent (js/analytics.js) -->
   <script defer src="js/analytics.js"></script>
   <script defer src="js/main.js"></script>
+
+  <!-- PayPal Hosted Buttons SDK (loads regardless of cookie consent; not analytics) -->
+  <script
+    defer
+    src="https://www.paypal.com/sdk/js?client-id=BAApYaG5zDntUHsd2tRXv1ylGkYhREqRR-t7PWcH3-Sh7ElgWliEyCEnhAeQjoawIGidc1LY7PQRK9A0Sg&components=hosted-buttons&disable-funding=venmo&currency=GBP">
+  </script>
 </head>
 
 <body>
@@ -40,7 +49,7 @@
         <div class="card card--glow">
           <div class="product__top">
             <div>
-              <h2 class="h2">PS2 Plug & Play HDD Mod Kit (500GB)</h2>
+              <h2 class="h2">PS2 Plug &amp; Play HDD Mod Kit (500GB)</h2>
               <p class="muted">Configured, tested, and ready for disc-free play on PS2 FAT consoles.</p>
             </div>
             <div class="price" aria-label="Price">
@@ -58,30 +67,37 @@
 
           <div class="divider"></div>
 
-          <div class="checkout">
+          <div class="checkout" aria-label="PayPal checkout">
             <p class="muted">PayPal Checkout</p>
 
-            <!-- Option A (recommended for “no-code”): PayPal Hosted Button -->
-            <!-- Replace YOUR_HOSTED_BUTTON_ID with the one from your PayPal account -->
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal">
-              <input type="hidden" name="cmd" value="_s-xclick" />
-              <input type="hidden" name="hosted_button_id" value="YOUR_HOSTED_BUTTON_ID" />
-              <button class="button" type="submit">Buy now with PayPal</button>
-            </form>
+            <!-- PayPal Hosted Buttons container -->
+            <div id="paypal-container-KZTTHJVUHAFZC" class="paypal"></div>
 
-            <!-- Option B: PayPal JS Buttons (use when you have a client-id) -->
-            <!--
-            <div id="paypal-buttons"></div>
-            <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=GBP"></script>
+            <!-- Render button (wait until SDK is available) -->
             <script>
-              paypal.Buttons({
-                createOrder: (data, actions) => actions.order.create({
-                  purchase_units: [{ amount: { value: "193.00" } }]
-                }),
-                onApprove: (data, actions) => actions.order.capture()
-              }).render('#paypal-buttons');
+              (function () {
+                function renderPayPalHostedButton() {
+                  if (!window.paypal || !paypal.HostedButtons) return false;
+                  paypal.HostedButtons({
+                    hostedButtonId: "KZTTHJVUHAFZC",
+                  }).render("#paypal-container-KZTTHJVUHAFZC");
+                  return true;
+                }
+
+                if (!renderPayPalHostedButton()) {
+                  // Retry a few times in case the SDK is still loading
+                  let tries = 0;
+                  const t = setInterval(() => {
+                    tries++;
+                    if (renderPayPalHostedButton() || tries > 20) clearInterval(t);
+                  }, 150);
+                }
+              })();
             </script>
-            -->
+
+            <p class="fineprint">
+              After payment, you’ll receive confirmation and we’ll message you about any custom requests.
+            </p>
           </div>
 
           <p class="fineprint">Questions before buying? <a href="contact.html">Contact here</a>.</p>
@@ -96,6 +112,11 @@
           <h3 class="h3">Warranty</h3>
           <p class="muted">
             See <a href="support.html">Support</a> for warranty and troubleshooting.
+          </p>
+          <div class="divider"></div>
+          <h3 class="h3">Custom requests</h3>
+          <p class="muted">
+            Want a few specific games swapped in? <a href="contact.html">Send a message</a> and we’ll confirm what’s possible.
           </p>
         </aside>
       </div>
