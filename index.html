@@ -9,7 +9,7 @@
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" as="image" href="assets/logo.png" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="style.css" />
 
   <!-- Google tracking loads after consent (js/analytics.js) -->
   <script defer src="js/analytics.js"></script>
@@ -65,17 +65,12 @@
             <p class="muted">Join the email list for updates, restocks, and quick guides.</p>
 
             <!-- Lead capture (Formspree) -->
-            <form
-              class="form"
-              action="https://formspree.io/f/manrkvby"
-              method="POST"
-              data-lead-form
-            >
+            <form class="form" action="https://formspree.io/f/manrkvby" method="POST" data-lead-form>
               <input type="hidden" name="form_type" value="lead_capture" />
               <input type="hidden" name="page" value="index.html" />
 
               <!-- Honeypot (spam trap) -->
-              <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+              <div class="honeypot" aria-hidden="true">
                 <label for="company">Company</label>
                 <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
               </div>
@@ -86,11 +81,10 @@
                 <button class="button" type="submit">Get it</button>
               </div>
 
-              <!-- Hidden message so Formspree always receives a message body -->
               <textarea name="message" style="display:none">Lead capture signup</textarea>
 
               <p class="fineprint">No spam. Unsubscribe anytime.</p>
-              <p class="fineprint" aria-live="polite"></p>
+              <p class="form-status" aria-live="polite"></p>
             </form>
 
             <div class="divider"></div>
@@ -142,7 +136,6 @@
     </div>
   </footer>
 
-  <!-- Cookie banner -->
   <div class="cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
     <div class="cookie__inner">
       <p class="cookie__text">
