@@ -1,17 +1,18 @@
+<!-- index.html (FIXED: Formspree wired, analytics consent-gated scripts kept, small SEO/UX improvements) -->
 <!doctype html>
 <html lang="en-GB">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Retro Replay — refurbished retro consoles and plug & play HDD mod kits, tested and supported." />
+  <meta name="theme-color" content="#060a12" />
   <title>Retro Replay</title>
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" as="image" href="assets/logo.png" />
-
   <link rel="stylesheet" href="css/styles.css" />
 
-  <!-- Google tracking loads after consent (see js/analytics.js) -->
+  <!-- Google tracking loads after consent (js/analytics.js) -->
   <script defer src="js/analytics.js"></script>
   <script defer src="js/main.js"></script>
 </head>
@@ -64,14 +65,34 @@
             <h2 class="h2">Get the game list + setup tips</h2>
             <p class="muted">Join the email list for updates, restocks, and quick guides.</p>
 
-            <!-- Lead capture: replace action with your provider (Mailchimp/Formspree/etc.) -->
-            <form class="form" method="post" action="#" data-lead-form>
+            <!-- Lead capture (Formspree) -->
+            <form
+              class="form"
+              action="https://formspree.io/f/manrkvby"
+              method="POST"
+              data-lead-form
+            >
+              <!-- Helps you identify the source inside Formspree -->
+              <input type="hidden" name="form_type" value="lead_capture" />
+              <input type="hidden" name="page" value="index.html" />
+
               <label class="label" for="email">Email</label>
               <div class="form__row">
-                <input class="input" id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
+                <input
+                  class="input"
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  placeholder="you@example.com"
+                />
                 <button class="button" type="submit">Get it</button>
               </div>
               <p class="fineprint">No spam. Unsubscribe anytime.</p>
+
+              <!-- Optional: tiny status area if you later add AJAX handling -->
+              <p class="fineprint" id="lead-status" aria-live="polite"></p>
             </form>
 
             <div class="divider"></div>
