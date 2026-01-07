@@ -1,41 +1,42 @@
+/* /js/analytics.js
+   Loads GA4 ONLY after cookie consent is accepted.
+   GA4 ID: G-PF6Q3TSMVL
+*/
 (() => {
-  const CONSENT_KEY = "rr_cookie_consent";
-  const consent = localStorage.getItem(CONSENT_KEY);
+  const GA_ID = "G-PF6Q3TSMVL";
+  const CONSENT_KEY = "rr_cookie_consent"; // "accepted" | "rejected"
 
-  const MEASUREMENT_ID = "G-PF6Q3TSMVL";
-  let loaded = false;
+  const alreadyLoaded = () => !!window.__rrGaLoaded;
 
-  // Safe wrapper for event tracking (only fires if GA is loaded)
-  window.rrTrack = function (eventName, params = {}) {
-    if (typeof window.gtag === "function") {
-      window.gtag("event", eventName, params);
-    }
-  };
+  const loadGA = () => {
+    if (alreadyLoaded()) return;
 
-  function loadGtag() {
-    if (loaded) return;
-    loaded = true;
+    // Mark loaded
+    window.__rrGaLoaded = true;
 
+    // Inject gtag script
     const s = document.createElement("script");
     s.async = true;
-    s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(MEASUREMENT_ID)}`;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_ID)}`;
     document.head.appendChild(s);
 
+    // Init gtag
     window.dataLayer = window.dataLayer || [];
     function gtag(){ window.dataLayer.push(arguments); }
-    window.gtag = gtag;
+    window.gtag = window.gtag || gtag;
 
-    gtag("js", new Date());
-    gtag("config", MEASUREMENT_ID, { anonymize_ip: true });
-  }
+    window.gtag("js", new Date());
+    window.gtag("config", GA_ID, {
+      anonymize_ip: true
+    });
+  };
 
-  function maybeEnableAnalytics(currentConsent) {
-    if (currentConsent === "accepted") loadGtag();
-  }
+  const consent = localStorage.getItem(CONSENT_KEY);
+  if (consent === "accepted") loadGA();
 
-  maybeEnableAnalytics(consent);
-
+  // Listen for banner consent event from main.js
   window.addEventListener("rr:consent", (e) => {
-    maybeEnableAnalytics(e.detail);
+    if (e?.detail === "accepted") loadGA();
+    // If rejected, do nothing (we never load GA in that case)
   });
 })();
