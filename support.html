@@ -1,220 +1,98 @@
-<!-- /support.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Setup & Aftersales Support | Retro Replay UK</title>
-  <meta name="description" content="PS2 setup and aftersales support: quick start, troubleshooting, picture quality on modern TVs, and how to get help." />
-  <link rel="canonical" href="https://retroreplay.uk/support.html" />
-  <link rel="stylesheet" href="/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Retro Replay support, warranty and FAQs." />
+  <title>Support — Retro Replay</title>
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <script defer src="js/analytics.js"></script>
+  <script defer src="js/main.js"></script>
 </head>
 
 <body>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="Retro Replay Home">
+        <img class="brand__logo brand__logo--small" src="assets/logo.png" alt="Retro Replay" width="120" height="120" />
+      </a>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Retro Replay UK Home">
-      <img class="brand-logo" src="/assets/logo.png" alt="Retro Replay" width="160" height="70" loading="eager" decoding="async" />
-      <div class="brand-text">
-        <div class="brand-name">Retro Replay UK</div>
-        <div class="brand-tag">Setup &amp; Aftersales Support</div>
-      </div>
-    </a>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="shop.html">Shop</a>
+        <a class="nav__link is-active" href="support.html">Support</a>
+        <a class="nav__link" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <nav class="nav" aria-label="Primary navigation">
-      <a href="/">Home</a>
-      <a href="/ps2.html">PS2 Consoles</a>
-      <a href="/support.html" aria-current="page">Support</a>
-      <a href="/contact.html">Contact</a>
-    </nav>
-
-    <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">☰</button>
-  </div>
-
-  <div class="container nav-mobile" id="primaryNav">
-    <a href="/">Home</a>
-    <a href="/ps2.html">PS2 Consoles</a>
-    <a href="/support.html" aria-current="page">Support</a>
-    <a href="/contact.html">Contact</a>
-  </div>
-</header>
-
-<main>
-
-  <section class="page-hero">
+  <main class="section">
     <div class="container">
-      <div class="kicker">Support</div>
-      <h1>Setup &amp; Aftersales Support</h1>
-      <p>Quick start, troubleshooting, and modern TV picture quality advice.</p>
+      <div class="pagehead">
+        <h1 class="h1">Support</h1>
+        <p class="muted">Fast answers first. If you still need help, contact and we’ll sort it.</p>
+      </div>
 
-      <div class="pill-row">
-        <a class="pill pill-link" href="#setup">Quick start</a>
-        <a class="pill pill-link" href="#troubleshoot">Troubleshooting</a>
-        <a class="pill pill-link" href="#picture">Picture quality</a>
-        <a class="pill pill-link" href="#aftercare">Aftersales</a>
+      <div class="grid2">
+        <section class="card">
+          <h2 class="h2">Warranty</h2>
+          <p class="muted">
+            All kits are tested before dispatch. If you experience an issue, send a message with:
+            console model, what you see on screen, and what you’ve tried.
+          </p>
+          <ul class="bullets">
+            <li>Support for setup and troubleshooting</li>
+            <li>Clear steps for returns if needed</li>
+            <li>Help available via Contact page</li>
+          </ul>
+        </section>
+
+        <section class="card card--glow">
+          <h2 class="h2">Quick fixes (common)</h2>
+
+          <details class="faq" open>
+            <summary>How do I exit a game back to the menu?</summary>
+            <p>Try: <strong>L1 + R1 + L2 + R2 + Start + Select</strong> together (depends on game/settings).</p>
+          </details>
+
+          <details class="faq">
+            <summary>No display / black screen?</summary>
+            <p>Check video cable/adapter, try another TV input, and confirm the console boots without the kit.</p>
+          </details>
+
+          <details class="faq">
+            <summary>Game not launching / freezing?</summary>
+            <p>Try a different compatibility mode and confirm the drive/cables are seated firmly.</p>
+          </details>
+
+          <div class="divider"></div>
+          <a class="button" href="contact.html">Contact support</a>
+        </section>
       </div>
     </div>
-  </section>
+  </main>
 
-  <section class="section" id="setup">
-    <div class="container">
-      <div class="section-head">
-        <h2>Quick start (Modded HDD builds)</h2>
-        <p>Basic steps to get playing with the least effort.</p>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h3>Power on</h3>
-          <ul class="ticks">
-            <li>Connect power + video cable</li>
-            <li>Insert FMCB memory card (if provided)</li>
-            <li>Turn on the console</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Load games</h3>
-          <ul class="ticks">
-            <li>Open your loader (e.g., OPL)</li>
-            <li>Browse the game list</li>
-            <li>Select title and launch</li>
-          </ul>
-          <p class="small">If you only see a few games, check the “Troubleshooting” section.</p>
-        </div>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="fineprint">© <span data-year></span> Retro Replay</p>
+      <div class="footer__links">
+        <a href="support.html">Warranty & Support</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <section class="section" id="troubleshoot">
-    <div class="container">
-      <div class="section-head">
-        <h2>Troubleshooting (common)</h2>
-        <p>Most issues are settings, input selection, or TV/cable related.</p>
+  <div class="cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+    <div class="cookie__inner">
+      <p class="cookie__text">We use cookies for analytics to improve the site.</p>
+      <div class="cookie__actions">
+        <button class="button button--ghost" type="button" data-cookie-reject>Reject</button>
+        <button class="button" type="button" data-cookie-accept>Accept</button>
       </div>
-
-      <div class="grid-3">
-        <div class="card soft">
-          <h3>Games missing</h3>
-          <ul class="ticks">
-            <li>Confirm you’re in the correct device/menu</li>
-            <li>Use page navigation in the loader</li>
-            <li>Confirm the HDD is detected</li>
-          </ul>
-        </div>
-        <div class="card soft">
-          <h3>No signal / black screen</h3>
-          <ul class="ticks">
-            <li>Switch TV input source</li>
-            <li>Try another HDMI port / adapter</li>
-            <li>Reseat cables</li>
-          </ul>
-        </div>
-        <div class="card soft">
-          <h3>Freezing / loading issues</h3>
-          <ul class="ticks">
-            <li>Some games need specific modes/settings</li>
-            <li>Try another title to compare</li>
-            <li>Message support with the exact game name</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="info-band mt-24">
-        When contacting support, include: your TV model (if relevant), what cable/adapter you’re using, and a photo/video of the screen if possible.
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="picture">
-    <div class="container">
-      <div class="section-head">
-        <h2>Picture quality on modern TVs</h2>
-        <p>Why PS2 can look rough on 4K TVs, and what actually improves it.</p>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h3>Why it looks worse on 4K OLED</h3>
-          <ul class="ticks">
-            <li>PS2 outputs low-resolution analogue video</li>
-            <li>Modern TVs stretch it across a large panel</li>
-            <li>TV scalers often aren’t tuned for retro sources</li>
-          </ul>
-        </div>
-
-        <div class="card card-glow">
-          <h3>What improves it most</h3>
-          <ul class="ticks">
-            <li>Quality upscaler (best)</li>
-            <li>Good HDMI solution (varies by TV)</li>
-            <li>Correct TV settings (sharpness/processing)</li>
-          </ul>
-          <p class="small">Message your TV model and connection type for a realistic recommendation.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="aftercare">
-    <div class="container">
-      <div class="section-head">
-        <h2>Aftersales support</h2>
-        <p>Help is included. If you’re stuck, contact us and we’ll guide you step-by-step.</p>
-      </div>
-
-      <div class="card">
-        <h3>Best way to get help</h3>
-        <ul class="ticks">
-          <li>Include your order details (or what you purchased)</li>
-          <li>Describe what you see on screen and what you expected</li>
-          <li>Attach photos/videos where possible</li>
-        </ul>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="/contact.html">Contact Support</a>
-          <a class="btn btn-ghost" href="/ps2.html">Back to PS2</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="/assets/logo.png" alt="Retro Replay" width="120" height="50" loading="lazy" decoding="async" />
-      <div>
-        <div class="footer-title">Retro Replay UK</div>
-        <div class="footer-sub">Setup guidance + aftersales support included.</div>
-      </div>
-    </div>
-
-    <div class="footer-links">
-      <a href="/ps2.html">PS2</a>
-      <a href="/contact.html">Contact</a>
     </div>
   </div>
-
-  <div class="container footer-bottom">© <span id="year"></span> Retro Replay UK.</div>
-</footer>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  const toggle = document.querySelector('.nav-toggle');
-  const mobile = document.getElementById('primaryNav');
-  if (toggle && mobile) {
-    toggle.addEventListener('click', () => {
-      const open = mobile.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      mobile.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
-    }));
-  }
-</script>
-
 </body>
 </html>
