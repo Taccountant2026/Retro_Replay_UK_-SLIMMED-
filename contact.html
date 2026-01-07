@@ -8,9 +8,8 @@
   <title>Contact — Retro Replay</title>
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="style.css" />
 
-  <!-- Google tracking loads after consent (js/analytics.js) -->
   <script defer src="js/analytics.js"></script>
   <script defer src="js/main.js"></script>
 </head>
@@ -46,13 +45,11 @@
             Prefer email? <a href="mailto:retroreply2026@gmail.com">retroreply2026@gmail.com</a>
           </p>
 
-          <!-- Contact form (Formspree) -->
           <form class="form" method="post" action="https://formspree.io/f/manrkvby" data-contact-form>
             <input type="hidden" name="form_type" value="contact" />
             <input type="hidden" name="page" value="contact.html" />
 
-            <!-- Honeypot (spam trap) -->
-            <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+            <div class="honeypot" aria-hidden="true">
               <label for="company_contact">Company</label>
               <input id="company_contact" name="company" type="text" tabindex="-1" autocomplete="off" />
             </div>
@@ -76,7 +73,7 @@
 
             <button class="button" type="submit">Send</button>
             <p class="fineprint">You’ll receive a reply via email.</p>
-            <p class="fineprint" aria-live="polite"></p>
+            <p class="form-status" aria-live="polite"></p>
           </form>
         </section>
 
@@ -93,13 +90,11 @@
           <h3 class="h3">Join updates</h3>
           <p class="muted">Restocks, guides, and offers.</p>
 
-          <!-- Lead capture (Formspree) -->
           <form class="form" method="post" action="https://formspree.io/f/manrkvby" data-lead-form>
             <input type="hidden" name="form_type" value="lead_capture" />
             <input type="hidden" name="page" value="contact.html" />
 
-            <!-- Honeypot (spam trap) -->
-            <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+            <div class="honeypot" aria-hidden="true">
               <label for="company_lead">Company</label>
               <input id="company_lead" name="company" type="text" tabindex="-1" autocomplete="off" />
             </div>
@@ -113,7 +108,7 @@
             <textarea name="message" style="display:none">Lead capture signup</textarea>
 
             <p class="fineprint">No spam. Unsubscribe anytime.</p>
-            <p class="fineprint" aria-live="polite"></p>
+            <p class="form-status" aria-live="polite"></p>
           </form>
         </aside>
       </div>
