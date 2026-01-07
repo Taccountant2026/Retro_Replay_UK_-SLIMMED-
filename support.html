@@ -1,20 +1,139 @@
+<!-- /support.html (LIGHT design to match index/shop + floating controllers + mobile-first) -->
 <!doctype html>
 <html lang="en-GB">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Retro Replay support, warranty and FAQs." />
-  <meta name="theme-color" content="#060a12" />
+  <meta name="theme-color" content="#ffffff" />
   <title>Support — Retro Replay</title>
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" as="image" href="assets/logo.png" />
   <link rel="stylesheet" href="style.css" />
 
   <script defer src="js/analytics.js"></script>
   <script defer src="js/main.js"></script>
+
+  <!-- Page-specific (support-only) light + responsive overrides to match index/shop -->
+  <style>
+    body.page-light{
+      background:#ffffff !important;
+      color:#0b1020 !important;
+    }
+    body.page-light a{color:inherit}
+    body.page-light .muted{color:rgba(11,16,32,.70) !important}
+
+    body.page-light .header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(255,255,255,.82) !important;
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid rgba(11,16,32,.10);
+    }
+
+    /* Top banner */
+    body.page-light .hero{
+      padding:44px 0 20px;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(900px 520px at 12% -10%, rgba(135,234,255,.55), transparent 55%),
+        radial-gradient(700px 420px at 92% 10%, rgba(25,207,255,.28), transparent 55%),
+        linear-gradient(180deg, #ffffff, #f7fbff);
+      border-bottom:1px solid rgba(11,16,32,.08);
+    }
+    body.page-light .hero__inner{ position:relative; z-index:1; }
+
+    body.page-light .kicker{ color: rgba(0,140,170,.95) !important; }
+
+    /* Crisp white cards */
+    body.page-light .card,
+    body.page-light .card.card--glow{
+      background: rgba(255,255,255,.94) !important;
+      border: 1px solid rgba(11,16,32,.12) !important;
+      box-shadow: 0 18px 45px rgba(0,0,0,.08) !important;
+    }
+    body.page-light .divider{border-color: rgba(11,16,32,.10) !important}
+
+    body.page-light .button{
+      border:1px solid rgba(11,16,32,.14);
+      background: rgba(255,255,255,.90);
+      color:#0b1020;
+      box-shadow: 0 10px 25px rgba(0,0,0,.06);
+    }
+    body.page-light .button:hover{border-color: rgba(25,207,255,.45)}
+    body.page-light .button.button--ghost{
+      background: rgba(135,234,255,.18);
+      border-color: rgba(25,207,255,.35);
+    }
+
+    /* Support grid (mobile-first, then 2-col) */
+    .support-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:16px;
+      margin-top: 18px;
+    }
+    @media (min-width: 980px){
+      .support-grid{ grid-template-columns: 1fr 1fr; align-items:start; }
+    }
+
+    /* Make details/faq touch-friendly */
+    details.faq{
+      border:1px solid rgba(11,16,32,.10);
+      background: rgba(255,255,255,.78);
+      border-radius: 14px;
+      padding: 10px 12px;
+      margin: 10px 0;
+    }
+    details.faq summary{
+      cursor:pointer;
+      font-weight: 900;
+      list-style:none;
+      outline:none;
+      padding: 6px 0;
+    }
+    details.faq summary::-webkit-details-marker{display:none}
+    details.faq p{ margin: 8px 0 0; color: rgba(11,16,32,.78); }
+
+    /* Floating controllers */
+    .float-layer{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+    }
+    .float-item{
+      position:absolute;
+      opacity:.16;
+      filter: drop-shadow(0 12px 26px rgba(0,0,0,.10));
+      transform: translate3d(0,0,0);
+      animation: floaty 10s ease-in-out infinite;
+      will-change: transform;
+    }
+    .float-item svg{
+      width: clamp(44px, 7vw, 92px);
+      height: auto;
+      display:block;
+    }
+    .float-item .stroke{stroke: rgba(11,16,32,.65)}
+    .float-item .fill{fill: rgba(25,207,255,.22)}
+    @keyframes floaty{
+      0%,100%{ transform: translate3d(0, 0, 0) rotate(0deg); }
+      50%{ transform: translate3d(0, -18px, 0) rotate(2deg); }
+    }
+
+    @media (max-width: 600px){
+      .float-item{ opacity:.12; }
+      .support-actions{ display:flex; flex-direction:column; gap:10px; }
+      .support-actions .button{ width:100%; text-align:center; }
+    }
+  </style>
 </head>
 
-<body>
+<body class="page-light">
+  <a class="skip" href="#main">Skip to content</a>
+
   <header class="header">
     <div class="container header__inner">
       <a class="brand" href="index.html" aria-label="Retro Replay Home">
@@ -27,18 +146,28 @@
         <a class="nav__link is-active" href="support.html">Support</a>
         <a class="nav__link" href="contact.html">Contact</a>
       </nav>
+
+      <a class="button button--ghost header__cta" href="contact.html">Get help</a>
     </div>
   </header>
 
-  <main class="section">
-    <div class="container">
-      <div class="pagehead">
-        <h1 class="h1">Support</h1>
-        <p class="muted">Fast answers first. If you still need help, contact and we’ll sort it.</p>
-      </div>
+  <main id="main">
+    <section class="hero">
+      <div class="float-layer" id="float-layer" aria-hidden="true"></div>
 
-      <div class="grid2">
-        <section class="card">
+      <div class="container hero__inner">
+        <p class="kicker">Support • Warranty • FAQs</p>
+        <h1 class="h1">Fast help, clear steps.</h1>
+        <p class="lead">
+          Most issues are quick fixes. If you still need help, message with your PS2 model (SCPH-xxxx),
+          what you see on screen, and what you’ve tried.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container support-grid">
+        <section class="card" aria-label="Warranty and support">
           <h2 class="h2">Warranty &amp; support</h2>
           <p class="muted">
             All kits are tested before dispatch. If you experience an issue, send a message with:
@@ -56,9 +185,16 @@
           <h3 class="h3">Email support</h3>
           <p class="muted"><a href="mailto:retroreply2026@gmail.com">retroreply2026@gmail.com</a></p>
           <p class="fineprint">Include PS2 model (SCPH-xxxx), what you see on screen, and what you’ve tried.</p>
+
+          <div class="divider"></div>
+
+          <div class="support-actions">
+            <a class="button" href="contact.html">Contact support</a>
+            <a class="button button--ghost" href="shop.html">Back to Shop</a>
+          </div>
         </section>
 
-        <section class="card card--glow">
+        <section class="card card--glow" aria-label="Quick fixes">
           <h2 class="h2">Quick fixes (common)</h2>
 
           <details class="faq" open>
@@ -85,7 +221,7 @@
           <a class="button" href="contact.html">Contact support</a>
         </section>
       </div>
-    </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -100,12 +236,54 @@
 
   <div class="cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
     <div class="cookie__inner">
-      <p class="cookie__text">We use cookies for analytics to improve the site.</p>
+      <p class="cookie__text">We use cookies for analytics to improve the site. You can accept or reject non-essential cookies.</p>
       <div class="cookie__actions">
         <button class="button button--ghost" type="button" data-cookie-reject>Reject</button>
         <button class="button" type="button" data-cookie-accept>Accept</button>
       </div>
     </div>
   </div>
+
+  <!-- Floating controllers (same behaviour as index/shop) -->
+  <script>
+    (function () {
+      const layer = document.getElementById("float-layer");
+      if (!layer) return;
+
+      const isMobile = matchMedia("(max-width: 600px)").matches;
+      const count = isMobile ? 5 : 9;
+
+      const svgController = () => `
+        <svg viewBox="0 0 128 72" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true">
+          <path class="fill" d="M20 34c0-10 8-18 18-18h52c10 0 18 8 18 18v6c0 10-8 18-18 18h-7l-10-9H55l-10 9h-7c-10 0-18-8-18-18v-6Z"/>
+          <path class="stroke" d="M20 34c0-10 8-18 18-18h52c10 0 18 8 18 18v6c0 10-8 18-18 18h-7l-10-9H55l-10 9h-7c-10 0-18-8-18-18v-6Z" fill="none" stroke-width="2"/>
+          <circle class="stroke" cx="88" cy="35" r="5" fill="none" stroke-width="2"/>
+          <circle class="stroke" cx="102" cy="35" r="5" fill="none" stroke-width="2"/>
+          <path class="stroke" d="M44 32h-10M39 27v10" fill="none" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      `;
+
+      for (let i = 0; i < count; i++) {
+        const d = document.createElement("div");
+        d.className = "float-item";
+        d.innerHTML = svgController();
+
+        d.style.left = Math.floor(Math.random() * 92) + "%";
+        d.style.top = Math.floor(Math.random() * 78) + "%";
+        d.style.animationDuration = (8 + Math.random() * 6) + "s";
+        d.style.animationDelay = (Math.random() * 2) + "s";
+        d.style.transform = `rotate(${(Math.random()*8-4).toFixed(1)}deg)`;
+        layer.appendChild(d);
+      }
+
+      if (!isMobile) {
+        window.addEventListener("mousemove", (e) => {
+          const x = (e.clientX / window.innerWidth - 0.5) * 6;
+          const y = (e.clientY / window.innerHeight - 0.5) * 6;
+          layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        }, { passive: true });
+      }
+    })();
+  </script>
 </body>
 </html>
