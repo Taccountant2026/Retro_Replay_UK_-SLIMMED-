@@ -4,11 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Contact Retro Replay for questions, orders and support." />
+  <meta name="theme-color" content="#060a12" />
   <title>Contact — Retro Replay</title>
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/styles.css" />
 
+  <!-- Google tracking loads after consent (js/analytics.js) -->
   <script defer src="js/analytics.js"></script>
   <script defer src="js/main.js"></script>
 </head>
@@ -40,8 +42,21 @@
         <section class="card card--glow">
           <h2 class="h2">Send a message</h2>
 
-          <!-- Replace action with Formspree / Netlify Forms / your backend endpoint -->
-          <form class="form" method="post" action="#" data-contact-form>
+          <p class="muted">
+            Prefer email? <a href="mailto:retroreply2026@gmail.com">retroreply2026@gmail.com</a>
+          </p>
+
+          <!-- Contact form (Formspree) -->
+          <form class="form" method="post" action="https://formspree.io/f/manrkvby" data-contact-form>
+            <input type="hidden" name="form_type" value="contact" />
+            <input type="hidden" name="page" value="contact.html" />
+
+            <!-- Honeypot (spam trap) -->
+            <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+              <label for="company_contact">Company</label>
+              <input id="company_contact" name="company" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+
             <label class="label" for="name">Name</label>
             <input class="input" id="name" name="name" autocomplete="name" required />
 
@@ -61,6 +76,7 @@
 
             <button class="button" type="submit">Send</button>
             <p class="fineprint">You’ll receive a reply via email.</p>
+            <p class="fineprint" aria-live="polite"></p>
           </form>
         </section>
 
@@ -77,12 +93,27 @@
           <h3 class="h3">Join updates</h3>
           <p class="muted">Restocks, guides, and offers.</p>
 
-          <form class="form" method="post" action="#" data-lead-form>
+          <!-- Lead capture (Formspree) -->
+          <form class="form" method="post" action="https://formspree.io/f/manrkvby" data-lead-form>
+            <input type="hidden" name="form_type" value="lead_capture" />
+            <input type="hidden" name="page" value="contact.html" />
+
+            <!-- Honeypot (spam trap) -->
+            <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+              <label for="company_lead">Company</label>
+              <input id="company_lead" name="company" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+
             <label class="label" for="email2">Email</label>
             <div class="form__row">
               <input class="input" id="email2" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
               <button class="button" type="submit">Join</button>
             </div>
+
+            <textarea name="message" style="display:none">Lead capture signup</textarea>
+
+            <p class="fineprint">No spam. Unsubscribe anytime.</p>
+            <p class="fineprint" aria-live="polite"></p>
           </form>
         </aside>
       </div>
@@ -93,7 +124,7 @@
     <div class="container footer__inner">
       <p class="fineprint">© <span data-year></span> Retro Replay</p>
       <div class="footer__links">
-        <a href="support.html">Warranty & Support</a>
+        <a href="support.html">Warranty &amp; Support</a>
         <a href="contact.html">Contact</a>
       </div>
     </div>
