@@ -1,4 +1,3 @@
-<!-- shop.html (FIXED: PayPal Hosted Buttons integrated with your client-id + hostedButtonId, removed placeholder form) -->
 <!doctype html>
 <html lang="en-GB">
 <head>
@@ -15,7 +14,7 @@
   <script defer src="js/analytics.js"></script>
   <script defer src="js/main.js"></script>
 
-  <!-- PayPal Hosted Buttons SDK (loads regardless of cookie consent; not analytics) -->
+  <!-- PayPal Hosted Buttons SDK -->
   <script
     defer
     src="https://www.paypal.com/sdk/js?client-id=BAApYaG5zDntUHsd2tRXv1ylGkYhREqRR-t7PWcH3-Sh7ElgWliEyCEnhAeQjoawIGidc1LY7PQRK9A0Sg&components=hosted-buttons&disable-funding=venmo&currency=GBP">
@@ -43,6 +42,10 @@
       <div class="pagehead">
         <h1 class="h1">Shop</h1>
         <p class="muted">Simple checkout via PayPal for now.</p>
+        <p class="fineprint">
+          After successful payment, you’ll return here. If it doesn’t redirect, just email
+          <a href="mailto:retroreply2026@gmail.com">retroreply2026@gmail.com</a>.
+        </p>
       </div>
 
       <div class="product">
@@ -70,10 +73,10 @@
           <div class="checkout" aria-label="PayPal checkout">
             <p class="muted">PayPal Checkout</p>
 
-            <!-- PayPal Hosted Buttons container -->
+            <!-- PayPal container -->
             <div id="paypal-container-KZTTHJVUHAFZC" class="paypal"></div>
 
-            <!-- Render button (wait until SDK is available) -->
+            <!-- Render Hosted Button -->
             <script>
               (function () {
                 function renderPayPalHostedButton() {
@@ -85,7 +88,6 @@
                 }
 
                 if (!renderPayPalHostedButton()) {
-                  // Retry a few times in case the SDK is still loading
                   let tries = 0;
                   const t = setInterval(() => {
                     tries++;
@@ -96,8 +98,27 @@
             </script>
 
             <p class="fineprint">
-              After payment, you’ll receive confirmation and we’ll message you about any custom requests.
+              Ensure your PayPal button return URL is set to:
+              <strong>https://retroreplay.uk/shop.html?success=1</strong>
+              (Cancel URL: <strong>https://retroreplay.uk/shop.html?cancel=1</strong>)
             </p>
+
+            <div class="divider"></div>
+
+            <!-- Optional: show basic messages if redirected back -->
+            <p class="fineprint" aria-live="polite" id="checkout-status"></p>
+            <script>
+              (function () {
+                const el = document.getElementById("checkout-status");
+                if (!el) return;
+                const u = new URL(window.location.href);
+                if (u.searchParams.get("success") === "1") {
+                  el.textContent = "Payment received — thanks. We’ll email you shortly to confirm details.";
+                } else if (u.searchParams.get("cancel") === "1") {
+                  el.textContent = "Checkout cancelled. If you had an issue, contact us and we’ll help.";
+                }
+              })();
+            </script>
           </div>
 
           <p class="fineprint">Questions before buying? <a href="contact.html">Contact here</a>.</p>
@@ -108,12 +129,16 @@
           <p class="muted">
             A clean, tested kit with clear setup steps and ongoing support if you need it.
           </p>
+
           <div class="divider"></div>
+
           <h3 class="h3">Warranty</h3>
           <p class="muted">
             See <a href="support.html">Support</a> for warranty and troubleshooting.
           </p>
+
           <div class="divider"></div>
+
           <h3 class="h3">Custom requests</h3>
           <p class="muted">
             Want a few specific games swapped in? <a href="contact.html">Send a message</a> and we’ll confirm what’s possible.
@@ -127,7 +152,7 @@
     <div class="container footer__inner">
       <p class="fineprint">© <span data-year></span> Retro Replay</p>
       <div class="footer__links">
-        <a href="support.html">Warranty & Support</a>
+        <a href="support.html">Warranty &amp; Support</a>
         <a href="contact.html">Contact</a>
       </div>
     </div>
