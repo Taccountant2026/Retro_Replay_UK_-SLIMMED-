@@ -5,7 +5,7 @@
   const MEASUREMENT_ID = "G-PF6Q3TSMVL";
   let loaded = false;
 
-  // Public helper: only tracks if GA is loaded (after consent)
+  // Safe wrapper for event tracking (only fires if GA is loaded)
   window.rrTrack = function (eventName, params = {}) {
     if (typeof window.gtag === "function") {
       window.gtag("event", eventName, params);
