@@ -383,3 +383,35 @@ img{max-width:100%; height:auto}
 .maintenance-banner strong {
   margin-right: 6px;
 }
+/* =========================
+   Formspree inline status + honeypot
+========================= */
+
+.honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+.form-status {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(135,234,255,.18);
+  background: rgba(135,234,255,.05);
+  color: rgba(234,242,255,.88);
+  box-shadow: 0 0 0 1px rgba(25,207,255,.06) inset;
+}
+
+.form-status.is-success {
+  border-color: rgba(135,234,255,.28);
+  background: rgba(135,234,255,.08);
+}
+
+.form-status.is-error {
+  border-color: rgba(255,120,120,.28);
+  background: rgba(255,120,120,.08);
+}
