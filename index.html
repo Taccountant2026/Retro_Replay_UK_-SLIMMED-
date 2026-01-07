@@ -1,22 +1,159 @@
+<!-- /index.html (LIGHT + mobile-first + floating controllers via JS + lead capture priority) -->
 <!doctype html>
 <html lang="en-GB">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Retro Replay — refurbished retro consoles and plug & play HDD mod kits, tested and supported." />
-  <meta name="theme-color" content="#060a12" />
+  <meta name="theme-color" content="#ffffff" />
   <title>Retro Replay</title>
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" as="image" href="assets/logo.png" />
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Google tracking loads after consent (js/analytics.js) -->
   <script defer src="js/analytics.js"></script>
   <script defer src="js/main.js"></script>
+
+  <!-- Page-specific (index-only) light + responsive overrides -->
+  <style>
+    /* Base light theme (index only) */
+    body.page-light{
+      background:#ffffff !important;
+      color:#0b1020 !important;
+    }
+    body.page-light a{color:inherit}
+    body.page-light .muted{color:rgba(11,16,32,.70) !important}
+
+    /* Header */
+    body.page-light .header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(255,255,255,.82) !important;
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid rgba(11,16,32,.10);
+    }
+
+    /* Hero background */
+    body.page-light .hero{
+      padding:64px 0 36px;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(900px 520px at 12% -10%, rgba(135,234,255,.55), transparent 55%),
+        radial-gradient(700px 420px at 92% 10%, rgba(25,207,255,.28), transparent 55%),
+        linear-gradient(180deg, #ffffff, #f7fbff);
+      border-bottom:1px solid rgba(11,16,32,.08);
+    }
+
+    /* Ensure hero layout stacks nicely on mobile even if your global CSS is different */
+    body.page-light .hero__inner{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:start;
+      position:relative;
+      z-index:1;
+    }
+
+    body.page-light .kicker{ color: rgba(0,140,170,.95) !important; }
+    body.page-light .kicker::before{ box-shadow: 0 0 20px rgba(25,207,255,.25); }
+
+    /* Crisp white cards */
+    body.page-light .card,
+    body.page-light .card.card--glow{
+      background: rgba(255,255,255,.94) !important;
+      border: 1px solid rgba(11,16,32,.12) !important;
+      box-shadow: 0 18px 45px rgba(0,0,0,.08) !important;
+    }
+    body.page-light .hero__card .card--glow{
+      border-color: rgba(25,207,255,.35) !important;
+      box-shadow: 0 0 0 1px rgba(25,207,255,.12) inset, 0 18px 45px rgba(0,0,0,.08) !important;
+    }
+    body.page-light .divider{border-color: rgba(11,16,32,.10) !important}
+
+    /* Buttons */
+    body.page-light .button{
+      border:1px solid rgba(11,16,32,.14);
+      background: rgba(255,255,255,.90);
+      color:#0b1020;
+      box-shadow: 0 10px 25px rgba(0,0,0,.06);
+    }
+    body.page-light .button:hover{border-color: rgba(25,207,255,.45)}
+    body.page-light .button.button--ghost{
+      background: rgba(135,234,255,.18);
+      border-color: rgba(25,207,255,.35);
+    }
+
+    /* Trust chips (if your existing .trust styles are dark) */
+    body.page-light .trust{ padding-left:0; list-style:none; display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 0; }
+    body.page-light .trust__item{
+      border:1px solid rgba(11,16,32,.10);
+      background: rgba(255,255,255,.80);
+      color: rgba(11,16,32,.85);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: .95rem;
+    }
+
+    /* Lead form: mobile-friendly inputs */
+    body.page-light .form__row{
+      display:flex;
+      gap:10px;
+      align-items:stretch;
+    }
+    body.page-light .form__row .input{
+      min-height: 44px;
+      flex: 1 1 auto;
+    }
+    body.page-light .form__row .button{
+      min-height: 44px;
+      white-space: nowrap;
+    }
+
+    /* Floating controllers layer */
+    .float-layer{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+    }
+    .float-item{
+      position:absolute;
+      opacity:.16;
+      filter: drop-shadow(0 12px 26px rgba(0,0,0,.10));
+      transform: translate3d(0,0,0);
+      animation: floaty 10s ease-in-out infinite;
+      will-change: transform;
+    }
+    .float-item svg{
+      width: clamp(44px, 7vw, 92px);
+      height: auto;
+      display:block;
+    }
+    .float-item .stroke{stroke: rgba(11,16,32,.65)}
+    .float-item .fill{fill: rgba(25,207,255,.22)}
+    @keyframes floaty{
+      0%,100%{ transform: translate3d(0, 0, 0) rotate(0deg); }
+      50%{ transform: translate3d(0, -18px, 0) rotate(2deg); }
+    }
+
+    /* Mobile: stack hero, make CTA + lead capture full width */
+    @media (max-width: 960px){
+      body.page-light .hero__inner{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px){
+      body.page-light .hero{ padding: 52px 0 30px; }
+      body.page-light .hero__actions{ display:flex; flex-direction:column; gap:10px; }
+      body.page-light .hero__actions .button{ width:100%; }
+      body.page-light .form__row{ flex-direction: column; }
+      body.page-light .form__row .button{ width:100%; }
+      /* reduce decoration density on mobile */
+      .float-item{ opacity:.12; }
+    }
+  </style>
 </head>
 
-<body>
+<body class="page-light">
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="header">
@@ -38,24 +175,26 @@
 
   <main id="main">
     <section class="hero">
+      <div class="float-layer" id="float-layer" aria-hidden="true"></div>
+
       <div class="container hero__inner">
         <div class="hero__copy">
           <p class="kicker">Refurbished • Tested • Supported</p>
-          <h1 class="h1">Retro gaming, ready to play.</h1>
+          <h1 class="h1">Modded PS2, zero hassle.</h1>
           <p class="lead">
-            Retro Replay provides clean, tested consoles and plug & play HDD mod kits—built for easy setup,
-            reliable play, and ongoing support.
+            Get a <strong>plug &amp; play PS2 HDD mod kit</strong> built for PS2 FAT consoles — faster loading, quieter play,
+            and less laser wear. Everything is configured and tested so you can start playing quickly.
           </p>
 
           <div class="hero__actions">
-            <a class="button" href="shop.html">Buy the HDD Kit</a>
-            <a class="button button--ghost" href="support.html">How it works</a>
+            <a class="button" href="shop.html">Buy the 500GB HDD Kit</a>
+            <a class="button button--ghost" href="support.html">Setup &amp; FAQs</a>
           </div>
 
           <ul class="trust">
-            <li class="trust__item">Professional testing</li>
+            <li class="trust__item">Pre-configured + tested</li>
             <li class="trust__item">Clear setup instructions</li>
-            <li class="trust__item">UK support</li>
+            <li class="trust__item">UK support if needed</li>
           </ul>
         </div>
 
@@ -64,12 +203,10 @@
             <h2 class="h2">Get the game list + setup tips</h2>
             <p class="muted">Join the email list for updates, restocks, and quick guides.</p>
 
-            <!-- Lead capture (Formspree) -->
             <form class="form" action="https://formspree.io/f/manrkvby" method="POST" data-lead-form>
               <input type="hidden" name="form_type" value="lead_capture" />
               <input type="hidden" name="page" value="index.html" />
 
-              <!-- Honeypot (spam trap) -->
               <div class="honeypot" aria-hidden="true">
                 <label for="company">Company</label>
                 <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
@@ -85,14 +222,14 @@
 
               <p class="fineprint">No spam. Unsubscribe anytime.</p>
               <p class="form-status" aria-live="polite"></p>
+
+              <div class="divider"></div>
+
+              <p class="muted">
+                Prefer direct contact?
+                <a href="contact.html">Message here</a>.
+              </p>
             </form>
-
-            <div class="divider"></div>
-
-            <p class="muted">
-              Prefer direct contact?
-              <a href="contact.html">Message here</a>.
-            </p>
           </div>
         </div>
       </div>
@@ -101,7 +238,7 @@
     <section class="section">
       <div class="container grid3">
         <div class="card">
-          <h3 class="h3">Plug & play</h3>
+          <h3 class="h3">Plug &amp; play</h3>
           <p class="muted">No soldering. Built and configured for a smooth setup experience.</p>
         </div>
         <div class="card">
@@ -130,7 +267,7 @@
     <div class="container footer__inner">
       <p class="fineprint">© <span data-year></span> Retro Replay</p>
       <div class="footer__links">
-        <a href="support.html">Warranty & Support</a>
+        <a href="support.html">Warranty &amp; Support</a>
         <a href="contact.html">Contact</a>
       </div>
     </div>
@@ -147,5 +284,53 @@
       </div>
     </div>
   </div>
+
+  <!-- Floating controllers: lightweight JS (no external assets) -->
+  <script>
+    (function () {
+      const layer = document.getElementById("float-layer");
+      if (!layer) return;
+
+      const isMobile = matchMedia("(max-width: 600px)").matches;
+      const count = isMobile ? 5 : 9;
+
+      const svgController = () => `
+        <svg viewBox="0 0 128 72" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true">
+          <path class="fill" d="M20 34c0-10 8-18 18-18h52c10 0 18 8 18 18v6c0 10-8 18-18 18h-7l-10-9H55l today's  document.querySelectorAll('a[href="index.html"]').forEach(a=>a.setAttribute('aria-current','page'))" />
+          <path class="stroke" d="M20 34c0-10 8-18 18-18h52c10 0 18 8 18 18v6c0 10-8 18-18 18h-7l-10-9H55l-10 9h-7c-10 0-18-8-18-18v-6Z" fill="none" stroke-width="2"/>
+          <circle class="stroke" cx="88" cy="35" r="5" fill="none" stroke-width="2"/>
+          <circle class="stroke" cx="102" cy="35" r="5" fill="none" stroke-width="2"/>
+          <path class="stroke" d="M44 32h-10M39 27v10" fill="none" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      `;
+
+      // seed positions
+      for (let i = 0; i < count; i++) {
+        const d = document.createElement("div");
+        d.className = "float-item";
+        d.innerHTML = svgController();
+
+        // safe random positions, avoid center content area
+        const left = Math.floor(Math.random() * 92);
+        const top = Math.floor(Math.random() * 78);
+
+        d.style.left = left + "%";
+        d.style.top = top + "%";
+        d.style.animationDuration = (8 + Math.random() * 6) + "s";
+        d.style.animationDelay = (Math.random() * 2) + "s";
+        d.style.transform = `rotate(${(Math.random()*8-4).toFixed(1)}deg)`;
+        layer.appendChild(d);
+      }
+
+      // gentle parallax on desktop
+      if (!isMobile) {
+        window.addEventListener("mousemove", (e) => {
+          const x = (e.clientX / window.innerWidth - 0.5) * 6;
+          const y = (e.clientY / window.innerHeight - 0.5) * 6;
+          layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        }, { passive: true });
+      }
+    })();
+  </script>
 </body>
 </html>
