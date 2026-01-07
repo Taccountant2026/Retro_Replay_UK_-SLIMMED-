@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Retro Replay — Plug & play PS2 HDD mod kit." />
+  <title>Shop — Retro Replay</title>
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <script defer src="js/analytics.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="Retro Replay Home">
+        <img class="brand__logo brand__logo--small" src="assets/logo.png" alt="Retro Replay" width="120" height="120" />
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link is-active" href="shop.html">Shop</a>
+        <a class="nav__link" href="support.html">Support</a>
+        <a class="nav__link" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="pagehead">
+        <h1 class="h1">Shop</h1>
+        <p class="muted">Simple checkout via PayPal for now.</p>
+      </div>
+
+      <div class="product">
+        <div class="card card--glow">
+          <div class="product__top">
+            <div>
+              <h2 class="h2">PS2 Plug & Play HDD Mod Kit (500GB)</h2>
+              <p class="muted">Configured, tested, and ready for disc-free play on PS2 FAT consoles.</p>
+            </div>
+            <div class="price" aria-label="Price">
+              <span class="price__value">£193.00</span>
+              <span class="price__note">UK shipping</span>
+            </div>
+          </div>
+
+          <ul class="bullets">
+            <li>500GB SATA hard drive</li>
+            <li>SATA adapter + configured software</li>
+            <li>Setup instructions + support</li>
+            <li>Option to swap/add a few titles on request</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <div class="checkout">
+            <p class="muted">PayPal Checkout</p>
+
+            <!-- Option A (recommended for “no-code”): PayPal Hosted Button -->
+            <!-- Replace YOUR_HOSTED_BUTTON_ID with the one from your PayPal account -->
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal">
+              <input type="hidden" name="cmd" value="_s-xclick" />
+              <input type="hidden" name="hosted_button_id" value="YOUR_HOSTED_BUTTON_ID" />
+              <button class="button" type="submit">Buy now with PayPal</button>
+            </form>
+
+            <!-- Option B: PayPal JS Buttons (use when you have a client-id) -->
+            <!--
+            <div id="paypal-buttons"></div>
+            <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=GBP"></script>
+            <script>
+              paypal.Buttons({
+                createOrder: (data, actions) => actions.order.create({
+                  purchase_units: [{ amount: { value: "193.00" } }]
+                }),
+                onApprove: (data, actions) => actions.order.capture()
+              }).render('#paypal-buttons');
+            </script>
+            -->
+          </div>
+
+          <p class="fineprint">Questions before buying? <a href="contact.html">Contact here</a>.</p>
+        </div>
+
+        <aside class="card">
+          <h3 class="h3">What you get</h3>
+          <p class="muted">
+            A clean, tested kit with clear setup steps and ongoing support if you need it.
+          </p>
+          <div class="divider"></div>
+          <h3 class="h3">Warranty</h3>
+          <p class="muted">
+            See <a href="support.html">Support</a> for warranty and troubleshooting.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="fineprint">© <span data-year></span> Retro Replay</p>
+      <div class="footer__links">
+        <a href="support.html">Warranty & Support</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+    <div class="cookie__inner">
+      <p class="cookie__text">We use cookies for analytics to improve the site.</p>
+      <div class="cookie__actions">
+        <button class="button button--ghost" type="button" data-cookie-reject>Reject</button>
+        <button class="button" type="button" data-cookie-accept>Accept</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
