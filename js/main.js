@@ -4,6 +4,12 @@
    - Formspree AJAX submits + honeypot spam block
    - GA event tracking (form submits + leads)
    - PayPal conversion tracking (begin_checkout + purchase on return)
+     UPDATED: supports package selection + PayPal dropdown pricing (Black/Silver)
+     Works with shop.html that sets:
+       - #selection-details[data-selected-product-id]
+       - #sel-title text
+       - #price-text like "From £119.99"
+       - URL param ?package=p1|p2|ultimate
 */
 (() => {
   const $ = (sel, root = document) => root.querySelector(sel);
@@ -39,7 +45,8 @@
   rejectBtn?.addEventListener("click", () => setConsent("rejected"));
 
   // ---------- GA helpers ----------
-  const canTrack = () => localStorage.getItem(CONSENT_KEY) === "accepted" && typeof window.gtag === "function";
+  const canTrack = () =>
+    localStorage.getItem(CONSENT_KEY) === "accepted" && typeof window.gtag === "function";
 
   const trackEvent = (name, params = {}) => {
     if (!canTrack()) return;
@@ -63,7 +70,6 @@
   };
 
   const isSpam = (form) => {
-    // Honeypot: any input named "company" filled = spam
     const hp = form.querySelector('input[name="company"]');
     if (!hp) return false;
     return String(hp.value || "").trim().length > 0;
@@ -78,7 +84,6 @@
       clearStatus(form);
 
       if (isSpam(form)) {
-        // Silently pretend success
         setStatus(form, "Thanks — message sent.", true);
         form.reset();
         return;
@@ -86,8 +91,6 @@
 
       const fd = new FormData(form);
 
-      // Ensure required fields exist for lead capture
-      // (Formspree is fine without name, but email is required by your markup)
       try {
         const res = await fetch(action, {
           method: "POST",
@@ -99,7 +102,6 @@
           setStatus(form, "Thanks — message sent.", true);
           form.reset();
 
-          // GA events
           const formType = (fd.get("form_type") || "").toString();
           const page = (fd.get("page") || window.location.pathname || "").toString();
 
@@ -116,34 +118,128 @@
     });
   };
 
-  document.querySelectorAll("form[data-lead-form], form[data-contact-form]").forEach(wireFormspree);
+  document
+    .querySelectorAll("form[data-lead-form], form[data-contact-form]")
+    .forEach(wireFormspree);
 
-  // ---------- PayPal conversion tracking ----------
-  // 1) begin_checkout when PayPal button container is clicked (best-effort)
+  // ---------- PayPal conversion tracking (UPDATED) ----------
+  // Package catalog (base/from price only — PayPal dropdown may change final amount)
+  const PACKAGE_MAP = {
+    p1: {
+      product_id: "ps2-fat-p1",
+      item_name: "PS2 FAT Console — Player 1 Plug & Play",
+      from_price: 119.99
+    },
+    p2: {
+      product_id: "ps2-fat-p2",
+      item_name: "PS2 FAT Console — Player 2 Plug & Play (Best Value)",
+      from_price: 149.99
+    },
+    ultimate: {
+      product_id: "ps2-fat-ultimate",
+      item_name: "PS2 FAT Console — Ultimate Modded Edition (Serious-Player Build)",
+      from_price: 179.99
+    }
+  };
+
+  const parseFromPrice = () => {
+    // Reads "From £119.99" or "£119.99" and returns number
+    const t = ($("#price-text")?.textContent || "").replace(/,/g, "");
+    const m = t.match(/£\s*([0-9]+(?:\.[0-9]{1,2})?)/i);
+    return m ? Number(m[1]) : null;
+  };
+
+  const getSelectedPackageKey = () => {
+    // 1) URL param ?package=
+    try {
+      const u = new URL(window.location.href);
+      const p = (u.searchParams.get("package") || "").toLowerCase();
+      if (p && PACKAGE_MAP[p]) return p;
+    } catch {}
+
+    // 2) DOM pressed package buttons
+    const pressed = document.querySelector(".pkg[aria-pressed='true']");
+    if (pressed) {
+      const p = (pressed.getAttribute("data-package") || "").toLowerCase();
+      if (p && PACKAGE_MAP[p]) return p;
+    }
+
+    // 3) selection-details data-selected-product-id
+    const sid = document.getElementById("selection-details")?.getAttribute("data-selected-product-id") || "";
+    if (sid.includes("ps2-fat-p1")) return "p1";
+    if (sid.includes("ps2-fat-p2")) return "p2";
+    if (sid.includes("ps2-fat-ultimate")) return "ultimate";
+
+    // default
+    return "p2";
+  };
+
+  const getSelectedItemName = () => {
+    // Prefer visible selection title if present
+    const title = ($("#sel-title")?.textContent || "").trim();
+    if (title) return title.replace(/\s+/g, " ");
+    const key = getSelectedPackageKey();
+    return PACKAGE_MAP[key].item_name;
+  };
+
+  const getSelectedProductId = () => {
+    const key = getSelectedPackageKey();
+    return PACKAGE_MAP[key].product_id;
+  };
+
+  const getValueForTracking = () => {
+    // We can only reliably know the "from" price on-site; PayPal dropdown may change final value.
+    // Use displayed "From £X" if present, else from PACKAGE_MAP.
+    const p = parseFromPrice();
+    if (typeof p === "number" && Number.isFinite(p)) return Number(p.toFixed(2));
+    const key = getSelectedPackageKey();
+    return Number(PACKAGE_MAP[key].from_price.toFixed(2));
+  };
+
+  // 1) begin_checkout when PayPal container is clicked (best-effort)
   const paypalContainer = document.getElementById("paypal-container-KZTTHJVUHAFZC");
   if (paypalContainer) {
     paypalContainer.addEventListener("click", () => {
+      const key = getSelectedPackageKey();
+      const value = getValueForTracking();
+
       trackEvent("begin_checkout", {
         currency: "GBP",
-        value: 193.00,
-        items: [{ item_name: "PS2 Plug & Play HDD Mod Kit (500GB)", price: 193.00, quantity: 1 }]
+        value,
+        items: [{
+          item_id: PACKAGE_MAP[key].product_id,
+          item_name: getSelectedItemName(),
+          price: value,
+          quantity: 1
+        }]
       });
     }, { passive: true });
   }
 
-  // 2) purchase on return URLs (shop.html?success=1)
-  // Also allow cancel tracking (shop.html?cancel=1)
+  // 2) purchase / cancel on return URLs
   (() => {
-    const u = new URL(window.location.href);
+    let u;
+    try { u = new URL(window.location.href); } catch { return; }
+
     const success = u.searchParams.get("success");
     const cancel = u.searchParams.get("cancel");
 
     if (success === "1") {
+      const key = getSelectedPackageKey();
+      const value = getValueForTracking();
+
+      // Note: true PayPal final amount (Black/Silver) isn't available client-side reliably.
+      // This logs the selected package + from-price as the purchase value for attribution.
       trackEvent("purchase", {
         transaction_id: `pp_${Date.now()}`,
         currency: "GBP",
-        value: 193.00,
-        items: [{ item_name: "PS2 Plug & Play HDD Mod Kit (500GB)", price: 193.00, quantity: 1 }]
+        value,
+        items: [{
+          item_id: PACKAGE_MAP[key].product_id,
+          item_name: getSelectedItemName(),
+          price: value,
+          quantity: 1
+        }]
       });
     } else if (cancel === "1") {
       trackEvent("checkout_cancelled", { method: "paypal" });
