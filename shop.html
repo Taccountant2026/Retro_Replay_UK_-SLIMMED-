@@ -1,12 +1,24 @@
-<!-- /shop.html (HIGH-CONVERSION PRODUCT LANDING PAGE + PayPal tracking hooks + consent-gated GA via /js/analytics.js + cookie banner) -->
+<!-- /shop.html (HIGH-CONVERSION + your PayPal hosted buttons + consent-gated GA + cookie banner)
+     Hosted Buttons + dropdown pricing is handled INSIDE PayPal (Black/Silver).
+     This page:
+       - Lets customer pick package (P1 / P2 / Ultimate)
+       - Renders the correct hosted button into ONE container (keeps your main.js tracking hook)
+       - Updates the displayed “from” price based on package (Black base price)
+       - Adds product/package IDs as data attributes
+
+     IMPORTANT:
+     - Keep PayPal SDK ONLY ONCE
+     - Your /js/main.js begin_checkout listener is currently hard-coded to #paypal-container-KZTTHJVUHAFZC.
+       This page keeps that ID so tracking still triggers.
+-->
 <!doctype html>
 <html lang="en-GB">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>Shop — PS2 Plug &amp; Play HDD Mod Kit (500GB) | Retro Replay</title>
-  <meta name="description" content="Buy the PS2 Plug & Play HDD Mod Kit (500GB) for PS2 FAT. Pre-configured, tested, clear setup guide, UK support. PayPal checkout." />
+  <title>Shop — PS2 FAT Console Packages | RetroReplay UK</title>
+  <meta name="description" content="Choose a tested PS2 FAT console package (Player 1, Player 2, or Ultimate Modded Edition). Built to order, documented, supported. PayPal checkout." />
   <meta name="theme-color" content="#ffffff" />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -17,19 +29,13 @@
   <script defer src="js/analytics.js"></script>
   <script defer src="js/main.js"></script>
 
-  <!-- PayPal SDK (Hosted Buttons) -->
-  <!-- IMPORTANT:
-       1) Keep your existing PayPal SDK URL/client-id if you already have one working.
-       2) Ensure your PayPal return/cancel URLs include: ?success=1 and ?cancel=1 (main.js uses these).
-  -->
-  <script defer src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&components=hosted-buttons&currency=GBP"></script>
+  <!-- PayPal SDK (ONCE) -->
+  <script defer
+    src="https://www.paypal.com/sdk/js?client-id=BAApYaG5zDntUHsd2tRXv1ylGkYhREqRR-t7PWcH3-Sh7ElgWliEyCEnhAeQjoawIGidc1LY7PQRK9A0Sg&components=hosted-buttons&disable-funding=venmo&currency=GBP">
+  </script>
 
   <style>
-    /* ===== Shop-only: LIGHT + conversion-first ===== */
-    body.page-light{
-      background:#ffffff !important;
-      color:#0b1020 !important;
-    }
+    body.page-light{ background:#ffffff !important; color:#0b1020 !important; }
     body.page-light a{color:inherit}
     body.page-light .muted{color:rgba(11,16,32,.70) !important}
 
@@ -40,27 +46,29 @@
       border-bottom:1px solid rgba(11,16,32,.10);
     }
 
-    /* Product hero */
-    .product-hero{
+    .hero{
       padding: 54px 0 22px;
       background:
         radial-gradient(900px 520px at 12% -10%, rgba(135,234,255,.55), transparent 55%),
         radial-gradient(700px 420px at 92% 10%, rgba(25,207,255,.28), transparent 55%),
         linear-gradient(180deg, #ffffff, #f7fbff);
       border-bottom:1px solid rgba(11,16,32,.08);
+      position:relative;
+      overflow:hidden;
     }
 
-    .product-hero__inner{
+    .hero__inner{
       display:grid;
       grid-template-columns: 1.05fr .95fr;
       gap: 18px;
       align-items:start;
+      position:relative;
+      z-index:1;
     }
 
     .kicker{ color: rgba(0,140,170,.95) !important; }
     .kicker::before{ box-shadow: 0 0 20px rgba(25,207,255,.25); }
 
-    /* Cards */
     body.page-light .card{
       background: rgba(255,255,255,.94) !important;
       border: 1px solid rgba(11,16,32,.12) !important;
@@ -72,7 +80,6 @@
     }
     body.page-light .divider{border-color: rgba(11,16,32,.10) !important}
 
-    /* Buttons */
     body.page-light .button{
       border:1px solid rgba(11,16,32,.14);
       background: rgba(255,255,255,.92);
@@ -85,7 +92,6 @@
       border-color: rgba(25,207,255,.35);
     }
 
-    /* Trust chips */
     .trust{ padding-left:0; list-style:none; display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 0; }
     .trust__item{
       border:1px solid rgba(11,16,32,.10);
@@ -96,48 +102,6 @@
       font-size: .95rem;
     }
 
-    /* Gallery */
-    .gallery{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .ph{
-      aspect-ratio: 4 / 3;
-      border-radius: 14px;
-      border:1px solid rgba(11,16,32,.12);
-      background: linear-gradient(180deg, rgba(135,234,255,.18), rgba(255,255,255,.85));
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:700;
-      color: rgba(11,16,32,.55);
-    }
-    .ph small{ font-weight:600; }
-
-    /* Offer list */
-    .list{
-      margin: 10px 0 0;
-      padding-left: 18px;
-    }
-    .list li{ margin: 8px 0; color: rgba(11,16,32,.86); }
-
-    /* Price */
-    .price-row{
-      display:flex;
-      gap:12px;
-      align-items:baseline;
-      justify-content:space-between;
-      flex-wrap:wrap;
-    }
-    .price{
-      font-size: 1.8rem;
-      font-weight: 800;
-      letter-spacing: -.02em;
-    }
-    .subprice{ font-size:.95rem; color: rgba(11,16,32,.70); }
-
-    /* Safety band */
     .band{
       border:1px solid rgba(11,16,32,.10);
       background: rgba(255,255,255,.75);
@@ -146,23 +110,40 @@
       margin-top: 14px;
     }
 
-    /* Section title */
-    .section-title{
-      display:flex;
-      align-items:baseline;
-      justify-content:space-between;
-      gap:12px;
+    .pkg-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-top:14px; }
+    .pkg{
+      cursor:pointer;
+      transition: transform .12s ease;
+      text-align:left;
+    }
+    .pkg:hover{ transform: translateY(-2px); }
+    .pkg[aria-pressed="true"]{
+      outline: 3px solid rgba(25,207,255,.35);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 1px rgba(25,207,255,.12) inset, 0 18px 45px rgba(0,0,0,.08) !important;
     }
 
-    /* Reviews */
-    .reviews{ display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; }
-    .review__stars{ letter-spacing: 1px; }
-    .review__meta{ font-size:.92rem; }
+    .tag{
+      display:inline-flex;
+      border:1px solid rgba(11,16,32,.12);
+      background: rgba(135,234,255,.18);
+      color: rgba(11,16,32,.86);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size:.9rem;
+      font-weight:650;
+    }
 
-    /* Sticky buy bar (mobile) */
+    .pkg__head{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+    .list{ margin: 10px 0 0; padding-left: 18px; }
+    .list li{ margin: 8px 0; color: rgba(11,16,32,.86); }
+
+    .price-row{ display:flex; gap:12px; align-items:baseline; justify-content:space-between; flex-wrap:wrap; }
+    .price{ font-size: 1.8rem; font-weight: 800; letter-spacing: -.02em; }
+    .subprice{ font-size:.95rem; color: rgba(11,16,32,.70); }
+
     .sticky-buy{
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
+      position: fixed; left: 0; right: 0; bottom: 0;
       z-index: 60;
       background: rgba(255,255,255,.92);
       backdrop-filter: blur(12px);
@@ -171,26 +152,37 @@
       display: none;
     }
     .sticky-buy__inner{
-      max-width: 1100px;
-      margin: 0 auto;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content: space-between;
+      max-width: 1100px; margin: 0 auto;
+      display:flex; gap:10px; align-items:center; justify-content: space-between;
     }
     .sticky-buy__text{ font-size: .95rem; color: rgba(11,16,32,.85); }
     .sticky-buy__actions{ display:flex; gap:10px; }
 
-    /* Responsive */
+    .float-layer{ position:absolute; inset:0; pointer-events:none; z-index:0; }
+    .float-item{
+      position:absolute; opacity:.16;
+      filter: drop-shadow(0 12px 26px rgba(0,0,0,.10));
+      transform: translate3d(0,0,0);
+      animation: floaty 10s ease-in-out infinite;
+      will-change: transform;
+    }
+    .float-item svg{ width: clamp(44px, 7vw, 92px); height: auto; display:block; }
+    .float-item .stroke{stroke: rgba(11,16,32,.65)}
+    .float-item .fill{fill: rgba(25,207,255,.22)}
+    @keyframes floaty{
+      0%,100%{ transform: translate3d(0, 0, 0) rotate(0deg); }
+      50%{ transform: translate3d(0, -18px, 0) rotate(2deg); }
+    }
+
     @media (max-width: 980px){
-      .product-hero__inner{ grid-template-columns: 1fr; }
-      .gallery{ grid-template-columns: 1fr; }
-      .reviews{ grid-template-columns: 1fr; }
+      .hero__inner{ grid-template-columns: 1fr; }
+      .pkg-grid{ grid-template-columns: 1fr; }
     }
     @media (max-width: 600px){
-      .product-hero{ padding: 44px 0 18px; }
+      .hero{ padding: 44px 0 18px; }
       .sticky-buy{ display:block; }
       body{ padding-bottom: 76px; }
+      .float-item{ opacity:.12; }
     }
   </style>
 </head>
@@ -200,8 +192,8 @@
 
   <header class="header">
     <div class="container header__inner">
-      <a class="brand" href="index.html" aria-label="Retro Replay Home">
-        <img class="brand__logo" src="assets/logo.png" alt="Retro Replay" width="220" height="220" />
+      <a class="brand" href="index.html" aria-label="RetroReplay UK Home">
+        <img class="brand__logo" src="assets/logo.png" alt="RetroReplay UK" width="220" height="220" />
       </a>
 
       <nav class="nav" aria-label="Primary">
@@ -211,86 +203,124 @@
         <a class="nav__link" href="contact.html">Contact</a>
       </nav>
 
-      <a class="button button--ghost header__cta" href="#buy" data-cta="header_buy">Buy now</a>
+      <a class="button button--ghost header__cta" href="#buy" data-cta="header_buy">Checkout</a>
     </div>
   </header>
 
   <main id="main">
-    <!-- PRODUCT HERO -->
-    <section class="product-hero" aria-label="Product">
-      <div class="container product-hero__inner">
-        <!-- Left: gallery + proof -->
+    <section class="hero" aria-label="Shop hero">
+      <div class="float-layer" id="float-layer" aria-hidden="true"></div>
+
+      <div class="container hero__inner">
+        <!-- LEFT -->
         <div>
-          <p class="kicker">Pre-configured • Tested • UK support</p>
-          <h1 class="h1">PS2 Plug &amp; Play HDD Mod Kit (500GB)</h1>
+          <p class="kicker">🎮 PlayStation 2 FAT Console – Package Options</p>
+          <h1 class="h1">Tested • Prepared • Built to Order | RetroReplay UK</h1>
+
           <p class="lead">
-            The simplest way to run games from HDD on a <strong>PS2 FAT</strong>.
-            Faster loading, quieter play, less wear on the laser — and it’s <strong>built + tested</strong> before dispatch.
+            This PlayStation 2 FAT console is fully tested and carefully prepared, not job-lot stock or an untested resale.
+            Each console is individually assessed to ensure correct operation before dispatch.
           </p>
 
-          <div class="gallery" aria-label="Product photos" style="margin-top:14px;">
-            <div class="ph">PHOTO 1<br><small>Full kit laid out</small></div>
-            <div class="ph">PHOTO 2<br><small>Installed in PS2 FAT</small></div>
-            <div class="ph">PHOTO 3<br><small>Menu / OPL screen</small></div>
-            <div class="ph">PHOTO 4<br><small>Packaging / included guide</small></div>
+          <div class="band" role="note" aria-label="Standard preparation">
+            <strong>🔧 Standard Preparation (All Packages)</strong>
+            <ul class="list" style="margin-top:10px;">
+              <li>✔ Full functional testing</li>
+              <li>✔ Optical drive tested</li>
+              <li>✔ Fault diagnosis and repair where required</li>
+              <li>✔ Extended play testing</li>
+              <li>✔ Prepared memory card included</li>
+              <li>✔ Documentation supplied</li>
+            </ul>
           </div>
 
           <ul class="trust" aria-label="Trust badges">
-            <li class="trust__item">Configured + tested</li>
-            <li class="trust__item">Clear setup guide</li>
-            <li class="trust__item">Support if stuck</li>
+            <li class="trust__item">No job-lot consoles</li>
+            <li class="trust__item">Clear package options</li>
+            <li class="trust__item">After-sales support included</li>
           </ul>
-
-          <div class="band" role="note" aria-label="Compatibility note">
-            <strong>Compatibility:</strong> Designed for <strong>PS2 FAT</strong> + <strong>Network Adapter</strong>.
-            Not sure what you have? <a href="contact.html" data-cta="compat_help">Message me</a> with a photo of the console label.
-          </div>
         </div>
 
-        <!-- Right: buy box -->
+        <!-- RIGHT: BUY BOX -->
         <div id="buy">
           <div class="card card--glow">
             <div class="price-row">
               <div>
-                <div class="price">£193.00</div>
-                <div class="subprice">PayPal checkout • UK support • Setup guide included</div>
+                <div class="price" id="price-text">From £149.99</div>
+                <div class="subprice" id="subprice-text">Select your package, then choose Black/Silver in PayPal dropdown.</div>
               </div>
               <a class="button button--ghost" href="support.html" data-cta="buybox_support">Warranty &amp; Support</a>
             </div>
 
             <div class="divider" style="margin:14px 0;"></div>
 
-            <h2 class="h2">What you get</h2>
-            <ul class="list">
-              <li><strong>500GB SATA HDD</strong> configured for PS2 HDD loading</li>
-              <li><strong>Pre-configured software/menu</strong> (tested boot before dispatch)</li>
-              <li><strong>Setup guide</strong> + recommended settings</li>
-              <li><strong>UK help</strong> if you hit an issue</li>
-            </ul>
+            <h2 class="h2" style="margin-bottom:6px;">Select your package</h2>
 
-            <div class="band">
-              <strong>Tip:</strong> Want specific titles added? After purchase, reply with your requested list and I’ll confirm what’s possible.
+            <div class="pkg-grid" role="group" aria-label="Package selection">
+              <button class="card pkg" type="button" aria-pressed="false"
+                      data-package="p1"
+                      data-product-id="ps2-fat-p1"
+                      data-title="🟦 Player 1 Plug & Play"
+                      data-items="PlayStation 2 FAT console|1× wired controller (third-party)|1× prepared memory card|Composite AV cable|Warranty & authenticity documentation"
+                      data-ideal="Ideal for: solo players, gifts, first-time PS2 buyers."
+                      data-hosted-id="JMNWZWNM943Z8"
+                      data-from-price="119.99"
+                      data-cta="select_p1">
+                <div class="pkg__head">
+                  <h3 class="h3" style="margin:0;">🟦 Player 1 Plug &amp; Play</h3>
+                  <span class="tag">From £119.99</span>
+                </div>
+              </button>
+
+              <button class="card pkg" type="button" aria-pressed="false"
+                      data-package="p2"
+                      data-product-id="ps2-fat-p2"
+                      data-title="🟨 Player 2 Plug & Play"
+                      data-items="Everything in Player 1|2× wired controllers (third-party)|Extended system testing|Priority preparation"
+                      data-ideal="Ideal for: families, shared gaming, better-value buyers."
+                      data-hosted-id="K8455AQ6AKK3L"
+                      data-from-price="149.99"
+                      data-cta="select_p2">
+                <div class="pkg__head">
+                  <h3 class="h3" style="margin:0;">🟨 Player 2 Plug &amp; Play</h3>
+                  <span class="tag">⭐ Best Value</span>
+                </div>
+              </button>
+
+              <button class="card pkg" type="button" aria-pressed="false"
+                      data-package="ultimate"
+                      data-product-id="ps2-fat-ultimate"
+                      data-title="🟥 The Ultimate Modded Edition — Serious-Player Build"
+                      data-items="Everything in Player 2|Network adapter installed|Advanced system configuration (FMCB environment)|Disc-free ready hardware setup|Internal SATA hard drive option available|Optimised boot flow and system layout|Extended stress testing|Configuration documentation"
+                      data-ideal="Ideal for: enthusiasts, long-term owners, collectors."
+                      data-hosted-id="RCX5N5QAH75PJ"
+                      data-from-price="179.99"
+                      data-cta="select_ultimate">
+                <div class="pkg__head">
+                  <h3 class="h3" style="margin:0;">🟥 Ultimate Modded Edition</h3>
+                  <span class="tag">From £179.99</span>
+                </div>
+              </button>
+            </div>
+
+            <div class="band" id="selection-details" aria-live="polite" style="margin-top:14px;">
+              <strong id="sel-title">Select a package above</strong>
+              <ul class="list" id="sel-items" style="margin-top:10px;"></ul>
+              <p class="muted" id="sel-ideal" style="margin-top:8px;"></p>
+              <p class="muted" style="margin-top:8px;">
+                <strong>Colour pricing:</strong> Choose <strong>Black</strong> or <strong>Silver</strong> inside the PayPal dropdown.
+              </p>
             </div>
 
             <div class="divider" style="margin:14px 0;"></div>
 
             <h2 class="h2">Checkout</h2>
             <p class="muted" style="margin-top:6px;">
-              Click PayPal to start checkout. If you cancel, you’ll return here. If successful, you’ll return with confirmation.
+              Choose your colour in PayPal, then complete checkout. If you cancel, you’ll return here.
             </p>
 
-            <!-- REQUIRED ID for begin_checkout tracking in /js/main.js -->
+            <!-- KEEP THIS ID (your /js/main.js uses it for begin_checkout) -->
             <div id="paypal-container-KZTTHJVUHAFZC" style="margin-top:12px;"></div>
-
-            <!-- Hosted buttons render (replace HOSTED_BUTTON_ID with your real one) -->
-            <script>
-              window.addEventListener("load", () => {
-                if (!window.paypal || !paypal.HostedButtons) return;
-                // Replace with your real hosted button ID:
-                paypal.HostedButtons({ hostedButtonId: "HOSTED_BUTTON_ID" })
-                  .render("#paypal-container-KZTTHJVUHAFZC");
-              });
-            </script>
 
             <p class="fineprint" style="margin-top:10px;">
               By purchasing you agree to our <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy</a>.
@@ -299,130 +329,58 @@
             <div class="divider" style="margin:14px 0;"></div>
 
             <p class="muted">
-              Prefer to ask first?
-              <a href="contact.html" data-cta="buybox_contact">Send a message</a>.
+              Want upgrades (wireless / HDMI / HDD sizes / refurbishment)? Message your choices immediately after purchase.
+              <a href="#upgrades" data-cta="see_upgrades">See upgrades</a>.
             </p>
           </div>
-
-          <!-- Micro FAQ (kills hesitation before checkout) -->
-          <div class="card" style="margin-top:14px;">
-            <h3 class="h3">Before you buy</h3>
-            <ul class="list">
-              <li><strong>PS2 model:</strong> FAT only (Slim needs a different setup)</li>
-              <li><strong>Modern TVs:</strong> picture quality depends on your adapter/settings — see <a href="support.html">Support</a></li>
-              <li><strong>Help:</strong> If it doesn’t behave, you can message me for support</li>
-            </ul>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- WHY THIS IS BETTER -->
-    <section class="section" aria-label="Why this kit">
+    <section class="section" id="upgrades" aria-label="Optional upgrades">
       <div class="container">
-        <div class="section-title">
-          <h2 class="h2">Why this kit (and why it works)</h2>
-          <p class="muted">It’s not just parts — it’s a tested build.</p>
+        <h2 class="h2">➕ Optional upgrades</h2>
+        <p class="muted">Please choose and include in your message after purchase.</p>
+
+        <div class="band">
+          <strong>🎮 Controllers &amp; Play</strong>
+          <ul class="list">
+            <li>Wireless controller upgrade</li>
+            <li>Original Sony controller (subject to availability)</li>
+            <li>4-Player option (additional controllers)</li>
+          </ul>
         </div>
 
-        <div class="container grid3" style="margin-top:14px; padding:0;">
-          <div class="card">
-            <h3 class="h3">Tested boot</h3>
-            <p class="muted">Configured and checked before dispatch so you’re not troubleshooting from scratch.</p>
-          </div>
-          <div class="card">
-            <h3 class="h3">Cleaner experience</h3>
-            <p class="muted">Fast loading, no disc swapping, less noise — and reduced laser wear.</p>
-          </div>
-          <div class="card">
-            <h3 class="h3">Real support</h3>
-            <p class="muted">Clear instructions plus UK help if you get stuck or want upgrades later.</p>
-          </div>
+        <div class="band">
+          <strong>📺 Video</strong>
+          <ul class="list">
+            <li>HD Component (YPbPr) cable</li>
+            <li>HDMI upscaler</li>
+          </ul>
         </div>
 
-        <div class="band" style="margin-top:14px;">
-          <strong>Want the best results?</strong> Use a decent video adapter and the recommended settings.
-          <a href="support.html" data-cta="why_support">See setup tips</a>.
-        </div>
-      </div>
-    </section>
-
-    <!-- REVIEWS -->
-    <section class="section section--alt" aria-label="Reviews">
-      <div class="container">
-        <div class="section-title">
-          <h2 class="h2">Buyer feedback</h2>
-          <p class="muted">Replace these with real customer messages for maximum conversion.</p>
+        <div class="band">
+          <strong>💾 Ultimate Build Only</strong>
+          <ul class="list">
+            <li>HDD size options: 320GB / 500GB / 1TB / 2TB</li>
+          </ul>
         </div>
 
-        <div class="reviews" style="margin-top:14px;">
-          <div class="card">
-            <div class="review__stars" aria-label="5 stars">★★★★★</div>
-            <p><strong>“Worked first time — easy setup.”</strong></p>
-            <p class="muted">Instructions were clear and it booted straight in.</p>
-            <p class="muted review__meta">— Verified buyer</p>
-          </div>
-          <div class="card">
-            <div class="review__stars" aria-label="5 stars">★★★★★</div>
-            <p><strong>“Quieter and loads fast.”</strong></p>
-            <p class="muted">No discs and it feels smoother overall.</p>
-            <p class="muted review__meta">— Verified buyer</p>
-          </div>
-          <div class="card">
-            <div class="review__stars" aria-label="5 stars">★★★★★</div>
-            <p><strong>“Proper seller, proper support.”</strong></p>
-            <p class="muted">Got help quickly and everything was sorted.</p>
-            <p class="muted review__meta">— Verified buyer</p>
-          </div>
+        <div class="band">
+          <strong>🔧 Services</strong>
+          <ul class="list">
+            <li>Full Restore (Clean) – cosmetic only, no internal work</li>
+            <li>Full Refurbishment – internal &amp; external restoration</li>
+            <li>Priority preparation slot</li>
+          </ul>
         </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section" aria-label="FAQ">
-      <div class="container">
-        <div class="section-title">
-          <h2 class="h2">FAQs (read this and you’ll buy with confidence)</h2>
-          <p class="muted">No guessing, no vague answers.</p>
-        </div>
-
-        <div class="container grid3" style="margin-top:14px; padding:0;">
-          <div class="card">
-            <h3 class="h3">Does this include a network adapter?</h3>
-            <p class="muted">This product page is for the <strong>500GB HDD kit</strong>. If your package includes adapter/other parts, list them here clearly.</p>
-          </div>
-          <div class="card">
-            <h3 class="h3">Can I add my own games?</h3>
-            <p class="muted">Yes, you can add titles later. I can also advise if you want a faster method.</p>
-          </div>
-          <div class="card">
-            <h3 class="h3">What if something goes wrong?</h3>
-            <p class="muted">Message me and we’ll troubleshoot. Warranty/support info is on the support page.</p>
-          </div>
-        </div>
-
-        <div class="band" style="margin-top:14px;">
-          <strong>Ready?</strong> Checkout takes minutes.
-          <a href="#buy" data-cta="faq_back_to_buy">Go to checkout</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- LEAD CAPTURE (for undecided buyers) -->
-    <section class="section section--alt" aria-label="Lead capture">
-      <div class="container cta">
-        <div>
-          <h2 class="h2">Not ready yet?</h2>
-          <p class="muted">Get the game list + setup checklist so you can decide fast.</p>
-        </div>
-        <a class="button button--ghost" href="index.html#lead" data-cta="shop_to_lead">Get the checklist</a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container footer__inner">
-      <p class="fineprint">© <span data-year></span> Retro Replay</p>
+      <p class="fineprint">© <span data-year></span> RetroReplay UK</p>
       <div class="footer__links">
         <a href="support.html" data-cta="footer_support">Warranty &amp; Support</a>
         <a href="privacy.html" data-cta="footer_privacy">Privacy</a>
@@ -448,21 +406,122 @@
   <!-- Sticky mobile buy bar -->
   <div class="sticky-buy" aria-label="Quick buy bar">
     <div class="sticky-buy__inner">
-      <div class="sticky-buy__text"><strong>PS2 HDD Kit</strong> — £193 • tested</div>
+      <div class="sticky-buy__text"><strong>PS2 Packages</strong> — choose & checkout</div>
       <div class="sticky-buy__actions">
-        <a class="button button--ghost" href="contact.html" data-cta="sticky_question">Ask</a>
-        <a class="button" href="#buy" data-cta="sticky_buy">Buy</a>
+        <a class="button button--ghost" href="#buy" data-cta="sticky_checkout">Checkout</a>
+        <a class="button" href="contact.html" data-cta="sticky_question">Ask</a>
       </div>
     </div>
   </div>
 
-  <!-- OPTIONAL: auto-scroll to buy box when arriving with success/cancel -->
+  <!-- Package -> PayPal render (uses your 3 hostedButtonIds) -->
   <script>
     (function(){
-      const u = new URL(window.location.href);
-      if (u.searchParams.get("success")==="1" || u.searchParams.get("cancel")==="1") {
-        const el = document.getElementById("buy");
-        el?.scrollIntoView({ behavior: "smooth", block: "start" });
+      const target = "#paypal-container-KZTTHJVUHAFZC";
+
+      function renderHostedButton(hostedButtonId){
+        const el = document.querySelector(target);
+        if (!el) return;
+        el.innerHTML = "";
+        if (!window.paypal || !paypal.HostedButtons) {
+          el.innerHTML = "<p class='muted'>PayPal is loading…</p>";
+          return;
+        }
+        paypal.HostedButtons({ hostedButtonId }).render(target);
+      }
+
+      function setPressed(btn){
+        document.querySelectorAll(".pkg").forEach(b => b.setAttribute("aria-pressed","false"));
+        btn.setAttribute("aria-pressed","true");
+      }
+
+      function setDetails(btn){
+        const title = btn.getAttribute("data-title") || "Selected package";
+        const items = (btn.getAttribute("data-items") || "").split("|").filter(Boolean);
+        const ideal = btn.getAttribute("data-ideal") || "";
+
+        document.getElementById("sel-title").textContent = title;
+        document.getElementById("sel-items").innerHTML = items.map(t => `<li>${t}</li>`).join("");
+        document.getElementById("sel-ideal").textContent = ideal;
+
+        document.getElementById("selection-details").setAttribute("data-selected-product-id", btn.getAttribute("data-product-id") || "");
+      }
+
+      function setFromPrice(btn){
+        const from = btn.getAttribute("data-from-price");
+        if (!from) return;
+        document.getElementById("price-text").textContent = `From £${Number(from).toFixed(2)}`;
+        document.getElementById("subprice-text").textContent = "Select your colour in the PayPal dropdown (Black/Silver).";
+      }
+
+      function select(btn){
+        const hostedId = btn.getAttribute("data-hosted-id");
+        const pkg = btn.getAttribute("data-package") || "";
+        if (!hostedId) return;
+
+        setPressed(btn);
+        setDetails(btn);
+        setFromPrice(btn);
+        renderHostedButton(hostedId);
+
+        const u = new URL(window.location.href);
+        u.searchParams.set("package", pkg);
+        window.history.replaceState({}, "", u.toString());
+      }
+
+      window.addEventListener("load", () => {
+        document.querySelectorAll(".pkg").forEach(btn => btn.addEventListener("click", () => select(btn)));
+
+        const u = new URL(window.location.href);
+        const pkg = (u.searchParams.get("package") || "").toLowerCase();
+        const btn = document.querySelector(`.pkg[data-package="${pkg}"]`) || document.querySelector('.pkg[data-package="p2"]');
+        if (btn) select(btn);
+
+        if (u.searchParams.get("success")==="1" || u.searchParams.get("cancel")==="1") {
+          document.getElementById("buy")?.scrollIntoView({ behavior:"smooth", block:"start" });
+        }
+      });
+    })();
+  </script>
+
+  <!-- Floating controllers -->
+  <script>
+    (function () {
+      const layer = document.getElementById("float-layer");
+      if (!layer) return;
+
+      const isMobile = matchMedia("(max-width: 600px)").matches;
+      const count = isMobile ? 5 : 9;
+
+      const svgController = () => `
+        <svg viewBox="0 0 128 72" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true">
+          <path class="fill" d="M20 34c0-10 8-18 18-18h52c10 0 18 8 18 18v6c0 10-8 18-18 18h-7l-10-9H55l-10 9h-7c-10 0-18-8-18-18v-6Z" />
+          <path class="stroke" d="M20 34c0-10 8-18 18-18h52c10 0 18 8 18 18v6c0 10-8 18-18 18h-7l-10-9H55l-10 9h-7c-10 0-18-8-18-18v-6Z" fill="none" stroke-width="2"/>
+          <circle class="stroke" cx="88" cy="35" r="5" fill="none" stroke-width="2"/>
+          <circle class="stroke" cx="102" cy="35" r="5" fill="none" stroke-width="2"/>
+          <path class="stroke" d="M44 32h-10M39 27v10" fill="none" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      `;
+
+      for (let i = 0; i < count; i++) {
+        const d = document.createElement("div");
+        d.className = "float-item";
+        d.innerHTML = svgController();
+
+        d.style.left = Math.floor(Math.random() * 92) + "%";
+        d.style.top = Math.floor(Math.random() * 78) + "%";
+        d.style.animationDuration = (8 + Math.random() * 6) + "s";
+        d.style.animationDelay = (Math.random() * 2) + "s";
+        d.style.transform = `rotate(${(Math.random() * 8 - 4).toFixed(1)}deg)`;
+        layer.appendChild(d);
+      }
+
+      if (!isMobile) {
+        window.addEventListener("mousemove", (e) => {
+          const x = (e.clientX / window.innerWidth - 0.5) * 6;
+          const y = (e.clientY / window.innerHeight - 0.5) * 6;
+          layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        }, { passive: true });
       }
     })();
   </script>
