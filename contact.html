@@ -1,12 +1,20 @@
-<!-- /contact.html (LIGHT design to match index/shop/support + floating controllers + mobile-first) -->
+<!-- /contact.html (CONVERSION + SUPPORT-FIRST + matches index/shop + GA consent-gated + cookie banner + Formspree AJAX via /js/main.js)
+     Improvements:
+     - Adds data-cta tags for click tracking (no extra JS needed)
+     - Adds “fastest reply” microcopy + required info checklist
+     - Adds “Package help” quick buttons that prefill topic + message
+     - Adds footer links to Privacy/Cookies (consistent with index/shop)
+     - Fixes nav aria-current on Contact
+     - Keeps floating controllers + mobile-first layout
+-->
 <!doctype html>
 <html lang="en-GB">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Contact Retro Replay for questions, orders and support." />
+  <meta name="description" content="Contact RetroReplay UK for package help, custom requests, and support. Built-to-order PS2 FAT consoles with after-sales support." />
   <meta name="theme-color" content="#ffffff" />
-  <title>Contact — Retro Replay</title>
+  <title>Contact — RetroReplay UK</title>
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" as="image" href="assets/logo.png" />
@@ -15,12 +23,8 @@
   <script defer src="js/analytics.js"></script>
   <script defer src="js/main.js"></script>
 
-  <!-- Page-specific (contact-only) light + responsive overrides to match other pages -->
   <style>
-    body.page-light{
-      background:#ffffff !important;
-      color:#0b1020 !important;
-    }
+    body.page-light{ background:#ffffff !important; color:#0b1020 !important; }
     body.page-light a{color:inherit}
     body.page-light .muted{color:rgba(11,16,32,.70) !important}
 
@@ -31,7 +35,6 @@
       border-bottom:1px solid rgba(11,16,32,.10);
     }
 
-    /* Top banner */
     body.page-light .hero{
       padding:44px 0 20px;
       position:relative;
@@ -45,12 +48,15 @@
     body.page-light .hero__inner{ position:relative; z-index:1; }
     body.page-light .kicker{ color: rgba(0,140,170,.95) !important; }
 
-    /* Crisp cards */
     body.page-light .card,
     body.page-light .card.card--glow{
       background: rgba(255,255,255,.94) !important;
       border: 1px solid rgba(11,16,32,.12) !important;
       box-shadow: 0 18px 45px rgba(0,0,0,.08) !important;
+    }
+    body.page-light .card--glow{
+      border-color: rgba(25,207,255,.35) !important;
+      box-shadow: 0 0 0 1px rgba(25,207,255,.12) inset, 0 18px 45px rgba(0,0,0,.08) !important;
     }
     body.page-light .divider{border-color: rgba(11,16,32,.10) !important}
 
@@ -66,7 +72,6 @@
       border-color: rgba(25,207,255,.35);
     }
 
-    /* Layout (mobile-first -> 2-col) */
     .contact-grid{
       display:grid;
       grid-template-columns: 1fr;
@@ -77,7 +82,6 @@
       .contact-grid{ grid-template-columns: 1.15fr .85fr; align-items:start; }
     }
 
-    /* Form tweaks for mobile friendliness */
     .form .input{ min-height: 44px; }
     .form textarea.input{ min-height: 140px; }
     .form .button{ min-height: 44px; }
@@ -86,7 +90,6 @@
       .form__row .button{ width:100% !important; }
     }
 
-    /* Info checklist blocks */
     .info-list{
       list-style:none;
       padding-left:0;
@@ -111,13 +114,37 @@
       flex: 0 0 auto;
     }
 
-    /* Floating controllers */
-    .float-layer{
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      z-index:0;
+    .quick-actions{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:12px;
     }
+    @media (max-width: 600px){
+      .quick-actions{ grid-template-columns: 1fr; }
+    }
+    .quick{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      text-align:left;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(11,16,32,.12);
+      background: rgba(255,255,255,.86);
+    }
+    .quick strong{ font-size: 1rem; }
+    .quick .muted{ font-size:.95rem; margin:0; }
+
+    .band{
+      border:1px solid rgba(11,16,32,.10);
+      background: rgba(255,255,255,.75);
+      border-radius: 14px;
+      padding: 14px;
+      margin-top: 14px;
+    }
+
+    .float-layer{ position:absolute; inset:0; pointer-events:none; z-index:0; }
     .float-item{
       position:absolute;
       opacity:.16;
@@ -126,20 +153,14 @@
       animation: floaty 10s ease-in-out infinite;
       will-change: transform;
     }
-    .float-item svg{
-      width: clamp(44px, 7vw, 92px);
-      height: auto;
-      display:block;
-    }
+    .float-item svg{ width: clamp(44px, 7vw, 92px); height: auto; display:block; }
     .float-item .stroke{stroke: rgba(11,16,32,.65)}
     .float-item .fill{fill: rgba(25,207,255,.22)}
     @keyframes floaty{
       0%,100%{ transform: translate3d(0, 0, 0) rotate(0deg); }
       50%{ transform: translate3d(0, -18px, 0) rotate(2deg); }
     }
-    @media (max-width: 600px){
-      .float-item{ opacity:.12; }
-    }
+    @media (max-width: 600px){ .float-item{ opacity:.12; } }
   </style>
 </head>
 
@@ -148,29 +169,33 @@
 
   <header class="header">
     <div class="container header__inner">
-      <a class="brand" href="index.html" aria-label="Retro Replay Home">
-        <img class="brand__logo brand__logo--small" src="assets/logo.png" alt="Retro Replay" width="120" height="120" />
+      <a class="brand" href="index.html" aria-label="RetroReplay UK Home">
+        <img class="brand__logo brand__logo--small" src="assets/logo.png" alt="RetroReplay UK" width="120" height="120" />
       </a>
 
       <nav class="nav" aria-label="Primary">
         <a class="nav__link" href="index.html">Home</a>
         <a class="nav__link" href="shop.html">Shop</a>
         <a class="nav__link" href="support.html">Support</a>
-        <a class="nav__link is-active" href="contact.html">Contact</a>
+        <a class="nav__link is-active" href="contact.html" aria-current="page">Contact</a>
       </nav>
 
-      <a class="button button--ghost header__cta" href="shop.html">View product</a>
+      <a class="button button--ghost header__cta" href="shop.html#buy" data-cta="contact_header_checkout">Checkout</a>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero">
+    <section class="hero" aria-label="Contact hero">
       <div class="float-layer" id="float-layer" aria-hidden="true"></div>
 
       <div class="container hero__inner">
         <p class="kicker">Sales • Custom requests • Support</p>
         <h1 class="h1">Contact</h1>
         <p class="lead">Send a message and you’ll receive a reply via email.</p>
+
+        <div class="band" role="note" aria-label="Fast reply note">
+          <strong>Fastest replies:</strong> include your PS2 model (SCPH-xxxx) and a photo of the console label if you can.
+        </div>
       </div>
     </section>
 
@@ -181,8 +206,30 @@
           <h2 class="h2">Send a message</h2>
 
           <p class="muted">
-            Prefer email? <a href="mailto:retroreply2026@gmail.com">retroreply2026@gmail.com</a>
+            Prefer email? <a href="mailto:retroreply2026@gmail.com" data-cta="contact_mailto">retroreply2026@gmail.com</a>
           </p>
+
+          <!-- Quick actions (prefill helpers) -->
+          <div class="quick-actions" aria-label="Quick message templates">
+            <button class="quick" type="button" data-quick="package" data-cta="contact_quick_package">
+              <strong>Help me choose a package</strong>
+              <p class="muted">Player 1 / Player 2 / Ultimate — quickest recommendation.</p>
+            </button>
+            <button class="quick" type="button" data-quick="support" data-cta="contact_quick_support">
+              <strong>I need support</strong>
+              <p class="muted">Picture quality, OPL, HDD, freezing, setup help.</p>
+            </button>
+            <button class="quick" type="button" data-quick="custom" data-cta="contact_quick_custom">
+              <strong>Custom requests</strong>
+              <p class="muted">Games list, upgrades, accessories, questions.</p>
+            </button>
+            <a class="quick" href="shop.html" data-cta="contact_quick_shop" style="text-decoration:none;">
+              <strong>Ready to buy</strong>
+              <p class="muted">Go to checkout and select your package.</p>
+            </a>
+          </div>
+
+          <div class="divider"></div>
 
           <form class="form" method="post" action="https://formspree.io/f/manrkvby" data-contact-form>
             <input type="hidden" name="form_type" value="contact" />
@@ -204,27 +251,38 @@
               <option value="order">Order question</option>
               <option value="custom">Custom game requests</option>
               <option value="support">Support / troubleshooting</option>
+              <option value="package">Which package should I buy?</option>
               <option value="other">Other</option>
             </select>
 
             <label class="label" for="message">Message</label>
-            <textarea class="input" id="message" name="message" rows="6" required placeholder="Include console model + what you’ve tried (if support)."></textarea>
+            <textarea class="input" id="message" name="message" rows="6" required
+              placeholder="For support: include PS2 model (SCPH-xxxx), TV/adapter used, what’s happening on screen, and what you’ve tried."></textarea>
 
-            <button class="button" type="submit">Send</button>
+            <button class="button" type="submit" data-cta="contact_submit">Send</button>
             <p class="fineprint">You’ll receive a reply via email.</p>
             <p class="form-status" aria-live="polite"></p>
           </form>
+
+          <div class="band" role="note" aria-label="What to include">
+            <strong>If you’re asking for support, include:</strong>
+            <ul class="info-list" style="margin-top:10px;">
+              <li><span class="dot"></span><div><strong>Your PS2 model</strong><br><span class="muted">(e.g., SCPH-39003)</span></div></li>
+              <li><span class="dot"></span><div><strong>Video setup</strong><br><span class="muted">Composite / Component / HDMI upscaler + TV model</span></div></li>
+              <li><span class="dot"></span><div><strong>What you’ve tried</strong><br><span class="muted">Different port/cable, reseat HDD, restart, etc.</span></div></li>
+            </ul>
+          </div>
         </section>
 
         <!-- Info + lead capture -->
-        <aside class="card" aria-label="Before you send and updates">
+        <aside class="card" aria-label="Updates and helpful links">
           <h2 class="h2">Before you send</h2>
           <p class="muted">For the fastest help, include:</p>
 
           <ul class="info-list">
-            <li><span class="dot"></span><div><strong>Your PS2 model</strong><br><span class="muted">(e.g., SCPH-xxxx)</span></div></li>
+            <li><span class="dot"></span><div><strong>Your PS2 model</strong><br><span class="muted">(SCPH-xxxx)</span></div></li>
             <li><span class="dot"></span><div><strong>What’s happening on screen</strong><br><span class="muted">Error text, black screen, freezing, etc.</span></div></li>
-            <li><span class="dot"></span><div><strong>What you’ve tried</strong><br><span class="muted">Cables, TV input, reseating HDD, modes, etc.</span></div></li>
+            <li><span class="dot"></span><div><strong>What you’ve tried</strong><br><span class="muted">Cables, TV input, reseating, modes, etc.</span></div></li>
           </ul>
 
           <div class="divider"></div>
@@ -244,7 +302,7 @@
             <label class="label" for="email2">Email</label>
             <div class="form__row">
               <input class="input" id="email2" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
-              <button class="button" type="submit">Join</button>
+              <button class="button" type="submit" data-cta="contact_lead_submit">Join</button>
             </div>
 
             <textarea name="message" style="display:none">Lead capture signup</textarea>
@@ -254,7 +312,16 @@
           </form>
 
           <div class="divider"></div>
-          <a class="button button--ghost" href="support.html" style="width:100%; text-align:center;">Read Support &amp; FAQs</a>
+
+          <a class="button button--ghost" href="support.html" style="width:100%; text-align:center;" data-cta="contact_support_link">
+            Read Support &amp; FAQs
+          </a>
+
+          <div class="divider"></div>
+
+          <a class="button" href="shop.html" style="width:100%; text-align:center;" data-cta="contact_shop_link">
+            Go to Shop / Checkout
+          </a>
         </aside>
       </div>
     </section>
@@ -262,10 +329,12 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <p class="fineprint">© <span data-year></span> Retro Replay</p>
+      <p class="fineprint">© <span data-year></span> RetroReplay UK</p>
       <div class="footer__links">
-        <a href="support.html">Warranty &amp; Support</a>
-        <a href="contact.html">Contact</a>
+        <a href="support.html" data-cta="footer_support">Warranty &amp; Support</a>
+        <a href="privacy.html" data-cta="footer_privacy">Privacy</a>
+        <a href="cookies.html" data-cta="footer_cookies">Cookies</a>
+        <a href="contact.html" data-cta="footer_contact">Contact</a>
       </div>
     </div>
   </footer>
@@ -280,7 +349,69 @@
     </div>
   </div>
 
-  <!-- Floating controllers (same behaviour as other pages) -->
+  <!-- Quick prefill helpers (no external deps) -->
+  <script>
+    (function(){
+      const topic = document.getElementById("topic");
+      const msg = document.getElementById("message");
+
+      const templates = {
+        package:
+`Hi RetroReplay UK,
+
+I’m not sure which PS2 FAT package to buy (Player 1 / Player 2 / Ultimate).
+
+My PS2 model (if known): SCPH-____
+Colour preference: Black / Silver
+My TV/adapter: ___________
+What I want to do: (solo / family / disc-free / collector / etc.)
+
+Thanks.`,
+        support:
+`Hi RetroReplay UK,
+
+I need support with my setup.
+
+PS2 model: SCPH-____
+TV model: ___________
+Cable/adapter used: (Composite / Component / HDMI upscaler)
+What happens on screen: ___________
+What I’ve tried so far: ___________
+
+Photos/video attached if needed.
+
+Thanks.`,
+        custom:
+`Hi RetroReplay UK,
+
+I have a custom request (games/upgrades/accessories).
+
+Package I’m buying / already bought: ___________
+Colour: Black / Silver
+Upgrades wanted: (wireless / HDMI / component / HDD sizes / refurbishment)
+Any notes: ___________
+
+Thanks.`
+      };
+
+      document.querySelectorAll("[data-quick]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const key = btn.getAttribute("data-quick");
+          if (!templates[key]) return;
+
+          if (key === "package") topic.value = "package";
+          if (key === "support") topic.value = "support";
+          if (key === "custom") topic.value = "custom";
+
+          msg.value = templates[key];
+          msg.focus({ preventScroll: false });
+          msg.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      });
+    })();
+  </script>
+
+  <!-- Floating controllers -->
   <script>
     (function () {
       const layer = document.getElementById("float-layer");
