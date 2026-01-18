@@ -23,14 +23,79 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://www.paypal.com">
   <link rel="dns-prefetch" href="https://www.paypal.com">
-  <link rel="preload" href="/assets/logo.png" as="image" importance="high">
+  <link rel="preload" href="/assets/logo.png" as="image">
   <link rel="stylesheet" href="/style.css" />
-
   <script defer src="/js/analytics.js"></script>
   <script defer src="/js/main.js"></script>
 
-  <!-- ✅ PayPal SDK -->
-  <script async src="https://www.paypal.com/sdk/js?client-id=BAApYaG5zDntUHsd2tRXv1ylGkYhREqRR-t7PWcH3-Sh7ElgWliEyCEnhAeQjoawIGidc1LY7PQRK9A0Sg&components=hosted-buttons&disable-funding=venmo&currency=GBP" onload="window.paypalLoad=true"></script>
+  <!-- PayPal SDK -->
+  <script async src="https://www.paypal.com/sdk/js?client-id=BAApYaG5zDntUHsd2tRXv1ylGkYhREqRR-t7PWcH3-Sh7ElgWliEyCEnhAeQjoawIGidc1LY7PQRK9A0Sg&components=hosted-buttons&disable-funding=venmo&currency=GBP"></script>
+
+  <style>
+    /* Sleek tech retail layer */
+    .hero {
+      background:linear-gradient(180deg,#f9fcff 0%,#eaf6ff 100%);
+      border-bottom:1px solid #d9e9f2;
+      padding:80px 0;
+    }
+    .hero__inner {
+      display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:40px;
+    }
+    .hero img {
+      max-width:320px;border-radius:24px;box-shadow:0 18px 45px rgba(0,0,0,.1);
+      animation:floaty 6s ease-in-out infinite alternate;
+    }
+    @keyframes floaty {
+      from{transform:translateY(0);} to{transform:translateY(-10px);}
+    }
+
+    /* Product cards */
+    .package-grid {
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;
+    }
+    .card.shop {
+      background:rgba(255,255,255,0.92);
+      border:1px solid #d9e9f2;
+      border-radius:22px;
+      box-shadow:0 8px 25px rgba(11,16,32,0.05);
+      transition:transform .3s ease,box-shadow .3s ease;
+      padding:28px;
+    }
+    .card.shop:hover {
+      transform:translateY(-6px);
+      box-shadow:0 16px 38px rgba(11,16,32,0.08);
+    }
+
+    /* Comparison */
+    table.compare {
+      width:100%;border-collapse:collapse;
+      background:rgba(255,255,255,0.96);
+      border:1px solid #d9e9f2;border-radius:16px;
+      overflow:hidden;box-shadow:0 6px 20px rgba(11,16,32,.06);
+    }
+    table.compare th,table.compare td {
+      padding:12px 16px;text-align:center;border-bottom:1px solid #e5eff7;
+    }
+    table.compare th:first-child,table.compare td:first-child{text-align:left;}
+    table.compare tr:hover{background:rgba(234,246,255,0.4);}
+    table.compare th{background:#f3f9ff;font-weight:700;color:#0b1020;}
+
+    /* FAQ */
+    details.faq {
+      margin:10px 0;padding:14px 18px;
+      background:rgba(255,255,255,0.94);
+      border:1px solid #d9e9f2;border-radius:14px;
+      box-shadow:0 4px 12px rgba(11,16,32,.04);
+      transition:box-shadow .2s ease;
+    }
+    details.faq[open]{box-shadow:0 6px 18px rgba(11,16,32,.08);}
+    details.faq summary{cursor:pointer;font-weight:600;}
+
+    /* Reveal animation */
+    .reveal{opacity:0;transform:translateY(35px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);}
+    .reveal.visible{opacity:1;transform:none;}
+    @media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none!important;}}
+  </style>
 </head>
 
 <body class="page-light">
@@ -39,9 +104,9 @@
 <header class="header">
   <div class="container header__inner">
     <a class="brand" href="/" aria-label="RetroReplay UK Home">
-      <img class="brand__logo" src="/assets/logo.png" alt="RetroReplay UK" width="120" height="120" />
+      <img class="brand__logo" src="/assets/logo.png" alt="RetroReplay UK logo" width="120" height="120">
     </a>
-    <nav class="nav" aria-label="Primary">
+    <nav class="nav">
       <a class="nav__link" href="/">Home</a>
       <a class="nav__link is-active" href="/shop.html" aria-current="page">Shop</a>
       <a class="nav__link" href="/support.html">Support</a>
@@ -53,15 +118,12 @@
 <main id="main">
 
   <!-- Hero -->
-  <section class="hero reveal" style="background:linear-gradient(180deg,#f9fcff 0%,#eaf6ff 100%);border-bottom:1px solid #d9e9f2;">
+  <section class="hero reveal" aria-label="Ultimate Edition Hero">
     <div class="container hero__inner">
       <div>
         <p class="kicker" style="color:#0077bb;">⭐ Best Seller • Flagship Build ⭐</p>
         <h1 class="h1" style="color:#0b1020;">🟥 The Ultimate Modded Edition — Serious Player Build</h1>
-        <p class="lead" style="color:#1e293b;">
-          The <strong>Ultimate Modded Edition</strong> is our signature build — for players who want the very best PS2 FAT experience.  
-          Fully tested, HDD-ready, and configured for disc-free play. Hand-built in the UK, fully documented, and backed by warranty.
-        </p>
+        <p class="lead" style="color:#1e293b;">The <strong>Ultimate Modded Edition</strong> is our signature build — for players who want the very best PS2 FAT experience. Fully tested, HDD-ready, and configured for disc-free play. Hand-built in the UK, fully documented, and backed by warranty.</p>
         <ul class="bullets" style="color:#0b1020;">
           <li>✔ Network adapter installed (HDD ready)</li>
           <li>✔ Pre-installed Free McBoot (FMCB) software</li>
@@ -70,17 +132,15 @@
           <li>✔ Extended testing + documentation included</li>
         </ul>
         <p class="fineprint" style="color:#1e293b;">From £179.99 GBP • Fast UK tracked shipping • 90-day warranty</p>
-        <div id="paypal-container-RCX5N5QAH75PJ" class="paypal-button"></div>
+        <div id="paypal-container-RCX5N5QAH75PJ" style="margin-top:16px;"></div>
       </div>
-      <div class="reveal" style="text-align:center;">
-        <img src="/assets/logo.png" alt="RetroReplay UK Ultimate Edition" width="260" height="260" loading="lazy" style="filter:drop-shadow(0 8px 12px rgba(0,0,0,.1));" />
-      </div>
+      <div><img src="/assets/logo.png" alt="RetroReplay UK Ultimate Edition" loading="lazy"></div>
     </div>
   </section>
 
-  <!-- Trust Banner -->
-  <section class="section" style="background:#f6fbff;border-bottom:1px solid #d9e9f2;">
-    <div class="container" style="display:flex;justify-content:center;gap:28px;flex-wrap:wrap;font-weight:700;color:#0b1020;">
+  <!-- Trust banner -->
+  <section class="section reveal" style="background:#f6fbff;border-bottom:1px solid #d9e9f2;">
+    <div class="container" style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;font-weight:700;color:#0b1020;">
       <span>💂 Built in the UK</span>
       <span>🚚 Fast Tracked Dispatch</span>
       <span>🧰 Fully Tested Hardware</span>
@@ -88,10 +148,10 @@
     </div>
   </section>
 
-  <!-- Other Packages -->
-  <section class="section" id="packages" aria-label="Other packages">
-    <div class="container grid2">
-      <article class="card reveal" id="pkg-p2">
+  <!-- Other packages -->
+  <section class="section reveal" id="packages">
+    <div class="container package-grid">
+      <article class="card shop" id="pkg-p2">
         <h2 class="h2">🟨 Player 2 Plug & Play ⭐ Best Value</h2>
         <p class="muted">Shared Play • Extra Comfort</p>
         <ul class="bullets">
@@ -101,10 +161,10 @@
           <li>Ideal for families and shared gaming</li>
         </ul>
         <p class="fineprint">From £149.99 GBP</p>
-        <div id="paypal-container-K8455AQ6AKK3L" class="paypal-button"></div>
+        <div id="paypal-container-K8455AQ6AKK3L"></div>
       </article>
 
-      <article class="card reveal" id="pkg-p1">
+      <article class="card shop" id="pkg-p1">
         <h2 class="h2">🟦 Player 1 Plug & Play</h2>
         <p class="muted">Simple • Reliable • Ready</p>
         <ul class="bullets">
@@ -114,7 +174,7 @@
           <li>Warranty & authenticity documentation</li>
         </ul>
         <p class="fineprint">From £119.99 GBP</p>
-        <div id="paypal-container-JMNWZWNM943Z8" class="paypal-button"></div>
+        <div id="paypal-container-JMNWZWNM943Z8"></div>
       </article>
     </div>
   </section>
@@ -123,10 +183,8 @@
   <section class="section section--alt reveal" aria-label="Compare packages">
     <div class="container">
       <h2 class="h2" style="text-align:center;color:#0b1020;">Compare Packages</h2>
-      <table class="card" style="width:100%;border-collapse:collapse;margin-top:16px;">
-        <thead>
-          <tr><th style="text-align:left;">Feature</th><th>Player 1</th><th>Player 2</th><th>Ultimate</th></tr>
-        </thead>
+      <table class="compare">
+        <thead><tr><th>Feature</th><th>Player 1</th><th>Player 2</th><th>Ultimate</th></tr></thead>
         <tbody>
           <tr><td>Controllers</td><td>1</td><td>2</td><td>2</td></tr>
           <tr><td>Plug-and-Play HDD</td><td>Optional</td><td>Included</td><td>Included + FMCB</td></tr>
@@ -167,14 +225,13 @@
       <form class="form" method="post" action="https://formspree.io/f/manrkvby" style="max-width:480px;margin:18px auto 0;">
         <input type="hidden" name="form_type" value="newsletter" />
         <div class="form__row">
-          <input class="input" type="email" name="email" placeholder="you@example.com" required />
+          <input class="input" type="email" name="email" placeholder="you@example.com" required>
           <button class="button" type="submit">Subscribe</button>
         </div>
         <p class="fineprint" style="color:#1e293b;">No spam — unsubscribe anytime.</p>
       </form>
     </div>
   </section>
-
 </main>
 
 <footer class="footer" style="background:#eaf6ff;color:#0b1020;border-top:1px solid #d9e9f2;">
@@ -200,13 +257,16 @@
   </div>
 </div>
 
-<!-- PayPal Loader -->
+<!-- Reveal & PayPal -->
 <script>
-  const waitForPayPal=setInterval(()=>{if(window.paypal&&window.paypal.HostedButtons){clearInterval(waitForPayPal);
-    paypal.HostedButtons({hostedButtonId:"RCX5N5QAH75PJ"}).render("#paypal-container-RCX5N5QAH75PJ");
-    paypal.HostedButtons({hostedButtonId:"K8455AQ6AKK3L"}).render("#paypal-container-K8455AQ6AKK3L");
-    paypal.HostedButtons({hostedButtonId:"JMNWZWNM943Z8"}).render("#paypal-container-JMNWZWNM943Z8");
-  }},200);
+document.addEventListener("scroll",()=>{document.querySelectorAll(".reveal").forEach(el=>{
+  if(el.getBoundingClientRect().top<window.innerHeight*0.85) el.classList.add("visible");
+});});
+const wait=setInterval(()=>{if(window.paypal&&window.paypal.HostedButtons){clearInterval(wait);
+paypal.HostedButtons({hostedButtonId:"RCX5N5QAH75PJ"}).render("#paypal-container-RCX5N5QAH75PJ");
+paypal.HostedButtons({hostedButtonId:"K8455AQ6AKK3L"}).render("#paypal-container-K8455AQ6AKK3L");
+paypal.HostedButtons({hostedButtonId:"JMNWZWNM943Z8"}).render("#paypal-container-JMNWZWNM943Z8");
+}},200);
 </script>
 
 </body>
