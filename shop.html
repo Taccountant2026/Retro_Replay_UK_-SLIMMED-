@@ -23,79 +23,14 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://www.paypal.com">
   <link rel="dns-prefetch" href="https://www.paypal.com">
-  <link rel="preload" href="/assets/logo.png" as="image">
+  <link rel="preload" href="/assets/logo.png" as="image" importance="high">
   <link rel="stylesheet" href="/style.css" />
+
   <script defer src="/js/analytics.js"></script>
   <script defer src="/js/main.js"></script>
 
   <!-- PayPal SDK -->
   <script async src="https://www.paypal.com/sdk/js?client-id=BAApYaG5zDntUHsd2tRXv1ylGkYhREqRR-t7PWcH3-Sh7ElgWliEyCEnhAeQjoawIGidc1LY7PQRK9A0Sg&components=hosted-buttons&disable-funding=venmo&currency=GBP"></script>
-
-  <style>
-    /* Sleek tech retail layer */
-    .hero {
-      background:linear-gradient(180deg,#f9fcff 0%,#eaf6ff 100%);
-      border-bottom:1px solid #d9e9f2;
-      padding:80px 0;
-    }
-    .hero__inner {
-      display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:40px;
-    }
-    .hero img {
-      max-width:320px;border-radius:24px;box-shadow:0 18px 45px rgba(0,0,0,.1);
-      animation:floaty 6s ease-in-out infinite alternate;
-    }
-    @keyframes floaty {
-      from{transform:translateY(0);} to{transform:translateY(-10px);}
-    }
-
-    /* Product cards */
-    .package-grid {
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;
-    }
-    .card.shop {
-      background:rgba(255,255,255,0.92);
-      border:1px solid #d9e9f2;
-      border-radius:22px;
-      box-shadow:0 8px 25px rgba(11,16,32,0.05);
-      transition:transform .3s ease,box-shadow .3s ease;
-      padding:28px;
-    }
-    .card.shop:hover {
-      transform:translateY(-6px);
-      box-shadow:0 16px 38px rgba(11,16,32,0.08);
-    }
-
-    /* Comparison */
-    table.compare {
-      width:100%;border-collapse:collapse;
-      background:rgba(255,255,255,0.96);
-      border:1px solid #d9e9f2;border-radius:16px;
-      overflow:hidden;box-shadow:0 6px 20px rgba(11,16,32,.06);
-    }
-    table.compare th,table.compare td {
-      padding:12px 16px;text-align:center;border-bottom:1px solid #e5eff7;
-    }
-    table.compare th:first-child,table.compare td:first-child{text-align:left;}
-    table.compare tr:hover{background:rgba(234,246,255,0.4);}
-    table.compare th{background:#f3f9ff;font-weight:700;color:#0b1020;}
-
-    /* FAQ */
-    details.faq {
-      margin:10px 0;padding:14px 18px;
-      background:rgba(255,255,255,0.94);
-      border:1px solid #d9e9f2;border-radius:14px;
-      box-shadow:0 4px 12px rgba(11,16,32,.04);
-      transition:box-shadow .2s ease;
-    }
-    details.faq[open]{box-shadow:0 6px 18px rgba(11,16,32,.08);}
-    details.faq summary{cursor:pointer;font-weight:600;}
-
-    /* Reveal animation */
-    .reveal{opacity:0;transform:translateY(35px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);}
-    .reveal.visible{opacity:1;transform:none;}
-    @media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none!important;}}
-  </style>
 </head>
 
 <body class="page-light">
@@ -104,7 +39,7 @@
 <header class="header">
   <div class="container header__inner">
     <a class="brand" href="/" aria-label="RetroReplay UK Home">
-      <img class="brand__logo" src="/assets/logo.png" alt="RetroReplay UK logo" width="120" height="120">
+      <img class="brand__logo" src="/assets/logo.png" alt="RetroReplay UK logo" width="120" height="120" />
     </a>
     <nav class="nav">
       <a class="nav__link" href="/">Home</a>
@@ -117,13 +52,31 @@
 
 <main id="main">
 
-  <!-- Hero -->
-  <section class="hero reveal" aria-label="Ultimate Edition Hero">
-    <div class="container hero__inner">
-      <div>
-        <p class="kicker" style="color:#0077bb;">⭐ Best Seller • Flagship Build ⭐</p>
-        <h1 class="h1" style="color:#0b1020;">🟥 The Ultimate Modded Edition — Serious Player Build</h1>
-        <p class="lead" style="color:#1e293b;">The <strong>Ultimate Modded Edition</strong> is our signature build — for players who want the very best PS2 FAT experience. Fully tested, HDD-ready, and configured for disc-free play. Hand-built in the UK, fully documented, and backed by warranty.</p>
+  <!-- ✴ Product Showcase -->
+  <section class="section reveal" id="packages" aria-label="PlayStation 2 FAT Packages">
+    <div class="container showcase-grid">
+
+      <!-- Player 1 -->
+      <article class="card shop side-card" id="pkg-p1">
+        <h2 class="h2">🟦 Player 1 Plug & Play</h2>
+        <p class="muted">Simple • Reliable • Ready</p>
+        <ul class="bullets">
+          <li>1 × controller (third-party)</li>
+          <li>1 × prepared memory card</li>
+          <li>Composite AV cable included</li>
+          <li>Warranty & authenticity documentation</li>
+        </ul>
+        <p class="fineprint">From £119.99 GBP</p>
+        <div id="paypal-container-JMNWZWNM943Z8"></div>
+      </article>
+
+      <!-- Ultimate -->
+      <article class="card shop flagship" id="pkg-ultimate">
+        <p class="kicker" style="color:#0077bb;font-weight:700;">⭐ Best Seller • Flagship Build ⭐</p>
+        <h1 class="h1" style="color:#0b1020;">🟥 The Ultimate Modded Edition</h1>
+        <p class="lead" style="color:#1e293b;">
+          The <strong>Ultimate Modded Edition</strong> is our signature package — for serious players who want the very best PS2 FAT experience.
+        </p>
         <ul class="bullets" style="color:#0b1020;">
           <li>✔ Network adapter installed (HDD ready)</li>
           <li>✔ Pre-installed Free McBoot (FMCB) software</li>
@@ -133,25 +86,16 @@
         </ul>
         <p class="fineprint" style="color:#1e293b;">From £179.99 GBP • Fast UK tracked shipping • 90-day warranty</p>
         <div id="paypal-container-RCX5N5QAH75PJ" style="margin-top:16px;"></div>
-      </div>
-      <div><img src="/assets/logo.png" alt="RetroReplay UK Ultimate Edition" loading="lazy"></div>
-    </div>
-  </section>
 
-  <!-- Trust banner -->
-  <section class="section reveal" style="background:#f6fbff;border-bottom:1px solid #d9e9f2;">
-    <div class="container" style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;font-weight:700;color:#0b1020;">
-      <span>💂 Built in the UK</span>
-      <span>🚚 Fast Tracked Dispatch</span>
-      <span>🧰 Fully Tested Hardware</span>
-      <span>💳 Secure PayPal Checkout</span>
-    </div>
-  </section>
+        <div class="trust-badges">
+          <span>💂 Built in the UK</span>
+          <span>🚚 Tracked Shipping</span>
+          <span>💳 PayPal Secure Checkout</span>
+        </div>
+      </article>
 
-  <!-- Other packages -->
-  <section class="section reveal" id="packages">
-    <div class="container package-grid">
-      <article class="card shop" id="pkg-p2">
+      <!-- Player 2 -->
+      <article class="card shop side-card" id="pkg-p2">
         <h2 class="h2">🟨 Player 2 Plug & Play ⭐ Best Value</h2>
         <p class="muted">Shared Play • Extra Comfort</p>
         <ul class="bullets">
@@ -164,22 +108,10 @@
         <div id="paypal-container-K8455AQ6AKK3L"></div>
       </article>
 
-      <article class="card shop" id="pkg-p1">
-        <h2 class="h2">🟦 Player 1 Plug & Play</h2>
-        <p class="muted">Simple • Reliable • Ready</p>
-        <ul class="bullets">
-          <li>1 × controller (third-party)</li>
-          <li>1 × prepared memory card</li>
-          <li>Composite AV cable included</li>
-          <li>Warranty & authenticity documentation</li>
-        </ul>
-        <p class="fineprint">From £119.99 GBP</p>
-        <div id="paypal-container-JMNWZWNM943Z8"></div>
-      </article>
     </div>
   </section>
 
-  <!-- Compare -->
+  <!-- Comparison -->
   <section class="section section--alt reveal" aria-label="Compare packages">
     <div class="container">
       <h2 class="h2" style="text-align:center;color:#0b1020;">Compare Packages</h2>
@@ -209,7 +141,7 @@
       <details class="faq"><summary>What’s included in warranty?</summary>
         <p>All RetroReplay UK consoles include a 90-day hardware warranty with after-sales support and repair options.</p></details>
       <details class="faq"><summary>How fast is shipping?</summary>
-        <p>Orders usually ship within 2-3 business days with UK tracking.</p></details>
+        <p>Orders usually ship within 2–3 business days with UK tracking.</p></details>
       <details class="faq"><summary>Is payment secure?</summary>
         <p>Yes — checkout is via PayPal with Buyer Protection and encryption.</p></details>
       <details class="faq"><summary>Can I request custom mods or colours?</summary>
@@ -218,14 +150,14 @@
   </section>
 
   <!-- Newsletter -->
-  <section class="section section--alt reveal" style="background:#f0f8ff;text-align:center;">
+  <section class="section section--alt reveal" style="text-align:center;">
     <div class="container">
       <h2 class="h2" style="color:#0b1020;">Stay in the Loop</h2>
       <p class="muted" style="color:#1e293b;">Receive restock alerts, build guides and exclusive offers.</p>
       <form class="form" method="post" action="https://formspree.io/f/manrkvby" style="max-width:480px;margin:18px auto 0;">
         <input type="hidden" name="form_type" value="newsletter" />
         <div class="form__row">
-          <input class="input" type="email" name="email" placeholder="you@example.com" required>
+          <input class="input" type="email" name="email" placeholder="you@example.com" required />
           <button class="button" type="submit">Subscribe</button>
         </div>
         <p class="fineprint" style="color:#1e293b;">No spam — unsubscribe anytime.</p>
@@ -246,7 +178,7 @@
   </div>
 </footer>
 
-<!-- Cookie -->
+<!-- Cookie Banner -->
 <div class="cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
   <div class="cookie__inner">
     <p class="cookie__text">We use cookies for analytics to improve the site. You can accept or reject non-essential cookies.</p>
@@ -257,11 +189,8 @@
   </div>
 </div>
 
-<!-- Reveal & PayPal -->
+<!-- PayPal Render -->
 <script>
-document.addEventListener("scroll",()=>{document.querySelectorAll(".reveal").forEach(el=>{
-  if(el.getBoundingClientRect().top<window.innerHeight*0.85) el.classList.add("visible");
-});});
 const wait=setInterval(()=>{if(window.paypal&&window.paypal.HostedButtons){clearInterval(wait);
 paypal.HostedButtons({hostedButtonId:"RCX5N5QAH75PJ"}).render("#paypal-container-RCX5N5QAH75PJ");
 paypal.HostedButtons({hostedButtonId:"K8455AQ6AKK3L"}).render("#paypal-container-K8455AQ6AKK3L");
