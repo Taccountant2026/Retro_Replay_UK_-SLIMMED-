@@ -6,7 +6,7 @@
   <title>PlayStation 2 FAT Consoles & Plug-and-Play HDD Packages | RetroReplay UK</title>
   <meta name="description" content="Shop fully tested PlayStation 2 FAT consoles and Plug-and-Play HDD packages from RetroReplay UK. Player 1, Player 2 and Ultimate Modded Edition — all UK-built, tested & supported." />
   <link rel="canonical" href="https://retroreplay.uk/shop.html" />
-  <meta name="theme-color" content="#0b1020" />
+  <meta name="theme-color" content="#eaf6ff" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:site_name" content="RetroReplay UK" />
@@ -21,13 +21,15 @@
   <meta name="twitter:image" content="https://retroreplay.uk/assets/og.jpg" />
 
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-  <link rel="preload" as="image" href="/assets/logo.png" />
+  <link rel="preconnect" href="https://www.paypal.com">
+  <link rel="dns-prefetch" href="https://www.paypal.com">
+  <link rel="preload" href="/assets/logo.png" as="image" importance="high">
   <link rel="stylesheet" href="/style.css" />
 
   <script defer src="/js/analytics.js"></script>
   <script defer src="/js/main.js"></script>
 
-  <!-- ✅ PayPal SDK (load async, not defer) -->
+  <!-- ✅ PayPal SDK -->
   <script async src="https://www.paypal.com/sdk/js?client-id=BAApYaG5zDntUHsd2tRXv1ylGkYhREqRR-t7PWcH3-Sh7ElgWliEyCEnhAeQjoawIGidc1LY7PQRK9A0Sg&components=hosted-buttons&disable-funding=venmo&currency=GBP" onload="window.paypalLoad=true"></script>
 </head>
 
@@ -50,37 +52,46 @@
 
 <main id="main">
 
-  <!-- Hero / Ultimate First -->
-  <section class="hero" aria-label="Ultimate Edition Hero">
+  <!-- Hero -->
+  <section class="hero reveal" style="background:linear-gradient(180deg,#f9fcff 0%,#eaf6ff 100%);border-bottom:1px solid #d9e9f2;">
     <div class="container hero__inner">
       <div>
-        <p class="kicker" style="color:#ffd700;">⭐ Best Seller • Flagship Build ⭐</p>
-        <h1 class="h1">🟥 The Ultimate Modded Edition — Serious Player Build</h1>
-        <p class="lead">
-          The Ultimate Modded Edition is the signature RetroReplay UK package — built for enthusiasts who want the very best PlayStation 2 FAT experience.  
-          Fully tested, HDD-ready, and pre-configured for disc-free play. Hand-built in the UK, fully documented, and backed by warranty.
+        <p class="kicker" style="color:#0077bb;">⭐ Best Seller • Flagship Build ⭐</p>
+        <h1 class="h1" style="color:#0b1020;">🟥 The Ultimate Modded Edition — Serious Player Build</h1>
+        <p class="lead" style="color:#1e293b;">
+          The <strong>Ultimate Modded Edition</strong> is our signature build — for players who want the very best PS2 FAT experience.  
+          Fully tested, HDD-ready, and configured for disc-free play. Hand-built in the UK, fully documented, and backed by warranty.
         </p>
-        <ul class="bullets">
+        <ul class="bullets" style="color:#0b1020;">
           <li>✔ Network adapter installed (HDD ready)</li>
           <li>✔ Pre-installed Free McBoot (FMCB) software</li>
           <li>✔ Region-free, disc-free play & media launch</li>
           <li>✔ Choice of 500 GB / 1 TB / 2 TB HDD upgrade</li>
           <li>✔ Extended testing + documentation included</li>
         </ul>
-        <p class="fineprint">From £179.99 GBP • Fast UK tracked shipping • 90-day warranty</p>
+        <p class="fineprint" style="color:#1e293b;">From £179.99 GBP • Fast UK tracked shipping • 90-day warranty</p>
         <div id="paypal-container-RCX5N5QAH75PJ" class="paypal-button"></div>
       </div>
-      <div style="text-align:center;">
-        <img src="/assets/logo.png" alt="RetroReplay UK Ultimate Edition" width="240" height="240" loading="lazy" />
+      <div class="reveal" style="text-align:center;">
+        <img src="/assets/logo.png" alt="RetroReplay UK Ultimate Edition" width="260" height="260" loading="lazy" style="filter:drop-shadow(0 8px 12px rgba(0,0,0,.1));" />
       </div>
+    </div>
+  </section>
+
+  <!-- Trust Banner -->
+  <section class="section" style="background:#f6fbff;border-bottom:1px solid #d9e9f2;">
+    <div class="container" style="display:flex;justify-content:center;gap:28px;flex-wrap:wrap;font-weight:700;color:#0b1020;">
+      <span>💂 Built in the UK</span>
+      <span>🚚 Fast Tracked Dispatch</span>
+      <span>🧰 Fully Tested Hardware</span>
+      <span>💳 Secure PayPal Checkout</span>
     </div>
   </section>
 
   <!-- Other Packages -->
   <section class="section" id="packages" aria-label="Other packages">
     <div class="container grid2">
-
-      <article class="card" id="pkg-p2">
+      <article class="card reveal" id="pkg-p2">
         <h2 class="h2">🟨 Player 2 Plug & Play ⭐ Best Value</h2>
         <p class="muted">Shared Play • Extra Comfort</p>
         <ul class="bullets">
@@ -93,7 +104,7 @@
         <div id="paypal-container-K8455AQ6AKK3L" class="paypal-button"></div>
       </article>
 
-      <article class="card" id="pkg-p1">
+      <article class="card reveal" id="pkg-p1">
         <h2 class="h2">🟦 Player 1 Plug & Play</h2>
         <p class="muted">Simple • Reliable • Ready</p>
         <ul class="bullets">
@@ -105,16 +116,17 @@
         <p class="fineprint">From £119.99 GBP</p>
         <div id="paypal-container-JMNWZWNM943Z8" class="paypal-button"></div>
       </article>
-
     </div>
   </section>
 
-  <!-- Comparison Table -->
-  <section class="section section--alt" aria-label="Compare packages">
+  <!-- Compare -->
+  <section class="section section--alt reveal" aria-label="Compare packages">
     <div class="container">
-      <h2 class="h2">Compare Packages</h2>
-      <table class="card" style="width:100%;border-collapse:collapse;margin-top:12px;">
-        <thead><tr><th style="text-align:left;">Feature</th><th>Player 1</th><th>Player 2</th><th>Ultimate</th></tr></thead>
+      <h2 class="h2" style="text-align:center;color:#0b1020;">Compare Packages</h2>
+      <table class="card" style="width:100%;border-collapse:collapse;margin-top:16px;">
+        <thead>
+          <tr><th style="text-align:left;">Feature</th><th>Player 1</th><th>Player 2</th><th>Ultimate</th></tr>
+        </thead>
         <tbody>
           <tr><td>Controllers</td><td>1</td><td>2</td><td>2</td></tr>
           <tr><td>Plug-and-Play HDD</td><td>Optional</td><td>Included</td><td>Included + FMCB</td></tr>
@@ -127,50 +139,57 @@
   </section>
 
   <!-- FAQ -->
-  <section class="section" aria-label="FAQ">
+  <section class="section reveal" aria-label="FAQ">
     <div class="container">
-      <h2 class="h2">Frequently Asked Questions</h2>
-
+      <h2 class="h2" style="text-align:center;color:#0b1020;">Frequently Asked Questions</h2>
       <details class="faq" open><summary>How are the consoles tested?</summary>
-      <p>Each unit is fully disassembled, cleaned, and tested with multiple titles. Laser calibration, controller ports, and HDD adapter fit are verified before listing.</p></details>
-
+        <p>Each unit is fully disassembled, cleaned and tested with multiple titles. Laser calibration, controller ports and HDD adapter fit are verified before listing.</p></details>
       <details class="faq"><summary>Do these work with modern TVs?</summary>
-      <p>Yes — we supply composite output and recommend component or HDMI upscalers for best results on modern displays.</p></details>
-
+        <p>Yes — composite output is supplied, and component or HDMI upscalers are recommended for modern displays.</p></details>
       <details class="faq"><summary>Can I play my original PS1 and PS2 discs?</summary>
-      <p>Absolutely. All systems support original PS2 titles and most PS1 discs.</p></details>
-
+        <p>Absolutely. All systems support original PS2 titles and most PS1 discs.</p></details>
       <details class="faq"><summary>What’s included in warranty?</summary>
-      <p>All RetroReplay UK consoles include a 90-day hardware warranty with after-sales support and repair options.</p></details>
-
+        <p>All RetroReplay UK consoles include a 90-day hardware warranty with after-sales support and repair options.</p></details>
       <details class="faq"><summary>How fast is shipping?</summary>
-      <p>Orders usually ship within 2-3 business days with UK tracking.</p></details>
-
+        <p>Orders usually ship within 2-3 business days with UK tracking.</p></details>
       <details class="faq"><summary>Is payment secure?</summary>
-      <p>Yes — checkout is via PayPal with Buyer Protection and encryption.</p></details>
-
+        <p>Yes — checkout is via PayPal with Buyer Protection and encryption.</p></details>
       <details class="faq"><summary>Can I request custom mods or colours?</summary>
-      <p>Yes — contact us at <a href="mailto:retroreplay2026@gmail.com">retroreplay2026@gmail.com</a> before ordering for custom build options.</p></details>
-
-      <details class="faq"><summary>Do you provide setup help?</summary>
-      <p>Yes — free setup support via email and our <a href="/support.html">Support page</a>.</p></details>
+        <p>Yes — contact us at <a href="mailto:retroreplay2026@gmail.com">retroreplay2026@gmail.com</a> for custom build options.</p></details>
     </div>
   </section>
+
+  <!-- Newsletter -->
+  <section class="section section--alt reveal" style="background:#f0f8ff;text-align:center;">
+    <div class="container">
+      <h2 class="h2" style="color:#0b1020;">Stay in the Loop</h2>
+      <p class="muted" style="color:#1e293b;">Receive restock alerts, build guides and exclusive offers.</p>
+      <form class="form" method="post" action="https://formspree.io/f/manrkvby" style="max-width:480px;margin:18px auto 0;">
+        <input type="hidden" name="form_type" value="newsletter" />
+        <div class="form__row">
+          <input class="input" type="email" name="email" placeholder="you@example.com" required />
+          <button class="button" type="submit">Subscribe</button>
+        </div>
+        <p class="fineprint" style="color:#1e293b;">No spam — unsubscribe anytime.</p>
+      </form>
+    </div>
+  </section>
+
 </main>
 
-<footer class="footer">
+<footer class="footer" style="background:#eaf6ff;color:#0b1020;border-top:1px solid #d9e9f2;">
   <div class="container footer__inner">
     <p class="fineprint">© <span data-year></span> RetroReplay UK</p>
     <div class="footer__links">
-      <a href="/support.html">Warranty & Support</a>
+      <a href="/shop.html">Shop</a>
+      <a href="/support.html">Support</a>
       <a href="/privacy.html">Privacy</a>
-      <a href="/cookies.html">Cookies</a>
       <a href="/contact.html">Contact</a>
     </div>
   </div>
 </footer>
 
-<!-- Cookie banner -->
+<!-- Cookie -->
 <div class="cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
   <div class="cookie__inner">
     <p class="cookie__text">We use cookies for analytics to improve the site. You can accept or reject non-essential cookies.</p>
@@ -181,16 +200,13 @@
   </div>
 </div>
 
-<!-- ✅ Wait for PayPal SDK to load -->
+<!-- PayPal Loader -->
 <script>
-  const waitForPayPal = setInterval(() => {
-    if (window.paypal && window.paypal.HostedButtons) {
-      clearInterval(waitForPayPal);
-      paypal.HostedButtons({hostedButtonId:"RCX5N5QAH75PJ"}).render("#paypal-container-RCX5N5QAH75PJ");
-      paypal.HostedButtons({hostedButtonId:"K8455AQ6AKK3L"}).render("#paypal-container-K8455AQ6AKK3L");
-      paypal.HostedButtons({hostedButtonId:"JMNWZWNM943Z8"}).render("#paypal-container-JMNWZWNM943Z8");
-    }
-  }, 200);
+  const waitForPayPal=setInterval(()=>{if(window.paypal&&window.paypal.HostedButtons){clearInterval(waitForPayPal);
+    paypal.HostedButtons({hostedButtonId:"RCX5N5QAH75PJ"}).render("#paypal-container-RCX5N5QAH75PJ");
+    paypal.HostedButtons({hostedButtonId:"K8455AQ6AKK3L"}).render("#paypal-container-K8455AQ6AKK3L");
+    paypal.HostedButtons({hostedButtonId:"JMNWZWNM943Z8"}).render("#paypal-container-JMNWZWNM943Z8");
+  }},200);
 </script>
 
 </body>
