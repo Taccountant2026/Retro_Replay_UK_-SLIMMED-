@@ -181,6 +181,75 @@ a:focus-visible, button:focus-visible {
 .reveal { opacity: 0; transform: translateY(40px); transition: opacity .8s ease, transform .8s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+/* ============================================================
+   RetroReplay UK — Compact Premium Shop Showcase
+   ============================================================ */
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: stretch;
+  justify-items: center;
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.card.shop {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--line-light);
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(11,16,32,0.05);
+  padding: 20px 22px;
+  width: 100%;
+  max-width: 300px;
+  text-align: left;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card.shop:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(11,16,32,0.1);
+}
+
+/* Flagship (center) */
+.card.shop.flagship {
+  max-width: 360px;
+  padding: 26px;
+  background: linear-gradient(180deg, #ffffff 0%, #f0f8ff 100%);
+  box-shadow: 0 14px 28px rgba(0,60,120,0.08);
+  border: 2px solid #bcdcff;
+  transform: scale(1.03);
+  text-align: center;
+}
+.card.shop.flagship:hover { transform: scale(1.05); }
+
+/* Side cards */
+.card.shop.side-card { opacity: 0.96; transform: scale(0.96); }
+.card.shop.side-card:hover { transform: scale(0.99); }
+
+.trust-badges {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.85rem;
+}
+
+/* Equal height for all cards */
+.showcase-grid > .card.shop { display: flex; flex-direction: column; justify-content: space-between; min-height: 100%; }
+.card.shop ul.bullets { flex-grow: 1; }
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .showcase-grid { grid-template-columns: 1fr; }
+  .card.shop.flagship { max-width: 100%; transform: none; }
+  .card.shop.side-card { transform: none; }
+}
+
 /* Responsive -------------------------------------------------------------- */
 @media (max-width: 768px) {
   .header__inner { flex-direction: column; gap: 8px; }
