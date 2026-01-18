@@ -31,6 +31,117 @@
 
   <!-- PayPal SDK -->
   <script async src="https://www.paypal.com/sdk/js?client-id=BAApYaG5zDntUHsd2tRXv1ylGkYhREqRR-t7PWcH3-Sh7ElgWliEyCEnhAeQjoawIGidc1LY7PQRK9A0Sg&components=hosted-buttons&disable-funding=venmo&currency=GBP"></script>
+
+  <style>
+    /* Polished layout touches for shop showcase */
+    .hero-shop {
+      background: radial-gradient(circle at 50% 0%, #eaf6ff 0%, #f7fbff 60%, #ffffff 100%);
+      padding: 80px 0 100px;
+      text-align: center;
+      border-bottom: 1px solid #d9e9f2;
+    }
+    .hero-shop img {
+      max-width: 280px;
+      filter: drop-shadow(0 14px 30px rgba(0,0,0,.08));
+      animation: float 6s ease-in-out infinite alternate;
+    }
+    @keyframes float {
+      from { transform: translateY(0); } to { transform: translateY(-10px); }
+    }
+    .hero-shop .lead { max-width: 640px; margin: 0 auto; }
+
+    /* 3 product layout */
+    .showcase-row {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 26px;
+      margin-top: -80px;
+      position: relative;
+      z-index: 10;
+    }
+    .card.shop {
+      flex: 1 1 300px;
+      max-width: 340px;
+      background: #fff;
+      border: 1px solid #d9e9f2;
+      border-radius: 18px;
+      padding: 26px 24px;
+      box-shadow: 0 8px 24px rgba(11,16,32,0.06);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .card.shop:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 32px rgba(11,16,32,0.1);
+    }
+
+    /* Flagship center card */
+    .card.shop.flagship {
+      flex: 1 1 380px;
+      max-width: 420px;
+      border: 2px solid #bcdcff;
+      background: linear-gradient(180deg, #ffffff 0%, #f0f8ff 100%);
+      box-shadow: 0 16px 40px rgba(160,200,255,0.25);
+      text-align: center;
+      transform: scale(1.05);
+    }
+    .card.shop.flagship:hover {
+      transform: scale(1.07);
+      box-shadow: 0 18px 46px rgba(120,180,255,0.35);
+    }
+
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      font-weight: 600;
+      color: #0b1020;
+      font-size: .85rem;
+    }
+
+    /* Table + FAQ polish */
+    table.compare {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid #d9e9f2;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(11,16,32,.06);
+    }
+    table.compare th, table.compare td {
+      padding: 12px 16px;
+      text-align: center;
+      border-bottom: 1px solid #e5eff7;
+    }
+    table.compare th:first-child, table.compare td:first-child {
+      text-align: left;
+    }
+    table.compare th {
+      background: #f3f9ff;
+      font-weight: 700;
+      color: #0b1020;
+    }
+    details.faq {
+      margin: 10px 0;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid #d9e9f2;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(11,16,32,.04);
+      transition: box-shadow .2s ease;
+    }
+    details.faq[open] { box-shadow: 0 6px 18px rgba(11,16,32,.08); }
+
+    @media (max-width: 960px) {
+      .showcase-row { flex-direction: column; align-items: center; margin-top: 20px; }
+      .card.shop.flagship { transform: none; max-width: 100%; }
+    }
+  </style>
 </head>
 
 <body class="page-light">
@@ -52,12 +163,22 @@
 
 <main id="main">
 
-  <!-- ✴ Product Showcase -->
-  <section class="section reveal" id="packages" aria-label="PlayStation 2 FAT Packages">
-    <div class="container showcase-grid">
+  <!-- Hero -->
+  <section class="hero-shop reveal">
+    <div class="container">
+      <h1 class="h1" style="color:#0b1020;">PlayStation 2 FAT Packages</h1>
+      <p class="lead" style="color:#1e293b;">Choose your tested PlayStation 2 FAT build — Player 1, Player 2 or the Ultimate Modded Edition.  
+        Every console is fully serviced, HDD-ready, and supported right here in the UK.</p>
+      <img src="/assets/logo.png" alt="RetroReplay PS2 Ultimate Edition" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- 3 Products -->
+  <section class="section reveal" id="packages">
+    <div class="container showcase-row">
 
       <!-- Player 1 -->
-      <article class="card shop side-card" id="pkg-p1">
+      <article class="card shop" id="pkg-p1">
         <h2 class="h2">🟦 Player 1 Plug & Play</h2>
         <p class="muted">Simple • Reliable • Ready</p>
         <ul class="bullets">
@@ -73,29 +194,26 @@
       <!-- Ultimate -->
       <article class="card shop flagship" id="pkg-ultimate">
         <p class="kicker" style="color:#0077bb;font-weight:700;">⭐ Best Seller • Flagship Build ⭐</p>
-        <h1 class="h1" style="color:#0b1020;">🟥 The Ultimate Modded Edition</h1>
-        <p class="lead" style="color:#1e293b;">
-          The <strong>Ultimate Modded Edition</strong> is our signature package — for serious players who want the very best PS2 FAT experience.
-        </p>
+        <h2 class="h1" style="color:#0b1020;">🟥 The Ultimate Modded Edition</h2>
+        <p class="lead" style="color:#1e293b;">The <strong>Ultimate Modded Edition</strong> is our signature package — for players who want the absolute best PS2 FAT experience.</p>
         <ul class="bullets" style="color:#0b1020;">
           <li>✔ Network adapter installed (HDD ready)</li>
-          <li>✔ Pre-installed Free McBoot (FMCB) software</li>
+          <li>✔ Pre-installed Free McBoot (FMCB)</li>
           <li>✔ Region-free, disc-free play & media launch</li>
-          <li>✔ Choice of 500 GB / 1 TB / 2 TB HDD upgrade</li>
-          <li>✔ Extended testing + documentation included</li>
+          <li>✔ 500 GB / 1 TB / 2 TB HDD upgrade options</li>
+          <li>✔ Extended testing + documentation</li>
         </ul>
-        <p class="fineprint" style="color:#1e293b;">From £179.99 GBP • Fast UK tracked shipping • 90-day warranty</p>
+        <p class="fineprint" style="color:#1e293b;">From £179.99 GBP • Tracked UK Shipping • 90-day Warranty</p>
         <div id="paypal-container-RCX5N5QAH75PJ" style="margin-top:16px;"></div>
-
         <div class="trust-badges">
           <span>💂 Built in the UK</span>
-          <span>🚚 Tracked Shipping</span>
-          <span>💳 PayPal Secure Checkout</span>
+          <span>🚚 Fast Dispatch</span>
+          <span>💳 Secure PayPal Checkout</span>
         </div>
       </article>
 
       <!-- Player 2 -->
-      <article class="card shop side-card" id="pkg-p2">
+      <article class="card shop" id="pkg-p2">
         <h2 class="h2">🟨 Player 2 Plug & Play ⭐ Best Value</h2>
         <p class="muted">Shared Play • Extra Comfort</p>
         <ul class="bullets">
@@ -112,7 +230,7 @@
   </section>
 
   <!-- Comparison -->
-  <section class="section section--alt reveal" aria-label="Compare packages">
+  <section class="section section--alt reveal">
     <div class="container">
       <h2 class="h2" style="text-align:center;color:#0b1020;">Compare Packages</h2>
       <table class="compare">
@@ -129,7 +247,7 @@
   </section>
 
   <!-- FAQ -->
-  <section class="section reveal" aria-label="FAQ">
+  <section class="section reveal">
     <div class="container">
       <h2 class="h2" style="text-align:center;color:#0b1020;">Frequently Asked Questions</h2>
       <details class="faq" open><summary>How are the consoles tested?</summary>
@@ -145,7 +263,7 @@
       <details class="faq"><summary>Is payment secure?</summary>
         <p>Yes — checkout is via PayPal with Buyer Protection and encryption.</p></details>
       <details class="faq"><summary>Can I request custom mods or colours?</summary>
-        <p>Yes — contact us at <a href="mailto:retroreplay2026@gmail.com">retroreplay2026@gmail.com</a> for custom build options.</p></details>
+        <p>Yes — contact us at <a href="mailto:retroreplay2026@gmail.com">retroreply2026@gmail.com</a> for custom build options.</p></details>
     </div>
   </section>
 
@@ -164,9 +282,10 @@
       </form>
     </div>
   </section>
+
 </main>
 
-<footer class="footer" style="background:#eaf6ff;color:#0b1020;border-top:1px solid #d9e9f2;">
+<footer class="footer">
   <div class="container footer__inner">
     <p class="fineprint">© <span data-year></span> RetroReplay UK</p>
     <div class="footer__links">
