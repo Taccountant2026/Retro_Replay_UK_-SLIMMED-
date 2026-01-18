@@ -3,65 +3,136 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contact RetroReplay UK — PS2 Support & Custom Orders</title>
-  <meta name="description" content="Contact RetroReplay UK for PlayStation 2 FAT support, custom builds, or order help. Fast replies, expert setup advice, and after-sales service." />
-  <meta name="theme-color" content="#ffffff" />
+  <title>Contact RetroReplay UK — Expert PS2 Support & Custom Builds</title>
+  <meta name="description" content="Get in touch with RetroReplay UK for PS2 FAT support, custom builds or order questions. Expert advice, fast replies, and real after-sales service from our UK team." />
   <link rel="canonical" href="https://retroreplay.uk/contact.html" />
+  <meta name="theme-color" content="#eaf6ff" />
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="RetroReplay UK" />
-  <meta property="og:title" content="Contact RetroReplay UK — PS2 Support & Custom Orders" />
-  <meta property="og:description" content="Get help or request a custom PS2 FAT console. Fast replies and friendly UK support from RetroReplay UK." />
+  <meta property="og:title" content="Contact RetroReplay UK — Expert PS2 Support & Custom Builds" />
+  <meta property="og:description" content="Message the RetroReplay UK team for PS2 FAT support, upgrades, or bespoke modding requests. Fast UK response and genuine retro expertise." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://retroreplay.uk/contact.html" />
   <meta property="og:image" content="https://retroreplay.uk/assets/og.jpg" />
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Contact RetroReplay UK — PS2 Support & Custom Orders" />
-  <meta name="twitter:description" content="Message RetroReplay UK for PS2 FAT support or custom builds. Fast UK response and after-sales help." />
+  <meta name="twitter:title" content="Contact RetroReplay UK — Expert PS2 Support & Custom Builds" />
+  <meta name="twitter:description" content="Fast support and tailored PlayStation 2 builds from RetroReplay UK. Get help, upgrades, or order info today." />
   <meta name="twitter:image" content="https://retroreplay.uk/assets/og.jpg" />
 
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-  <link rel="preload" as="image" href="/assets/logo.png" />
   <link rel="stylesheet" href="/style.css" />
   <script defer src="/js/analytics.js"></script>
   <script defer src="/js/main.js"></script>
 
-  <!-- Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "name": "RetroReplay UK",
-        "url": "https://retroreplay.uk",
-        "logo": "https://retroreplay.uk/assets/logo.png",
-        "email": "retroreply2026@gmail.com"
-      },
-      {
-        "@type": "ContactPage",
-        "name": "Contact RetroReplay UK — PS2 Support & Custom Orders",
-        "url": "https://retroreplay.uk/contact.html",
-        "description": "Contact form for PlayStation 2 FAT console support, custom orders, and after-sales help."
-      }
-    ]
-  }
-  </script>
-
   <style>
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
-    @media(max-width:820px){.contact-grid{grid-template-columns:1fr}}
-    .topic-chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 16px}
-    .chip{padding:6px 12px;border-radius:10px;border:1px solid rgba(135,234,255,.25);
-      background:rgba(135,234,255,.05);cursor:pointer;transition:background .2s}
-    .chip:hover{background:rgba(135,234,255,.12)}
-    .success-banner{display:none;position:relative;padding:14px 16px;margin-bottom:14px;
-      border:1px solid rgba(135,234,255,.3);background:rgba(135,234,255,.08);
-      border-radius:12px;animation:fadeIn .4s ease}
-    .success-banner.active{display:block}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+    /* --- Hero --- */
+    .hero-contact {
+      position: relative;
+      height: 65vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+    .hero-contact::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(10,30,60,0.55), rgba(10,30,60,0.85));
+      z-index: 1;
+    }
+    .hero-contact video {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.5);
+    }
+    .hero-contact .content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: 0 20px;
+    }
+    .hero-contact h1 { font-size: clamp(2rem,4vw,3rem); color:#fff; margin-bottom:12px; }
+    .hero-contact p { color: #dce9ff; font-size: 1.1rem; }
+
+    /* --- Layout --- */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+      padding-top: 60px;
+    }
+    @media (max-width: 860px) {
+      .contact-layout { grid-template-columns: 1fr; }
+    }
+
+    /* --- Form --- */
+    form.contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .input, textarea.input {
+      border: 1px solid var(--line-light);
+      background: #fff;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 1rem;
+      color: var(--text-dark);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .input:focus {
+      border-color: var(--blue-bright);
+      box-shadow: 0 0 0 3px rgba(160,200,255,.3);
+    }
+    .topic-chips {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;
+    }
+    .chip {
+      padding: 6px 12px;
+      border: 1px solid #bcdcff;
+      border-radius: 10px;
+      background: #f3faff;
+      cursor: pointer;
+      font-size: .9rem;
+      transition: background .2s;
+    }
+    .chip:hover, .chip.active {
+      background: #d9e9f2;
+    }
+
+    /* --- Success --- */
+    .form-success {
+      display: none;
+      background: rgba(180,220,255,.3);
+      border: 1px solid #bcdcff;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      animation: fadeIn .4s ease forwards;
+    }
+    .form-success.show { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- Info --- */
+    .info-panel ul {
+      margin: 14px 0;
+      padding-left: 20px;
+    }
+    .info-panel li { margin-bottom: 6px; }
+
+    /* --- Footer tone --- */
+    .footer { margin-top: 60px; }
   </style>
 </head>
 
@@ -71,9 +142,9 @@
   <header class="header">
     <div class="container header__inner">
       <a class="brand" href="/" aria-label="RetroReplay UK Home">
-        <img class="brand__logo" src="/assets/logo.png" alt="RetroReplay UK" width="120" height="120" />
+        <img class="brand__logo" src="/assets/logo.png" alt="RetroReplay UK logo" width="120" height="120" />
       </a>
-      <nav class="nav" aria-label="Primary">
+      <nav class="nav">
         <a class="nav__link" href="/">Home</a>
         <a class="nav__link" href="/shop.html">Shop</a>
         <a class="nav__link" href="/support.html">Support</a>
@@ -83,63 +154,69 @@
   </header>
 
   <main id="main">
-    <section class="hero" aria-label="Contact intro">
-      <div class="container hero__inner">
-        <div>
-          <p class="kicker">Sales • Support • Custom Builds</p>
-          <h1 class="h1">Contact RetroReplay UK — PS2 Support & Custom Orders</h1>
-          <p class="lead">Need help or want a custom PlayStation 2 setup? Send a quick message below — we’ll reply within 24 hours.</p>
-        </div>
+
+    <!-- Hero -->
+    <section class="hero-contact">
+      <video autoplay muted loop playsinline poster="/assets/og.jpg">
+        <source src="/assets/e.mp4" type="video/mp4" />
+      </video>
+      <div class="content reveal">
+        <h1>Need Support or a Custom Build?</h1>
+        <p>We’re here to help with setup advice, custom PS2 configurations, and after-sales care — all handled in-house by RetroReplay UK.</p>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container contact-grid">
-        <!-- Contact Form -->
-        <article class="card card--glow">
-          <h2 class="h2">Send a Message</h2>
-          <div class="topic-chips" aria-label="Select a topic">
-            <div class="chip" data-topic="Package help">Package help</div>
+    <!-- Contact Section -->
+    <section class="section reveal">
+      <div class="container contact-layout">
+
+        <!-- Form -->
+        <article class="card">
+          <h2 class="h2">Send Us a Message</h2>
+          <p class="muted">Choose a topic below or type your message — we reply within 24 hours (often sooner).</p>
+
+          <div class="topic-chips">
+            <div class="chip" data-topic="Order question">Order question</div>
             <div class="chip" data-topic="Support request">Support request</div>
             <div class="chip" data-topic="Custom build">Custom build</div>
-            <div class="chip" data-topic="Order question">Order question</div>
+            <div class="chip" data-topic="Other enquiry">Other enquiry</div>
           </div>
 
-          <form class="form" action="https://formspree.io/f/manrkvby" method="POST" data-contact-form>
-            <div class="success-banner" id="form-success">✅ Message sent — we’ll reply within 24 hours.</div>
+          <form class="contact-form" action="https://formspree.io/f/manrkvby" method="POST" data-contact-form>
             <input type="hidden" name="form_type" value="contact" />
             <input type="hidden" name="page" value="contact.html" />
 
-            <div class="honeypot" aria-hidden="true">
-              <label for="company_contact">Company</label>
-              <input id="company_contact" name="company" type="text" tabindex="-1" autocomplete="off" />
-            </div>
+            <div class="form-success" id="form-success">✅ Message sent — we’ll be in touch shortly.</div>
 
-            <label class="label" for="name">Name</label>
+            <label for="name">Name</label>
             <input class="input" id="name" name="name" required />
 
-            <label class="label" for="email">Email</label>
+            <label for="email">Email</label>
             <input class="input" id="email" name="email" type="email" required />
 
-            <label class="label" for="message">Message</label>
-            <textarea class="input" id="message" name="message" rows="6" placeholder="How can we help? Include your PS2 model (SCPH-xxxx) if for support."></textarea>
+            <label for="message">Message</label>
+            <textarea class="input" id="message" name="message" rows="6" placeholder="Tell us about your request or issue."></textarea>
 
             <button class="button" type="submit">Send Message</button>
-            <p class="fineprint">Replies usually within 24 hours.</p>
+            <p class="fineprint">Replies typically within 24 hours.</p>
           </form>
         </article>
 
-        <!-- Info / Why Choose -->
-        <aside class="card">
+        <!-- Info -->
+        <aside class="card info-panel">
           <h2 class="h2">Why Choose RetroReplay UK</h2>
           <ul class="bullets">
-            <li>All consoles tested, cleaned & documented</li>
-            <li>UK warranty & full after-sales support</li>
-            <li>Custom builds available on request</li>
-            <li>Fast UK shipping & secure PayPal checkout</li>
+            <li>💂 UK-built and tested PS2 systems</li>
+            <li>🔧 Genuine hardware servicing</li>
+            <li>📦 Fast tracked UK delivery</li>
+            <li>💬 Personal after-sales support</li>
           </ul>
-          <p class="fineprint">Email: <a href="mailto:retroreply2026@gmail.com">retroreply2026@gmail.com</a></p>
+          <h3 class="h3">Direct Contact</h3>
+          <p class="fineprint">Email: <a href="mailto:retroreply2026@gmail.com">retroreply2026@gmail.com</a><br>
+          Instagram: <a href="https://instagram.com/retroreplayuk">@retroreplayuk</a></p>
+          <p class="fineprint">Business hours: Monday–Friday, 9am–5pm (UK time)</p>
         </aside>
+
       </div>
     </section>
   </main>
@@ -148,9 +225,9 @@
     <div class="container footer__inner">
       <p class="fineprint">© <span data-year></span> RetroReplay UK</p>
       <div class="footer__links">
-        <a href="/support.html">Warranty & Support</a>
+        <a href="/shop.html">Shop</a>
+        <a href="/support.html">Support</a>
         <a href="/privacy.html">Privacy</a>
-        <a href="/cookies.html">Cookies</a>
         <a href="/contact.html" aria-current="page">Contact</a>
       </div>
     </div>
@@ -168,21 +245,27 @@
   </div>
 
   <script>
-    // Autofill topic chip click
-    document.querySelectorAll(".chip").forEach(c=>{
-      c.addEventListener("click",()=>{document.querySelector("#message").value=`${c.dataset.topic} — `;});
+    // Quick topic insert
+    document.querySelectorAll(".chip").forEach(chip=>{
+      chip.addEventListener("click",()=>{
+        document.querySelectorAll(".chip").forEach(c=>c.classList.remove("active"));
+        chip.classList.add("active");
+        const field=document.querySelector("#message");
+        field.value=`${chip.dataset.topic} — `;
+        field.focus();
+      });
     });
 
-    // Success animation
+    // Async submit
     const form=document.querySelector("form[data-contact-form]");
     form?.addEventListener("submit",async e=>{
       e.preventDefault();
       const data=new FormData(form);
       const res=await fetch(form.action,{method:"POST",body:data,headers:{"Accept":"application/json"}});
       if(res.ok){
-        document.querySelector("#form-success").classList.add("active");
+        document.querySelector("#form-success").classList.add("show");
         form.reset();
-        setTimeout(()=>document.querySelector("#form-success").classList.remove("active"),5000);
+        setTimeout(()=>document.querySelector("#form-success").classList.remove("show"),6000);
       }
     });
   </script>
