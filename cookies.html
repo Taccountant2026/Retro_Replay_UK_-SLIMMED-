@@ -3,35 +3,38 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cookie Policy — RetroReplay UK</title>
-  <meta name="description" content="Learn how RetroReplay UK uses cookies, including Google Analytics, and how to manage your cookie preferences or opt out." />
+  <title>Cookie Policy | RetroReplay UK</title>
+  <meta name="description" content="Learn how RetroReplay UK uses cookies, including Google Analytics, and how to manage your preferences or opt out at any time." />
   <meta name="theme-color" content="#ffffff" />
   <link rel="canonical" href="https://retroreplay.uk/cookies" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Cookie Policy — RetroReplay UK" />
-  <meta property="og:description" content="Cookie Policy for RetroReplay UK: understand how we use cookies and manage analytics preferences." />
-  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Cookie Policy | RetroReplay UK" />
+  <meta property="og:description" content="Cookie Policy for RetroReplay UK: understand how cookies and analytics are used, and manage your consent preferences." />
+  <meta property="og:type" content="article" />
   <meta property="og:url" content="https://retroreplay.uk/cookies" />
   <meta property="og:image" content="https://retroreplay.uk/assets/og.jpg" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Cookie Policy — RetroReplay UK" />
-  <meta name="twitter:description" content="Learn what cookies RetroReplay UK uses and how to control your preferences." />
+  <meta name="twitter:title" content="Cookie Policy | RetroReplay UK" />
+  <meta name="twitter:description" content="Find out how RetroReplay UK uses cookies and how to control your cookie settings." />
   <meta name="twitter:image" content="https://retroreplay.uk/assets/og.jpg" />
 
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" as="image" href="/assets/logo.png" />
   <link rel="stylesheet" href="/style.css" />
 
-  <!-- Schema -->
+  <script defer src="/js/main.js"></script>
+  <script defer src="/js/analytics.js"></script>
+
+  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Cookie Policy",
-    "description": "Cookie Policy for RetroReplay UK — explains cookie use, analytics, and preference management.",
+    "description": "Cookie Policy for RetroReplay UK — explains our use of essential and analytics cookies and how to manage consent.",
     "url": "https://retroreplay.uk/cookies",
     "publisher": {
       "@type": "Organization",
@@ -40,158 +43,116 @@
       "logo": {
         "@type": "ImageObject",
         "url": "https://retroreplay.uk/assets/logo.png"
-      }
-    }
+      },
+      "email": "retroreplay2026@gmail.com"
+    },
+    "inLanguage": "en-GB"
   }
   </script>
 
-  <!-- Theme fix + accessibility -->
   <style>
-    body{color:#0b1020;background:#fff}
+    body.page-light{background:#fff;color:#0b1020}
     @media(prefers-color-scheme:dark){
-      body{background:#0b1020;color:#fff}
+      body.page-light{background:#0b1020;color:#fff}
       .card{background:rgba(25,25,25,.9);border-color:rgba(255,255,255,.1)}
-      a{color:#7ddcff}
+      a{color:#87eaff}
     }
     a:focus-visible{outline:2px solid #19cfff;outline-offset:3px;border-radius:3px}
-    .info-band{border:1px solid rgba(11,16,32,.1);background:rgba(135,234,255,.18);border-radius:10px;padding:12px}
   </style>
 </head>
 
-<body>
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="/" aria-label="RetroReplay UK Home">
-      <img class="brand-logo" src="/assets/logo.png" alt="RetroReplay UK" width="160" height="70" loading="eager" decoding="async" />
-      <div class="brand-text">
-        <div class="brand-name">RetroReplay UK</div>
-        <div class="brand-tag">PlayStation 2 Specialists • Tested • Cleaned • Supported</div>
-      </div>
-    </a>
+<body class="page-light">
+  <a class="skip" href="#main">Skip to content</a>
 
-    <nav class="nav" aria-label="Primary">
-      <a href="/">Home</a>
-      <a href="/shop.html">Shop</a>
-      <a href="/support.html">Support</a>
-      <a href="/contact.html">Contact</a>
-    </nav>
-
-    <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">☰</button>
-  </div>
-
-  <div class="container nav-mobile" id="primaryNav">
-    <a href="/">Home</a>
-    <a href="/shop.html">Shop</a>
-    <a href="/support.html">Support</a>
-    <a href="/contact.html">Contact</a>
-  </div>
-</header>
-
-<main>
-  <section class="page-hero">
-    <div class="container">
-      <h1>Cookie Policy</h1>
-      <p>This page explains what cookies are, which cookies RetroReplay UK uses, and how you can manage your preferences.</p>
-      <div class="info-band" style="margin-top:14px;">
-        <strong>Quick summary:</strong> We use cookies to measure traffic and improve the website. We never sell personal data.
-      </div>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="/" aria-label="RetroReplay UK Home">
+        <img class="brand__logo brand__logo--small" src="/assets/logo.png" alt="RetroReplay UK" width="120" height="120" />
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__link" href="/">Home</a>
+        <a class="nav__link" href="/shop.html">Shop</a>
+        <a class="nav__link" href="/support.html">Support</a>
+        <a class="nav__link" href="/contact.html">Contact</a>
+        <a class="nav__link is-active" aria-current="page" href="/cookies.html">Cookies</a>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <section class="section">
-    <div class="container">
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <h1>Cookie Policy</h1>
+        <p class="lead">Updated January 2026</p>
+      </div>
+    </section>
 
-      <article class="card">
-        <h2>What are cookies?</h2>
-        <p>Cookies are small text files stored on your device when you visit a website. They help websites function, remember preferences, and (optionally) collect anonymous usage statistics.</p>
-      </article>
-
-      <div class="grid-2 mt-24">
+    <section class="section">
+      <div class="container">
         <article class="card">
-          <h2>Cookies we use</h2>
-          <ul class="meta">
-            <li><strong>Essential cookies</strong> — required for functionality (e.g., remembering cookie consent).</li>
-            <li><strong>Analytics cookies</strong> — optional, used for anonymous traffic measurement (Google Analytics).</li>
+          <h2>What are cookies?</h2>
+          <p>Cookies are small text files stored on your device when you visit our website. They help the site remember certain information such as preferences or consent status. Some are essential for the site to function, while others help us improve the user experience through anonymous analytics.</p>
+        </article>
+
+        <article class="card mt-24">
+          <h2>Types of cookies we use</h2>
+          <ul class="bullets">
+            <li><strong>Essential cookies</strong> — required for site functionality, such as saving your cookie consent.</li>
+            <li><strong>Analytics cookies</strong> — optional and used only after you give consent. We use Google Analytics (GA4) for aggregated, anonymised statistics.</li>
           </ul>
-          <p class="small">We keep cookies minimal and privacy-focused. This page is updated whenever tools change.</p>
         </article>
 
-        <article class="card">
-          <h2>Your choices</h2>
-          <p>You can accept or reject analytics cookies using our on-site cookie banner or the button below.</p>
-          <p><button class="button button--ghost" type="button" data-cookie-manage>Manage cookie preferences</button></p>
-          <p class="small">You can also manage cookies via your browser’s privacy settings.</p>
+        <article class="card mt-24">
+          <h2>Managing your cookie preferences</h2>
+          <p>You can manage your cookie settings at any time using the button below. This will re-display our consent banner so you can accept or reject analytics cookies.</p>
+          <button class="button button--ghost" type="button" data-cookie-manage>Manage cookie preferences</button>
+          <p class="fineprint">You can also clear or block cookies through your browser’s privacy settings.</p>
+        </article>
+
+        <article class="card mt-24">
+          <h2>Google Analytics</h2>
+          <p>We use Google Analytics 4 (GA4) to help us understand how visitors interact with our website. Data is anonymised, and IP addresses are truncated to protect your privacy. Analytics only loads after you click “Accept” on the cookie banner.</p>
+          <ul class="bullets">
+            <li>Pages visited and actions taken</li>
+            <li>Device type, browser, and operating system</li>
+            <li>Referring website (e.g., search engine, social link)</li>
+            <li>Approximate geographic region (never precise location)</li>
+          </ul>
+        </article>
+
+        <article class="card mt-24">
+          <h2>Third-party cookies</h2>
+          <p>We use PayPal for secure checkout. When you click a PayPal button, PayPal may set its own cookies to support payment functionality. These are controlled by PayPal’s own privacy policy.</p>
+        </article>
+
+        <article class="card mt-24">
+          <h2>Contact us</h2>
+          <p>If you have any questions about this Cookie Policy or how cookies are used on our site, contact us at <a href="mailto:retroreplay2026@gmail.com">retroreplay2026@gmail.com</a>.</p>
         </article>
       </div>
+    </section>
+  </main>
 
-      <article class="card mt-24">
-        <h2>Google Analytics</h2>
-        <p>We use Google Analytics to measure usage and improve the site. Data collected is anonymised and never used to personally identify you.</p>
-        <ul class="meta">
-          <li>Pages visited and actions taken</li>
-          <li>Approximate region (IP anonymised)</li>
-          <li>Device/browser type</li>
-          <li>Referral source (e.g. search, social, direct)</li>
-        </ul>
-        <p class="small">You can opt out by rejecting analytics cookies or installing Google’s browser add-on.</p>
-      </article>
-
-      <article class="card mt-24">
-        <h2>Managing cookies in your browser</h2>
-        <ul class="meta">
-          <li>View or delete stored cookies</li>
-          <li>Block cookies from specific sites</li>
-          <li>Block third-party cookies</li>
-        </ul>
-        <p class="small">Blocking all cookies may affect website performance, but RetroReplay.uk remains usable if analytics are rejected.</p>
-      </article>
-
-      <article class="card mt-24">
-        <h2>Changes to this policy</h2>
-        <p>This policy may be updated occasionally, for example when we add new tools or change analytics settings. The revision date will reflect updates.</p>
-      </article>
-
-      <article class="card mt-24">
-        <h2>Contact</h2>
-        <p>Questions about this Cookie Policy or our cookie usage?</p>
-        <p>Email: <a href="mailto:retroreply2026@gmail.com">retroreply2026@gmail.com</a><br />
-        Or use our <a href="/contact.html">contact form</a>.</p>
-      </article>
-
-    </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <img class="footer-logo" src="/assets/logo.png" alt="RetroReplay UK" width="120" height="50" loading="lazy" decoding="async" />
-      <div>
-        <div class="footer-title">RetroReplay UK</div>
-        <div class="footer-sub">PS2 consoles — tested, prepared, and supported.</div>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="fineprint">© <span data-year></span> RetroReplay UK</p>
+      <div class="footer__links">
+        <a href="/support.html">Warranty & Support</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/cookies.html" aria-current="page">Cookies</a>
+        <a href="/contact.html">Contact</a>
       </div>
     </div>
+  </footer>
 
-    <div class="footer-links" aria-label="Footer links">
-      <a href="/shop.html">Shop</a>
-      <a href="/support.html">Support</a>
-      <a href="/contact.html">Contact</a>
-      <a href="/cookies.html" aria-current="page">Cookies</a>
+  <div class="cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+    <div class="cookie__inner">
+      <p class="cookie__text">We use cookies for analytics to improve the site. You can accept or reject non-essential cookies.</p>
+      <div class="cookie__actions">
+        <button class="button button--ghost" type="button" data-cookie-reject>Reject</button>
+        <button class="button" type="button" data-cookie-accept>Accept</button>
+      </div>
     </div>
   </div>
-
-  <div class="container footer-bottom">
-    © <span id="year"></span> RetroReplay UK. All rights reserved.
-  </div>
-</footer>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-  const toggle=document.querySelector(".nav-toggle"),mobile=document.getElementById("primaryNav");
-  if(toggle&&mobile){
-    toggle.addEventListener("click",()=>{const o=mobile.classList.toggle("is-open");toggle.setAttribute("aria-expanded",o?"true":"false")});
-    mobile.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{mobile.classList.remove("is-open");toggle.setAttribute("aria-expanded","false")}))
-  }
-</script>
 </body>
 </html>
