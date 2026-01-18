@@ -4,13 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Shop — PS2 FAT Console Packages | RetroReplay UK</title>
-  <meta name="description" content="Choose a tested PS2 FAT console package — Player 1, Player 2, or the Ultimate Modded Edition. Built to order, documented, and supported with full warranty. Pay securely via PayPal." />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="Buy refurbished PS2 FAT console packages — Player 1, Player 2 or Ultimate Modded Edition. Built to order, tested, and supported with warranty." />
   <link rel="canonical" href="https://retroreplay.uk/shop" />
+  <meta name="theme-color" content="#ffffff" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Shop — PS2 FAT Console Packages | RetroReplay UK" />
-  <meta property="og:description" content="Choose your tested PlayStation 2 FAT console package. Built to order, documented, and supported with after-sales warranty." />
+  <meta property="og:description" content="Choose your tested PS2 FAT console package. Built to order, documented, and supported with warranty." />
   <meta property="og:type" content="product.group" />
   <meta property="og:url" content="https://retroreplay.uk/shop" />
   <meta property="og:image" content="https://retroreplay.uk/assets/og.jpg" />
@@ -18,81 +18,37 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Shop — PS2 FAT Console Packages | RetroReplay UK" />
-  <meta name="twitter:description" content="Choose a tested PS2 FAT console package — Player 1, Player 2, or Ultimate Modded Edition. Built to order, documented, and supported." />
+  <meta name="twitter:description" content="Buy a tested PS2 FAT console package — Player 1, Player 2 or Ultimate Edition. Supported and documented." />
   <meta name="twitter:image" content="https://retroreplay.uk/assets/og.jpg" />
 
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://formspree.io" crossorigin />
-  <link rel="preload" as="image" href="assets/logo.png" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" as="image" href="/assets/logo.png" />
+  <link rel="stylesheet" href="/style.css" />
 
-  <!-- Site scripts -->
-  <script type="module" src="js/analytics.js"></script>
-  <script type="module" src="js/main.js"></script>
-
-  <!-- PayPal SDK (ONLY ONCE) -->
+  <script defer src="/js/analytics.js"></script>
+  <script defer src="/js/main.js"></script>
   <script defer src="https://www.paypal.com/sdk/js?client-id=BAApYaG5zDntUHsd2tRXv1ylGkYhREqRR-t7PWcH3-Sh7ElgWliEyCEnhAeQjoawIGidc1LY7PQRK9A0Sg&components=hosted-buttons&disable-funding=venmo&currency=GBP"></script>
 
-  <!-- Schema -->
+  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ProductGroup",
     "name": "PlayStation 2 FAT Console Packages",
-    "brand": {
-      "@type": "Brand",
-      "name": "RetroReplay UK"
-    },
-    "description": "Refurbished and tested PlayStation 2 FAT console packages built to order. Player 1, Player 2, and Ultimate Modded Edition available with warranty.",
+    "brand": { "@type": "Brand", "name": "RetroReplay UK" },
+    "description": "Refurbished PlayStation 2 FAT consoles built to order — Player 1, Player 2, and Ultimate Modded Edition, all tested and supported.",
     "url": "https://retroreplay.uk/shop",
     "image": "https://retroreplay.uk/assets/og.jpg",
     "hasVariant": [
-      {
-        "@type": "Product",
-        "name": "Player 1 Plug & Play",
-        "sku": "ps2-fat-p1",
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "GBP",
-          "price": "119.99",
-          "availability": "https://schema.org/InStock",
-          "url": "https://retroreplay.uk/shop?package=p1"
-        }
-      },
-      {
-        "@type": "Product",
-        "name": "Player 2 Plug & Play",
-        "sku": "ps2-fat-p2",
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "GBP",
-          "price": "149.99",
-          "availability": "https://schema.org/InStock",
-          "url": "https://retroreplay.uk/shop?package=p2"
-        }
-      },
-      {
-        "@type": "Product",
-        "name": "Ultimate Modded Edition",
-        "sku": "ps2-fat-ultimate",
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "GBP",
-          "price": "179.99",
-          "availability": "https://schema.org/InStock",
-          "url": "https://retroreplay.uk/shop?package=ultimate"
-        }
-      }
+      { "@type": "Product", "name": "Player 1 Plug & Play", "sku": "ps2-fat-p1",
+        "offers": { "@type": "Offer", "priceCurrency": "GBP", "price": "119.99", "availability": "https://schema.org/InStock", "url": "https://retroreplay.uk/shop?package=p1" } },
+      { "@type": "Product", "name": "Player 2 Plug & Play", "sku": "ps2-fat-p2",
+        "offers": { "@type": "Offer", "priceCurrency": "GBP", "price": "149.99", "availability": "https://schema.org/InStock", "url": "https://retroreplay.uk/shop?package=p2" } },
+      { "@type": "Product", "name": "Ultimate Modded Edition", "sku": "ps2-fat-ultimate",
+        "offers": { "@type": "Offer", "priceCurrency": "GBP", "price": "179.99", "availability": "https://schema.org/InStock", "url": "https://retroreplay.uk/shop?package=ultimate" } }
     ]
   }
   </script>
-
-  <!-- Light + dark adjustments -->
-  <style>
-    body.page-light{background:#fff;color:#0b1020}
-    @media(prefers-color-scheme:dark){body.page-light{background:#0b1020;color:#fff}.card{background:rgba(25,25,25,.9)}.button{background:#1c2733;color:#fff}}
-    a:focus-visible{outline:2px solid #19cfff;outline-offset:3px;border-radius:3px}
-  </style>
 </head>
 
 <body class="page-light">
@@ -100,46 +56,84 @@
 
   <header class="header">
     <div class="container header__inner">
-      <a class="brand" href="index.html" aria-label="RetroReplay UK Home">
-        <img class="brand__logo" src="assets/logo.png" alt="RetroReplay UK" width="220" height="220" loading="lazy" />
+      <a class="brand" href="/" aria-label="RetroReplay UK Home">
+        <img class="brand__logo brand__logo--small" src="/assets/logo.png" alt="RetroReplay UK" width="120" height="120" />
       </a>
       <nav class="nav" aria-label="Primary">
-        <a class="nav__link" href="index.html">Home</a>
-        <a class="nav__link is-active" href="shop.html" aria-current="page">Shop</a>
-        <a class="nav__link" href="support.html">Support</a>
-        <a class="nav__link" href="contact.html">Contact</a>
+        <a class="nav__link" href="/">Home</a>
+        <a class="nav__link is-active" href="/shop.html" aria-current="page">Shop</a>
+        <a class="nav__link" href="/support.html">Support</a>
+        <a class="nav__link" href="/contact.html">Contact</a>
       </nav>
-      <a class="button button--ghost header__cta" href="#buy" data-cta="header_buy">Checkout</a>
+      <a class="button button--ghost header__cta" href="#buy">Checkout</a>
     </div>
   </header>
 
-  <!-- MAIN -->
   <main id="main">
-    <!-- HERO + PACKAGES SECTION (unchanged logic, optimized markup preserved) -->
-    <!-- [Your provided body content remains the same, already modern and conversion-tuned] -->
-    <!-- Includes package buttons, PayPal container, floating layer, consent banner, sticky bar, and all interactivity. -->
-    <!-- No structural changes needed for conversion consistency -->
-    
-    <!-- Paste your verified section content here -->
-    <!-- (Omitted for brevity but kept identical to your final working version) -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div>
+          <p class="kicker">Shop • PS2 FAT Consoles</p>
+          <h1 class="h1">Choose your package</h1>
+          <p class="lead">Every console is refurbished, tested and documented. Built to order with support and warranty.</p>
+        </div>
+      </div>
+    </section>
 
+    <section class="section" id="buy">
+      <div class="container grid3">
+        <article class="card card--glow pkg" data-package="p1" aria-pressed="false">
+          <h2 class="h2">Player 1 Plug & Play</h2>
+          <p>Ready-to-play PS2 FAT console with 1x controller and AV lead.</p>
+          <p><strong>From £119.99</strong></p>
+          <div id="paypal-container-KZTTHJVUHAFZC-p1"></div>
+        </article>
+
+        <article class="card card--glow pkg" data-package="p2" aria-pressed="true">
+          <h2 class="h2">Player 2 Plug & Play (Best Value)</h2>
+          <p>Includes everything in Player 1 plus second controller and extra testing.</p>
+          <p><strong>From £149.99</strong></p>
+          <div id="paypal-container-KZTTHJVUHAFZC-p2"></div>
+        </article>
+
+        <article class="card card--glow pkg" data-package="ultimate" aria-pressed="false">
+          <h2 class="h2">Ultimate Modded Edition</h2>
+          <p>Pre-modded HDD system with FreeMCBoot and network adapter.</p>
+          <p><strong>From £179.99</strong></p>
+          <div id="paypal-container-KZTTHJVUHAFZC-ultimate"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <section class="card">
+          <h2 class="h2">What’s included</h2>
+          <ul class="bullets">
+            <li>Refurbished PS2 FAT console (tested + cleaned)</li>
+            <li>Controllers as per package</li>
+            <li>AV/Power cables (UK plug)</li>
+            <li>Pre-configured memory card (FreeMCBoot on Ultimate)</li>
+            <li>Setup and support guide</li>
+            <li>30-day after-sales support and warranty</li>
+          </ul>
+        </section>
+      </div>
+    </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer__inner">
       <p class="fineprint">© <span data-year></span> RetroReplay UK</p>
       <div class="footer__links">
-        <a href="support.html">Warranty & Support</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="cookies.html">Cookies</a>
-        <a href="contact.html">Contact</a>
-        <a href="#" data-cookie-manage>Manage cookies</a>
+        <a href="/support.html">Warranty & Support</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/cookies.html">Cookies</a>
+        <a href="/contact.html">Contact</a>
       </div>
     </div>
   </footer>
 
-  <!-- Cookie banner -->
   <div class="cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
     <div class="cookie__inner">
       <p class="cookie__text">We use cookies for analytics to improve the site. You can accept or reject non-essential cookies.</p>
@@ -149,9 +143,5 @@
       </div>
     </div>
   </div>
-
-  <!-- Retain your working PayPal + JS logic exactly as in your original -->
-  <!-- Includes product switching, floating controllers, and consent handling -->
-
 </body>
 </html>
