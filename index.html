@@ -1,29 +1,35 @@
-<!-- /index.html (ABSOLUTE SALES ENGINE + your package copy + consent-gated GA4 via /js/analytics.js + cookie banner + Formspree AJAX via /js/main.js) -->
 <!doctype html>
 <html lang="en-GB">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <title>RetroReplay UK — PS2 FAT Console Packages &amp; Plug &amp; Play HDD Builds</title>
-  <meta name="description" content="PlayStation 2 FAT console packages built to order + plug & play HDD builds. Tested, prepared, documented, and supported after purchase. RetroReplay UK." />
+  <title>RetroReplay UK — PS2 FAT Console Packages & Plug & Play HDD Builds</title>
+  <meta name="description" content="RetroReplay UK builds and sells refurbished PlayStation 2 FAT consoles and plug-and-play HDD packages. Every console is tested, documented, and supported after purchase. We also offer modded consoles, services, and hard-to-find accessories." />
   <meta name="theme-color" content="#ffffff" />
+  <link rel="canonical" href="https://retroreplay.uk/" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="RetroReplay UK — PS2 FAT Console Packages & Plug & Play HDD Builds" />
-  <meta property="og:description" content="Tested • Prepared • Built to Order. Clear package options, honest standards, after-sales support." />
+  <meta property="og:description" content="Refurbished PS2 FAT consoles, HDD builds, and modded systems. Tested, documented, and supported after purchase." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/og.jpg" />
+  <meta property="og:url" content="https://retroreplay.uk/" />
+  <meta property="og:image" content="https://retroreplay.uk/assets/og.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="RetroReplay UK — PS2 FAT Console Packages & Plug & Play HDD Builds" />
+  <meta name="twitter:description" content="Refurbished PS2 FAT consoles, HDD builds, and modded systems. Tested, documented, and supported after purchase." />
+  <meta name="twitter:image" content="https://retroreplay.uk/assets/og.jpg" />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://formspree.io" crossorigin />
   <link rel="preload" as="image" href="assets/logo.png" />
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Site scripts -->
-  <script defer src="js/analytics.js"></script>
-  <script defer src="js/main.js"></script>
+  <script type="module" src="js/analytics.js"></script>
+  <script type="module" src="js/main.js"></script>
 
-  <!-- Schema (helps SEO + rich results) -->
+  <!-- Schema -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -31,186 +37,17 @@
     "name":"RetroReplay UK",
     "url":"https://retroreplay.uk",
     "logo":"https://retroreplay.uk/assets/logo.png",
-    "sameAs":[]
+    "description":"RetroReplay UK builds and sells refurbished PlayStation 2 FAT consoles and plug-and-play HDD packages. Every console is tested, documented, and supported after purchase. We also offer modded consoles, services, and hard-to-find accessories."
   }
   </script>
 
   <style>
-    body.page-light{ background:#ffffff !important; color:#0b1020 !important; }
-    body.page-light a{color:inherit}
-    body.page-light .muted{color:rgba(11,16,32,.70) !important}
-
-    /* Header */
-    body.page-light .header{
-      position:sticky; top:0; z-index:50;
-      background:rgba(255,255,255,.86) !important;
-      backdrop-filter: blur(12px);
-      border-bottom:1px solid rgba(11,16,32,.10);
-    }
-
-    /* Hero */
-    body.page-light .hero{
-      padding:64px 0 30px;
-      position:relative;
-      overflow:hidden;
-      background:
-        radial-gradient(900px 520px at 12% -10%, rgba(135,234,255,.55), transparent 55%),
-        radial-gradient(700px 420px at 92% 10%, rgba(25,207,255,.28), transparent 55%),
-        linear-gradient(180deg, #ffffff, #f7fbff);
-      border-bottom:1px solid rgba(11,16,32,.08);
-    }
-    body.page-light .hero__inner{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
-      align-items:start;
-      position:relative;
-      z-index:1;
-    }
-
-    body.page-light .kicker{ color: rgba(0,140,170,.95) !important; }
-    body.page-light .kicker::before{ box-shadow: 0 0 20px rgba(25,207,255,.25); }
-
-    /* Cards */
-    body.page-light .card,
-    body.page-light .card.card--glow{
-      background: rgba(255,255,255,.94) !important;
-      border: 1px solid rgba(11,16,32,.12) !important;
-      box-shadow: 0 18px 45px rgba(0,0,0,.08) !important;
-    }
-    body.page-light .card--glow{
-      border-color: rgba(25,207,255,.35) !important;
-      box-shadow: 0 0 0 1px rgba(25,207,255,.12) inset, 0 18px 45px rgba(0,0,0,.08) !important;
-    }
-    body.page-light .divider{border-color: rgba(11,16,32,.10) !important}
-
-    /* Buttons */
-    body.page-light .button{
-      border:1px solid rgba(11,16,32,.14);
-      background: rgba(255,255,255,.92);
-      color:#0b1020;
-      box-shadow: 0 10px 25px rgba(0,0,0,.06);
-    }
-    body.page-light .button:hover{border-color: rgba(25,207,255,.45)}
-    body.page-light .button.button--ghost{
-      background: rgba(135,234,255,.18);
-      border-color: rgba(25,207,255,.35);
-    }
-
-    /* Trust chips */
-    body.page-light .trust{
-      padding-left:0; list-style:none;
-      display:flex; flex-wrap:wrap; gap:10px;
-      margin:14px 0 0;
-    }
-    body.page-light .trust__item{
-      border:1px solid rgba(11,16,32,.10);
-      background: rgba(255,255,255,.80);
-      color: rgba(11,16,32,.85);
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-size: .95rem;
-    }
-
-    /* Lists / bands */
-    .offer{ margin:14px 0 0; padding-left:18px; }
-    .offer li{ margin:8px 0; color: rgba(11,16,32,.86); }
-    .band{
-      border:1px solid rgba(11,16,32,.10);
-      background: rgba(255,255,255,.75);
-      border-radius: 14px;
-      padding: 14px;
-      margin-top: 14px;
-    }
-    .section-title{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
-    .section-title .muted{ margin:0; }
-
-    /* Lead form */
-    body.page-light .form__row{ display:flex; gap:10px; align-items:stretch; }
-    body.page-light .form__row .input{ min-height: 44px; flex: 1 1 auto; }
-    body.page-light .form__row .button{ min-height: 44px; white-space: nowrap; }
-    .form-status{ margin-top:10px; font-size:.95rem; color: rgba(11,16,32,.78); }
-    .form-status.is-success{ color: rgba(0,120,70,.95); }
-    .form-status.is-error{ color: rgba(170,40,40,.95); }
-
-    /* Packages */
-    .packages{ display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; }
-    .tag{
-      display:inline-flex;
-      border:1px solid rgba(11,16,32,.12);
-      background: rgba(135,234,255,.18);
-      color: rgba(11,16,32,.86);
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size:.9rem;
-      font-weight:650;
-    }
-    .pkg__head{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
-    .pkg__list{ margin:10px 0 0; padding-left:18px; }
-    .pkg__list li{ margin:7px 0; color: rgba(11,16,32,.86); }
-    .pkg__actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
-    .pkg__actions .button{ flex: 1 1 auto; text-align:center; }
-
-    /* Upgrades grid */
-    .upgrades{ display:grid; grid-template-columns: repeat(2, 1fr); gap:14px; }
-    .upg__list{ margin:10px 0 0; padding-left:18px; }
-    .upg__list li{ margin:7px 0; color: rgba(11,16,32,.86); }
-
-    /* Floating controllers */
-    .float-layer{ position:absolute; inset:0; pointer-events:none; z-index:0; }
-    .float-item{
-      position:absolute;
-      opacity:.16;
-      filter: drop-shadow(0 12px 26px rgba(0,0,0,.10));
-      transform: translate3d(0,0,0);
-      animation: floaty 10s ease-in-out infinite;
-      will-change: transform;
-    }
-    .float-item svg{ width: clamp(44px, 7vw, 92px); height: auto; display:block; }
-    .float-item .stroke{stroke: rgba(11,16,32,.65)}
-    .float-item .fill{fill: rgba(25,207,255,.22)}
-    @keyframes floaty{
-      0%,100%{ transform: translate3d(0, 0, 0) rotate(0deg); }
-      50%{ transform: translate3d(0, -18px, 0) rotate(2deg); }
-    }
-
-    /* Sticky buy bar (mobile) */
-    .sticky-buy{
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
-      z-index: 60;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(11,16,32,.12);
-      padding: 10px 12px;
-      display: none;
-    }
-    .sticky-buy__inner{
-      max-width: 1100px;
-      margin: 0 auto;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content: space-between;
-    }
-    .sticky-buy__text{ font-size: .95rem; color: rgba(11,16,32,.85); }
-    .sticky-buy__actions{ display:flex; gap:10px; }
-
-    @media (max-width: 960px){
-      body.page-light .hero__inner{ grid-template-columns: 1fr; }
-      .packages{ grid-template-columns: 1fr; }
-      .upgrades{ grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px){
-      body.page-light .hero{ padding: 52px 0 22px; }
-      body.page-light .hero__actions{ display:flex; flex-direction:column; gap:10px; }
-      body.page-light .hero__actions .button{ width:100%; }
-      body.page-light .form__row{ flex-direction: column; }
-      body.page-light .form__row .button{ width:100%; }
-      .float-item{ opacity:.12; }
-      .sticky-buy{ display:block; }
-      body{ padding-bottom: 76px; }
-    }
+    body.page-light{background:#fff;color:#0b1020;font-family:system-ui,-apple-system,Segoe UI,Roboto;}
+    @media(prefers-color-scheme:dark){body.page-light{background:#0b1020;color:#fff}.card{background:rgba(25,25,25,.9);border-color:rgba(255,255,255,.1)}.button{background:#1c2733;color:#fff}}
+    img[loading="lazy"]{content-visibility:auto}
+    a:focus-visible{outline:2px solid #19cfff;outline-offset:3px;border-radius:3px}
+    .skip{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip:focus{position:static;width:auto;height:auto;padding:8px;background:#19cfff;color:#000;z-index:1000}
   </style>
 </head>
 
@@ -220,16 +57,14 @@
   <header class="header">
     <div class="container header__inner">
       <a class="brand" href="index.html" aria-label="RetroReplay UK Home">
-        <img class="brand__logo" src="assets/logo.png" alt="RetroReplay UK" width="220" height="220" />
+        <img class="brand__logo" src="assets/logo.png" alt="RetroReplay UK" width="220" height="220" loading="lazy" />
       </a>
-
       <nav class="nav" aria-label="Primary">
         <a class="nav__link is-active" href="index.html" aria-current="page">Home</a>
         <a class="nav__link" href="shop.html">Shop</a>
         <a class="nav__link" href="support.html">Support</a>
         <a class="nav__link" href="contact.html">Contact</a>
       </nav>
-
       <a class="button button--ghost header__cta" href="shop.html" data-cta="header_buy">View packages</a>
     </div>
   </header>
@@ -238,71 +73,47 @@
     <!-- HERO -->
     <section class="hero" aria-label="Hero">
       <div class="float-layer" id="float-layer" aria-hidden="true"></div>
-
       <div class="container hero__inner">
         <div class="hero__copy">
           <p class="kicker">Tested • Prepared • Built to Order | RetroReplay UK</p>
-
           <h1 class="h1">PlayStation 2 FAT Console — Package Options</h1>
-
-          <p class="lead">
-            This PlayStation 2 FAT console is <strong>fully tested and carefully prepared</strong> — not job-lot stock or an untested resale.
-            Each console is individually assessed to ensure correct operation before dispatch.
-          </p>
-
-          <p class="muted">
-            RetroReplay UK specialises in reliable, well-prepared retro consoles, built properly and supported after purchase.
-          </p>
-
+          <p class="lead">Each PlayStation 2 FAT console is <strong>fully tested, refurbished, and carefully prepared</strong>. Built for reliability and ready to play.</p>
+          <p class="muted">RetroReplay UK specialises in reliable, modded, and documented retro consoles with full after-sales support.</p>
           <div class="hero__actions" style="margin-top:14px;">
             <a class="button" href="#packages" data-cta="hero_packages">Choose your package</a>
             <a class="button button--ghost" href="#lead" data-cta="hero_lead">Get the game list + setup tips</a>
           </div>
-
           <ul class="trust" aria-label="Trust badges">
             <li class="trust__item">Full functional testing</li>
             <li class="trust__item">Documentation supplied</li>
             <li class="trust__item">After-sales support</li>
           </ul>
-
-          <div class="band" role="note" aria-label="Important note">
-            <strong>Important:</strong> Consoles may show age-related cosmetic marks. Options must be selected at checkout or messaged immediately after purchase.
+          <div class="band" role="note">
+            <strong>Important:</strong> Consoles may show age-related marks. Options must be selected at checkout or messaged after purchase.
           </div>
         </div>
 
-        <!-- LEAD CAPTURE (wired by /js/main.js) -->
         <div class="hero__card" id="lead">
           <div class="card card--glow">
             <h2 class="h2">Get the game list + setup tips</h2>
-            <p class="muted">Join the list for package updates, restocks, and quick guides.</p>
-
+            <p class="muted">Join the list for restocks, guides, and package updates.</p>
             <form class="form" action="https://formspree.io/f/manrkvby" method="POST" data-lead-form>
               <input type="hidden" name="form_type" value="lead_capture" />
               <input type="hidden" name="page" value="index.html" />
-
-              <!-- Honeypot (required by /js/main.js) -->
               <div class="honeypot" aria-hidden="true">
                 <label for="company">Company</label>
                 <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
               </div>
-
               <label class="label" for="email">Email</label>
               <div class="form__row">
-                <input class="input" id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
+                <input class="input" id="email" name="email" type="email" required placeholder="you@example.com" />
                 <button class="button" type="submit" data-cta="lead_submit">Send it</button>
               </div>
-
-              <textarea name="message" style="display:none">Lead capture signup</textarea>
-
+              <textarea name="message" hidden>Lead capture signup</textarea>
               <p class="fineprint">No spam. Unsubscribe anytime.</p>
               <p class="form-status" aria-live="polite"></p>
-
               <div class="divider"></div>
-
-              <p class="muted">
-                Prefer direct contact?
-                <a href="contact.html" data-cta="lead_contact">Message here</a>.
-              </p>
+              <p class="muted">Prefer direct contact? <a href="contact.html">Message here</a>.</p>
             </form>
           </div>
         </div>
@@ -314,11 +125,10 @@
       <div class="container">
         <div class="section-title">
           <h2 class="h2">Standard Preparation (All Packages)</h2>
-          <p class="muted">This avoids the risks of untested second-hand consoles.</p>
+          <p class="muted">Avoids the risks of untested second-hand consoles.</p>
         </div>
-
-        <div class="card" style="margin-top:14px;">
-          <ul class="offer" style="margin-top:0;">
+        <div class="card">
+          <ul class="offer">
             <li>✔ Full functional testing</li>
             <li>✔ Optical drive tested</li>
             <li>✔ Fault diagnosis and repair where required</li>
@@ -337,183 +147,47 @@
           <h2 class="h2">Select Your Package</h2>
           <p class="muted">Clear options. Honest standards. Built to order.</p>
         </div>
-
-        <div class="packages" style="margin-top:14px;">
-          <!-- Player 1 -->
-          <div class="card" data-product-id="ps2-fat-p1">
-            <div class="pkg__head">
-              <h3 class="h3">🟦 Player 1 Plug &amp; Play</h3>
-              <span class="tag">Simple • Reliable • Ready</span>
-            </div>
+        <div class="packages" role="list">
+          <div class="card" role="listitem">
+            <div class="pkg__head"><h3 class="h3">🟦 Player 1 Plug &amp; Play</h3><span class="tag">Simple • Reliable • Ready</span></div>
             <ul class="pkg__list">
-              <li>PlayStation 2 FAT console</li>
-              <li>1× wired controller (third-party)</li>
-              <li>1× prepared memory card</li>
-              <li>Composite AV cable</li>
-              <li>Warranty &amp; authenticity documentation</li>
+              <li>PlayStation 2 FAT console</li><li>1× wired controller</li><li>1× prepared memory card</li><li>Composite AV cable</li><li>Warranty &amp; documentation</li>
             </ul>
-            <p class="muted"><strong>Ideal for:</strong> solo players, gifts, first-time PS2 buyers.</p>
-            <div class="pkg__actions">
-              <a class="button" href="shop.html?package=p1#buy" data-cta="pkg_p1_buy">Choose Player 1</a>
-              <a class="button button--ghost" href="contact.html?subject=PS2%20Package%20Player%201" data-cta="pkg_p1_ask">Ask a question</a>
-            </div>
+            <p class="muted"><strong>Ideal for:</strong> solo players, gifts, first-time buyers.</p>
+            <div class="pkg__actions"><a class="button" href="shop.html?package=p1#buy">Choose Player 1</a></div>
           </div>
 
-          <!-- Player 2 -->
-          <div class="card card--glow" data-product-id="ps2-fat-p2">
-            <div class="pkg__head">
-              <h3 class="h3">🟨 Player 2 Plug &amp; Play</h3>
-              <span class="tag">⭐ Best Value</span>
-            </div>
-            <p class="muted" style="margin-top:6px;">Everything in Player 1, plus:</p>
+          <div class="card card--glow" role="listitem">
+            <div class="pkg__head"><h3 class="h3">🟨 Player 2 Plug &amp; Play</h3><span class="tag">⭐ Best Value</span></div>
+            <p class="muted">Everything in Player 1, plus:</p>
             <ul class="pkg__list">
-              <li>2× wired controllers (third-party)</li>
-              <li>Extended system testing</li>
-              <li>Priority preparation</li>
+              <li>2× wired controllers</li><li>Extended system testing</li><li>Priority preparation</li>
             </ul>
-            <p class="muted"><strong>Ideal for:</strong> families, shared gaming, better-value buyers.</p>
-            <div class="pkg__actions">
-              <a class="button" href="shop.html?package=p2#buy" data-cta="pkg_p2_buy">Choose Player 2</a>
-              <a class="button button--ghost" href="support.html" data-cta="pkg_p2_support">Support &amp; warranty</a>
-            </div>
+            <p class="muted"><strong>Ideal for:</strong> families and shared gaming.</p>
+            <div class="pkg__actions"><a class="button" href="shop.html?package=p2#buy">Choose Player 2</a></div>
           </div>
 
-          <!-- Ultimate -->
-          <div class="card" data-product-id="ps2-fat-ultimate">
-            <div class="pkg__head">
-              <h3 class="h3">🟥 Ultimate Enhanced Serious-Player Build</h3>
-              <span class="tag">Advanced • Disc-Free Ready</span>
-            </div>
-            <p class="muted" style="margin-top:6px;">Everything in Player 2, plus:</p>
+          <div class="card" role="listitem">
+            <div class="pkg__head"><h3 class="h3">🟥 Ultimate Enhanced Build</h3><span class="tag">Advanced • Disc-Free Ready</span></div>
+            <p class="muted">Everything in Player 2, plus:</p>
             <ul class="pkg__list">
-              <li>Network adapter installed</li>
-              <li>Advanced system configuration (FMCB environment)</li>
-              <li>Disc-free ready hardware setup</li>
-              <li>Internal SATA hard drive option available</li>
-              <li>Optimised boot flow and system layout</li>
-              <li>Extended stress testing + configuration documentation</li>
+              <li>Network adapter installed</li><li>Advanced FMCB setup</li><li>Disc-free hardware configuration</li><li>Internal SATA HDD (optional)</li><li>Extended stress testing</li>
             </ul>
-            <p class="muted"><strong>Ideal for:</strong> enthusiasts, long-term owners, collectors.</p>
-            <div class="pkg__actions">
-              <a class="button" href="shop.html?package=ultimate#buy" data-cta="pkg_ult_buy">Choose Ultimate</a>
-              <a class="button button--ghost" href="#upgrades" data-cta="pkg_ult_upgrades">See upgrades</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="band" style="margin-top:14px;">
-          <strong>Why buy from RetroReplay UK?</strong> UK specialist seller • No job-lot or untested consoles • Clear package options • Honest preparation standards • After-sales support included.
-        </div>
-      </div>
-    </section>
-
-    <!-- OPTIONAL UPGRADES -->
-    <section class="section" id="upgrades" aria-label="Optional upgrades">
-      <div class="container">
-        <div class="section-title">
-          <h2 class="h2">Optional Upgrades</h2>
-          <p class="muted">Choose at checkout or message immediately after purchase.</p>
-        </div>
-
-        <div class="upgrades" style="margin-top:14px;">
-          <div class="card">
-            <h3 class="h3">🎮 Controllers &amp; Play</h3>
-            <ul class="upg__list">
-              <li>Wireless controller upgrade</li>
-              <li>Original Sony controller (subject to availability)</li>
-              <li>4-Player option (additional controllers)</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3 class="h3">📺 Video</h3>
-            <ul class="upg__list">
-              <li>HD Component (YPbPr) cable</li>
-              <li>HDMI upscaler</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3 class="h3">💾 Ultimate Build Only</h3>
-            <ul class="upg__list">
-              <li>HDD size options: 320GB / 500GB / 1TB / 2TB</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3 class="h3">🔧 Services</h3>
-            <ul class="upg__list">
-              <li>Full Restore (Clean) – cosmetic only, no internal work</li>
-              <li>Full Refurbishment – internal &amp; external restoration</li>
-              <li>Priority preparation slot</li>
-            </ul>
+            <p class="muted"><strong>Ideal for:</strong> enthusiasts and collectors.</p>
+            <div class="pkg__actions"><a class="button" href="shop.html?package=ultimate#buy">Choose Ultimate</a></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WHAT YOU RECEIVE + DELIVERY -->
-    <section class="section section--alt" aria-label="What you receive and delivery">
-      <div class="container">
-        <div class="section-title">
-          <h2 class="h2">What You Receive</h2>
-          <p class="muted">Secure packaging, documentation, and support details.</p>
-        </div>
-
-        <div class="packages" style="margin-top:14px;">
-          <div class="card">
-            <h3 class="h3">📦 In the box</h3>
-            <ul class="pkg__list">
-              <li>PS2 FAT console (tested)</li>
-              <li>Controllers as per selected package</li>
-              <li>Prepared memory card</li>
-              <li>Composite AV cable</li>
-              <li>PS2 power unit cable</li>
-              <li>Documentation &amp; support details</li>
-              <li>Secure packaging</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3 class="h3">🚚 Dispatch &amp; Delivery</h3>
-            <ul class="pkg__list">
-              <li>Built and prepared to order</li>
-              <li>Dispatch within 2–3 working days</li>
-              <li>Tracked delivery</li>
-            </ul>
-            <div class="band" style="margin-top:10px;">
-              <strong>Need it for a gift/date?</strong> Message first and we’ll confirm timings.
-              <a href="contact.html" data-cta="delivery_contact">Contact</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3 class="h3">ℹ️ About RetroReplay UK</h3>
-            <p class="muted">
-              RetroReplay UK is a UK-based retro console specialist focused on careful preparation, testing, and long-term reliability.
-              Product documentation, warranty information, and support resources are provided with your order and maintained via our official website.
-            </p>
-            <p class="muted">
-              <a href="support.html" data-cta="about_support">Warranty &amp; Support</a>
-            </p>
-          </div>
-        </div>
-
-        <div class="band" style="margin-top:14px;">
-          <strong>Ready to order?</strong> Choose your package on the shop page and checkout.
-          <a href="shop.html" data-cta="bottom_shop">Go to Shop</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRIMARY CTA -->
+    <!-- CTA -->
     <section class="section" aria-label="Primary CTA">
       <div class="container cta">
         <div>
           <h2 class="h2">Select your package</h2>
           <p class="muted">Tested • Prepared • Built to Order | RetroReplay UK</p>
         </div>
-        <a class="button" href="shop.html" data-cta="primary_shop">Go to Shop</a>
+        <a class="button" href="shop.html">Go to Shop</a>
       </div>
     </section>
   </main>
@@ -522,20 +196,19 @@
     <div class="container footer__inner">
       <p class="fineprint">© <span data-year></span> RetroReplay UK</p>
       <div class="footer__links">
-        <a href="support.html" data-cta="footer_support">Warranty &amp; Support</a>
-        <a href="privacy.html" data-cta="footer_privacy">Privacy</a>
-        <a href="cookies.html" data-cta="footer_cookies">Cookies</a>
-        <a href="contact.html" data-cta="footer_contact">Contact</a>
+        <a href="support.html">Warranty & Support</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="contact.html">Contact</a>
+        <a href="#" data-cookie-manage>Manage cookies</a>
       </div>
     </div>
   </footer>
 
-  <!-- Cookie consent banner (required selectors for /js/main.js) -->
+  <!-- Cookie consent -->
   <div class="cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
     <div class="cookie__inner">
-      <p class="cookie__text">
-        We use cookies for analytics to improve the site. You can accept or reject non-essential cookies.
-      </p>
+      <p class="cookie__text">We use cookies for analytics to improve the site. You can accept or reject non-essential cookies.</p>
       <div class="cookie__actions">
         <button class="button button--ghost" type="button" data-cookie-reject>Reject</button>
         <button class="button" type="button" data-cookie-accept>Accept</button>
@@ -543,60 +216,14 @@
     </div>
   </div>
 
-  <!-- Sticky mobile buy bar -->
-  <div class="sticky-buy" aria-label="Quick buy bar">
-    <div class="sticky-buy__inner">
-      <div class="sticky-buy__text"><strong>PS2 FAT Packages</strong> — tested • built to order</div>
-      <div class="sticky-buy__actions">
-        <a class="button button--ghost" href="#packages" data-cta="sticky_packages">Packages</a>
-        <a class="button" href="shop.html" data-cta="sticky_shop">Shop</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Floating controllers (fixed SVG; no conflict with main.js) -->
+  <!-- Floating controllers -->
   <script>
-    (function () {
-      const layer = document.getElementById("float-layer");
-      if (!layer) return;
-
-      const isMobile = matchMedia("(max-width: 600px)").matches;
-      const count = isMobile ? 5 : 9;
-
-      const svgController = () => `
-        <svg viewBox="0 0 128 72" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true">
-          <path class="fill" d="M20 34c0-10 8-18 18-18h52c10 0 18 8 18 18v6c0 10-8 18-18 18h-7l-10-9H55l-10 9h-7c-10 0-18-8-18-18v-6Z" />
-          <path class="stroke" d="M20 34c0-10 8-18 18-18h52c10 0 18 8 18 18v6c0 10-8 18-18 18h-7l-10-9H55l-10 9h-7c-10 0-18-8-18-18v-6Z" fill="none" stroke-width="2"/>
-          <circle class="stroke" cx="88" cy="35" r="5" fill="none" stroke-width="2"/>
-          <circle class="stroke" cx="102" cy="35" r="5" fill="none" stroke-width="2"/>
-          <path class="stroke" d="M44 32h-10M39 27v10" fill="none" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      `;
-
-      for (let i = 0; i < count; i++) {
-        const d = document.createElement("div");
-        d.className = "float-item";
-        d.innerHTML = svgController();
-
-        const left = Math.floor(Math.random() * 92);
-        const top = Math.floor(Math.random() * 78);
-
-        d.style.left = left + "%";
-        d.style.top = top + "%";
-        d.style.animationDuration = (8 + Math.random() * 6) + "s";
-        d.style.animationDelay = (Math.random() * 2) + "s";
-        d.style.transform = `rotate(${(Math.random() * 8 - 4).toFixed(1)}deg)`;
-        layer.appendChild(d);
-      }
-
-      if (!isMobile) {
-        window.addEventListener("mousemove", (e) => {
-          const x = (e.clientX / window.innerWidth - 0.5) * 6;
-          const y = (e.clientY / window.innerHeight - 0.5) * 6;
-          layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-        }, { passive: true });
-      }
-    })();
+  document.addEventListener("DOMContentLoaded", () => {
+    const layer=document.getElementById("float-layer");if(!layer)return;
+    const isMobile=matchMedia("(max-width:600px)").matches;const count=isMobile?5:9;
+    const svg=()=>`<svg viewBox="0 0 128 72" xmlns="http://www.w3.org/2000/svg"><path class="fill" d="M20 34c0-10 8-18 18-18h52c10 0 18 8 18 18v6c0 10-8 18-18 18h-7l-10-9H55l-10 9h-7c-10 0-18-8-18-18v-6Z"/><path class="stroke" d="M20 34c0-10 8-18 18-18h52c10 0 18 8 18 18v6c0 10-8 18-18 18h-7l-10-9H55l-10 9h-7c-10 0-18-8-18-18v-6Z" fill="none" stroke-width="2"/><circle class="stroke" cx="88" cy="35" r="5" fill="none" stroke-width="2"/><circle class="stroke" cx="102" cy="35" r="5" fill="none" stroke-width="2"/><path class="stroke" d="M44 32h-10M39 27v10" fill="none" stroke-width="2" stroke-linecap="round"/></svg>`;
+    for(let i=0;i<count;i++){const d=document.createElement("div");d.className="float-item";d.innerHTML=svg();d.style.left=Math.random()*92+"%";d.style.top=Math.random()*78+"%";d.style.opacity=".16";d.style.animation=`floaty ${8+Math.random()*6}s ease-in-out infinite`;layer.appendChild(d);}
+  });
   </script>
 </body>
 </html>
