@@ -1,458 +1,131 @@
-/* /style.css (ROOT) — Retro Replay (dark base + light-page support)
-   Works with your HTML class names: header, header__inner, brand__logo, nav__link, button, hero, hero__inner,
-   card, card--glow, grid2, grid3, form, input, form__row, cookie, etc.
-*/
-
-/* -----------------------------
-   Base tokens
------------------------------ */
-:root{
-  --bg0:#070a12;
-  --bg1:#0b1020;
-  --panel:#0d1426;
-  --panel2:#0a1020;
-
-  --text:#eaf2ff;
-  --muted:rgba(234,242,255,.78);
-  --line:rgba(255,255,255,.10);
-
-  --aqua:#87eaff;
-  --aqua2:#19cfff;
-
-  --shadow: 0 18px 50px rgba(0,0,0,.40);
-  --radius: 18px;
-
-  /* Light tokens (used by page-light overrides) */
-  --l-text:#0b1020;
-  --l-muted:rgba(11,16,32,.72);
-  --l-line:rgba(11,16,32,.10);
-  --l-card:rgba(255,255,255,.94);
-  --l-shadow:0 18px 45px rgba(0,0,0,.08);
+/* -------------------------------------------------------------------------
+   RetroReplay UK — Final /style.css (2026 build)
+   Dark-first, light-page support, responsive & accessibility safe
+   Optimized for SEO, CLS, and Lighthouse performance
+---------------------------------------------------------------------------*/
+:root {
+  --bg0:#070a12;--bg1:#0b1020;--panel:#0d1426;--panel2:#0a1020;
+  --text:#eaf2ff;--muted:rgba(234,242,255,.78);--line:rgba(255,255,255,.1);
+  --aqua:#87eaff;--aqua2:#19cfff;
+  --shadow:0 18px 50px rgba(0,0,0,.4);--radius:18px;
+  --l-text:#0b1020;--l-muted:rgba(11,16,32,.72);--l-line:rgba(11,16,32,.1);
+  --l-card:rgba(255,255,255,.94);--l-shadow:0 18px 45px rgba(0,0,0,.08);
 }
-
-/* -----------------------------
-   Reset / base
------------------------------ */
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{
-  margin:0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color:var(--text);
-  line-height:1.6;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--text);line-height:1.6;
   background:
-    radial-gradient(1000px 650px at 20% -10%, rgba(135,234,255,.12), transparent 60%),
-    radial-gradient(900px 650px at 95% 5%, rgba(25,207,255,.10), transparent 55%),
-    linear-gradient(180deg, var(--bg0), var(--bg1));
+    radial-gradient(1000px 650px at 20% -10%,rgba(135,234,255,.12),transparent 60%),
+    radial-gradient(900px 650px at 95% 5%,rgba(25,207,255,.1),transparent 55%),
+    linear-gradient(180deg,var(--bg0),var(--bg1));
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
-a{color:inherit; text-decoration:none}
-a:hover{opacity:.98}
-img{max-width:100%; height:auto}
-.container{width:min(1120px, 92%); margin:0 auto}
+a{color:inherit;text-decoration:none;transition:opacity .2s ease}
+a:hover{opacity:.9}
+img{max-width:100%;height:auto}
+.container{width:min(1120px,92%);margin:0 auto}
+.skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip:focus{left:12px;top:12px;width:auto;height:auto;padding:10px 12px;border-radius:12px;background:rgba(135,234,255,.12);border:1px solid rgba(135,234,255,.25);z-index:9999}
 
-/* Accessibility */
-.skip{
-  position:absolute;
-  left:-9999px;
-  top:auto;
-  width:1px;height:1px;
-  overflow:hidden;
-}
-.skip:focus{
-  left:12px; top:12px;
-  width:auto;height:auto;
-  padding:10px 12px;
-  border-radius:12px;
-  background: rgba(135,234,255,.12);
-  border:1px solid rgba(135,234,255,.25);
-  z-index:9999;
-}
-
-/* -----------------------------
-   Header / nav (your class names)
------------------------------ */
-.header{
-  position:sticky; top:0; z-index:50;
-  background: rgba(7,10,18,.72);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--line);
-}
-.header__inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 0;
-  gap:14px;
-}
-
-.brand{display:flex; align-items:center; gap:12px}
-.brand__logo{
-  width:auto;
-  height:64px;
-  border-radius: 14px;
-  padding:8px 10px;
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(135,234,255,.18);
-  box-shadow: 0 0 0 1px rgba(25,207,255,.10), 0 18px 45px rgba(0,0,0,.40);
-  object-fit: contain;
-}
+/* Header */
+.header{position:sticky;top:0;z-index:50;background:rgba(7,10,18,.72);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.header__inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:14px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand__logo{height:64px;padding:8px 10px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(135,234,255,.18);box-shadow:0 0 0 1px rgba(25,207,255,.1),0 18px 45px rgba(0,0,0,.4);object-fit:contain}
 .brand__logo--small{height:44px}
-
-.nav{
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-  align-items:center;
-}
-.nav__link{
-  padding:8px 10px;
-  border-radius: 10px;
-  color: rgba(234,242,255,.76);
-  border:1px solid transparent;
-}
-.nav__link:hover{
-  color:var(--text);
-  border-color: rgba(135,234,255,.18);
-  background: rgba(135,234,255,.05);
-}
-.nav__link.is-active,
-.nav__link[aria-current="page"]{
-  color:var(--text);
-  border-color: rgba(135,234,255,.30);
-  background: rgba(135,234,255,.08);
-  box-shadow: 0 0 0 1px rgba(25,207,255,.08) inset;
-}
-
+.nav{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.nav__link{padding:8px 10px;border-radius:10px;color:rgba(234,242,255,.76);border:1px solid transparent}
+.nav__link:hover{color:var(--text);border-color:rgba(135,234,255,.18);background:rgba(135,234,255,.05)}
+.nav__link.is-active,.nav__link[aria-current="page"]{color:var(--text);border-color:rgba(135,234,255,.3);background:rgba(135,234,255,.08);box-shadow:0 0 0 1px rgba(25,207,255,.08) inset}
 .header__cta{white-space:nowrap}
 
-/* -----------------------------
-   Typography helpers
------------------------------ */
-.kicker{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  font-weight:900;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  font-size:.80rem;
-  color: rgba(135,234,255,.92);
-  margin:0 0 10px;
-}
-.kicker::before{
-  content:"";
-  width:10px; height:10px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 30%, var(--aqua), var(--aqua2));
-  box-shadow: 0 0 18px rgba(135,234,255,.45);
-}
+/* Typography */
+.kicker{display:inline-flex;align-items:center;gap:8px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;font-size:.8rem;color:rgba(135,234,255,.92);margin:0 0 10px}
+.kicker::before{content:"";width:10px;height:10px;border-radius:999px;background:radial-gradient(circle at 30% 30%,var(--aqua),var(--aqua2));box-shadow:0 0 18px rgba(135,234,255,.45)}
+.h1{margin:6px 0 10px;font-size:clamp(26px,3.6vw,44px);letter-spacing:-.02em}
+.h2{margin:0 0 10px;font-size:clamp(18px,2.3vw,28px);letter-spacing:-.01em}
+.h3{margin:0 0 10px;font-size:1.1rem;letter-spacing:-.01em}
+.lead{margin:0;font-size:1.05rem;color:rgba(234,242,255,.86)}
+.muted{color:var(--muted)}
+.fineprint{margin:10px 0 0;font-size:.92rem;color:rgba(234,242,255,.7)}
 
-.h1{
-  margin:6px 0 10px;
-  font-size: clamp(26px, 3.6vw, 44px);
-  letter-spacing: -0.02em;
-}
-.h2{
-  margin:0 0 10px;
-  font-size: clamp(18px, 2.3vw, 28px);
-  letter-spacing: -0.01em;
-}
-.h3{
-  margin:0 0 10px;
-  font-size: 1.1rem;
-  letter-spacing: -0.01em;
-}
-.lead{
-  margin:0;
-  font-size: 1.05rem;
-  color: rgba(234,242,255,.86);
-}
-.muted{color:var(--muted); margin:0}
-.fineprint{
-  margin:10px 0 0;
-  font-size:.92rem;
-  color: rgba(234,242,255,.70);
-}
-
-/* -----------------------------
-   Sections / layout
------------------------------ */
+/* Layout / Sections */
 .hero{padding:56px 0}
 .section{padding:28px 0 56px}
-.section--alt{
-  background: rgba(255,255,255,.02);
-  border-top: 1px solid rgba(255,255,255,.06);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
+.section--alt{background:rgba(255,255,255,.02);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+.hero__inner{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 
-.hero__inner{
-  display:grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap:18px;
-  align-items:start;
-}
+/* Cards */
+.card{background:radial-gradient(1200px 500px at 20% 0%,rgba(135,234,255,.06),transparent 55%),linear-gradient(180deg,rgba(13,20,38,.92),rgba(10,16,32,.92));border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.card--glow{border-color:rgba(135,234,255,.2);box-shadow:0 0 0 1px rgba(25,207,255,.08) inset,var(--shadow)}
+.card p{margin:0 0 12px;color:var(--muted)}
+.divider{height:1px;background:rgba(255,255,255,.1);margin:14px 0;border:0}
 
-.pagehead{margin:0 0 14px}
+/* Buttons */
+.button{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--text);font-weight:900;letter-spacing:.2px;transition:transform .12s ease,background .12s ease,border-color .12s ease,box-shadow .12s ease}
+.button:hover{transform:translateY(-1px);background:rgba(255,255,255,.06);border-color:rgba(135,234,255,.18)}
+.button--ghost{border-color:rgba(135,234,255,.18);background:rgba(135,234,255,.05)}
 
-/* Grids used by index/support/contact */
-.grid2{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:16px;
-}
-.grid3{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:16px;
-}
-
-/* -----------------------------
-   Cards / dividers
------------------------------ */
-.card{
-  background:
-    radial-gradient(1200px 500px at 20% 0%, rgba(135,234,255,.06), transparent 55%),
-    linear-gradient(180deg, rgba(13,20,38,.92), rgba(10,16,32,.92));
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: var(--radius);
-  padding:18px;
-  box-shadow: var(--shadow);
-}
-.card--glow{
-  border-color: rgba(135,234,255,.20);
-  box-shadow:
-    0 0 0 1px rgba(25,207,255,.08) inset,
-    var(--shadow);
-}
-.card p{margin:0 0 12px; color: var(--muted)}
-
-.divider{
-  height:1px;
-  background: rgba(255,255,255,.10);
-  margin:14px 0;
-  border:0;
-}
-
-/* -----------------------------
-   Buttons (your HTML uses .button)
------------------------------ */
-.button{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:10px 14px;
-  border-radius: 12px;
-  border:1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.04);
-  color: var(--text);
-  font-weight:900;
-  letter-spacing:.2px;
-  transition: transform .12s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
-}
-.button:hover{
-  transform: translateY(-1px);
-  background: rgba(255,255,255,.06);
-  border-color: rgba(135,234,255,.18);
-}
-.button--ghost{
-  border-color: rgba(135,234,255,.18);
-  background: rgba(135,234,255,.05);
-}
-
-/* -----------------------------
-   Lists / badges
------------------------------ */
-.trust{margin:14px 0 0; padding-left:18px; color: rgba(234,242,255,.80)}
-.trust__item{margin:6px 0}
-
-.bullets{margin:10px 0 0; padding-left:18px; color: rgba(234,242,255,.80)}
-.bullets li{margin:6px 0}
-
-/* -----------------------------
-   Forms (Formspree)
------------------------------ */
+/* Forms */
 .form{display:block}
-.label{
-  display:block;
-  margin: 12px 0 6px;
-  font-weight: 800;
-  color: rgba(234,242,255,.90);
-}
-.input{
-  width:100%;
-  padding: 10px 12px;
-  border-radius: 12px;
-  border:1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.03);
-  color: var(--text);
-  outline:none;
-}
-.input:focus{
-  border-color: rgba(135,234,255,.30);
-  box-shadow: 0 0 0 4px rgba(25,207,255,.10);
-}
-textarea.input{resize: vertical}
+.label{display:block;margin:12px 0 6px;font-weight:800;color:rgba(234,242,255,.9)}
+.input{width:100%;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s}
+.input:focus{border-color:rgba(135,234,255,.3);box-shadow:0 0 0 4px rgba(25,207,255,.1)}
+textarea.input{resize:vertical}
+.form__row{display:flex;gap:10px;align-items:center}
+.form__row .input{flex:1 1 auto}
+.form__row .button{flex:0 0 auto}
+.honeypot{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.form-status{margin-top:10px;padding:10px 12px;border-radius:12px;border:1px solid rgba(135,234,255,.18);background:rgba(135,234,255,.05);color:rgba(234,242,255,.88);box-shadow:0 0 0 1px rgba(25,207,255,.06) inset}
+.form-status.is-success{border-color:rgba(135,234,255,.28);background:rgba(135,234,255,.08)}
+.form-status.is-error{border-color:rgba(255,120,120,.28);background:rgba(255,120,120,.08)}
 
-.form__row{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-.form__row .input{flex: 1 1 auto}
-.form__row .button{flex: 0 0 auto}
-
-.honeypot{
-  position:absolute !important;
-  left:-9999px !important;
-  top:auto !important;
-  width:1px !important;
-  height:1px !important;
-  overflow:hidden !important;
-}
-
-.form-status{
-  margin-top: 10px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(135,234,255,.18);
-  background: rgba(135,234,255,.05);
-  color: rgba(234,242,255,.88);
-  box-shadow: 0 0 0 1px rgba(25,207,255,.06) inset;
-}
-.form-status.is-success{
-  border-color: rgba(135,234,255,.28);
-  background: rgba(135,234,255,.08);
-}
-.form-status.is-error{
-  border-color: rgba(255,120,120,.28);
-  background: rgba(255,120,120,.08);
-}
-
-/* -----------------------------
-   FAQ details (support page)
------------------------------ */
-details.faq{
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.03);
-  border-radius: 14px;
-  padding: 10px 12px;
-  margin: 10px 0;
-}
-details.faq summary{
-  cursor:pointer;
-  font-weight: 900;
-  list-style:none;
-  outline:none;
-  padding: 6px 0;
-}
+/* FAQ blocks */
+details.faq{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:14px;padding:10px 12px;margin:10px 0}
+details.faq summary{cursor:pointer;font-weight:900;list-style:none;outline:none;padding:6px 0}
 details.faq summary::-webkit-details-marker{display:none}
-details.faq p{ margin: 8px 0 0; color: rgba(234,242,255,.80); }
+details.faq p{margin:8px 0 0;color:rgba(234,242,255,.8)}
 
-/* -----------------------------
-   Footer
------------------------------ */
-.footer{
-  border-top: 1px solid rgba(255,255,255,.10);
-  background: rgba(0,0,0,.16);
-  padding:24px 0 10px;
-}
-.footer__inner{
-  display:flex;
-  justify-content:space-between;
-  gap:16px;
-  flex-wrap:wrap;
-  color: rgba(234,242,255,.82);
-  align-items:center;
-}
-.footer__links{display:flex; gap:14px; flex-wrap:wrap}
-.footer__links a{color: rgba(234,242,255,.75)}
-.footer__links a:hover{color: var(--text)}
+/* Footer */
+.footer{border-top:1px solid rgba(255,255,255,.1);background:rgba(0,0,0,.16);padding:24px 0 10px}
+.footer__inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:rgba(234,242,255,.82);align-items:center}
+.footer__links{display:flex;gap:14px;flex-wrap:wrap}
+.footer__links a{color:rgba(234,242,255,.75);transition:color .2s}
+.footer__links a:hover{color:var(--text)}
 
-/* -----------------------------
-   Cookie banner (your HTML uses .cookie)
------------------------------ */
-.cookie{
-  position:fixed;
-  bottom:16px;
-  left:16px;
-  right:16px;
-  z-index:999;
-}
-.cookie__inner{
-  display:flex;
-  gap:12px;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 16px;
-  border-radius:16px;
-  background: rgba(13,20,38,.95);
-  border:1px solid rgba(135,234,255,.18);
-  box-shadow: 0 18px 45px rgba(0,0,0,.45);
-}
-.cookie__text{
-  margin:0;
-  font-size:.95rem;
-  color: rgba(234,242,255,.88);
-}
-.cookie__actions{display:flex; gap:10px; flex-wrap:wrap}
+/* Cookie Banner */
+.cookie{position:fixed;bottom:16px;left:16px;right:16px;z-index:999}
+.cookie__inner{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:16px;background:rgba(13,20,38,.95);border:1px solid rgba(135,234,255,.18);box-shadow:0 18px 45px rgba(0,0,0,.45)}
+.cookie__text{margin:0;font-size:.95rem;color:rgba(234,242,255,.88)}
+.cookie__actions{display:flex;gap:10px;flex-wrap:wrap}
 
-/* -----------------------------
-   Maintenance banner (optional)
------------------------------ */
-.maintenance-banner{
-  background: linear-gradient(90deg, #b30000, #e60000);
-  color:#fff;
-  font-size: .95rem;
-  padding: 10px 16px;
-  text-align:center;
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-  justify-content:center;
-  align-items:center;
-  z-index:1000;
-}
-.maintenance-banner a{
-  color:#fff;
-  text-decoration: underline;
-  font-weight: 600;
-}
+/* Maintenance Banner */
+.maintenance-banner{background:linear-gradient(90deg,#b30000,#e60000);color:#fff;font-size:.95rem;padding:10px 16px;text-align:center;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;z-index:1000}
+.maintenance-banner a{color:#fff;text-decoration:underline;font-weight:600}
 .maintenance-banner strong{margin-right:6px}
 
-/* -----------------------------
-   Mobile & responsive
------------------------------ */
-@media (max-width: 980px){
-  .hero__inner{grid-template-columns: 1fr}
-  .grid3{grid-template-columns: 1fr}
-}
-@media (max-width: 860px){
-  .nav{gap:8px}
-}
-@media (max-width: 600px){
+/* Responsive */
+@media(max-width:980px){.hero__inner{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}}
+@media(max-width:860px){.nav{gap:8px}}
+@media(max-width:600px){
   .header__inner{flex-wrap:wrap}
   .nav{flex-wrap:wrap}
-  .form__row{flex-direction: column !important}
-  .form__row .button{width:100% !important}
+  .form__row{flex-direction:column!important}
+  .form__row .button{width:100%!important}
   .button{width:100%}
-  .cookie__inner{flex-direction:column; align-items:flex-start}
+  .cookie__inner{flex-direction:column;align-items:flex-start}
 }
 
-/* -----------------------------
-   Light page helpers (optional)
-   Your pages already include inline <style> overrides.
-   This just prevents any dark-only styles from breaking.
------------------------------ */
-body.page-light .label{color: rgba(11,16,32,.88)}
-body.page-light .input{
-  color: var(--l-text);
-  border-color: rgba(11,16,32,.12);
-  background: rgba(255,255,255,.92);
-}
-body.page-light .fineprint{color: rgba(11,16,32,.65)}
-body.page-light .cookie__inner{
-  background: rgba(255,255,255,.92);
-  border-color: rgba(11,16,32,.12);
-  box-shadow: var(--l-shadow);
-}
-body.page-light .cookie__text{color: rgba(11,16,32,.78)}
+/* Reduced Motion */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0s!important;transition-duration:0s!important}}
+
+/* Light Page Overrides */
+body.page-light .label{color:rgba(11,16,32,.88)}
+body.page-light .input{color:var(--l-text);border-color:rgba(11,16,32,.12);background:rgba(255,255,255,.92)}
+body.page-light .fineprint{color:rgba(11,16,32,.65)}
+body.page-light .cookie__inner{background:rgba(255,255,255,.92);border-color:rgba(11,16,32,.12);box-shadow:var(--l-shadow)}
+body.page-light .cookie__text{color:rgba(11,16,32,.78)}
