@@ -12,6 +12,7 @@
   <script defer src="/js/main.js"></script>
 
   <style>
+    /* --- Hero --- */
     .hero-contact {
       position: relative; height: 65vh; display: flex; align-items: center; justify-content: center;
       text-align: center; color: #fff; overflow: hidden;
@@ -25,17 +26,37 @@
       filter: brightness(0.5);
     }
     .hero-contact .content { position: relative; z-index: 2; max-width: 700px; padding: 0 20px; }
+    .hero-contact h1 { font-size: clamp(2rem,4vw,3rem); color:#fff; margin-bottom:12px; }
+    .hero-contact p { color: #dce9ff; font-size: 1.1rem; }
+
+    /* --- Layout --- */
     .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; padding-top: 60px; }
     @media (max-width: 860px) { .contact-layout { grid-template-columns: 1fr; } }
+
+    /* --- Form --- */
     form.contact-form { display: flex; flex-direction: column; gap: 14px; }
-    .input, textarea.input { border: 1px solid var(--line-light); background: #fff; padding: 12px; border-radius: 12px; font-size: 1rem; color: var(--text-dark); transition: border-color .2s, box-shadow .2s; }
+    .input, textarea.input {
+      border: 1px solid var(--line-light);
+      background: #fff; padding: 12px; border-radius: 12px; font-size: 1rem;
+      color: var(--text-dark); transition: border-color .2s, box-shadow .2s;
+    }
     .input:focus { border-color: var(--blue-bright); box-shadow: 0 0 0 3px rgba(160,200,255,.3); }
     .topic-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
-    .chip { padding: 6px 12px; border: 1px solid #bcdcff; border-radius: 10px; background: #f3faff; cursor: pointer; font-size: .9rem; transition: background .2s; }
+    .chip {
+      padding: 6px 12px; border: 1px solid #bcdcff; border-radius: 10px;
+      background: #f3faff; cursor: pointer; font-size: .9rem; transition: background .2s;
+    }
     .chip:hover, .chip.active { background: #d9e9f2; }
-    .form-success { display: none; background: rgba(180,220,255,.3); border: 1px solid #bcdcff; border-radius: 10px; padding: 10px; text-align: center; animation: fadeIn .4s ease forwards; }
+
+    /* --- Success --- */
+    .form-success {
+      display: none; background: rgba(180,220,255,.3); border: 1px solid #bcdcff;
+      border-radius: 10px; padding: 10px; text-align: center;
+      animation: fadeIn .4s ease forwards;
+    }
     .form-success.show { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
     .info-panel ul { margin: 14px 0; padding-left: 20px; }
     .info-panel li { margin-bottom: 6px; }
     .footer { margin-top: 60px; }
@@ -88,9 +109,10 @@
             <div class="chip" data-topic="Other enquiry">Other enquiry</div>
           </div>
 
-          <form class="contact-form" data-contact-form>
-            <input type="hidden" name="topic" id="topic" value="General enquiry" />
+          <form class="contact-form" action="https://formspree.io/f/manrkvby" method="POST" data-contact-form>
             <div class="form-success" id="form-success">✅ Message sent — we’ll be in touch shortly.</div>
+            <input type="hidden" name="form_type" value="contact" />
+            <input type="hidden" name="page" value="contact.html" />
 
             <label for="name">Name</label>
             <input class="input" id="name" name="name" required />
@@ -116,8 +138,10 @@
             <li>💬 Personal after-sales support</li>
           </ul>
           <h3 class="h3">Direct Contact</h3>
-          <p class="fineprint">Email: <a href="mailto:retroreply2026@gmail.com">retroreply2026@gmail.com</a><br>
-          Instagram: <a href="https://instagram.com/retroreplayuk">@retroreplayuk</a></p>
+          <p class="fineprint">
+            Email: <a href="mailto:retroreply2026@gmail.com">retroreply2026@gmail.com</a><br>
+            Instagram: <a href="https://instagram.com/retroreplayuk">@retroreplayuk</a>
+          </p>
         </aside>
 
       </div>
@@ -136,55 +160,52 @@
     </div>
   </footer>
 
-  <!-- EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>
-    // Initialize EmailJS with your public key
-    emailjs.init("AcMPCZFJb7jM6ylGy");
+  <!-- Cookie Banner -->
+  <div class="cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+    <div class="cookie__inner">
+      <p class="cookie__text">We use cookies for analytics to improve the site. You can accept or reject non-essential cookies.</p>
+      <div class="cookie__actions">
+        <button class="button button--ghost" type="button" data-cookie-reject>Reject</button>
+        <button class="button" type="button" data-cookie-accept>Accept</button>
+      </div>
+    </div>
+  </div>
 
-    // Topic chip selection
-    document.querySelectorAll(".chip").forEach(chip => {
-      chip.addEventListener("click", () => {
-        document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
-        chip.classList.add("active");
-        document.querySelector("#topic").value = chip.dataset.topic;
-        const field = document.querySelector("#message");
-        field.value = `${chip.dataset.topic} — `;
-        field.focus();
+  <script>
+    // Autofill topic chip click
+    document.querySelectorAll(".chip").forEach(c => {
+      c.addEventListener("click", () => {
+        document.querySelectorAll(".chip").forEach(x => x.classList.remove("active"));
+        c.classList.add("active");
+        document.querySelector("#message").value = `${c.dataset.topic} — `;
       });
     });
 
-    // Form submit handler
+    // Async Formspree handler
     const form = document.querySelector("form[data-contact-form]");
     const successBox = document.querySelector("#form-success");
 
-    form.addEventListener("submit", e => {
+    form.addEventListener("submit", async e => {
       e.preventDefault();
       const btn = form.querySelector("button");
       btn.disabled = true;
       btn.textContent = "Sending...";
-
-      const params = {
-        name: form.name.value,
-        email: form.email.value,
-        message: form.message.value,
-        topic: form.topic.value
-      };
-
-      emailjs.send("service_w5belkg", "template_0K5pdNVlrc4Onx0T1MhxA", params)
-        .then(() => {
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, { method: "POST", body: data, headers: { "Accept": "application/json" } });
+        if (res.ok) {
           successBox.classList.add("show");
           form.reset();
-          setTimeout(() => successBox.classList.remove("show"), 6000);
-        })
-        .catch(err => {
-          console.error("EmailJS Error:", err);
-          alert("There was an issue sending your message. Please email us directly instead.");
-        })
-        .finally(() => {
-          btn.disabled = false;
-          btn.textContent = "Send Message";
-        });
+          setTimeout(() => successBox.classList.remove("show"), 5000);
+        } else {
+          alert("There was an issue sending your message. Please email us directly.");
+        }
+      } catch {
+        alert("Network error — please try again later.");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Send Message";
+      }
     });
   </script>
 </body>
