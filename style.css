@@ -191,3 +191,9 @@ a:focus-visible, button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+document.addEventListener("scroll", () => {
+  document.querySelectorAll(".reveal").forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.85) el.classList.add("visible");
+  });
+});
