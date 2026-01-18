@@ -3,191 +3,129 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>RetroReplay UK — PS2 FAT Console Packages & Plug & Play HDD Builds</title>
-  <meta name="description" content="RetroReplay UK builds and sells refurbished PlayStation 2 FAT consoles and plug-and-play HDD packages. Every console is tested, documented, and supported after purchase. We also offer modded consoles, services, and hard-to-find accessories." />
-  <meta name="theme-color" content="#ffffff" />
-  <link rel="canonical" href="https://retroreplay.uk/" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="RetroReplay UK — PS2 FAT Console Packages & Plug & Play HDD Builds" />
-  <meta property="og:description" content="Refurbished PS2 FAT consoles, HDD builds, and modded systems. Tested, documented, and supported after purchase." />
+  <title>Refurbished PlayStation 2 FAT Consoles & Plug-and-Play HDD Kits | RetroReplay UK</title>
+  <meta name="description" content="Buy refurbished PS2 FAT consoles and plug-and-play HDD packages from RetroReplay UK. Every console is tested, cleaned and supported after purchase." />
+
+  <link rel="canonical" href="https://retroreplay.uk/" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" as="image" href="/assets/logo.png" />
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:site_name" content="RetroReplay UK" />
+  <meta property="og:title" content="Refurbished PS2 FAT Consoles & HDD Packages | RetroReplay UK" />
+  <meta property="og:description" content="RetroReplay UK sells refurbished PS2 FAT consoles and plug-and-play HDD packages. Tested, cleaned and supported after purchase." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://retroreplay.uk/" />
-  <meta property="og:image" content="https://retroreplay.uk/assets/og.jpg" />
-
-  <!-- Twitter -->
+  <meta property="og:image" content="https://retroreplay.uk/assets/logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="RetroReplay UK — PS2 FAT Console Packages & Plug & Play HDD Builds" />
-  <meta name="twitter:description" content="Refurbished PS2 FAT consoles, HDD builds, and modded systems. Tested, documented, and supported after purchase." />
-  <meta name="twitter:image" content="https://retroreplay.uk/assets/og.jpg" />
+  <meta name="twitter:title" content="RetroReplay UK – Refurbished PS2 FAT Consoles & HDD Kits" />
+  <meta name="twitter:description" content="Buy tested, supported PS2 FAT consoles and plug-and-play HDD packages from RetroReplay UK." />
+  <meta name="twitter:image" content="https://retroreplay.uk/assets/logo.png" />
 
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://formspree.io" crossorigin />
-  <link rel="preload" as="image" href="assets/logo.png" />
-  <link rel="stylesheet" href="style.css" />
-
-  <script type="module" src="js/analytics.js"></script>
-  <script type="module" src="js/main.js"></script>
-
-  <!-- Schema -->
+  <!-- Structured data (JSON-LD) -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"RetroReplay UK",
-    "url":"https://retroreplay.uk",
-    "logo":"https://retroreplay.uk/assets/logo.png",
-    "description":"RetroReplay UK builds and sells refurbished PlayStation 2 FAT consoles and plug-and-play HDD packages. Every console is tested, documented, and supported after purchase. We also offer modded consoles, services, and hard-to-find accessories."
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "RetroReplay UK",
+    "url": "https://retroreplay.uk/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://retroreplay.uk/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
   }
   </script>
 
-  <style>
-    body.page-light{background:#fff;color:#0b1020;font-family:system-ui,-apple-system,Segoe UI,Roboto;}
-    @media(prefers-color-scheme:dark){body.page-light{background:#0b1020;color:#fff}.card{background:rgba(25,25,25,.9);border-color:rgba(255,255,255,.1)}.button{background:#1c2733;color:#fff}}
-    img[loading="lazy"]{content-visibility:auto}
-    a:focus-visible{outline:2px solid #19cfff;outline-offset:3px;border-radius:3px}
-    .skip{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip:focus{position:static;width:auto;height:auto;padding:8px;background:#19cfff;color:#000;z-index:1000}
-  </style>
+  <script defer src="/js/analytics.js"></script>
+  <script defer src="/js/main.js"></script>
 </head>
-
-<body class="page-light">
+<body>
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="header">
     <div class="container header__inner">
-      <a class="brand" href="index.html" aria-label="RetroReplay UK Home">
-        <img class="brand__logo" src="assets/logo.png" alt="RetroReplay UK" width="220" height="220" loading="lazy" />
+      <a class="brand" href="/" aria-label="RetroReplay UK Home">
+        <img class="brand__logo" src="/assets/logo.png" alt="RetroReplay UK" width="120" height="120" />
       </a>
+
       <nav class="nav" aria-label="Primary">
-        <a class="nav__link is-active" href="index.html" aria-current="page">Home</a>
-        <a class="nav__link" href="shop.html">Shop</a>
-        <a class="nav__link" href="support.html">Support</a>
-        <a class="nav__link" href="contact.html">Contact</a>
+        <a class="nav__link is-active" href="/" aria-current="page">Home</a>
+        <a class="nav__link" href="/shop.html">Shop</a>
+        <a class="nav__link" href="/support.html">Support</a>
+        <a class="nav__link" href="/contact.html">Contact</a>
       </nav>
-      <a class="button button--ghost header__cta" href="shop.html" data-cta="header_buy">View packages</a>
+
+      <a class="button button--ghost header__cta" href="/shop.html#buy" data-cta="index_header_shop">Shop Now</a>
     </div>
   </header>
 
   <main id="main">
-    <!-- HERO -->
-    <section class="hero" aria-label="Hero">
-      <div class="float-layer" id="float-layer" aria-hidden="true"></div>
+    <section class="hero" aria-label="Hero section">
       <div class="container hero__inner">
-        <div class="hero__copy">
-          <p class="kicker">Tested • Prepared • Built to Order | RetroReplay UK</p>
-          <h1 class="h1">PlayStation 2 FAT Console — Package Options</h1>
-          <p class="lead">Each PlayStation 2 FAT console is <strong>fully tested, refurbished, and carefully prepared</strong>. Built for reliability and ready to play.</p>
-          <p class="muted">RetroReplay UK specialises in reliable, modded, and documented retro consoles with full after-sales support.</p>
-          <div class="hero__actions" style="margin-top:14px;">
-            <a class="button" href="#packages" data-cta="hero_packages">Choose your package</a>
-            <a class="button button--ghost" href="#lead" data-cta="hero_lead">Get the game list + setup tips</a>
-          </div>
-          <ul class="trust" aria-label="Trust badges">
-            <li class="trust__item">Full functional testing</li>
-            <li class="trust__item">Documentation supplied</li>
-            <li class="trust__item">After-sales support</li>
-          </ul>
-          <div class="band" role="note">
-            <strong>Important:</strong> Consoles may show age-related marks. Options must be selected at checkout or messaged after purchase.
-          </div>
-        </div>
-
-        <div class="hero__card" id="lead">
-          <div class="card card--glow">
-            <h2 class="h2">Get the game list + setup tips</h2>
-            <p class="muted">Join the list for restocks, guides, and package updates.</p>
-            <form class="form" action="https://formspree.io/f/manrkvby" method="POST" data-lead-form>
-              <input type="hidden" name="form_type" value="lead_capture" />
-              <input type="hidden" name="page" value="index.html" />
-              <div class="honeypot" aria-hidden="true">
-                <label for="company">Company</label>
-                <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
-              </div>
-              <label class="label" for="email">Email</label>
-              <div class="form__row">
-                <input class="input" id="email" name="email" type="email" required placeholder="you@example.com" />
-                <button class="button" type="submit" data-cta="lead_submit">Send it</button>
-              </div>
-              <textarea name="message" hidden>Lead capture signup</textarea>
-              <p class="fineprint">No spam. Unsubscribe anytime.</p>
-              <p class="form-status" aria-live="polite"></p>
-              <div class="divider"></div>
-              <p class="muted">Prefer direct contact? <a href="contact.html">Message here</a>.</p>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- STANDARD PREPARATION -->
-    <section class="section" aria-label="Standard preparation">
-      <div class="container">
-        <div class="section-title">
-          <h2 class="h2">Standard Preparation (All Packages)</h2>
-          <p class="muted">Avoids the risks of untested second-hand consoles.</p>
-        </div>
-        <div class="card">
-          <ul class="offer">
-            <li>✔ Full functional testing</li>
-            <li>✔ Optical drive tested</li>
-            <li>✔ Fault diagnosis and repair where required</li>
-            <li>✔ Extended play testing</li>
-            <li>✔ Prepared memory card included</li>
-            <li>✔ Documentation supplied</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- PACKAGES -->
-    <section class="section section--alt" id="packages" aria-label="Packages">
-      <div class="container">
-        <div class="section-title">
-          <h2 class="h2">Select Your Package</h2>
-          <p class="muted">Clear options. Honest standards. Built to order.</p>
-        </div>
-        <div class="packages" role="list">
-          <div class="card" role="listitem">
-            <div class="pkg__head"><h3 class="h3">🟦 Player 1 Plug &amp; Play</h3><span class="tag">Simple • Reliable • Ready</span></div>
-            <ul class="pkg__list">
-              <li>PlayStation 2 FAT console</li><li>1× wired controller</li><li>1× prepared memory card</li><li>Composite AV cable</li><li>Warranty &amp; documentation</li>
-            </ul>
-            <p class="muted"><strong>Ideal for:</strong> solo players, gifts, first-time buyers.</p>
-            <div class="pkg__actions"><a class="button" href="shop.html?package=p1#buy">Choose Player 1</a></div>
-          </div>
-
-          <div class="card card--glow" role="listitem">
-            <div class="pkg__head"><h3 class="h3">🟨 Player 2 Plug &amp; Play</h3><span class="tag">⭐ Best Value</span></div>
-            <p class="muted">Everything in Player 1, plus:</p>
-            <ul class="pkg__list">
-              <li>2× wired controllers</li><li>Extended system testing</li><li>Priority preparation</li>
-            </ul>
-            <p class="muted"><strong>Ideal for:</strong> families and shared gaming.</p>
-            <div class="pkg__actions"><a class="button" href="shop.html?package=p2#buy">Choose Player 2</a></div>
-          </div>
-
-          <div class="card" role="listitem">
-            <div class="pkg__head"><h3 class="h3">🟥 Ultimate Enhanced Build</h3><span class="tag">Advanced • Disc-Free Ready</span></div>
-            <p class="muted">Everything in Player 2, plus:</p>
-            <ul class="pkg__list">
-              <li>Network adapter installed</li><li>Advanced FMCB setup</li><li>Disc-free hardware configuration</li><li>Internal SATA HDD (optional)</li><li>Extended stress testing</li>
-            </ul>
-            <p class="muted"><strong>Ideal for:</strong> enthusiasts and collectors.</p>
-            <div class="pkg__actions"><a class="button" href="shop.html?package=ultimate#buy">Choose Ultimate</a></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section" aria-label="Primary CTA">
-      <div class="container cta">
         <div>
-          <h2 class="h2">Select your package</h2>
-          <p class="muted">Tested • Prepared • Built to Order | RetroReplay UK</p>
+          <p class="kicker">Refurbished • Tested • Supported</p>
+          <h1 class="h1">PlayStation 2 FAT Consoles & Plug-and-Play HDD Packages</h1>
+          <p class="lead">
+            Every PS2 FAT we sell is rebuilt, cleaned, and fully tested.  
+            Choose a simple plug-and-play setup or an enhanced modded edition—each backed by warranty and after-sales support.
+          </p>
+          <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:10px;">
+            <a class="button" href="/shop.html#buy" data-cta="index_hero_shop">Browse Packages</a>
+            <a class="button button--ghost" href="/support.html" data-cta="index_hero_support">Warranty & Support</a>
+          </div>
         </div>
-        <a class="button" href="shop.html">Go to Shop</a>
+        <div style="text-align:center;">
+          <img src="/assets/logo.png" alt="RetroReplay logo" width="240" height="240" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Featured packages">
+      <div class="container grid3">
+        <article class="card card--glow">
+          <h2 class="h2">🟦 Player 1 Plug & Play</h2>
+          <p class="muted">Simple • Reliable • Ready to go</p>
+          <p>Perfect starter system. Includes one controller, memory card, and composite AV cable—fully tested.</p>
+          <a class="button" href="/shop.html?package=p1#buy" data-cta="index_pkg_p1">View Package</a>
+        </article>
+
+        <article class="card card--glow">
+          <h2 class="h2">🟨 Player 2 Plug & Play ⭐ Best Value</h2>
+          <p class="muted">Shared Play • Extra Comfort</p>
+          <p>Two controllers, extended testing, and priority prep. Great for families or shared setups.</p>
+          <a class="button" href="/shop.html?package=p2#buy" data-cta="index_pkg_p2">View Package</a>
+        </article>
+
+        <article class="card card--glow">
+          <h2 class="h2">🟥 Ultimate Enhanced / Modded Edition</h2>
+          <p class="muted">Serious-Player Build</p>
+          <p>Network adapter + FMCB setup + disc-free ready hardware and extended testing with documentation.</p>
+          <a class="button" href="/shop.html?package=ultimate#buy" data-cta="index_pkg_ultimate">View Package</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-label="Why choose us">
+      <div class="container grid2">
+        <article class="card">
+          <h2 class="h2">Why RetroReplay UK?</h2>
+          <ul class="bullets">
+            <li>All consoles tested & documented before dispatch</li>
+            <li>After-sales support and warranty included</li>
+            <li>Optional modded builds and HDD packages</li>
+            <li>UK-based testing & fast shipping</li>
+          </ul>
+          <a class="button" href="/support.html" data-cta="index_why_support">Learn More</a>
+        </article>
+
+        <article class="card card--glow">
+          <h2 class="h2">Looking for the best picture on modern TVs?</h2>
+          <p class="muted">Use Component or a quality HDMI upscaler for sharpest results. We can recommend settings for your TV.</p>
+          <a class="button" href="/support.html#tv" data-cta="index_tv_link">TV Setup Help</a>
+        </article>
       </div>
     </section>
   </main>
@@ -196,19 +134,19 @@
     <div class="container footer__inner">
       <p class="fineprint">© <span data-year></span> RetroReplay UK</p>
       <div class="footer__links">
-        <a href="support.html">Warranty & Support</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="cookies.html">Cookies</a>
-        <a href="contact.html">Contact</a>
-        <a href="#" data-cookie-manage>Manage cookies</a>
+        <a href="/support.html" data-cta="footer_support">Warranty & Support</a>
+        <a href="/privacy.html" data-cta="footer_privacy">Privacy</a>
+        <a href="/cookies.html" data-cta="footer_cookies">Cookies</a>
+        <a href="/contact.html" data-cta="footer_contact">Contact</a>
       </div>
     </div>
   </footer>
 
-  <!-- Cookie consent -->
   <div class="cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
     <div class="cookie__inner">
-      <p class="cookie__text">We use cookies for analytics to improve the site. You can accept or reject non-essential cookies.</p>
+      <p class="cookie__text">
+        We use cookies for analytics to improve the site. You can accept or reject non-essential cookies.
+      </p>
       <div class="cookie__actions">
         <button class="button button--ghost" type="button" data-cookie-reject>Reject</button>
         <button class="button" type="button" data-cookie-accept>Accept</button>
@@ -218,12 +156,38 @@
 
   <!-- Floating controllers -->
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const layer=document.getElementById("float-layer");if(!layer)return;
-    const isMobile=matchMedia("(max-width:600px)").matches;const count=isMobile?5:9;
-    const svg=()=>`<svg viewBox="0 0 128 72" xmlns="http://www.w3.org/2000/svg"><path class="fill" d="M20 34c0-10 8-18 18-18h52c10 0 18 8 18 18v6c0 10-8 18-18 18h-7l-10-9H55l-10 9h-7c-10 0-18-8-18-18v-6Z"/><path class="stroke" d="M20 34c0-10 8-18 18-18h52c10 0 18 8 18 18v6c0 10-8 18-18 18h-7l-10-9H55l-10 9h-7c-10 0-18-8-18-18v-6Z" fill="none" stroke-width="2"/><circle class="stroke" cx="88" cy="35" r="5" fill="none" stroke-width="2"/><circle class="stroke" cx="102" cy="35" r="5" fill="none" stroke-width="2"/><path class="stroke" d="M44 32h-10M39 27v10" fill="none" stroke-width="2" stroke-linecap="round"/></svg>`;
-    for(let i=0;i<count;i++){const d=document.createElement("div");d.className="float-item";d.innerHTML=svg();d.style.left=Math.random()*92+"%";d.style.top=Math.random()*78+"%";d.style.opacity=".16";d.style.animation=`floaty ${8+Math.random()*6}s ease-in-out infinite`;layer.appendChild(d);}
-  });
+    (function(){
+      const layer=document.createElement("div");
+      layer.className="float-layer";layer.id="float-layer";layer.setAttribute("aria-hidden","true");
+      document.body.appendChild(layer);
+      const isMobile=matchMedia("(max-width:600px)").matches;
+      const count=isMobile?5:9;
+      const svg=`
+        <svg viewBox="0 0 128 72" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true">
+          <path class="fill" d="M20 34c0-10 8-18 18-18h52c10 0 18 8 18 18v6c0 10-8 18-18 18h-7l-10-9H55l-10 9h-7c-10 0-18-8-18-18v-6Z"/>
+          <path class="stroke" d="M20 34c0-10 8-18 18-18h52c10 0 18 8 18 18v6c0 10-8 18-18 18h-7l-10-9H55l-10 9h-7c-10 0-18-8-18-18v-6Z" fill="none" stroke-width="2"/>
+          <circle class="stroke" cx="88" cy="35" r="5" fill="none" stroke-width="2"/>
+          <circle class="stroke" cx="102" cy="35" r="5" fill="none" stroke-width="2"/>
+          <path class="stroke" d="M44 32h-10M39 27v10" fill="none" stroke-width="2" stroke-linecap="round"/>
+        </svg>`;
+      for(let i=0;i<count;i++){
+        const d=document.createElement("div");
+        d.className="float-item";d.innerHTML=svg;
+        d.style.left=Math.floor(Math.random()*92)+"%";
+        d.style.top=Math.floor(Math.random()*78)+"%";
+        d.style.animationDuration=(8+Math.random()*6)+"s";
+        d.style.animationDelay=(Math.random()*2)+"s";
+        d.style.transform=`rotate(${(Math.random()*8-4).toFixed(1)}deg)`;
+        layer.appendChild(d);
+      }
+      if(!isMobile){
+        window.addEventListener("mousemove",e=>{
+          const x=(e.clientX/window.innerWidth-0.5)*6;
+          const y=(e.clientY/window.innerHeight-0.5)*6;
+          layer.style.transform=`translate3d(${x}px,${y}px,0)`;
+        },{passive:true});
+      }
+    })();
   </script>
 </body>
 </html>
