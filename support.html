@@ -3,277 +3,233 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Support, Warranty & FAQs | RetroReplay UK</title>
-  <meta name="description" content="Get fast support and warranty help for your PS2 FAT console or HDD kit from RetroReplay UK. Clear setup steps, FAQs, and expert after-sales care." />
-  <meta name="robots" content="index, follow" />
+  <title>Support & Warranty | RetroReplay UK</title>
+  <meta name="description" content="RetroReplay UK — Fast support, setup help and warranty info for PS2 FAT consoles and HDD kits. UK-based after-sales service and expert repair guidance." />
   <meta name="theme-color" content="#eaf6ff" />
   <link rel="canonical" href="https://retroreplay.uk/support.html" />
 
-  <!-- Open Graph -->
   <meta property="og:site_name" content="RetroReplay UK" />
-  <meta property="og:title" content="Support, Warranty & FAQs | RetroReplay UK" />
-  <meta property="og:description" content="Need help with your PS2 FAT console or HDD package? Visit RetroReplay UK Support for warranty info, setup help, and quick contact." />
+  <meta property="og:title" content="Support & Warranty | RetroReplay UK" />
+  <meta property="og:description" content="Get setup help and warranty support for your PS2 FAT console. UK-based service with fast response times." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://retroreplay.uk/support.html" />
   <meta property="og:image" content="https://retroreplay.uk/assets/og.jpg" />
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="RetroReplay UK Support — Warranty & FAQs" />
-  <meta name="twitter:description" content="Find PS2 FAT console support, setup help, and warranty information from RetroReplay UK." />
-  <meta name="twitter:image" content="https://retroreplay.uk/assets/og.jpg" />
-
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-  <link rel="preload" as="image" href="/assets/logo.png" />
   <link rel="stylesheet" href="/style.css" />
   <script defer src="/js/analytics.js"></script>
   <script defer src="/js/main.js"></script>
 
-  <!-- Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {"@type":"Question","name":"Dispatch times","acceptedAnswer":{"@type":"Answer","text":"Usually within 2–3 working days after payment."}},
-      {"@type":"Question","name":"Cosmetic condition","acceptedAnswer":{"@type":"Answer","text":"All consoles are cleaned, tested, and present well, though some may show light age-related wear."}},
-      {"@type":"Question","name":"Upgrades and mods","acceptedAnswer":{"@type":"Answer","text":"Custom upgrades such as HDD expansion or cosmetic mods can be requested at order time."}},
-      {"@type":"Question","name":"Support for non-RetroReplay units","acceptedAnswer":{"@type":"Answer","text":"Basic help is fine, but full warranty and after-sales support apply only to RetroReplay UK consoles."}}
-    ]
-  }
-  </script>
-
   <style>
-    /* Page-specific enhancements */
-    .hero {
-      background: linear-gradient(180deg,#f9fcff 0%,#eaf6ff 100%);
-      border-bottom: 1px solid #d9e9f2;
-      padding: 60px 0;
-    }
-    details.faq summary {
-      cursor: pointer;
-      font-weight: 600;
-      padding: 8px 0;
+    /* --- Hero --- */
+    .hero-support {
       position: relative;
-      color: #0b1020;
-      transition: color 0.2s ease;
+      height: 60vh;
+      overflow: hidden;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero-support::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(0,20,50,.55), rgba(0,20,50,.85));
+      z-index: 1;
+    }
+    .hero-support video {
+      position: absolute;
+      width: 100%; height: 100%;
+      top: 0; left: 0;
+      object-fit: cover;
+      filter: brightness(0.5);
+    }
+    .hero-support .content {
+      position: relative;
+      z-index: 2;
+      max-width: 740px;
+      padding: 0 20px;
+    }
+    .hero-support h1 { font-size: clamp(2rem, 4vw, 3rem); color:#fff; margin-bottom:10px; }
+    .hero-support p { color:#dce9ff; font-size:1.1rem; }
+
+    /* --- FAQ Cards --- */
+    .faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    @media(max-width:820px){ .faq-grid{grid-template-columns:1fr;} }
+    details.faq summary {
+      cursor:pointer; font-weight:600; padding:8px 0; position:relative;
     }
     details.faq summary::before {
-      content: "➕";
-      margin-right: 8px;
-      color: #0077bb;
-      font-weight: 700;
+      content:"➕"; margin-right:8px; color:#0077bb; font-weight:700;
     }
-    details.faq[open] summary::before { content: "➖"; }
-    details.faq[open] summary { color: #0077bb; }
-    details.faq p { margin: 6px 0 12px 24px; color: #1e293b; }
+    details.faq[open] summary::before { content:"➖"; }
+    details.faq[open] summary { color:#0077bb; }
+    details.faq p { margin:6px 0 12px 24px; color:#1e293b; }
 
-    .band strong { color: #0077bb; }
-    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    @media(max-width:820px){.why-grid{grid-template-columns:1fr;}}
+    /* --- Warranty --- */
+    .warranty {
+      background:linear-gradient(180deg,#f8fbff 0%,#eaf6ff 100%);
+      text-align:center;
+      padding:80px 0;
+    }
+    .warranty h2 { color:#0b1020; margin-bottom:10px; }
+    .warranty p { color:#1e293b; }
 
-    .divider {
-      margin: 20px 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #d9e9f2, transparent);
-    }
-
-    /* Scroll reveal animations */
-    .reveal {
-      opacity: 0;
-      transform: translateY(35px);
-      transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1),
-                  transform 0.9s cubic-bezier(0.22,1,0.36,1);
-      will-change: opacity, transform;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-    @media(prefers-reduced-motion:reduce){
-      .reveal{opacity:1!important;transform:none!important;transition:none!important;}
-    }
+    /* --- Divider --- */
+    .divider { margin:20px 0; height:1px; background:linear-gradient(90deg,transparent,#d9e9f2,transparent); }
   </style>
 </head>
 
 <body class="page-light">
-  <a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 
-  <header class="header">
-    <div class="container header__inner">
-      <a class="brand" href="/" aria-label="RetroReplay UK Home">
-        <img class="brand__logo brand__logo--small" src="/assets/logo.png" alt="RetroReplay UK" width="120" height="120" />
-      </a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a class="nav__link" href="/">Home</a>
-        <a class="nav__link" href="/shop.html">Shop</a>
-        <a class="nav__link is-active" href="/support.html" aria-current="page">Support</a>
-        <a class="nav__link" href="/contact.html">Contact</a>
-      </nav>
-      <a class="button button--ghost header__cta" href="/contact.html">Get Help</a>
+<header class="header">
+  <div class="container header__inner">
+    <a class="brand" href="/" aria-label="RetroReplay UK Home">
+      <img class="brand__logo" src="/assets/logo.png" alt="RetroReplay UK logo" width="120" height="120" />
+    </a>
+    <nav class="nav">
+      <a class="nav__link" href="/">Home</a>
+      <a class="nav__link" href="/shop.html">Shop</a>
+      <a class="nav__link is-active" href="/support.html" aria-current="page">Support</a>
+      <a class="nav__link" href="/contact.html">Contact</a>
+    </nav>
+    <a class="button button--ghost" href="/contact.html">Get Help</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 🎞 Hero -->
+  <section class="hero-support">
+    <video autoplay muted loop playsinline poster="/assets/og.jpg">
+      <source src="/assets/e.mp4" type="video/mp4" />
+    </video>
+    <div class="content reveal">
+      <h1>Support, Warranty & Setup Help</h1>
+      <p>Every RetroReplay PS2 is fully tested and backed by our UK team.  
+      Explore FAQs, setup guidance, or reach us directly for personalised support.</p>
     </div>
-  </header>
+  </section>
 
-  <main id="main">
+  <!-- 🔧 Support Details -->
+  <section class="section reveal">
+    <div class="container faq-grid">
+      <article class="card">
+        <h2 class="h2">Quick Answers</h2>
 
-    <!-- Hero -->
-    <section class="hero reveal" aria-label="Support Hero">
-      <div class="container hero__inner">
-        <div>
-          <p class="kicker" style="color:#0077bb;">Support • Warranty • FAQs</p>
-          <h1 class="h1" style="color:#0b1020;">Fast, friendly UK support for your PS2 FAT.</h1>
-          <p class="lead" style="color:#1e293b;">
-            Most issues are simple to fix — we’ll guide you through setup, cables, or configuration.  
-            Need direct help? Include your PS2 model (SCPH-xxxx), what appears on screen, and what you’ve tried.
-          </p>
-          <div class="band">
-            <strong>Buying today?</strong> Unsure which setup fits you best?  
-            <a href="/shop.html">Compare Packages</a> or <a href="/contact.html">Ask Support</a>.
-          </div>
+        <details class="faq" open>
+          <summary>Dispatch times</summary>
+          <p>Orders typically dispatch within <strong>2–3 working days</strong> after payment. Tracked shipping and updates are included.</p>
+        </details>
+        <details class="faq">
+          <summary>Cosmetic condition</summary>
+          <p>All consoles are fully cleaned, serviced, and present excellently. Some light age-related marks may appear — authenticity guaranteed.</p>
+        </details>
+        <details class="faq">
+          <summary>Upgrade or modification options</summary>
+          <p>Storage, LED, or cosmetic customisations are available — request these during checkout or via our <a href="/contact.html">contact form</a>.</p>
+        </details>
+        <details class="faq">
+          <summary>Support for non-RetroReplay consoles</summary>
+          <p>We’re happy to offer basic advice, but full warranty and repair support apply only to RetroReplay UK units.</p>
+        </details>
+      </article>
+
+      <article class="card card--glow">
+        <h2 class="h2">Need Help Now?</h2>
+        <p>Our fastest response route is by email:  
+          <a href="mailto:retroreplay2026@gmail.com">retroreplay2026@gmail.com</a></p>
+        <p class="muted">Include your PS2 model number (SCPH-xxxx), the issue, and what appears on screen.  
+        We’ll reply within 24 hours.</p>
+        <div class="divider"></div>
+        <a class="button" href="/contact.html">Open Contact Form</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- 💬 Warranty -->
+  <section class="warranty reveal" id="warranty">
+    <div class="container">
+      <h2 class="h2">Warranty Coverage</h2>
+      <p>Every RetroReplay UK console is supplied with a <strong>90-day hardware warranty</strong> covering repair or replacement for verified hardware issues.  
+      Post-warranty repairs and tune-ups are available at fair service rates.</p>
+      <p class="muted">Physical or accidental damage is not covered. Warranty begins on the delivery date shown on your invoice.</p>
+      <div style="margin-top:20px;">
+        <a class="button button--ghost" href="/contact.html">Submit Warranty Request</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🧩 Why Choose -->
+  <section class="section reveal">
+    <div class="container faq-grid">
+      <article class="card">
+        <h2 class="h2">Why Choose RetroReplay</h2>
+        <ul class="bullets">
+          <li>✅ Fully tested & serviced consoles</li>
+          <li>🇬🇧 UK-built and locally supported</li>
+          <li>💾 Modern HDD & FMCB configurations</li>
+          <li>💬 Real human support, not AI or call centres</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2 class="h2">Still Stuck?</h2>
+        <p>Head to our <a href="/shop.html">Shop</a> to explore upgrade options, or message our technicians directly for setup walkthroughs.</p>
+        <a class="button" href="/contact.html" style="margin-top:10px;">Contact Support</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section section--alt reveal" style="text-align:center;">
+    <div class="container">
+      <h2 class="h2">Stay Updated</h2>
+      <p class="muted">Get setup tips, restock alerts, and exclusive offers.</p>
+      <form class="form" method="post" action="https://formspree.io/f/manrkvby" style="max-width:480px;margin:18px auto 0;">
+        <input type="hidden" name="form_type" value="newsletter" />
+        <div class="form__row">
+          <input class="input" type="email" name="email" placeholder="you@example.com" required />
+          <button class="button" type="submit">Subscribe</button>
         </div>
-      </div>
-    </section>
-
-    <!-- Packages Overview -->
-    <section class="section reveal" id="packages">
-      <div class="container">
-        <article class="card">
-          <h2 class="h2">PS2 FAT Console Packages</h2>
-          <p class="muted">All consoles are fully tested, documented, and supported after purchase.</p>
-
-          <details class="faq" open>
-            <summary>🟦 Player 1 Plug & Play</summary>
-            <p>Perfect for solo players — includes console, controller, AV cable, and setup documentation.</p>
-          </details>
-
-          <details class="faq">
-            <summary>🟨 Player 2 Plug & Play (Best Value)</summary>
-            <p>Includes everything from Player 1, plus a second controller, extended testing, and priority preparation.</p>
-          </details>
-
-          <details class="faq">
-            <summary>🟥 Ultimate Modded Edition</summary>
-            <p>For serious players — HDD-ready with Free McBoot (FMCB), network adapter, and preconfigured system software.</p>
-          </details>
-
-          <div class="band">
-            <strong>Not sure which fits you?</strong>  
-            <a href="/contact.html">Contact us</a> for recommendations based on your TV setup and play style.
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section section--alt reveal" id="faq">
-      <div class="container">
-        <article class="card card--glow">
-          <h2 class="h2">Frequently Asked Questions</h2>
-
-          <details class="faq" open>
-            <summary>Dispatch times</summary>
-            <p>Most orders dispatch within <strong>2–3 business days</strong> of payment. You’ll receive tracking details as soon as your system ships.</p>
-          </details>
-
-          <details class="faq">
-            <summary>Cosmetic condition</summary>
-            <p>Every console is cleaned and tested. Minor age-related wear may be visible, but all systems present very well and function flawlessly.</p>
-          </details>
-
-          <details class="faq">
-            <summary>Upgrades and mods</summary>
-            <p>Storage, LED colour, and cosmetic upgrades available by request — see  
-              <a href="/shop.html#pkg-ultimate">The Ultimate Modded Edition</a> or <a href="/contact.html">contact us</a>.</p>
-          </details>
-
-          <details class="faq">
-            <summary>Support for non-RetroReplay consoles</summary>
-            <p>We’re happy to share basic advice, but full warranty and repair support apply only to RetroReplay UK units.</p>
-          </details>
-
-          <div class="divider"></div>
-          <div class="support-actions" style="display:flex;flex-wrap:wrap;gap:10px;">
-            <a class="button" href="/shop.html">Visit the Shop</a>
-            <a class="button button--ghost" href="/contact.html">Contact Support</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Why Choose -->
-    <section class="section reveal" aria-label="Why Choose RetroReplay UK">
-      <div class="container why-grid">
-        <article class="card">
-          <h2 class="h2">Why Choose RetroReplay UK?</h2>
-          <ul class="bullets">
-            <li>All consoles tested, cleaned & documented before dispatch</li>
-            <li>Full UK warranty & after-sales support included</li>
-            <li>Optional upgrades & modded editions available</li>
-            <li>Fast UK dispatch & tracked delivery</li>
-          </ul>
-        </article>
-
-        <article class="card card--glow">
-          <h2 class="h2">Need help fast?</h2>
-          <p>For the quickest response, email  
-            <a href="mailto:retroreplay2026@gmail.com">retroreplay2026@gmail.com</a>  
-            or use our <a href="/contact.html">contact form</a>.
-          </p>
-          <p class="muted">Include your PS2 model (SCPH-xxxx) and a short description — we’ll reply within 24 hours.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="section section--alt reveal" style="background:#f0f8ff;text-align:center;">
-      <div class="container">
-        <h2 class="h2" style="color:#0b1020;">Stay in the Loop</h2>
-        <p class="muted" style="color:#1e293b;">Receive restock alerts, setup tips, and exclusive discounts.</p>
-        <form class="form" method="post" action="https://formspree.io/f/manrkvby" style="max-width:480px;margin:18px auto 0;">
-          <input type="hidden" name="form_type" value="newsletter" />
-          <div class="form__row">
-            <input class="input" type="email" name="email" placeholder="you@example.com" required />
-            <button class="button" type="submit">Subscribe</button>
-          </div>
-          <p class="fineprint" style="color:#1e293b;">No spam — unsubscribe anytime.</p>
-        </form>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer" style="background:#eaf6ff;color:#0b1020;border-top:1px solid #d9e9f2;">
-    <div class="container footer__inner">
-      <p class="fineprint">© <span data-year></span> RetroReplay UK</p>
-      <div class="footer__links">
-        <a href="/shop.html">Shop</a>
-        <a href="/support.html" aria-current="page">Support</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/cookies.html">Cookies</a>
-        <a href="/contact.html">Contact</a>
-      </div>
+      </form>
     </div>
-  </footer>
+  </section>
 
-  <!-- Cookie Banner -->
-  <div class="cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
-    <div class="cookie__inner">
-      <p class="cookie__text">We use cookies for analytics to improve the site. You can accept or reject non-essential cookies.</p>
-      <div class="cookie__actions">
-        <button class="button button--ghost" type="button" data-cookie-reject>Reject</button>
-        <button class="button" type="button" data-cookie-accept>Accept</button>
-      </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p class="fineprint">© <span data-year></span> RetroReplay UK</p>
+    <div class="footer__links">
+      <a href="/shop.html">Shop</a>
+      <a href="/support.html" aria-current="page">Support</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/cookies.html">Cookies</a>
+      <a href="/contact.html">Contact</a>
     </div>
   </div>
+</footer>
 
-  <!-- Scroll reveal trigger -->
-  <script>
-    document.addEventListener("scroll",()=>{
-      document.querySelectorAll(".reveal").forEach(el=>{
-        if(el.getBoundingClientRect().top<window.innerHeight*0.85) el.classList.add("visible");
-      });
+<div class="cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+  <div class="cookie__inner">
+    <p class="cookie__text">We use cookies for analytics to improve the site. You can accept or reject non-essential cookies.</p>
+    <div class="cookie__actions">
+      <button class="button button--ghost" type="button" data-cookie-reject>Reject</button>
+      <button class="button" type="button" data-cookie-accept>Accept</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Scroll reveal
+  document.addEventListener("scroll",()=>{
+    document.querySelectorAll(".reveal").forEach(el=>{
+      if(el.getBoundingClientRect().top<window.innerHeight*0.85) el.classList.add("visible");
     });
-  </script>
+  });
+</script>
 
 </body>
 </html>
