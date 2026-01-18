@@ -23,11 +23,12 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" as="image" href="/assets/logo.png" />
   <link rel="stylesheet" href="/style.css" />
+
   <script defer src="/js/analytics.js"></script>
   <script defer src="/js/main.js"></script>
 
-  <!-- PayPal SDK (load once) -->
-  <script defer src="https://www.paypal.com/sdk/js?client-id=BAApYaG5zDntUHsd2tRXv1ylGkYhREqRR-t7PWcH3-Sh7ElgWliEyCEnhAeQjoawIGidc1LY7PQRK9A0Sg&components=hosted-buttons&disable-funding=venmo&currency=GBP"></script>
+  <!-- ✅ PayPal SDK (load async, not defer) -->
+  <script async src="https://www.paypal.com/sdk/js?client-id=BAApYaG5zDntUHsd2tRXv1ylGkYhREqRR-t7PWcH3-Sh7ElgWliEyCEnhAeQjoawIGidc1LY7PQRK9A0Sg&components=hosted-buttons&disable-funding=venmo&currency=GBP" onload="window.paypalLoad=true"></script>
 </head>
 
 <body class="page-light">
@@ -67,8 +68,7 @@
           <li>✔ Extended testing + documentation included</li>
         </ul>
         <p class="fineprint">From £179.99 GBP • Fast UK tracked shipping • 90-day warranty</p>
-        <div id="paypal-container-RCX5N5QAH75PJ" style="margin-top:14px;"></div>
-        <script>paypal.HostedButtons({hostedButtonId:"RCX5N5QAH75PJ"}).render("#paypal-container-RCX5N5QAH75PJ");</script>
+        <div id="paypal-container-RCX5N5QAH75PJ" class="paypal-button"></div>
       </div>
       <div style="text-align:center;">
         <img src="/assets/logo.png" alt="RetroReplay UK Ultimate Edition" width="240" height="240" loading="lazy" />
@@ -90,8 +90,7 @@
           <li>Ideal for families and shared gaming</li>
         </ul>
         <p class="fineprint">From £149.99 GBP</p>
-        <div id="paypal-container-K8455AQ6AKK3L" style="margin-top:12px;"></div>
-        <script>paypal.HostedButtons({hostedButtonId:"K8455AQ6AKK3L"}).render("#paypal-container-K8455AQ6AKK3L");</script>
+        <div id="paypal-container-K8455AQ6AKK3L" class="paypal-button"></div>
       </article>
 
       <article class="card" id="pkg-p1">
@@ -104,8 +103,7 @@
           <li>Warranty & authenticity documentation</li>
         </ul>
         <p class="fineprint">From £119.99 GBP</p>
-        <div id="paypal-container-JMNWZWNM943Z8" style="margin-top:12px;"></div>
-        <script>paypal.HostedButtons({hostedButtonId:"JMNWZWNM943Z8"}).render("#paypal-container-JMNWZWNM943Z8");</script>
+        <div id="paypal-container-JMNWZWNM943Z8" class="paypal-button"></div>
       </article>
 
     </div>
@@ -172,6 +170,7 @@
   </div>
 </footer>
 
+<!-- Cookie banner -->
 <div class="cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
   <div class="cookie__inner">
     <p class="cookie__text">We use cookies for analytics to improve the site. You can accept or reject non-essential cookies.</p>
@@ -181,6 +180,18 @@
     </div>
   </div>
 </div>
+
+<!-- ✅ Wait for PayPal SDK to load -->
+<script>
+  const waitForPayPal = setInterval(() => {
+    if (window.paypal && window.paypal.HostedButtons) {
+      clearInterval(waitForPayPal);
+      paypal.HostedButtons({hostedButtonId:"RCX5N5QAH75PJ"}).render("#paypal-container-RCX5N5QAH75PJ");
+      paypal.HostedButtons({hostedButtonId:"K8455AQ6AKK3L"}).render("#paypal-container-K8455AQ6AKK3L");
+      paypal.HostedButtons({hostedButtonId:"JMNWZWNM943Z8"}).render("#paypal-container-JMNWZWNM943Z8");
+    }
+  }, 200);
+</script>
 
 </body>
 </html>
