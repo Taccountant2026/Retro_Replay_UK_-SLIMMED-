@@ -3,82 +3,199 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contact — RetroReplay UK | PS2 FAT Packages & Support</title>
-  <meta name="description" content="Contact RetroReplay UK for package help, support, or custom requests. Get a quick reply about PlayStation 2 FAT consoles, HDD builds, and upgrades." />
-  <meta name="theme-color" content="#ffffff" />
+  <title>Contact RetroReplay UK — PS2 Support & Custom Orders</title>
+  <meta name="description" content="Contact RetroReplay UK for support, custom PlayStation 2 FAT builds, or package help. Fast replies and friendly after-sales service." />
   <link rel="canonical" href="https://retroreplay.uk/contact" />
+  <meta name="theme-color" content="#ffffff" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Contact — RetroReplay UK | PS2 FAT Packages & Support" />
-  <meta property="og:description" content="Message RetroReplay UK for help choosing a PS2 FAT package, support questions, or upgrade requests. Built-to-order consoles with after-sales support." />
+  <meta property="og:title" content="Contact RetroReplay UK — PS2 Support & Custom Orders" />
+  <meta property="og:description" content="Get in touch for package help, custom builds, or after-sales support for your PS2 FAT console." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://retroreplay.uk/contact" />
   <meta property="og:image" content="https://retroreplay.uk/assets/og.jpg" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Contact — RetroReplay UK | PS2 FAT Packages & Support" />
-  <meta name="twitter:description" content="Contact RetroReplay UK for PS2 FAT console support, upgrades, and package advice." />
+  <meta name="twitter:title" content="Contact RetroReplay UK — PS2 Support & Custom Orders" />
+  <meta name="twitter:description" content="Contact RetroReplay UK for support, mods, and custom PS2 FAT consoles. Friendly and fast replies." />
   <meta name="twitter:image" content="https://retroreplay.uk/assets/og.jpg" />
 
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="preload" as="image" href="assets/logo.png" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" as="image" href="/assets/logo.png" />
+  <link rel="stylesheet" href="/style.css" />
+  <script defer src="/js/analytics.js"></script>
+  <script defer src="/js/main.js"></script>
 
-  <script defer src="js/analytics.js"></script>
-  <script defer src="js/main.js"></script>
-
-  <!-- Schema: Organization + ContactPage -->
+  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "RetroReplay UK",
-    "url": "https://retroreplay.uk",
-    "logo": "https://retroreplay.uk/assets/logo.png",
-    "email": "retroreply2026@gmail.com",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "email": "retroreply2026@gmail.com",
-      "contactType": "customer support",
-      "availableLanguage": ["English"]
-    }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "RetroReplay UK",
+        "url": "https://retroreplay.uk",
+        "logo": "https://retroreplay.uk/assets/logo.png",
+        "email": "retroreply2026@gmail.com"
+      },
+      {
+        "@type": "ContactPage",
+        "name": "Contact RetroReplay UK",
+        "url": "https://retroreplay.uk/contact",
+        "description": "Contact form and support details for PS2 FAT console packages and modded builds."
+      }
+    ]
   }
   </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": "Contact RetroReplay UK",
-    "url": "https://retroreplay.uk/contact",
-    "description": "Contact page for RetroReplay UK. Send messages about PS2 FAT packages, custom requests, or technical support.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "RetroReplay UK"
-    }
-  }
-  </script>
-
-  <!-- Theme adjustments -->
-  <style>
-    body.page-light{background:#fff;color:#0b1020}
-    @media(prefers-color-scheme:dark){
-      body.page-light{background:#0b1020;color:#fff}
-      .card{background:rgba(25,25,25,.9);border-color:rgba(255,255,255,.1)}
-      .button{background:#1c2733;color:#fff}
-    }
-    a:focus-visible{outline:2px solid #19cfff;outline-offset:3px;border-radius:3px}
-  </style>
 </head>
 
 <body class="page-light">
   <a class="skip" href="#main">Skip to content</a>
 
-  <!-- === YOUR FULL BODY CONTENT STARTS HERE === -->
-  <!-- The provided body content remains exactly as you’ve written — all functional markup retained. -->
-  <!-- Includes hero, quick actions, Formspree contact form, updates signup, cookie banner, and floating controllers. -->
-  <!-- === END BODY CONTENT === -->
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="/" aria-label="RetroReplay UK Home">
+        <img class="brand__logo brand__logo--small" src="/assets/logo.png" alt="RetroReplay UK" width="120" height="120" />
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__link" href="/">Home</a>
+        <a class="nav__link" href="/shop.html">Shop</a>
+        <a class="nav__link" href="/support.html">Support</a>
+        <a class="nav__link is-active" href="/contact.html" aria-current="page">Contact</a>
+      </nav>
+      <a class="button button--ghost header__cta" href="/shop.html#buy">Checkout</a>
+    </div>
+  </header>
 
+  <main id="main">
+    <section class="hero" aria-label="Contact Hero">
+      <div class="container hero__inner">
+        <p class="kicker">Sales • Custom Builds • Support</p>
+        <h1 class="h1">Contact RetroReplay UK</h1>
+        <p class="lead">Need help or want a custom PlayStation 2 setup? Send a message — you’ll receive a fast reply by email.</p>
+        <div class="band"><strong>Fastest replies:</strong> include your PS2 model (SCPH-xxxx) and a brief description of what you need.</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+        <section class="card card--glow">
+          <h2 class="h2">Send a message</h2>
+          <p class="muted">Prefer email? <a href="mailto:retroreply2026@gmail.com">retroreply2026@gmail.com</a></p>
+
+          <div class="quick-actions" aria-label="Quick message templates">
+            <button class="quick" type="button" data-quick="package">
+              <strong>Help me choose a package</strong>
+              <p class="muted">Player 1 / Player 2 / Ultimate — fastest recommendation.</p>
+            </button>
+            <button class="quick" type="button" data-quick="support">
+              <strong>I need support</strong>
+              <p class="muted">Picture quality, OPL, HDD, freezing, setup help.</p>
+            </button>
+            <button class="quick" type="button" data-quick="custom">
+              <strong>Custom request</strong>
+              <p class="muted">Games list, upgrades, accessories, mods.</p>
+            </button>
+            <a class="quick" href="/shop.html" style="text-decoration:none;">
+              <strong>Ready to buy</strong>
+              <p class="muted">Go to checkout and select your package.</p>
+            </a>
+          </div>
+
+          <div class="divider"></div>
+
+          <form class="form" method="post" action="https://formspree.io/f/manrkvby" data-contact-form>
+            <input type="hidden" name="form_type" value="contact" />
+            <input type="hidden" name="page" value="contact.html" />
+
+            <div class="honeypot" aria-hidden="true">
+              <label for="company_contact">Company</label>
+              <input id="company_contact" name="company" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <label class="label" for="name">Name</label>
+            <input class="input" id="name" name="name" autocomplete="name" required />
+
+            <label class="label" for="email">Email</label>
+            <input class="input" id="email" name="email" type="email" autocomplete="email" required />
+
+            <label class="label" for="topic">Topic</label>
+            <select class="input" id="topic" name="topic" required>
+              <option value="order">Order question</option>
+              <option value="custom">Custom game requests</option>
+              <option value="support">Support / troubleshooting</option>
+              <option value="package">Which package should I buy?</option>
+              <option value="other">Other</option>
+            </select>
+
+            <label class="label" for="message">Message</label>
+            <textarea class="input" id="message" name="message" rows="6" required placeholder="For support: include PS2 model, TV/adapter used, what’s happening, and what you’ve tried."></textarea>
+
+            <button class="button" type="submit">Send</button>
+            <p class="fineprint">You’ll receive a reply via email.</p>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <aside class="card">
+          <h2 class="h2">Before you send</h2>
+          <p class="muted">For the fastest help, include:</p>
+          <ul class="info-list">
+            <li><strong>Your PS2 model</strong> <br><span class="muted">(SCPH-xxxx)</span></li>
+            <li><strong>What’s happening on screen</strong> <br><span class="muted">Error text, black screen, freezing, etc.</span></li>
+            <li><strong>What you’ve tried</strong> <br><span class="muted">Cables, TV input, reseating, etc.</span></li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <h3 class="h3">Join updates</h3>
+          <p class="muted">Restocks, guides, and offers.</p>
+
+          <form class="form" method="post" action="https://formspree.io/f/manrkvby" data-lead-form>
+            <input type="hidden" name="form_type" value="lead_capture" />
+            <input type="hidden" name="page" value="contact.html" />
+            <div class="honeypot" aria-hidden="true">
+              <label for="company_lead">Company</label>
+              <input id="company_lead" name="company" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+            <label class="label" for="email2">Email</label>
+            <div class="form__row">
+              <input class="input" id="email2" name="email" type="email" required placeholder="you@example.com" />
+              <button class="button" type="submit">Join</button>
+            </div>
+            <textarea name="message" style="display:none">Lead capture signup</textarea>
+            <p class="fineprint">No spam. Unsubscribe anytime.</p>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+
+          <div class="divider"></div>
+          <a class="button button--ghost" href="/support.html">Read Support & FAQs</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="fineprint">© <span data-year></span> RetroReplay UK</p>
+      <div class="footer__links">
+        <a href="/support.html">Warranty & Support</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/cookies.html">Cookies</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cookie" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+    <div class="cookie__inner">
+      <p class="cookie__text">We use cookies for analytics to improve the site. You can accept or reject non-essential cookies.</p>
+      <div class="cookie__actions">
+        <button class="button button--ghost" type="button" data-cookie-reject>Reject</button>
+        <button class="button" type="button" data-cookie-accept>Accept</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
