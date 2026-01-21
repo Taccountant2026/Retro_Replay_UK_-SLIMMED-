@@ -3,26 +3,31 @@
 
   <url>
     <loc>https://retroreplay.uk/</loc>
+    <lastmod>2026-01-21</lastmod>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://retroreplay.uk/shop.html</loc>
+    <lastmod>2026-01-21</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://retroreplay.uk/support.html</loc>
+    <lastmod>2026-01-21</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://retroreplay.uk/contact.html</loc>
+    <lastmod>2026-01-21</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://retroreplay.uk/privacy.html</loc>
+    <lastmod>2026-01-21</lastmod>
     <priority>0.5</priority>
   </url>
 
